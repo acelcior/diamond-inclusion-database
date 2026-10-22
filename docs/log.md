@@ -7,6 +7,15 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-10-22 — Batch B and Dataset 0 received
+- Received B2–B5 (Gress 2021, De Hoog 2019, Anzolini 2016, Sobolev 2004); identified from
+  page 1 and renamed. Still missing: B1 (Meyer & Boyd 1972), and A3a
+  (Kankan I, added after the user's first download, so it was never on their list).
+- Dataset 0: all four compilations unpacked into `papers/compilations/`; every file
+  matches Borealis's published MD5 checksum.
+- Claude downloaded A5 (Genzel 2023, open access) from the publisher as `genzel-2023.pdf`.
+- No supplement files yet (Nimis Table S1 and Kankan I's supplement are both needed).
+
 ## 2026-10-22 — First papers received
 - 4 of 5 Batch A PDFs in `papers/`, renamed to `firstauthor-year.pdf`; all match their
   verified citations. Still missing: A5 (Genzel 2023) and the Dataset 0 compilations.
