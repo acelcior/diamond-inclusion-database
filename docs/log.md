@@ -7,6 +7,14 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-10-22 — Browsable demo
+- `scripts/build_demo_db.py` builds `demo/demo.sqlite` (gitignored) from the two Stachel
+  compilations as-is: readable column names with units, key columns first, plotting codes dropped,
+  paragenesis decoded for simple codes only, full-text search index. Values unchanged.
+- Datasette view with `demo/metadata.json` (titles, licence/source, facets, column notes, quick
+  links, two summary queries) and `demo/static/style.css` (sticky header, compact notes).
+- This is raw compilation data, not the project schema; the real explorer is Phase 7.
+
 ## 2026-10-22 — Phase 1: core schema v0
 - Wrote `schema/001_core.sql`: 25 tables + 2 views, from D-001 – D-004. Observations are what a
   source reported; physical diamonds/inclusions are clusters of observations joined by approved

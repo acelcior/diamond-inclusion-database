@@ -1,0 +1,91 @@
+{
+  "title": "Global Diamond Inclusion Database: prototype",
+  "description_html": "<p><strong>Early prototype.</strong> Published Stachel compilations loaded as-is for browsing, with readable column names. Not yet curated into the project schema; values not yet checked against the original papers.</p><p>Use the <strong>search box</strong> for localities, minerals, sample IDs or references; click a <strong>facet</strong> value to filter; click a column heading to sort.</p><p><strong>Quick links:</strong> <a href=\"/demo/major_elements?Inclusion+mineral__notblank=1\">Inclusions only</a> (skips diamond-only rows) · <a href=\"/demo/major_elements?_search=Kankan&amp;Inclusion+mineral__notblank=1\">Kankan superdeep diamonds</a> · <a href=\"/demo/major_elements?Paragenesis=lower+mantle\">Lower-mantle inclusions</a> · <a href=\"/demo/inclusions_per_locality\">Summary by locality</a> · <a href=\"/demo/rows_per_reference\">Summary by reference</a> · <a href=\"/demo/trace_elements\">Trace elements</a></p>",
+  "license": "CC0 1.0 (source compilations)",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "source": "Stachel (2021), Borealis; see Stachel, Aulbach & Harris (2022) RiMG 88",
+  "source_url": "https://doi.org/10.7939/DVN/EJUE1G",
+  "extra_css_urls": [
+    "/assets/style.css"
+  ],
+  "databases": {
+    "demo": {
+      "tables": {
+        "major_elements": {
+          "title": "Inclusions: major elements + host diamonds",
+          "description": "One row = one inclusion analysis, with its host diamond's data repeated. Source: Stachel Diamond Inclusion Database, Oct 2021 (doi:10.7939/DVN/EJUE1G).",
+          "fts_table": "major_elements_fts",
+          "fts_pk": "rowid",
+          "facets": [
+            "Craton / terrane",
+            "Inclusion mineral",
+            "Paragenesis",
+            "Locality"
+          ],
+          "columns": {
+            "Locality": "Pipe, prospect or alluvial district, as given in the original paper.",
+            "Craton / terrane": "Craton or terrane, as assigned in the compilation.",
+            "Inclusion mineral": "Phase for this analysis, as labelled in the compilation (e.g. MgSiO3 = likely former bridgmanite).",
+            "Sample ID": "Sample number from the original study (some zero-padded by the compiler).",
+            "Paragenesis": "Plain-language form of simple codes only; combined or uncertain codes are left blank, see the code column.",
+            "Paragenesis (code)": "Compiler code: e eclogitic, p peridotitic, h harzburgitic, l lherzolitic, wb websteritic, l.m. lower mantle, deep- sublithospheric.",
+            "Garnet class": "Grütter et al. (2004) class, calculated by the compiler from garnet chemistry.",
+            "Assemblage in diamond": "All inclusion phases reported in this diamond.",
+            "Diamond size": "As reported: sieve class (e.g. -11+9), mm, µm or mg.",
+            "Diamond shape": "o octahedral, d dodecahedral, c cuboid, co cubo-octahedron, m macle, a aggregate, f fragment, i irregular.",
+            "Diamond colour": "c colourless, y yellow, br brown, gn green, pk pink; l light, d dark.",
+            "Diamond type (FTIR)": "II, Ib, IaA, IaB, IaAB from FTIR nitrogen content and aggregation.",
+            "Oxide total (wt%)": "Blank oxide cells usually mean not analysed; b.d. / <x mean below detection."
+          },
+          "size": 50
+        },
+        "trace_elements": {
+          "title": "Inclusions: trace elements",
+          "description": "Trace elements in ppm (SIMS or LA-ICP-MS; method per row not recorded). Source: doi:10.7939/DVN/581P99.",
+          "fts_table": "trace_elements_fts",
+          "fts_pk": "rowid",
+          "facets": [
+            "Craton / terrane",
+            "Inclusion mineral",
+            "Paragenesis"
+          ],
+          "columns": {
+            "Locality": "Pipe, prospect or alluvial district, as given in the original paper.",
+            "Craton / terrane": "Craton or terrane, as assigned in the compilation.",
+            "Inclusion mineral": "Phase for this analysis, as labelled in the compilation (e.g. MgSiO3 = likely former bridgmanite).",
+            "Sample ID": "Sample number from the original study (some zero-padded by the compiler).",
+            "Paragenesis": "Plain-language form of simple codes only; combined or uncertain codes are left blank, see the code column.",
+            "Paragenesis (code)": "Compiler code: e eclogitic, p peridotitic, h harzburgitic, l lherzolitic, wb websteritic, l.m. lower mantle, deep- sublithospheric.",
+            "Garnet class": "Grütter et al. (2004) class, calculated by the compiler from garnet chemistry.",
+            "Assemblage in diamond": "All inclusion phases reported in this diamond.",
+            "Diamond size": "As reported: sieve class (e.g. -11+9), mm, µm or mg.",
+            "Diamond shape": "o octahedral, d dodecahedral, c cuboid, co cubo-octahedron, m macle, a aggregate, f fragment, i irregular.",
+            "Diamond colour": "c colourless, y yellow, br brown, gn green, pk pink; l light, d dark.",
+            "Diamond type (FTIR)": "II, Ib, IaA, IaB, IaAB from FTIR nitrogen content and aggregation.",
+            "Oxide total (wt%)": "Blank oxide cells usually mean not analysed; b.d. / <x mean below detection."
+          },
+          "size": 50
+        },
+        "major_elements_fts": {
+          "hidden": true
+        },
+        "trace_elements_fts": {
+          "hidden": true
+        }
+      },
+      "queries": {
+        "inclusions_per_locality": {
+          "title": "Summary: inclusion analyses per locality",
+          "sql": "select \"Locality\", \"Craton / terrane\", count(*) as \"Analyses\",\n count(distinct \"Inclusion data reference\" || '|' || coalesce(\"Sample ID\", '')) as \"Approx. diamonds\",\n count(distinct \"Inclusion data reference\") as \"References\"\nfrom major_elements where \"Inclusion mineral\" is not null and \"Inclusion mineral\" <> ''\ngroup by 1, 2 order by \"Analyses\" desc",
+          "description": "Approx. diamonds counts distinct reference + sample ID pairs, so it is only an estimate.",
+          "hide_sql": true
+        },
+        "rows_per_reference": {
+          "title": "Summary: rows per source reference",
+          "sql": "select \"Inclusion data reference\" as \"Reference\", \"Inclusion data DOI\" as \"DOI\", count(*) as \"Rows\",\n group_concat(distinct \"Locality\") as \"Localities\"\nfrom major_elements group by 1, 2 order by \"Rows\" desc",
+          "hide_sql": true
+        }
+      }
+    }
+  }
+}
