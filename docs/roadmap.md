@@ -39,7 +39,7 @@ What follows from that:
 - [ ] `schema/001_core.sql` — portable DDL (SQLite/DuckDB now, Postgres-compatible)
 - [ ] Seed vocabularies in `vocab/`: phases + synonyms, paragenesis, methods, units, status enums
 - [ ] Tier 1 data dictionary (`docs/data-dictionary.md`)
-- [ ] Read the Dataset 0 data dictionaries; map their columns to our schema and note what they can't represent
+- [x] Read the Dataset 0 data dictionaries; map their columns to our schema and note what they can't represent → [compilations mapping](compilations-mapping.md)
 - [ ] Tests: schema loads; constraints reject obviously bad rows
 
 **Exit gate:** schema loads; an illustrative (clearly labelled) record round-trips.

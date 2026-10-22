@@ -7,6 +7,17 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-10-22 — Phase 1: compilations mapped
+- Read both Stachel PDF dictionaries and profiled all four workbooks (read-only, macros
+  never run; added `openpyxl` to `.venv/`). Wrote [compilations mapping](compilations-mapping.md).
+- Key facts: Stachel `All diamonds` = 10,472 rows, one inclusion analysis per row with host
+  data repeated; 2,049 host-only rows; 146 references; 262 mineral spellings; ~900 non-numeric
+  oxide entries (`b.d.`, `<0.02`, `≤0.03`…). Walter and Smit have no DOIs.
+- Seed overlap: Phillips 2004 = 653 rows cited as "unpubl and Phillips et al. (2004)";
+  all Kankan rows cite Kankan I's DOI (so A3a really is the data source); Gress 2021 in Smit.
+- Findings recorded against D-001, D-002, D-003, D-006, D-008, D-010, D-013 (none decided).
+- **Next:** decide the blocking ADRs D-001 – D-005, then draft `schema/001_core.sql`.
+
 ## 2026-10-22 — Batch B and Dataset 0 received
 - Received B2–B5 (Gress 2021, De Hoog 2019, Anzolini 2016, Sobolev 2004); identified from
   page 1 and renamed. Still missing: B1 (Meyer & Boyd 1972), and A3a
