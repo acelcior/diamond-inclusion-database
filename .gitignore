@@ -1,0 +1,20 @@
+# Source documents: copyrighted, never commit
+papers/
+
+# Obsidian per-device state (keep shared settings if you want them versioned)
+.obsidian/workspace*.json
+.obsidian/cache
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+.env
+
+# Local databases and run outputs
+*.sqlite
+*.db
+*.duckdb
+runs/
+
+.DS_Store
