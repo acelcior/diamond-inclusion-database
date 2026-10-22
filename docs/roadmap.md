@@ -36,11 +36,11 @@ What follows from that:
 ## Phase 1 — Core schema v0 (Tier 1)
 - [ ] Entity-relationship overview (inclusion ↔ host ↔ observation ↔ measurement ↔ publication ↔ locality)
 - [x] Decide the blocking ADRs: D-001 – D-004 accepted; D-005 proposed, awaiting the professor ([decisions](decisions/README.md))
-- [ ] `schema/001_core.sql` — portable DDL (SQLite/DuckDB now, Postgres-compatible)
+- [x] `schema/001_core.sql` — portable DDL (SQLite now, Postgres-compatible; not yet tested in PostgreSQL)
 - [ ] Seed vocabularies in `vocab/`: phases + synonyms, paragenesis, methods, units, status enums
 - [ ] Tier 1 data dictionary (`docs/data-dictionary.md`)
 - [x] Read the Dataset 0 data dictionaries; map their columns to our schema and note what they can't represent → [compilations mapping](compilations-mapping.md)
-- [ ] Tests: schema loads; constraints reject obviously bad rows
+- [x] Tests: schema loads; constraints reject obviously bad rows (`tests/test_schema.py`)
 
 **Exit gate:** schema loads; an illustrative (clearly labelled) record round-trips.
 

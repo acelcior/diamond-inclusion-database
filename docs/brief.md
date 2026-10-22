@@ -177,8 +177,8 @@ restrictions and API/TDM terms.
 | Dimension | Values |
 |---|---|
 | Value status | reported · not reported · not measured · not applicable · unknown · ambiguous · below detection |
-| Derivation | directly reported · calculated by authors · calculated by us · inferred · interpreted |
-| Workflow | not attempted · extracted · extraction failed · pending review · approved · rejected · superseded |
+| Derivation | directly reported · calculated by authors · calculated by compiler · calculated by us · inferred · interpreted |
+| Workflow | not attempted · extracted · imported (unverified) · extraction failed · pending review · approved · rejected · superseded |
 
 Validation rules for: units, oxide totals and stoichiometry, mineral names, coordinate
 ranges, missing required fields, duplicated observations, inconsistent source references.

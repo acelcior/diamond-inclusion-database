@@ -7,6 +7,18 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-10-22 — Phase 1: core schema v0
+- Wrote `schema/001_core.sql`: 25 tables + 2 views, from D-001 – D-004. Observations are what a
+  source reported; physical diamonds/inclusions are clusters of observations joined by approved
+  identity links (views `inclusion_cluster`, `diamond_cluster`). Values in long format with
+  original text, value status and derivation; evidence per measurement/assertion.
+- `tests/test_schema.py` (stdlib only; illustrative data): schema loads, a record round-trips,
+  bad rows are rejected, clusters count correctly. 5/5 pass on SQLite 3.54.1; a deliberately
+  removed constraint makes a test fail, so the tests bite.
+- Added `calculated_by_compiler` and `imported_unverified` to the status lists (brief §7).
+- Not done: PostgreSQL load test (not installed), vocabularies in `vocab/`, Tier 1 data dictionary.
+- **Next:** seed vocabularies, then the data dictionary; Phase 1 exit gate is met for SQLite.
+
 ## 2026-10-22 — Phase 1: blocking decisions drafted
 - Drafted D-001 – D-005 as **proposed** (not accepted), each with a plain-language summary:
   observations + reviewable identity links (D-001); provenance per measurement/assertion (D-002);
