@@ -7,6 +7,17 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-10-22 — First papers received
+- 4 of 5 Batch A PDFs in `papers/`, renamed to `firstauthor-year.pdf`; all match their
+  verified citations. Still missing: A5 (Genzel 2023) and the Dataset 0 compilations.
+- Kankan II prints only *selected* inclusions; the full EPMA dataset is in Kankan I's
+  electronic supplement, so Kankan I (10.1007/s004100000173, verified) was added as A3a.
+  Nimis 2025 has a Supplementary Table S1.
+- Kankan II/III PDFs have an encoded text layer (decodable, but spaces are lost); their
+  tables need to be read from page images. Created `.venv/` with `pypdf`; installed
+  poppler (Homebrew), and page images of the Kankan PDFs now read cleanly.
+- **Next:** user downloads A3a + its supplement, Nimis S1, A5, Dataset 0; then Phase 1.
+
 ## 2026-10-21 — Seed papers found
 - User filled in constraints: team project on contract for a professor; ~2–3 h/week; very
   little Python; Claude Pro plan only; Binghamton library access; shared with collaborators.
