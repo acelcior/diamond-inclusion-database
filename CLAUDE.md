@@ -30,6 +30,14 @@ observations/measurements**, not the paper.
    and publisher TDM terms.
 9. **Illustrative examples are labelled** as illustrative and kept out of real data tables/files.
 
+## Working with this user
+- Very little Python/SQL/command-line experience: Claude runs commands itself, explains
+  results in plain language, and avoids asking the user to edit code by hand.
+- Roughly 2–3 hours a week; plan sessions as small, finishable roadmap items.
+- Claude Pro plan, no API budget: no paid batch API pipelines (see D-014).
+- On contract for a professor, who owns the research priorities; the database is shared
+  with collaborators.
+
 ## Working conventions
 - Work incrementally: schema → validate on real papers → automate. No full UI before the
   schema has survived the seed papers.

@@ -9,16 +9,29 @@ don't start the next one until the gate is met (or an ADR records why it was ski
 
 Related: [brief](brief.md) · [decisions](decisions/README.md) · [inputs needed](inputs-needed.md) · [log](log.md)
 
+## Constraints that shape this plan
+From [inputs needed](inputs-needed.md): about 2–3 hours a week; very little Python, so Claude runs
+the commands and explains them; a Claude Pro plan with no API budget; shared with collaborators;
+on contract for a professor, who sets the research priorities.
+
+What follows from that:
+- **Build on the open CC0 compilations** (D-013) instead of re-extracting thousands of papers.
+- **Extraction happens in Claude Code sessions** (D-014): a few papers a week, chosen by gap.
+- **Zero-setup prototype** (D-004 lean: SQLite + Datasette) before any server or custom UI.
+- Phases 5–8 are long-horizon; their timing depends on the professor's priorities.
+
 ---
 
 ## Phase 0 — Setup and inputs
 - [x] Project folder as git repo + Obsidian vault + `CLAUDE.md`
 - [x] Revised [brief](brief.md)
-- [ ] Fill in [inputs needed](inputs-needed.md): constraints, access, budget, licence intent
-- [ ] Choose 5–10 seed papers (criteria in [inputs needed](inputs-needed.md)); put PDFs in `papers/`
-- [ ] First commit
+- [x] Fill in [inputs needed](inputs-needed.md): constraints, access, budget, licence intent
+- [x] First commit
+- [x] Seed papers proposed and citations verified (Batch A, Batch B, Dataset 0 in [inputs needed](inputs-needed.md))
+- [ ] Download the Batch A PDFs and the Dataset 0 compilations into `papers/`
+- [ ] Ask the professor the questions in [inputs needed](inputs-needed.md), especially D-013
 
-**Exit gate:** seed papers chosen and available locally; constraints answered.
+**Exit gate:** Batch A available locally; professor's view on D-013 known (or a provisional choice recorded).
 
 ## Phase 1 — Core schema v0 (Tier 1)
 - [ ] Entity-relationship overview (inclusion ↔ host ↔ observation ↔ measurement ↔ publication ↔ locality)
@@ -26,6 +39,7 @@ Related: [brief](brief.md) · [decisions](decisions/README.md) · [inputs needed
 - [ ] `schema/001_core.sql` — portable DDL (SQLite/DuckDB now, Postgres-compatible)
 - [ ] Seed vocabularies in `vocab/`: phases + synonyms, paragenesis, methods, units, status enums
 - [ ] Tier 1 data dictionary (`docs/data-dictionary.md`)
+- [ ] Read the Dataset 0 data dictionaries; map their columns to our schema and note what they can't represent
 - [ ] Tests: schema loads; constraints reject obviously bad rows
 
 **Exit gate:** schema loads; an illustrative (clearly labelled) record round-trips.
