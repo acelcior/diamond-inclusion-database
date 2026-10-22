@@ -7,6 +7,14 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-10-22 — Phase 1: blocking decisions drafted
+- Drafted D-001 – D-005 as **proposed** (not accepted), each with a plain-language summary:
+  observations + reviewable identity links (D-001); provenance per measurement/assertion (D-002);
+  long-format values + typed tables + generated wide views (D-003); SQLite + Datasette with
+  portability rules (D-004); scope table with questions for the professor (D-005).
+- User accepted D-001 – D-004 as drafted; D-005 stays proposed until the professor answers.
+- **Next:** draft `schema/001_core.sql` (Phase 1).
+
 ## 2026-10-22 — Phase 1: compilations mapped
 - Read both Stachel PDF dictionaries and profiled all four workbooks (read-only, macros
   never run; added `openpyxl` to `.venv/`). Wrote [compilations mapping](compilations-mapping.md).

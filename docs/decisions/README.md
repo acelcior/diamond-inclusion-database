@@ -14,11 +14,11 @@ Related: [brief](../brief.md) · [roadmap](../roadmap.md)
 
 | ID | Decision | Blocks | Status | Initial lean (not decided) |
 |---|---|---|---|---|
-| D-001 | **Inclusion identity model**: how a physical inclusion relates to its reports across papers | Phase 1 | open | One record per reported inclusion; "same physical inclusion" expressed as evidence-backed identity links with confidence, never by merging rows |
-| D-002 | **Provenance granularity**: evidence per field vs per assertion/measurement row | Phase 1 | open | Per row (each measurement/assertion links to evidence); per field only where a row mixes sources |
-| D-003 | **Measurement storage**: long format (one row per analyte value) vs wide tables per data type | Phase 1 | open | Long format for chemistry/isotopes, typed tables for spectra and P-T; generated flat views for users |
-| D-004 | **Prototype database**: SQLite vs DuckDB vs PostgreSQL from day one | Phase 1 | open | SQLite: one file, no server, easy to share with collaborators; [Datasette](https://datasette.io) gives a browsable web view for free. Keep SQL portable for a later move to PostgreSQL + PostGIS |
-| D-005 | **Scope**: fibrous/coated diamonds and HDFs; synthetic diamonds (HPHT/CVD); inclusions in diamonds still in xenoliths; conference abstracts and theses | Phase 1 | open | — needs your call |
+| [D-001](D-001-inclusion-identity.md) | **Inclusion identity model**: how a physical inclusion relates to its reports across papers | Phase 1 | **accepted** | One record per reported inclusion; "same physical inclusion" expressed as evidence-backed identity links with confidence, never by merging rows |
+| [D-002](D-002-provenance-granularity.md) | **Provenance granularity**: evidence per field vs per assertion/measurement row | Phase 1 | **accepted** | Per row (each measurement/assertion links to evidence); per field only where a row mixes sources |
+| [D-003](D-003-measurement-storage.md) | **Measurement storage**: long format (one row per analyte value) vs wide tables per data type | Phase 1 | **accepted** | Long format for chemistry/isotopes, typed tables for spectra and P-T; generated flat views for users |
+| [D-004](D-004-prototype-database.md) | **Prototype database**: SQLite vs DuckDB vs PostgreSQL from day one | Phase 1 | **accepted** | SQLite: one file, no server, easy to share with collaborators; [Datasette](https://datasette.io) gives a browsable web view for free. Keep SQL portable for a later move to PostgreSQL + PostGIS |
+| [D-005](D-005-scope.md) | **Scope**: fibrous/coated diamonds and HDFs; synthetic diamonds (HPHT/CVD); inclusions in diamonds still in xenoliths; conference abstracts and theses | Phase 1 | **proposed**, needs professor | — needs your call |
 | D-006 | **Group-level data**: storing means, ranges, n, and measurements on inclusion sets (isochrons, pooled analyses) | Phase 2 | open | `inclusion_set` entity + statistic type (single / mean / median / min / max / range) + n |
 | D-007 | **Status fields**: three separate dimensions (value status, derivation, workflow) | Phase 1 | proposed | As in [brief §7](../brief.md) |
 | D-008 | **Phase vocabulary basis**: IMA/RRUFF + Mindat IDs + local table for non-IMA phases, varieties, unknowns | Phase 1 | open | Local `phase` table with optional external IDs and a synonym table |

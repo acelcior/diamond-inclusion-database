@@ -35,7 +35,7 @@ What follows from that:
 
 ## Phase 1 — Core schema v0 (Tier 1)
 - [ ] Entity-relationship overview (inclusion ↔ host ↔ observation ↔ measurement ↔ publication ↔ locality)
-- [ ] Decide the blocking ADRs: D-001 – D-005 in [decisions](decisions/README.md)
+- [x] Decide the blocking ADRs: D-001 – D-004 accepted; D-005 proposed, awaiting the professor ([decisions](decisions/README.md))
 - [ ] `schema/001_core.sql` — portable DDL (SQLite/DuckDB now, Postgres-compatible)
 - [ ] Seed vocabularies in `vocab/`: phases + synonyms, paragenesis, methods, units, status enums
 - [ ] Tier 1 data dictionary (`docs/data-dictionary.md`)
