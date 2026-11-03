@@ -14,7 +14,4 @@ built from the scientific literature.
   Markdown links, so they also render on GitHub and in Claude Code.
 - **Claude Code:** start a session in this folder; `CLAUDE.md` gives Claude the project
   rules automatically. Name the roadmap item you're working on.
-- **Demo:** `.venv/bin/python -I scripts/build_demo_db.py`, then
-  `.venv/bin/datasette demo/demo.sqlite --metadata demo/metadata.json --static assets:demo/static/ --port 8001 --setting default_facet_size 10`
-  and open http://127.0.0.1:8001 (Claude can run these for you).
 - **Git:** commit after each session. `papers/` (PDFs, supplements) is never committed.

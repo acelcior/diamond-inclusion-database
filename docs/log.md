@@ -7,6 +7,11 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-03 — Demo tables removed
+- Removed the compilation-table demo (`scripts/build_demo_db.py`, `demo/`): its data came only
+  from the Stachel spreadsheets, not from papers. Recoverable from commit 11e4ed0.
+- The next demo should show data curated from the seed papers into `schema/001_core.sql`.
+
 ## 2026-10-22 — Browsable demo
 - `scripts/build_demo_db.py` builds `demo/demo.sqlite` (gitignored) from the two Stachel
   compilations as-is: readable column names with units, key columns first, plotting codes dropped,
