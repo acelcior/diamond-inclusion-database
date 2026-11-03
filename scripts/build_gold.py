@@ -374,7 +374,7 @@ def write_simple_review(db, paper, res):
     (folder / "README.md").write_text("\n".join(L), encoding="utf-8")
 
 
-RULES = "conf-v1"  # docs/confidence.md
+RULES = "conf-v2"  # docs/confidence.md
 BASE = {"spreadsheet": ("high", "read from a spreadsheet"),
         "text_layer": ("high", "read from the PDF text layer by column position, checked against page images"),
         "image_transcription": ("medium", "transcribed by eye from page images")}
@@ -408,9 +408,13 @@ def assess_confidence(db, papers):
             else:
                 reasons.append("printed total matches the oxide sum" if state[mid] == "match" else
                                "printed total differs, explained by the source (see flags)")
+            passed = state.get(mid) in ("match", "explained")
+            if level == "medium" and passed and src["extraction_method"] == "image_transcription":
+                level = "high"  # conf-v2: image reading calibrated, 0 errors in 513 values
+                reasons.append("image reading calibrated (docs/confidence.md)")
             if approved:
                 reasons.append("paper spot-checked against the PDF by a curator")
-                if level == "medium" and state.get(mid) in ("match", "explained"):
+                if level == "medium" and passed:
                     level = "high"
             insert(db, "extraction_confidence", inclusion_observation_id=iid, level=level,
                    reasons="; ".join(reasons), rule_version=RULES)

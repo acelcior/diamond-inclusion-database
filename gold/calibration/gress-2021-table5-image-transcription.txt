@@ -1,0 +1,19 @@
+# Gress et al. (2021) Table 5, p. 9, read from a 220-dpi page image. One row per line: label | values in order.
+# '-' = minus sign; '–' = dash printed in the cell; a blank cell is skipped (Py-Emerald measured has no ±1σ).
+LK362 C1 | -7.30 0.11 -0.08 0.08 0.44 0.51
+LK362 C2 | -7.31 0.10 -0.43 0.08 -0.11 0.50
+LK292 A1 | -0.98 0.11 -0.30 0.07 0.05 0.42
+LK292 A2 | -1.22 0.10 -0.20 0.08 0.13 0.44
+LK250 A1 | -1.12 0.09 -0.23 0.06 0.45 0.46
+LK027 A1 | -8.12 0.09 -0.43 0.08 -0.18 0.47
+LK113 E1 | -7.43 0.06 -0.02 0.08 -0.17 0.52
+OR001 A1 | -5.48 0.12 -0.26 0.09 -0.63 0.61
+OR001 A2 | -5.16 0.09 -0.29 0.07 -0.22 0.57
+true Galena-ED (PbS) | -7.39 – -0.07 – -0.32 –
+true Galena-ET (PbS) | 9.81 – 0.06 – -0.25 –
+true Py-Emerald (FeS2) | 32.75 0.2 -0.01 0.01 0.14 0.14
+true Mif-Po (FeS) | 5.85 – 1.85 – -1.98 –
+measured Galena-ED (PbS) | -29.03 0.39 -0.05 0.65 4
+measured Galena-ET (PbS) | -28.95 0.15 0.13 -1.69 2
+measured Py-Emerald (FeS2) | 6.04 -0.02 0.19 4
+measured Mif-Po (FeS) | -2.69 0.04 1.69 -1.25 4

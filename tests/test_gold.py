@@ -62,7 +62,8 @@ class GoldTest(unittest.TestCase):
             "SELECT DISTINCT c.level FROM extraction_confidence c JOIN inclusion_observation i "
             "ON i.id = c.inclusion_observation_id WHERE i.publication_id = ?", (pub,))}
         self.assertEqual(levels(self.phillips), {"high"})                                   # text layer + reviewed
-        self.assertEqual(levels(self.papers["stachel-2000-kankan2"]["pub"]), {"medium"})    # read from images
+        # read from images, every printed total checks out: high under conf-v2
+        self.assertEqual(levels(self.papers["stachel-2000-kankan2"]["pub"]), {"high"})
         with self.assertRaises(build_gold.sqlite3.IntegrityError):
             self.db.execute("INSERT INTO extraction_confidence (level, reasons, rule_version) VALUES ('high', 'x', 'v')")
 

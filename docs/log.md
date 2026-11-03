@@ -7,6 +7,14 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-03 — Calibration test 2; confidence rules v2
+- Gress 2021 Table 5 (unseen; negative values, dashes, blanks) transcribed from images:
+  **0 errors in 97 values**; planted sign/misread/swap errors caught. Combined with test 1:
+  0 errors in 513 values (rate likely < 0.6 %).
+- Rules `conf-v2`: image-read analyses whose printed total checks out are now *high*; image-read
+  records without a total stay *medium*. Kankan II's 37 analyses move from medium to high.
+- Still untested: scanned pages. Kankan III (no totals) will be *medium* under these rules.
+
 ## 2026-11-03 — Image-reading calibration, test 1
 - Phillips Table 3 was unusable for a blind test (values already seen), so used Gress 2021 Table 3
   (unseen, born-digital): transcribed from 220-dpi images only, saved, then compared with the text

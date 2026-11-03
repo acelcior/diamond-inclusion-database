@@ -14,7 +14,7 @@ Levels are computed by the rules below in `scripts/build_gold.py` (`assess_confi
 in `extraction_confidence` with the rule version, so every level can be traced and recomputed.
 Related: [schema issues](schema-issues.md) · [log](log.md)
 
-## Rules, version `conf-v1`
+## Rules, version `conf-v2` (from 2026-11-03; `conf-v1` had no calibration step)
 
 1. **Start from how the values were read**:
    - spreadsheet or machine-readable supplement → *high*
@@ -25,9 +25,13 @@ Related: [schema issues](schema-issues.md) · [log](log.md)
    - total differs, and the source explains why (e.g. an oxide left out) → no change, noted
    - total differs, unexplained → *low*
    - no printed total to check → one level down
-3. **Curator review**: a paper approved after a spot-check against the PDF raises a *medium*
+3. **Calibrated image reading** (new in v2): an image-transcribed analysis whose printed total checks
+   out (matches, or differs for a reason the source gives) is raised to *high*. Image-read records
+   with no total to check stay *medium*: the calibration doesn't cover the errors only a total
+   would catch.
+4. **Curator review**: a paper approved after a spot-check against the PDF raises a *medium*
    record whose total check passed to *high*. Review never raises a *low*.
-4. Records **named but not analysed** (a phase listed in an assemblage) keep the level from rule 1.
+5. Records **named but not analysed** (a phase listed in an assemblage) keep the level from rule 1.
 
 ## What the levels mean in practice
 
@@ -52,5 +56,12 @@ have tested memory, not reading. Gress Table 3 had not been seen.
   probably below about **0.7 %** of values (95 % upper bound for 0 errors in 416). One table is a
   small sample, and this one had no minus signs, rotation or poor print.
 
-**Rule 1 is unchanged for now** (image transcription starts at *medium*). Raising it needs a second
-test on a harder table: rotated, older, with negative numbers (for example δ¹³C).
+**Test 2 (2026-11-03): Gress et al. (2021) Table 5**, sulphur isotopes, p. 9: unseen, with many
+negative values, printed dashes, blank cells and three sub-tables. Transcribed from a 220-dpi
+image ([transcription](../gold/calibration/gress-2021-table5-image-transcription.txt)), then compared by
+`extraction/calibrate_gress_2021_table5.py`. **0 mismatches in 97 values and 17 labels.** A copy with
+a dropped minus sign, a misread digit and a swapped pair was caught (4 cells).
+
+**Combined: 0 errors in 513 values**, so the error rate is probably below about **0.6 %**
+(95 % upper bound). That supports rule 3. Not tested: scanned (not born-digital) pages and tables
+that must be read while rotated. Rotated tables are turned upright before reading, as for Kankan II.
