@@ -45,7 +45,7 @@ What follows from that:
 **Exit gate:** schema loads; an illustrative (clearly labelled) record round-trips.
 
 ## Phase 2 — Gold standard from real papers
-- [ ] Hand-curate seed paper 1 into the schema (Claude drafts, you verify every value): *Phillips 2004 drafted, awaiting your check* → [review page](../gold/phillips-2004/README.md)
+- [x] Hand-curate seed paper 1 into the schema (Claude drafts, you verify): Phillips 2004, approved 2026-11-03 → [review page](../gold/phillips-2004/README.md)
 - [ ] Record every awkward fit as a schema issue → revise schema *(8 so far: [schema issues](schema-issues.md))*
 - [ ] Curate seed papers 2–5, covering different reporting styles
 - [ ] Freeze gold set in `gold/` (versioned)

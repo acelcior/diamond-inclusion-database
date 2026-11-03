@@ -29,6 +29,10 @@ class GoldTest(unittest.TestCase):
         self.assertEqual(res["sum_mismatch"], [])
         self.assertEqual(res["untraceable"], 0)
 
+    def test_review_applied(self):
+        for t in ["inclusion_observation", "measurement", "measured_value", "derived_parameter", "assertion"]:
+            self.assertEqual(self.one(f"SELECT COUNT(*) FROM {t} WHERE workflow_status <> 'approved'"), 0, t)
+
     def test_every_phase_mapped(self):
         self.assertEqual(self.one("SELECT COUNT(*) FROM inclusion_observation WHERE phase_id IS NULL"), 0)
 

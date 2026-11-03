@@ -42,5 +42,16 @@
       "T_gt_cpx":   {"quantity": "T_equilibration", "unit": "degC", "method": "Krogh (1988) garnet-clinopyroxene thermometer", "pressure_column": "P_gt_cpx"}
     },
     "assumed_pressure_note": "Table 4 note e: assumed pressure = 5.0 GPa"
+  },
+  "review": {
+    "workflow_status": "approved",
+    "reviewer": "J. Dasroy",
+    "date": "2026-11-03",
+    "method": "Checked the 25-value spot-check list (and the stored tables) against the PDF: all matched.",
+    "decisions": {
+      "DP209": "Keep as ambiguous: 'nd' is not defined in Table 3, so it is not read as not detected or not determined.",
+      "DP497": "Leave blank: the 7.6 GPa in the text is printed in the MacGregor column, so no Brey & Köhler value is entered.",
+      "DP539": "Keep both: the paper's 'Web' and the compilation's 'e' stay as separate, attributed classifications."
+    }
   }
 }

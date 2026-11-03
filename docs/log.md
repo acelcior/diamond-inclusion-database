@@ -7,6 +7,13 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-03 — Phillips 2004 approved
+- User checked the 25-value spot-check list and the stored tables against the PDF: all matched.
+  Recorded in `gold/phillips-2004/source.json` (`review`); the build now marks every record `approved`.
+- Flag decisions (Claude's recommendations, accepted): DP209 `nd` stays `ambiguous`; DP497 Brey &
+  Köhler pressure left blank; DP539 paragenesis kept as two attributed views (paper Web, compilation e).
+- **Next:** seed paper 2 (Nimis 2025: needs Supplementary Table S1) or another Batch A/B paper.
+
 ## 2026-11-03 — Phase 2: Phillips 2004 extracted (awaiting review)
 - `extraction/parse_phillips_2004.py` reads Tables 3 and 4 from the PDF's text layer by column
   position; checked against page images of pp. 160, 161, 171. Output, as printed:
