@@ -1,0 +1,369 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Diamond Inclusion Database</title>
+<meta name="description" content="Mineral inclusions in diamonds from the scientific literature, with the source page and table of every value.">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tabulator-tables@6.3.1/dist/css/tabulator_simple.min.css">
+<script src="https://cdn.jsdelivr.net/npm/tabulator-tables@6.3.1/dist/js/tabulator.min.js"></script>
+<style>
+  :root {
+    --bg: #fbfbf9; --panel: #f2f1ec; --alt: #f6f5f1; --text: #1d1d1b; --muted: #66655f;
+    --line: #dddbd3; --accent: #2f5d8a; --accent-text: #fff; --warn: #8a5a00; --warn-bg: #fdf1d8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #161615; --panel: #1f1f1d; --alt: #1b1b1a; --text: #e8e6df; --muted: #9b998f;
+      --line: #34332f; --accent: #8db7e0; --accent-text: #10151a; --warn: #f0c060; --warn-bg: #3a2d10;
+    }
+  }
+  * { box-sizing: border-box; }
+  [hidden] { display: none !important; }
+  body { margin: 0; background: var(--bg); color: var(--text);
+         font: 15px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  .wrap { max-width: 1400px; margin: 0 auto; padding: 24px 24px 60px; }
+  h1 { font-size: 26px; margin: 0 0 4px; }
+  .lede { color: var(--muted); margin: 0 0 16px; max-width: 760px; }
+  .stats { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 16px; }
+  .stat { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 6px 12px; }
+  .stat b { font-size: 17px; margin-right: 4px; }
+  details.sources { background: var(--panel); border: 1px solid var(--line); border-radius: 8px; padding: 10px 14px; margin-bottom: 20px; }
+  details.sources summary { cursor: pointer; font-weight: 600; }
+  .sources ol { margin: 10px 0 4px; padding-left: 22px; }
+  .sources li { margin-bottom: 8px; }
+  .sources .meta { color: var(--muted); font-size: 13px; }
+  .sources .cite-note { font-size: 13px; color: var(--muted); margin: 6px 0 0; }
+  a { color: var(--accent); }
+  .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
+  .tabs button { background: none; border: 0; border-bottom: 3px solid transparent; padding: 8px 12px;
+                 font: inherit; color: var(--muted); cursor: pointer; }
+  .tabs button[aria-selected="true"] { color: var(--text); border-bottom-color: var(--accent); font-weight: 600; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+  .toolbar input[type=search] { flex: 1 1 220px; min-width: 0; }
+  input, select, button.btn { font: inherit; color: var(--text); background: var(--bg); border: 1px solid var(--line);
+                              border-radius: 6px; padding: 6px 10px; }
+  button.btn { cursor: pointer; background: var(--panel); }
+  button.btn.primary { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
+  label.chk { display: inline-flex; gap: 6px; align-items: center; white-space: nowrap; }
+  .colpanel { border: 1px solid var(--line); background: var(--panel); border-radius: 8px; padding: 12px 14px; margin-bottom: 10px; }
+  .colpanel[hidden] { display: none; }
+  .colpanel .presets { display: flex; flex-wrap: wrap; gap: 6px; align-items: center; margin-bottom: 10px; }
+  .colgroups { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+  .colgroups fieldset { border: 0; margin: 0; padding: 0; }
+  .colgroups legend { font-weight: 600; font-size: 13px; margin-bottom: 4px; }
+  .colgroups label { display: block; font-size: 14px; }
+  .count { color: var(--muted); font-size: 14px; margin: 4px 0 8px; }
+  .legend { color: var(--muted); font-size: 13px; margin-top: 8px; }
+  .na { color: var(--muted); }
+  .amb { color: var(--warn); background: var(--warn-bg); padding: 0 4px; border-radius: 3px; }
+  /* table theme */
+  .tabulator { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; font-size: 14px; color: var(--text); }
+  .tabulator .tabulator-header { background: var(--panel); color: var(--text); border-bottom: 1px solid var(--line); }
+  .tabulator .tabulator-header .tabulator-col { background: var(--panel); border-right: 1px solid var(--line); }
+  .tabulator .tabulator-header .tabulator-col input { background: var(--bg); color: var(--text); border: 1px solid var(--line);
+                                                       border-radius: 4px; padding: 2px 4px; font-size: 13px; }
+  .tabulator .tabulator-tableholder { background: var(--bg); }
+  .tabulator-row { background: var(--bg); color: var(--text); border-bottom: 1px solid var(--line); cursor: pointer; }
+  .tabulator-row.tabulator-row-even { background: var(--alt); }
+  .tabulator-row .tabulator-cell { border-right: 1px solid var(--line); }
+  .tabulator-row .tabulator-cell.tabulator-frozen { background: inherit; }
+  @media (hover: hover) { .tabulator-row.tabulator-selectable:hover { background: var(--panel); } }
+  .tabulator .tabulator-placeholder span { color: var(--muted); }
+  dialog { border: 1px solid var(--line); border-radius: 10px; background: var(--bg); color: var(--text);
+           max-width: 640px; width: calc(100% - 32px); padding: 18px 20px; }
+  dialog::backdrop { background: rgb(0 0 0 / .4); }
+  dialog dl { display: grid; grid-template-columns: max-content 1fr; gap: 4px 14px; margin: 10px 0; font-size: 14px; }
+  dialog dt { color: var(--muted); }
+  dialog dd { margin: 0; }
+  @media (max-width: 640px) { .wrap { padding: 16px 16px 40px; } h1 { font-size: 22px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>Diamond Inclusion Database</h1>
+  <p class="lede">Mineral inclusions in diamonds, compiled from the scientific literature. Every value keeps the page and
+    table it came from. This is a work in progress, and more papers are being added.</p>
+  <div class="stats" id="stats"></div>
+
+  <details class="sources" open>
+    <summary id="sources-title">Sources</summary>
+    <ol id="sources"></ol>
+    <p class="cite-note">If you use these data, please cite the original papers above. Values are as printed in each source;
+      hover over a value or click a row to see exactly where it was printed.</p>
+  </details>
+
+  <div class="tabs" role="tablist">
+    <button role="tab" aria-selected="true" data-tab="inclusions">Inclusions &amp; chemistry</button>
+    <button role="tab" aria-selected="false" data-tab="estimates">Temperature &amp; pressure</button>
+  </div>
+
+  <div class="toolbar">
+    <input type="search" id="search" placeholder="Search all columns (sample, mineral, method…)" aria-label="Search">
+    <span id="quick"></span>
+    <button class="btn" id="cols-btn" aria-expanded="false" aria-controls="colpanel">Columns</button>
+    <button class="btn" id="download">Download CSV</button>
+    <button class="btn" id="reset">Reset</button>
+  </div>
+
+  <div class="colpanel" id="colpanel" hidden>
+    <div class="presets">
+      <span>Show:</span>
+      <button class="btn" data-preset="essentials">Essentials</button>
+      <button class="btn" data-preset="all">All columns</button>
+      <button class="btn" data-preset="none">None</button>
+      <label class="chk"><input type="checkbox" id="hide-empty"> Hide columns with no values in the rows shown</label>
+    </div>
+    <div class="colgroups" id="colgroups"></div>
+  </div>
+
+  <div class="count" id="count"></div>
+  <div id="table"></div>
+  <p class="legend" id="legend"></p>
+</div>
+
+<dialog id="details"><div id="details-body"></div><form method="dialog"><button class="btn">Close</button></form></dialog>
+
+<script>
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const store = {
+  get(k) { try { return JSON.parse(localStorage.getItem(k)); } catch { return null; } },
+  set(k, v) { try { localStorage.setItem(k, JSON.stringify(v)); } catch {} },
+};
+
+// Header filter for numbers: "40", ">40", "<=1", "40-45".
+function numFilter(h, v) {
+  h = String(h).trim();
+  if (!h) return true;
+  if (v === null || v === undefined || v === "") return false;
+  let m = h.match(/^(<=|>=|<|>|=)?\s*(-?\d*\.?\d+)$/);
+  if (m) {
+    const x = parseFloat(m[2]);
+    return { "<": v < x, "<=": v <= x, ">": v > x, ">=": v >= x, "=": v === x }[m[1] || "="] ?? false;
+  }
+  m = h.match(/^(-?\d*\.?\d+)\s*(?:-|–|to)\s*(-?\d*\.?\d+)$/);
+  return m ? v >= parseFloat(m[1]) && v <= parseFloat(m[2]) : String(v).startsWith(h);
+}
+
+const textCol = (field, title, extra = {}) => ({ field, title, headerFilter: "input",
+  headerFilterPlaceholder: "filter", headerFilterFunc: "like", ...extra });
+
+const numCol = (field, title, extra = {}) => ({ field, title, sorter: "number", hozAlign: "right",
+  sorterParams: { alignEmptyValues: "bottom" }, headerFilter: "input", headerFilterPlaceholder: ">40",
+  headerFilterFunc: numFilter, headerFilterLiveFilter: true, ...extra });
+
+// Chemistry cells show the text exactly as printed; hover shows where it was printed.
+function oxideCol(code, label) {
+  return numCol(code, label, {
+    formatter(cell) {
+      const d = cell.getRow().getData(), t = d._txt?.[code], st = d._st?.[code];
+      if (t === undefined) return "";
+      cell.getElement().title = `${t} as printed (${st || "reported"}). ${d.source}, ${d.where}`;
+      return st === "ambiguous" ? `<span class="amb">${esc(t)}</span>` : st ? `<span class="na">${esc(t)}</span>` : esc(t);
+    },
+    accessorDownload: (v, d) => d._txt?.[code] ?? "",
+  });
+}
+
+const TABS = {
+  inclusions: {
+    url: "data/inclusions.json", file: "diamond-inclusions.csv", noun: "inclusions",
+    quick: [["mineral", "Mineral"], ["paragenesis", "Paragenesis"], ["touching", "Touching"], ["source", "Source"]],
+    toggles: [["analysed", "yes", "Analysed only", true]],
+    essentials: ["sample", "mineral", "paragenesis", "touching", "SiO2", "Al2O3", "Cr2O3", "FeOT", "MgO", "CaO", "oxide_total", "source"],
+    legend: "Chemistry in wt% oxide, as printed. <span class='na'>na</span> = not analysed. " +
+            "<span class='amb'>nd</span> = notation the source does not define, so it is left uninterpreted. " +
+            "Number filters accept 40, &gt;40, &lt;1 or 40-45.",
+    groups(meta) {
+      return [
+        ["Identification", [textCol("sample", "Sample", { frozen: true }), textCol("mineral", "Mineral"),
+                            textCol("mineral_printed", "Mineral as printed")]],
+        ["Context", [textCol("locality", "Locality"), textCol("paragenesis", "Paragenesis"),
+                     textCol("touching", "Touching"), textCol("assemblage", "Diamond's assemblage"),
+                     textCol("analysed", "Analysed"), textCol("method", "Method")]],
+        ["Chemistry (wt%)", meta.oxides.map(o => oxideCol(o.code, o.label))],
+        ["Provenance", [textCol("source", "Source"), textCol("where", "Printed at"), textCol("status", "Review status")]],
+      ];
+    },
+  },
+  estimates: {
+    url: "data/estimates.json", file: "diamond-inclusion-PT.csv", noun: "estimates",
+    quick: [["estimate", "Estimate"], ["method", "Method"], ["touching", "Touching"], ["source", "Source"]],
+    toggles: [],
+    essentials: ["sample", "assemblage", "touching", "estimate", "value", "unit", "method", "source"],
+    legend: "Temperatures and pressures as calculated by the authors, on the assemblage they were calculated from. " +
+            "Where the authors assumed a pressure, it is shown under Assumption, not as a result.",
+    groups() {
+      return [
+        ["Identification", [textCol("sample", "Sample", { frozen: true }), textCol("assemblage", "Assemblage")]],
+        ["Context", [textCol("touching", "Touching"), textCol("paragenesis", "Paragenesis")]],
+        ["Estimate", [textCol("estimate", "Estimate"), numCol("value", "Value", {
+                        formatter: c => esc(c.getRow().getData().value_text),
+                        accessorDownload: (v, d) => d.value_text }),
+                      textCol("unit", "Unit"), textCol("method", "Method"), textCol("assumption", "Assumption")]],
+        ["Provenance", [textCol("source", "Source"), textCol("where", "Printed at"), textCol("status", "Review status")]],
+      ];
+    },
+  },
+};
+
+let meta, sources, active = "inclusions";
+const state = {};  // per tab: { table, data, groups, chosen:Set, quick:{}, toggles:{} }
+
+function allFields(tab) { return state[tab].groups.flatMap(([, cols]) => cols.map(c => c.field)); }
+
+function hasValue(rows, f) {
+  return rows.some(r => (r[f] !== null && r[f] !== undefined && r[f] !== "") || r._st?.[f] === "ambiguous");
+}
+
+function applyVisibility() {
+  const s = state[active], hideEmpty = $("#hide-empty").checked;
+  const rows = s.table.getData("active");
+  for (const f of allFields(active)) {
+    const col = s.table.getColumn(f);
+    if (!col) continue;
+    const show = s.chosen.has(f) && (!hideEmpty || hasValue(rows, f));
+    show ? col.show() : col.hide();
+  }
+  store.set("cols:" + active, [...s.chosen]);
+  store.set("hideEmpty", hideEmpty);
+}
+
+function applyFilters() {
+  const s = state[active], q = $("#search").value.trim().toLowerCase();
+  const fields = allFields(active);
+  s.table.setFilter(d => {
+    for (const [f, v] of Object.entries(s.quick)) if (v && d[f] !== v) return false;
+    for (const [f, want, , ] of TABS[active].toggles) if (s.toggles[f] && d[f] !== want) return false;
+    if (!q) return true;
+    return fields.some(f => String(d._txt?.[f] ?? d[f] ?? "").toLowerCase().includes(q));
+  });
+}
+
+function renderColumnPanel() {
+  const s = state[active];
+  $("#colgroups").innerHTML = s.groups.map(([name, cols]) => `<fieldset><legend>${esc(name)}</legend>` +
+    cols.map(c => `<label><input type="checkbox" data-field="${esc(c.field)}" ${s.chosen.has(c.field) ? "checked" : ""}> ${esc(c.title)}</label>`).join("") +
+    `</fieldset>`).join("");
+}
+
+function renderQuick() {
+  const s = state[active], cfg = TABS[active];
+  $("#quick").innerHTML = cfg.quick.map(([f, label]) => {
+    const opts = [...new Set(s.data.map(d => d[f]).filter(v => v !== null && v !== undefined))].sort();
+    return `<select data-quick="${f}" aria-label="${esc(label)}"><option value="">${esc(label)}: all</option>` +
+      opts.map(o => `<option ${s.quick[f] === o ? "selected" : ""}>${esc(o)}</option>`).join("") + `</select> `;
+  }).join("") + cfg.toggles.map(([f, , label]) =>
+    `<label class="chk"><input type="checkbox" data-toggle="${f}" ${s.toggles[f] ? "checked" : ""}> ${esc(label)}</label>`).join("");
+}
+
+function showDetails(d) {
+  const s = state[active], src = sources.find(x => x.id === d.source_id);
+  const items = s.groups.flatMap(([, cols]) => cols).map(c => {
+    let v = d._txt?.[c.field] ?? (c.field === "value" ? d.value_text : d[c.field]);
+    if (v === null || v === undefined || v === "") return "";
+    const st = d._st?.[c.field];
+    return `<dt>${esc(c.title)}</dt><dd>${esc(v)}${st ? ` <span class="na">(${esc(st)})</span>` : ""}</dd>`;
+  }).join("");
+  $("#details-body").innerHTML = `<h2 style="margin:0;font-size:19px">${esc(d.sample || "")} ${esc(d.mineral || d.estimate || "")}</h2>
+    <dl>${items}</dl>` + (src ? `<p class="meta" style="font-size:13px">${esc(src.citation)} ` +
+    (src.doi ? `<a href="https://doi.org/${esc(src.doi)}" target="_blank" rel="noopener">doi:${esc(src.doi)}</a>` : "") + `</p>` : "");
+  $("#details").showModal();
+}
+
+async function initTab(tab) {
+  if (state[tab]) return;
+  const cfg = TABS[tab];
+  const data = await (await fetch(cfg.url)).json();
+  const groups = cfg.groups(meta);
+  const saved = store.get("cols:" + tab);
+  const s = state[tab] = { data, groups, quick: {}, toggles: {},
+    chosen: new Set(saved && saved.length ? saved : cfg.essentials) };
+  for (const [f, , , on] of cfg.toggles) s.toggles[f] = on;
+  const el = document.createElement("div");
+  el.id = "table-" + tab;
+  $("#table").appendChild(el);
+  s.table = new Tabulator(el, {
+    data, columns: groups.flatMap(([, cols]) => cols), layout: "fitDataTable", height: "65vh",
+    movableColumns: true, placeholder: "No rows match these filters", index: tab === "inclusions" ? "id" : undefined,
+  });
+  s.table.on("dataFiltered", (f, rows) => {
+    if (tab !== active) return;
+    $("#count").textContent = `Showing ${rows.length} of ${data.length} ${cfg.noun}`;
+    if ($("#hide-empty").checked) requestAnimationFrame(applyVisibility);
+  });
+  s.table.on("rowClick", (e, row) => showDetails(row.getData()));
+  await new Promise(r => s.table.on("tableBuilt", r));
+}
+
+async function switchTab(tab) {
+  active = tab;
+  document.querySelectorAll(".tabs button").forEach(b => b.setAttribute("aria-selected", b.dataset.tab === tab));
+  await initTab(tab);
+  for (const t in state) document.getElementById("table-" + t).hidden = t !== tab;
+  $("#legend").innerHTML = TABS[tab].legend;
+  renderQuick();
+  renderColumnPanel();
+  applyFilters();
+  applyVisibility();
+  state[tab].table.redraw(true);
+}
+
+async function main() {
+  [meta, sources] = await Promise.all(["data/meta.json", "data/sources.json"].map(u => fetch(u).then(r => r.json())));
+  const c = meta.counts;
+  $("#stats").innerHTML = [[c.papers, c.papers === 1 ? "paper" : "papers"], [c.diamonds, "diamonds"],
+    [c.inclusions, "inclusions"], [c.analysed, "with chemistry"], [c.values.toLocaleString(), "measured values"],
+    [c.estimates, "P–T estimates"]].map(([n, l]) => `<span class="stat"><b>${n}</b>${l}</span>`).join("");
+  $("#sources-title").textContent = `Sources (${sources.length} ${sources.length === 1 ? "paper" : "papers"})`;
+  $("#sources").innerHTML = sources.map(s => `<li>${esc(s.citation)} ` +
+    (s.doi ? `<a href="https://doi.org/${esc(s.doi)}" target="_blank" rel="noopener">doi:${esc(s.doi)}</a>` : "") +
+    `<div class="meta">${s.diamonds} diamonds · ${s.inclusions} inclusions · ${s.analyses} analyses · ` +
+    `${s.estimates} P–T estimates · review status: ${esc(s.status.join(", "))}` +
+    (s.notes ? `<br>${esc(s.notes)}` : "") + `</div></li>`).join("");
+  $("#hide-empty").checked = !!store.get("hideEmpty");
+  await switchTab("inclusions");
+}
+
+document.querySelector(".tabs").addEventListener("click", e => { const t = e.target.dataset.tab; if (t && t !== active) switchTab(t); });
+$("#search").addEventListener("input", applyFilters);
+$("#quick").addEventListener("change", e => {
+  const s = state[active];
+  if (e.target.dataset.quick) s.quick[e.target.dataset.quick] = e.target.value;
+  if (e.target.dataset.toggle) s.toggles[e.target.dataset.toggle] = e.target.checked;
+  applyFilters();
+});
+$("#cols-btn").addEventListener("click", () => {
+  const p = $("#colpanel"); p.hidden = !p.hidden;
+  $("#cols-btn").setAttribute("aria-expanded", !p.hidden);
+});
+$("#colgroups").addEventListener("change", e => {
+  const f = e.target.dataset.field; if (!f) return;
+  e.target.checked ? state[active].chosen.add(f) : state[active].chosen.delete(f);
+  applyVisibility();
+});
+document.querySelector(".presets").addEventListener("click", e => {
+  const p = e.target.dataset.preset; if (!p) return;
+  const s = state[active];
+  s.chosen = new Set(p === "all" ? allFields(active) : p === "none" ? ["sample"] : TABS[active].essentials);
+  renderColumnPanel();
+  applyVisibility();
+});
+$("#hide-empty").addEventListener("change", applyVisibility);
+$("#download").addEventListener("click", () => state[active].table.download("csv", TABS[active].file));
+$("#reset").addEventListener("click", () => {
+  const s = state[active], cfg = TABS[active];
+  $("#search").value = "";
+  s.quick = {};
+  for (const [f, , , on] of cfg.toggles) s.toggles[f] = on;
+  s.chosen = new Set(cfg.essentials);
+  $("#hide-empty").checked = false;
+  s.table.clearHeaderFilter();
+  renderQuick(); renderColumnPanel(); applyFilters(); applyVisibility();
+});
+
+main().catch(e => { $("#count").textContent = "Could not load the data (" + e.message + ")."; });
+</script>
+</body>
+</html>

@@ -9,8 +9,9 @@ built from the scientific literature.
 [docs/inputs-needed.md](docs/inputs-needed.md) (what's needed from you) ·
 [docs/log.md](docs/log.md) (progress)
 
-**Website:** https://diamond-inclusion-database.vercel.app — the same docs, readable in a
-browser. Hosted on Vercel; every push to `main` updates it.
+**Website:** https://diamond-inclusion-database.vercel.app is the searchable database
+(served from `site/`). After a data change, run `python3 -I scripts/export_site.py`, then push;
+Vercel redeploys on every push to `main`. Project docs live here on GitHub, not on the website.
 
 ## Using this folder
 - **Obsidian:** open this folder as a vault ("Open folder as vault"). The docs use standard

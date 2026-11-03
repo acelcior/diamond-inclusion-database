@@ -7,6 +7,15 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-03 — Website is now the database explorer
+- `site/index.html` (Tabulator 6.3.1 from jsDelivr) shows two tables: inclusions & chemistry, and
+  temperature & pressure. Search, quick filters, number filters (`>40`, `40-45`), a column chooser
+  with presets, "hide columns with no values", CSV export of the current view, row details with
+  provenance, and a Sources list with citations and DOIs at the top.
+- Data comes from `scripts/export_site.py`, which writes `site/data/*.json` from the database only,
+  so new papers show up without changes to the page. Vercel's root directory is now `site/`, so
+  docs no longer appear on the website; they stay on GitHub.
+
 ## 2026-11-03 — Phillips 2004 approved
 - User checked the 25-value spot-check list and the stored tables against the PDF: all matched.
   Recorded in `gold/phillips-2004/source.json` (`review`); the build now marks every record `approved`.
