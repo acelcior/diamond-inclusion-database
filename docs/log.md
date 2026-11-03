@@ -10,7 +10,8 @@ what's next. Related: [roadmap](roadmap.md)
 ## 2026-11-03 — Docs website on Vercel
 - `index.html` renders the repo's Markdown docs and schema in the browser (no build step), so the
   site always shows the committed docs. Hosted on Vercel (team linked to GitHub `acelcior`),
-  public; every push to `main` redeploys. No data pages yet.
+  public at https://diamond-inclusion-database.vercel.app; every push to `main` redeploys.
+  Preview links need a Vercel login. No data pages yet.
 
 ## 2026-11-03 — Demo tables removed
 - Removed the compilation-table demo (`scripts/build_demo_db.py`, `demo/`): its data came only

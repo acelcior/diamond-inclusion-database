@@ -9,6 +9,9 @@ built from the scientific literature.
 [docs/inputs-needed.md](docs/inputs-needed.md) (what's needed from you) ·
 [docs/log.md](docs/log.md) (progress)
 
+**Website:** https://diamond-inclusion-database.vercel.app — the same docs, readable in a
+browser. Hosted on Vercel; every push to `main` updates it.
+
 ## Using this folder
 - **Obsidian:** open this folder as a vault ("Open folder as vault"). The docs use standard
   Markdown links, so they also render on GitHub and in Claude Code.
