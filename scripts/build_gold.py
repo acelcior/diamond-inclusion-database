@@ -1,11 +1,13 @@
-"""Build gold/gold.sqlite from schema + vocab/ + gold/phillips-2004/, run the checks, write the review page.
+"""Build gold/gold.sqlite from schema + vocab/ + every gold/<paper>/, run the checks, write each review page.
 
 Run from the project folder:  python3 -I scripts/build_gold.py
-Output: gold/gold.sqlite (not committed) and gold/phillips-2004/README.md (the review page).
+Output: gold/gold.sqlite (not committed) and gold/<paper>/README.md (one review page per paper).
+Papers with a Table 4 (Phillips 2004) use load_phillips; the rest use load_simple (one row per analysis).
 """
 import csv
 import json
 import random
+import re
 import sqlite3
 import sys
 from collections import Counter
@@ -15,10 +17,13 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = ROOT / "schema" / "001_core.sql"
 VOCAB = ROOT / "vocab"
-PAPER = ROOT / "gold" / "phillips-2004"
+GOLD = ROOT / "gold"
+PAPER = GOLD / "phillips-2004"
 DB_PATH = ROOT / "gold" / "gold.sqlite"
 
 OXIDES = ["SiO2", "Al2O3", "TiO2", "Cr2O3", "FeO", "MnO", "NiO", "MgO", "CaO", "Na2O", "K2O", "V2O5", "ZnO", "Total"]
+OXIDE_COLUMNS = ["P2O5", *OXIDES]  # analyses.csv columns load_simple reads
+QUANTITY = {"FeO": "FeOT", "Total": "oxide_total"}  # shortcut: FeO read as total iron; true where papers say so
 SUITE_TO_T4 = {"Per (hz)": "Harzburgitic", "Per (lhz)": "Lherzolitic", "Ecl": "Eclogitic", "Web": "Websteritic"}
 
 
@@ -38,7 +43,9 @@ def load_vocab(db):
         for r in rows(VOCAB / f"{name}.csv"):
             insert(db, name, **{k: (v or None) for k, v in r.items()})
     for r in rows(VOCAB / "phase.csv"):
-        insert(db, "phase", **{k: (v or None) for k, v in r.items()})
+        parent = r.pop("parent", "")
+        insert(db, "phase", **{k: (v or None) for k, v in r.items()},
+               parent_phase_id=db.execute("SELECT id FROM phase WHERE name = ?", (parent,)).fetchone()[0] if parent else None)
     ids = dict(db.execute("SELECT name, id FROM phase"))
     for r in rows(VOCAB / "phase_name_variant.csv"):
         insert(db, "phase_name_variant", phase_id=ids[r["phase"]], variant=r["variant"],
@@ -53,8 +60,8 @@ def phase_lookup(db):
 
 # shortcut: this loader knows the layout of Phillips et al. (2004) Tables 3 and 4; generalise it
 # (or move to extraction/schema.json, Phase 3) once the second seed paper shows what varies.
-def load_phillips(db):
-    src = json.loads((PAPER / "source.json").read_text())
+def load_phillips(db, folder=PAPER):
+    src = json.loads((folder / "source.json").read_text())
     t3, t4 = rows(PAPER / "table3.csv"), rows(PAPER / "table4.csv")
     phase_id = phase_lookup(db)
     flags = []  # (kind, where, message) for the review page
@@ -210,19 +217,148 @@ def load_phillips(db):
         if r["T_gt_opx"] and not r["P_gt_opx_b"]:
             flags.append(("blank cell", where, f"Brey & Köhler P is blank while T = {r['T_gt_opx']} and MacGregor "
                           f"P = {r['P_gt_opx_c'] or 'blank'}; the text quotes 7.6 GPa for DP497. Not filled."))
-    return flags
+    return flags, pub
 
 
-def apply_review(db):
+def apply_review(db, folder, pub):
     """Set every record of the paper to the curator's recorded review outcome (source.json "review")."""
-    review = json.loads((PAPER / "source.json").read_text()).get("review")
+    review = json.loads((folder / "source.json").read_text()).get("review")
     if not review:
         return
-    ev = "SELECT id FROM evidence"  # shortcut: one paper in the db; filter by publication_id when there are more
+    ev = f"SELECT id FROM evidence WHERE publication_id = {int(pub)}"
     for t in ["diamond_observation", "inclusion_observation", "measurement", "derived_parameter", "assertion"]:
         db.execute(f"UPDATE {t} SET workflow_status = ? WHERE evidence_id IN ({ev})", (review["workflow_status"],))
     db.execute(f"UPDATE measured_value SET workflow_status = ? WHERE measurement_id IN "
                f"(SELECT id FROM measurement WHERE evidence_id IN ({ev}))", (review["workflow_status"],))
+
+
+NUM = re.compile(r"^(?P<v>\d+\.?\d*)(?:\s*\((?P<u>\d+)\))?(?P<star>\*?)$")
+
+
+def load_simple(db, folder):
+    """Papers whose analyses are one CSV row each (gold/<paper>/analyses.csv), values as printed."""
+    src = json.loads((folder / "source.json").read_text())
+    phase_id = phase_lookup(db)
+    flags = []
+    pub = insert(db, "publication", **src["publication"])
+    sf = insert(db, "source_file", publication_id=pub, **src["source_file"])
+    run = insert(db, "import_run", run_type="claude_extraction", started_at=date.today().isoformat(),
+                 tool=src.get("tool"), operator="Claude (Claude Code); values to be verified by a curator")
+
+    def evidence(**kw):
+        return insert(db, "evidence", publication_id=pub, source_file_id=sf, source_type="paper", import_run_id=run, **kw)
+
+    prefix_to_loc = {}
+    for loc in src.get("localities", []):
+        ev = evidence(page=loc["page"], excerpt=loc["excerpt"])
+        lid = insert(db, "locality", name=loc["name"], locality_type=loc["locality_type"],
+                     country_code=src.get("country_code"), precision_class="approximate",
+                     notes=loc.get("notes", "No coordinates entered yet (Phase 6 gazetteer)."))
+        for p in loc["prefixes"]:
+            prefix_to_loc[p] = (loc["name"], lid, ev)
+
+    same = {k: evidence(**v) for k, v in src.get("same_diamond", {}).items()}
+    diamonds, tables_of = {}, {}
+    for r in rows(folder / src["analyses"]):
+        cfg = src["tables"][r["table"]]
+        where = f"{r['table']}, p. {r['page']}, {r['sample_no']} {r['mineral']} (column {r['column']})"
+        tables_of.setdefault(r["sample_no"], set()).add(r["table"])
+        ev = evidence(page=r["page"], table_label=r["table"], row_label=r["sample_no"],
+                      column_label=f"{r['mineral']} (column {r['column']})",
+                      excerpt=f"Sample {r['sample_no']}; {r['mineral']}" +
+                              (f"; {r['n_analyses']} analyses" if r["n_analyses"] else ""),
+                      cited_reference_text=r["cited_source"] or None)
+        key = r["sample_no"] if r["sample_no"] in same or src.get("diamond_key") == "sample" else (r["table"], r["sample_no"])
+        if key not in diamonds:
+            m = re.match(r"[A-Za-z]+", r["sample_no"])
+            loc = prefix_to_loc.get(m.group() if m else "")
+            d = insert(db, "diamond_observation", publication_id=pub, evidence_id=same.get(r["sample_no"], ev),
+                       reported_locality=loc[0] if loc else None, import_run_id=run,
+                       notes="Same diamond in several tables (see evidence)" if r["sample_no"] in same else None)
+            insert(db, "specimen_identifier", diamond_observation_id=d, identifier=r["sample_no"], id_type="author_sample")
+            if loc:
+                insert(db, "assertion", diamond_observation_id=d, property_code="collection_locality", value_text=loc[0],
+                       value_locality_id=loc[1], asserted_by="authors", value_status="reported", derivation="reported",
+                       evidence_id=loc[2])
+            else:
+                flags.append(("no locality", where, "sample prefix not in the paper's locality key"))
+            diamonds[key] = d
+        pid = phase_id(r.get("phase_hint") or r["mineral"])
+        inc = insert(db, "inclusion_observation", publication_id=pub, evidence_id=ev, diamond_observation_id=diamonds[key],
+                     reported_phase=r["mineral"], phase_id=pid, phase_match_status="mapped" if pid else "unmapped",
+                     import_run_id=run, notes="; ".join(x for x in [where, r["note"]] if x))
+        if pid is None:
+            flags.append(("unmapped phase", where, f"'{r['mineral']}' is not in vocab/"))
+        if r["touching"]:
+            insert(db, "assertion", inclusion_observation_id=inc, property_code="touching", value_text=r["touching"],
+                   asserted_by="authors", value_status="reported", derivation="reported", evidence_id=ev,
+                   notes=r["note"] or None)
+        meas = insert(db, "measurement", inclusion_observation_id=inc, method_code=src["method"]["code"],
+                      spot_label=f"mean of {r['n_analyses']} analyses" if r["n_analyses"] else "number of analyses not stated",
+                      conditions=src["method"]["conditions"], evidence_id=ev, import_run_id=run,
+                      notes=f"Analytical conditions: p. {src['method']['page']}")
+        for col in OXIDE_COLUMNS:
+            text = r.get(col, "")
+            if not text:
+                continue                                  # oxide not printed for this table
+            value = dl = unc = None
+            m = NUM.match(text)
+            if text in cfg["notation"]:
+                status = cfg["notation"][text]
+                if status == "ambiguous":
+                    flags.append(("ambiguous notation", where, f"{col} = '{text}': {cfg.get('footnote', 'not defined')}"))
+            elif text.startswith("<"):
+                status, dl = "below_detection", float(text[1:])
+            elif m:
+                status, value = "reported", float(m["v"])
+                if m["u"] and cfg.get("uncertainty"):
+                    decimals = len(m["v"].split(".")[1]) if "." in m["v"] else 0
+                    unc = int(m["u"]) * 10 ** -decimals
+            else:
+                sys.exit(f"Unrecognised notation {text!r} at {where}, {col}")
+            insert(db, "measured_value", measurement_id=meas, quantity_code=QUANTITY.get(col, col), original_text=text,
+                   original_unit="wt%", value=value, detection_limit=dl, uncertainty=unc,
+                   uncertainty_type=cfg.get("uncertainty") if unc is not None else None, value_status=status,
+                   derivation="calculated_by_authors" if col == "Total" else "reported")
+    for t, cfg in src["tables"].items():
+        if cfg.get("uncertainty_note"):
+            flags.append(("undefined notation", t, cfg["uncertainty_note"]))
+    for sample, ts in tables_of.items():
+        if len(ts) > 1 and sample not in same:
+            flags.append(("same label, kept apart", sample, f"appears in {', '.join(sorted(ts))}; the paper does not "
+                          "say these are the same diamond, so they are separate records"))
+    return flags, pub
+
+
+def write_simple_review(db, paper, res):
+    folder, pub, flags = paper["dir"], paper["pub"], paper["flags"]
+    src = json.loads((folder / "source.json").read_text())
+    c, review = res["counts"], src.get("review")
+    status = (f"**Status: {review['workflow_status']}** by {review['reviewer']} on {review['date']}." if review else
+              "**Status: extracted, not yet reviewed** (every record is `pending_review`).")
+    L = [f"# Extraction: {src['publication']['short_ref']}", "",
+         f"> {src['publication']['citation']} [doi:{src['publication']['doi']}](https://doi.org/{src['publication']['doi']}). "
+         f"{status}", "",
+         f"Generated by `scripts/build_gold.py` from [{src['analyses']}]({src['analyses']}) and "
+         "[source.json](source.json); do not edit by hand.", "",
+         "## What was extracted", "",
+         md_table(["Records", "Count"], [["Host diamonds", c["diamond_observation"]],
+                                         ["Inclusion analyses", c["measurement"]], ["Values", c["measured_value"]]]), "",
+         f"{src['publication'].get('notes', '')}", "",
+         "## Automatic checks", "",
+         f"- **Traceability:** {c['measured_value'] - res['untraceable']} of {c['measured_value']} values have page, "
+         "table, column and original text.",
+         (f"- **Totals add up:** for every analysis the printed Total equals the sum of the printed oxides within "
+          f"{res['tol']} wt% (rounding)." if not res["sum_mismatch"] else
+          f"- **Totals differ by more than {res['tol']} wt%** for: " +
+          ", ".join(f"{r[2]} {r[3]} (printed {r[4]}, sum {r[6]:.2f})" for r in res["sum_mismatch"])),
+         "- **Value status:** " + ", ".join(f"{n} {s}" for s, n in res["status_counts"]) + ".", "",
+         "**Flagged:**", "", md_table(["Kind", "Where", "What"], flags or [["—", "—", "none"]]), "",
+         "## Spot-check list", "",
+         "Open the PDF at each page and check the printed cell, then tell Claude the result.", "",
+         md_table(["✓", "Page", "Table", "Row / column", "Quantity", "Printed"],
+                  [["☑" if review else "☐", *r] for r in spot_checks(db, pub)]), ""]
+    (folder / "README.md").write_text("\n".join(L), encoding="utf-8")
 
 
 def build(path=":memory:"):
@@ -230,16 +366,23 @@ def build(path=":memory:"):
     db.execute("PRAGMA foreign_keys = ON")
     db.executescript(SCHEMA.read_text())
     load_vocab(db)
-    flags = load_phillips(db)
-    apply_review(db)
+    papers = {}
+    for src in sorted(GOLD.glob("*/source.json")):
+        folder = src.parent
+        loader = load_phillips if (folder / "table4.csv").exists() else load_simple
+        flags, pub = loader(db, folder)
+        apply_review(db, folder, pub)
+        papers[folder.name] = {"dir": folder, "pub": pub, "flags": flags,
+                               "tol": json.loads(src.read_text()).get("total_tolerance", 0.05)}
     db.commit()
-    return db, flags
+    return db, papers
 
 
 # ---------------- checks ----------------
 
-def checks(db):
+def checks(db, pub, tol=0.05):
     out = {}
+    P = f"e.publication_id = {int(pub)}"
     # analytical totals: printed Total vs sum of the printed oxides
     sums = db.execute("""
         SELECT m.id, e.page, e.row_label, e.column_label, t.original_text, t.value,
@@ -247,22 +390,33 @@ def checks(db):
         FROM measurement m JOIN evidence e ON e.id = m.evidence_id
         JOIN measured_value v ON v.measurement_id = m.id
         JOIN measured_value t ON t.measurement_id = m.id AND t.quantity_code = 'oxide_total'
-        GROUP BY m.id ORDER BY m.id""").fetchall()
-    out["sum_mismatch"] = [s for s in sums if abs(s[6] - s[5]) > 0.05]
+        WHERE """ + P + """ GROUP BY m.id ORDER BY m.id""").fetchall()
+    sums = [s for s in sums if s[5] is not None and s[6] is not None]
+    out["sum_mismatch"] = [s for s in sums if abs(s[6] - s[5]) > tol]
+    out["tol"] = tol
     out["max_sum_diff"] = max(abs(s[6] - s[5]) for s in sums)
     out["total_range"] = [s for s in sums if not 98.0 <= s[5] <= 101.5]
-    out["below_dl"] = db.execute("""SELECT quantity_code, COUNT(*) FROM measured_value
-        WHERE quantity_code IN ('Na2O', 'K2O') AND value < 0.02 GROUP BY quantity_code""").fetchall()
-    out["status_counts"] = db.execute("""SELECT value_status, COUNT(*) FROM measured_value
-        GROUP BY value_status ORDER BY 2 DESC""").fetchall()
+    V = "FROM measured_value v JOIN measurement m ON m.id = v.measurement_id JOIN evidence e ON e.id = m.evidence_id"
+    out["below_dl"] = db.execute(f"""SELECT quantity_code, COUNT(*) {V}
+        WHERE {P} AND quantity_code IN ('Na2O', 'K2O') AND value < 0.02 GROUP BY quantity_code""").fetchall()
+    out["status_counts"] = db.execute(f"""SELECT value_status, COUNT(*) {V}
+        WHERE {P} GROUP BY value_status ORDER BY 2 DESC""").fetchall()
     out["untraceable"] = db.execute("""SELECT COUNT(*) FROM measured_value v
         JOIN measurement m ON m.id = v.measurement_id JOIN evidence e ON e.id = m.evidence_id
-        WHERE e.page IS NULL OR e.table_label IS NULL OR v.original_text IS NULL""").fetchone()[0]
-    out["counts"] = {t: db.execute(f"SELECT COUNT(*) FROM {t}").fetchone()[0] for t in
-                     ["diamond_observation", "inclusion_observation", "measurement", "measured_value",
-                      "inclusion_set", "derived_parameter", "assertion", "evidence"]}
-    out["unanalysed"] = db.execute("""SELECT COUNT(*) FROM inclusion_observation i
-        WHERE NOT EXISTS (SELECT 1 FROM measurement m WHERE m.inclusion_observation_id = i.id)""").fetchone()[0]
+        WHERE """ + P + """ AND (e.page IS NULL OR e.table_label IS NULL OR v.original_text IS NULL)""").fetchone()[0]
+    count = lambda sql: db.execute(sql).fetchone()[0]
+    out["counts"] = {
+        "diamond_observation": count(f"SELECT COUNT(*) FROM diamond_observation WHERE publication_id = {int(pub)}"),
+        "inclusion_observation": count(f"SELECT COUNT(*) FROM inclusion_observation WHERE publication_id = {int(pub)}"),
+        "measurement": count(f"SELECT COUNT(*) FROM measurement m JOIN evidence e ON e.id = m.evidence_id WHERE {P}"),
+        "measured_value": count(f"SELECT COUNT(*) {V} WHERE {P}"),
+        "inclusion_set": count(f"SELECT COUNT(*) FROM inclusion_set WHERE publication_id = {int(pub)}"),
+        "derived_parameter": count(f"SELECT COUNT(*) FROM derived_parameter d JOIN evidence e ON e.id = d.evidence_id WHERE {P}"),
+        "assertion": count(f"SELECT COUNT(*) FROM assertion a JOIN evidence e ON e.id = a.evidence_id WHERE {P}"),
+        "evidence": count(f"SELECT COUNT(*) FROM evidence e WHERE {P}"),
+    }
+    out["unanalysed"] = count(f"""SELECT COUNT(*) FROM inclusion_observation i WHERE publication_id = {int(pub)}
+        AND NOT EXISTS (SELECT 1 FROM measurement m WHERE m.inclusion_observation_id = i.id)""")
     return out
 
 
@@ -274,19 +428,20 @@ def md_table(header, body):
     return "\n".join(lines)
 
 
-def spot_checks(db, n_values=20, n_derived=5):
+def spot_checks(db, pub, n_values=20, n_derived=5):
     rng = random.Random(2004)  # fixed seed: the same list every build
     vals = db.execute("""SELECT e.page, e.table_label, e.row_label, e.column_label, v.quantity_code, v.original_text
         FROM measured_value v JOIN measurement m ON m.id = v.measurement_id JOIN evidence e ON e.id = m.evidence_id
-        ORDER BY v.id""").fetchall()
+        WHERE e.publication_id = ? ORDER BY v.id""", (pub,)).fetchall()
     der = db.execute("""SELECT e.page, e.table_label, e.row_label, d.method, d.original_text, d.original_unit
-        FROM derived_parameter d JOIN evidence e ON e.id = d.evidence_id ORDER BY d.id""").fetchall()
-    picks = [(p, t, f"{r} {c}", q, x) for p, t, r, c, q, x in rng.sample(vals, n_values)]
-    picks += [(p, t, r, m, f"{x} {u}") for p, t, r, m, x, u in rng.sample(der, n_derived)]
+        FROM derived_parameter d JOIN evidence e ON e.id = d.evidence_id WHERE e.publication_id = ? ORDER BY d.id""",
+                     (pub,)).fetchall()
+    picks = [(p, t, f"{r} {c}", q, x) for p, t, r, c, q, x in rng.sample(vals, min(n_values, len(vals)))]
+    picks += [(p, t, r, m, f"{x} {u}") for p, t, r, m, x, u in rng.sample(der, min(n_derived, len(der)))]
     return sorted(picks, key=lambda x: (x[0], x[1], x[2]))
 
 
-def write_review(db, flags, res):
+def write_review(db, flags, res, pub):
     c = res["counts"]
     q = lambda sql: db.execute(sql).fetchall()
     data = q("""SELECT e.page, e.row_label, i.reported_phase, a.value_text, t.value_text,
@@ -296,9 +451,10 @@ def write_review(db, flags, res):
         JOIN evidence e ON e.id = m.evidence_id JOIN measured_value v ON v.measurement_id = m.id
         JOIN assertion a ON a.inclusion_observation_id = i.id AND a.property_code = 'paragenesis'
         JOIN assertion t ON t.inclusion_observation_id = i.id AND t.property_code = 'touching'
-        GROUP BY i.id ORDER BY i.id""")
+        WHERE i.publication_id = """ + str(int(pub)) + """ GROUP BY i.id ORDER BY i.id""")
     pt = q("""SELECT s.label, d.method, d.original_text || ' ' || d.original_unit, COALESCE(d.assumptions, '')
-        FROM derived_parameter d JOIN inclusion_set s ON s.id = d.inclusion_set_id ORDER BY d.id""")
+        FROM derived_parameter d JOIN inclusion_set s ON s.id = d.inclusion_set_id
+        WHERE s.publication_id = """ + str(int(pub)) + """ ORDER BY d.id""")
     review = json.loads((PAPER / "source.json").read_text()).get("review")
     decide = lambda where: next((d for k, d in (review or {}).get("decisions", {}).items() if k in where), "open")
     comp_rows = rows(PAPER / "compilation-check.csv") if (PAPER / "compilation-check.csv").exists() else []
@@ -381,7 +537,7 @@ def write_review(db, flags, res):
         + "(Random sample with a fixed seed, so the list stays the same each build.)",
         "",
         md_table(["✓", "Page", "Table", "Row / column", "Quantity", "Printed"],
-                 [["☑" if review else "☐", *r] for r in spot_checks(db)]),
+                 [["☑" if review else "☐", *r] for r in spot_checks(db, pub)]),
         "",
         "## Table 3 as stored",
         "",
@@ -399,14 +555,18 @@ def write_review(db, flags, res):
 def main():
     if DB_PATH.exists():
         DB_PATH.unlink()
-    db, flags = build(str(DB_PATH))
-    res = checks(db)
-    write_review(db, flags, res)
-    print(json.dumps(res["counts"], indent=1))
-    print(f"max total diff {res['max_sum_diff']:.3f}; {len(res['sum_mismatch'])} sum mismatches; "
-          f"{len(res['total_range'])} totals out of range; {len(flags)} flags; {res['untraceable']} untraceable")
-    for f in flags:
-        print(" ", *f)
+    db, papers = build(str(DB_PATH))
+    for name, p in papers.items():
+        res = checks(db, p["pub"], p["tol"])
+        if p["dir"] == PAPER:
+            write_review(db, p["flags"], res, p["pub"])
+        else:
+            write_simple_review(db, p, res)
+        print(f"{name}: {res['counts']['measurement']} analyses, {res['counts']['measured_value']} values; "
+              f"{len(res['sum_mismatch'])} sum mismatches (tol {p['tol']}); {len(p['flags'])} flags; "
+              f"{res['untraceable']} untraceable")
+        for f in p["flags"]:
+            print("   ", *f)
 
 
 if __name__ == "__main__":

@@ -13,25 +13,42 @@ import build_gold  # noqa: E402
 class GoldTest(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        cls.db, cls.flags = build_gold.build()
+        cls.db, cls.papers = build_gold.build()
+        cls.phillips = cls.papers["phillips-2004"]["pub"]
 
     def one(self, sql):
         return self.db.execute(sql).fetchone()[0]
 
-    def test_counts(self):
-        self.assertEqual(self.one("SELECT COUNT(*) FROM measurement"), 80)          # Table 3 columns
-        self.assertEqual(self.one("SELECT COUNT(*) FROM measured_value"), 80 * 14)
-        self.assertEqual(self.one("SELECT COUNT(*) FROM inclusion_set"), 50)        # Table 4 rows
-        self.assertEqual(self.one("SELECT COUNT(*) FROM diamond_observation"), 50)  # 36 in Table 3 + 14 only in Table 4
+    def test_phillips_counts(self):
+        c = build_gold.checks(self.db, self.phillips)["counts"]
+        self.assertEqual(c["measurement"], 80)                # Table 3 columns
+        self.assertEqual(c["measured_value"], 80 * 14)
+        self.assertEqual(c["inclusion_set"], 50)              # Table 4 rows
+        self.assertEqual(c["diamond_observation"], 50)        # 36 in Table 3 + 14 only in Table 4
+
+    def test_sobolev(self):
+        p = self.papers["sobolev-2004"]
+        c = build_gold.checks(self.db, p["pub"], p["tol"])["counts"]
+        self.assertEqual(c["measurement"], 63)                # Tables 3, 4, 5, 6, 8
+        # Yum-27 (olivine in Table 3, two garnets in Table 6) is one diamond; AL-1 in Tables 4 and 5 is not
+        n = lambda s: self.one(f"SELECT COUNT(*) FROM specimen_identifier si JOIN diamond_observation d "
+                               f"ON d.id = si.diamond_observation_id WHERE d.publication_id = {p['pub']} AND identifier = '{s}'")
+        self.assertEqual((n("Yum-27"), n("AL-1")), (1, 2))
+        self.assertEqual(self.one("SELECT COUNT(*) FROM measured_value WHERE original_text = '<0.03' "
+                                  "AND (value_status <> 'below_detection' OR detection_limit <> 0.03)"), 0)
 
     def test_printed_totals_add_up(self):
-        res = build_gold.checks(self.db)
-        self.assertEqual(res["sum_mismatch"], [])
-        self.assertEqual(res["untraceable"], 0)
+        for p in self.papers.values():
+            res = build_gold.checks(self.db, p["pub"], p["tol"])
+            self.assertEqual(res["sum_mismatch"], [])
+            self.assertEqual(res["untraceable"], 0)
 
     def test_review_applied(self):
-        for t in ["inclusion_observation", "measurement", "measured_value", "derived_parameter", "assertion"]:
-            self.assertEqual(self.one(f"SELECT COUNT(*) FROM {t} WHERE workflow_status <> 'approved'"), 0, t)
+        # Phillips is approved; papers without a recorded review stay pending
+        self.assertEqual(self.one(f"SELECT COUNT(*) FROM inclusion_observation WHERE publication_id = {self.phillips} "
+                                  "AND workflow_status <> 'approved'"), 0)
+        self.assertEqual(self.one(f"SELECT COUNT(*) FROM inclusion_observation WHERE publication_id <> {self.phillips} "
+                                  "AND workflow_status <> 'pending_review'"), 0)
 
     def test_every_phase_mapped(self):
         self.assertEqual(self.one("SELECT COUNT(*) FROM inclusion_observation WHERE phase_id IS NULL"), 0)

@@ -16,6 +16,10 @@ SUB = str.maketrans("0123456789", "₀₁₂₃₄₅₆₇₈₉")
 LABEL = {"FeOT": "FeO (total Fe)", "oxide_total": "Total"}
 
 
+def status_label(s):
+    return {"pending_review": "not yet reviewed"}.get(s, s.replace("_", " "))
+
+
 def label(code):
     return LABEL.get(code, code.translate(SUB))
 
@@ -25,7 +29,7 @@ def ref(page, table, row, col):
 
 
 def main():
-    db, _ = build_gold.build()
+    db, _ = build_gold.build()  # all papers in gold/
     q = lambda sql, *a: db.execute(sql, a).fetchall()
 
     # oxide columns in vocab order, only those that hold data
@@ -50,7 +54,7 @@ def main():
              "mineral_printed": printed, "paragenesis": assertion("inclusion_observation_id", iid, "paragenesis"),
              "touching": {"y": "yes", "n": "no"}.get(assertion("inclusion_observation_id", iid, "touching")),
              "assemblage": assertion("diamond_observation_id", did, "reported_assemblage"),
-             "status": status.replace("_", " "), "where": ref(page, table, row, col), "_txt": {}, "_st": {}}
+             "status": status_label(status), "where": ref(page, table, row, col), "_txt": {}, "_st": {}}
         m = q("SELECT id, method_code FROM measurement WHERE inclusion_observation_id = ?", iid)
         r["method"] = m[0][1] if m else None
         r["analysed"] = "yes" if m else "no"
@@ -82,7 +86,7 @@ def main():
             "paragenesis": assertion("inclusion_set_id", sid, "paragenesis"),
             "estimate": {"T_equilibration": "Temperature", "P_equilibration": "Pressure"}.get(qcode, qcode),
             "value": value, "value_text": text, "unit": {"degC": "°C"}.get(unit, unit), "method": method,
-            "assumption": assumptions, "status": dstatus.replace("_", " "), "where": ref(page, table, row, None)})
+            "assumption": assumptions, "status": status_label(dstatus), "where": ref(page, table, row, None)})
 
     sources = []
     for (pid, doi, citation, short, notes) in q("SELECT id, doi, citation, short_ref, notes FROM publication ORDER BY year, short_ref"):
@@ -95,7 +99,7 @@ def main():
                              ON i.id = m.inclusion_observation_id WHERE i.publication_id = ?"""),
             "estimates": n("""SELECT COUNT(*) FROM derived_parameter d JOIN evidence e ON e.id = d.evidence_id
                               WHERE e.publication_id = ?"""),
-            "status": sorted({s.replace("_", " ") for (s,) in q(
+            "status": sorted({status_label(s) for (s,) in q(
                 "SELECT DISTINCT workflow_status FROM inclusion_observation WHERE publication_id = ?", pid)}),
         })
 

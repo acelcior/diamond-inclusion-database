@@ -171,8 +171,10 @@ const TABS = {
     url: "data/inclusions.json", file: "diamond-inclusions.csv", noun: "inclusions",
     quick: [["mineral", "Mineral"], ["paragenesis", "Paragenesis"], ["touching", "Touching"], ["source", "Source"]],
     toggles: [["analysed", "yes", "Analysed only", true]],
-    essentials: ["sample", "mineral", "paragenesis", "touching", "SiO2", "Al2O3", "Cr2O3", "FeOT", "MgO", "CaO", "oxide_total", "source"],
-    legend: "Chemistry in wt% oxide, as printed. <span class='na'>na</span> = not analysed. " +
+    essentials: ["sample", "mineral", "locality", "SiO2", "Al2O3", "Cr2O3", "FeOT", "MgO", "CaO", "oxide_total", "source", "status"],
+    legend: "Chemistry in wt% oxide, as printed. <span class='na'>na</span>, <span class='na'>n.d.</span> = not analysed " +
+            "(as defined by the source); <span class='na'>&lt;0.03</span> = below detection limit; 41.7 (2) = value with its " +
+            "uncertainty in the last digit. " +
             "<span class='amb'>nd</span> = notation the source does not define, so it is left uninterpreted. " +
             "Number filters accept 40, &gt;40, &lt;1 or 40-45.",
     groups(meta) {
@@ -191,7 +193,7 @@ const TABS = {
     url: "data/estimates.json", file: "diamond-inclusion-PT.csv", noun: "estimates",
     quick: [["estimate", "Estimate"], ["method", "Method"], ["touching", "Touching"], ["source", "Source"]],
     toggles: [],
-    essentials: ["sample", "assemblage", "touching", "estimate", "value", "unit", "method", "source"],
+    essentials: ["sample", "assemblage", "touching", "estimate", "value", "unit", "method", "source", "status"],
     legend: "Temperatures and pressures as calculated by the authors, on the assemblage they were calculated from. " +
             "Where the authors assumed a pressure, it is shown under Assumption, not as a result.",
     groups() {
@@ -226,7 +228,7 @@ function applyVisibility() {
     const show = s.chosen.has(f) && (!hideEmpty || hasValue(rows, f));
     show ? col.show() : col.hide();
   }
-  store.set("cols:" + active, [...s.chosen]);
+  store.set("cols2:" + active, [...s.chosen]);
   store.set("hideEmpty", hideEmpty);
 }
 
@@ -277,7 +279,7 @@ async function initTab(tab) {
   const cfg = TABS[tab];
   const data = await (await fetch(cfg.url)).json();
   const groups = cfg.groups(meta);
-  const saved = store.get("cols:" + tab);
+  const saved = store.get("cols2:" + tab);
   const s = state[tab] = { data, groups, quick: {}, toggles: {},
     chosen: new Set(saved && saved.length ? saved : cfg.essentials) };
   for (const [f, , , on] of cfg.toggles) s.toggles[f] = on;

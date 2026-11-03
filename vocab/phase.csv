@@ -1,7 +1,11 @@
-name,phase_kind,formula,notes
-garnet,solid_solution,,"Garnet group; inclusion garnets are mostly pyrope-rich"
-orthopyroxene,solid_solution,,Enstatite-rich in peridotitic inclusions
-clinopyroxene,solid_solution,,"Includes Cr-diopside and omphacite in loose usage"
-olivine,solid_solution,,Forsterite-rich in peridotitic inclusions
-chromite,mineral_species,FeCr2O4,"Used loosely in inclusion studies for Cr-rich spinel"
-magnesite,mineral_species,MgCO3,
+name,phase_kind,parent,formula,notes
+garnet,solid_solution,,,Garnet group; inclusion garnets are mostly pyrope-rich
+orthopyroxene,solid_solution,,,Enstatite-rich in peridotitic inclusions
+clinopyroxene,solid_solution,,,Includes Cr-diopside and omphacite in loose usage
+olivine,solid_solution,,,Forsterite-rich in peridotitic inclusions
+chromite,mineral_species,,FeCr2O4,Used loosely in inclusion studies for Cr-rich spinel
+magnesite,mineral_species,,MgCO3,
+Cr-diopside,variety,clinopyroxene,,Cr-rich diopside
+omphacite,mineral_species,clinopyroxene,,Na-rich clinopyroxene
+enstatite,mineral_species,orthopyroxene,MgSiO3,Mg-rich orthopyroxene
+majoritic garnet,variety,garnet,,Garnet with excess Si (majorite component)

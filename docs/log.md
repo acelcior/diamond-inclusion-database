@@ -7,6 +7,18 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-03 — Sobolev 2004 extracted (not yet reviewed)
+- `extraction/parse_sobolev_2004.py`: Tables 3, 4, 5, 6, 8 (63 analyses, 579 values: olivine, chrome
+  spinel, garnet, majoritic garnet, pyroxenes) from the text layer; column headers listed by hand
+  from the page images (Table 5's Syt-1 has two columns). Table 7 (SIMS traces) not extracted.
+- `scripts/build_gold.py` now loads every `gold/<paper>/`: `load_phillips` for Phillips, new
+  `load_simple` for one-row-per-analysis papers. Handles `<0.03` (below detection, with limit),
+  `41.7 (2)` (1σ in the last digit where the table defines it), sample-prefix → mine from the
+  footnotes, and keeps same-label samples in different tables apart unless the text links them
+  (Yum-27 linked; AL-1 kept apart). Checks and review status are per paper.
+- All printed totals match the oxide sums within 0.07 wt%. Flags: two undefined `n.d.` (Table 6),
+  undefined `( )` in Table 5, AL-1 label reuse. Shown on the website as "not yet reviewed".
+
 ## 2026-11-03 — Website is now the database explorer
 - `site/index.html` (Tabulator 6.3.1 from jsDelivr) shows two tables: inclusions & chemistry, and
   temperature & pressure. Search, quick filters, number filters (`>40`, `40-45`), a column chooser
