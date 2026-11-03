@@ -57,6 +57,9 @@
   .legend { color: var(--muted); font-size: 13px; margin-top: 8px; }
   .na { color: var(--muted); }
   .amb { color: var(--warn); background: var(--warn-bg); padding: 0 4px; border-radius: 3px; }
+  .conf { padding: 0 6px; border-radius: 10px; font-size: 13px; border: 1px solid var(--line); }
+  .conf-medium { color: var(--warn); background: var(--warn-bg); }
+  .conf-low { color: #fff; background: #b3261e; border-color: #b3261e; }
   /* table theme */
   .tabulator { background: var(--bg); border: 1px solid var(--line); border-radius: 8px; font-size: 14px; color: var(--text); }
   .tabulator .tabulator-header { background: var(--panel); color: var(--text); border-bottom: 1px solid var(--line); }
@@ -166,19 +169,30 @@ function oxideCol(code, label) {
   });
 }
 
+// Confidence: does the record match what the paper printed? Hover shows the reasons (docs/confidence.md).
+const confCol = () => textCol("confidence", "Confidence", {
+  formatter(cell) {
+    const d = cell.getRow().getData();
+    cell.getElement().title = d.confidence_why || "";
+    return `<span class="conf conf-${esc(d.confidence)}">${esc(d.confidence)}</span>`;
+  },
+});
+
 const TABS = {
   inclusions: {
     url: "data/inclusions.json", file: "diamond-inclusions.csv", noun: "inclusions",
-    quick: [["mineral", "Mineral"], ["paragenesis", "Paragenesis"], ["touching", "Touching"], ["source", "Source"]],
+    quick: [["mineral", "Mineral"], ["paragenesis", "Paragenesis"], ["touching", "Touching"], ["source", "Source"],
+            ["confidence", "Confidence"]],
     toggles: [["analysed", "yes", "Analysed only", true]],
     essentials: ["sample", "mineral", "mineral_printed", "locality", "SiO2", "Al2O3", "Cr2O3", "FeOT", "FeO", "MgO", "CaO",
-                 "oxide_total", "source", "status"],
+                 "oxide_total", "source", "confidence", "status"],
     legend: "Chemistry in wt% oxide, as printed. <span class='na'>na</span>, <span class='na'>n.d.</span> = not analysed " +
             "(as defined by the source); <span class='na'>&lt;0.03</span>, <span class='na'>≤0.01</span> = below detection or upper limit; " +
             "FeO (total Fe) only where the source says so, otherwise FeO as printed; 41.7 (2) = value with its " +
             "uncertainty in the last digit. " +
             "<span class='amb'>nd</span> = notation the source does not define, so it is left uninterpreted. " +
-            "Number filters accept 40, &gt;40, &lt;1 or 40-45.",
+            "Number filters accept 40, &gt;40, &lt;1 or 40-45. Confidence says how sure we are that a record matches " +
+            "what the paper printed (not whether the science is right); hover it for the reasons.",
     groups(meta) {
       return [
         ["Identification", [textCol("sample", "Sample", { frozen: true }), textCol("mineral", "Mineral"),
@@ -187,15 +201,17 @@ const TABS = {
                      textCol("touching", "Touching"), textCol("assemblage", "Diamond's assemblage"),
                      textCol("analysed", "Analysed"), textCol("method", "Method")]],
         ["Chemistry (wt%)", meta.oxides.map(o => oxideCol(o.code, o.label))],
-        ["Provenance", [textCol("source", "Source"), textCol("where", "Printed at"), textCol("status", "Review status")]],
+        ["Provenance", [textCol("source", "Source"), textCol("where", "Printed at"), confCol(),
+                        textCol("confidence_why", "Why this confidence"), textCol("status", "Review status")]],
       ];
     },
   },
   estimates: {
     url: "data/estimates.json", file: "diamond-inclusion-PT.csv", noun: "estimates",
-    quick: [["estimate", "Estimate"], ["method", "Method"], ["touching", "Touching"], ["source", "Source"]],
+    quick: [["estimate", "Estimate"], ["method", "Method"], ["touching", "Touching"], ["source", "Source"],
+            ["confidence", "Confidence"]],
     toggles: [],
-    essentials: ["sample", "assemblage", "touching", "estimate", "value", "unit", "method", "source", "status"],
+    essentials: ["sample", "assemblage", "touching", "estimate", "value", "unit", "method", "source", "confidence", "status"],
     legend: "Temperatures and pressures as calculated by the authors, on the assemblage they were calculated from. " +
             "Where the authors assumed a pressure, it is shown under Assumption, not as a result.",
     groups() {
@@ -206,7 +222,8 @@ const TABS = {
                         formatter: c => esc(c.getRow().getData().value_text),
                         accessorDownload: (v, d) => d.value_text }),
                       textCol("unit", "Unit"), textCol("method", "Method"), textCol("assumption", "Assumption")]],
-        ["Provenance", [textCol("source", "Source"), textCol("where", "Printed at"), textCol("status", "Review status")]],
+        ["Provenance", [textCol("source", "Source"), textCol("where", "Printed at"), confCol(),
+                        textCol("confidence_why", "Why this confidence"), textCol("status", "Review status")]],
       ];
     },
   },
@@ -230,7 +247,7 @@ function applyVisibility() {
     const show = s.chosen.has(f) && (!hideEmpty || hasValue(rows, f));
     show ? col.show() : col.hide();
   }
-  store.set("cols3:" + active, [...s.chosen]);
+  store.set("cols4:" + active, [...s.chosen]);
   store.set("hideEmpty", hideEmpty);
 }
 
@@ -281,7 +298,7 @@ async function initTab(tab) {
   const cfg = TABS[tab];
   const data = await (await fetch(cfg.url)).json();
   const groups = cfg.groups(meta);
-  const saved = store.get("cols3:" + tab);
+  const saved = store.get("cols4:" + tab);
   const s = state[tab] = { data, groups, quick: {}, toggles: {},
     chosen: new Set(saved && saved.length ? saved : cfg.essentials) };
   for (const [f, , , on] of cfg.toggles) s.toggles[f] = on;

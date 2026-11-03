@@ -50,5 +50,6 @@
   "total_notes": {
     "KK-66a": "Printed Total 99.35 equals the oxide sum without SrO (0.73); other analyses (e.g. KK-9, KK-83a cpx) include SrO. Source inconsistency, values kept as printed.",
     "KK-87a": "Printed Total 98.72 equals the oxide sum without SrO (0.85). Source inconsistency, values kept as printed."
-  }
+  },
+  "extraction_method": "image_transcription"
 }

@@ -49,6 +49,9 @@ observations/measurements**, not the paper.
 - Python for pipeline/validation; SQLite/DuckDB acceptable for prototype, PostgreSQL+PostGIS
   is the long-term target — keep SQL portable unless an ADR says otherwise.
 - Ambiguous table notation (`n.d.`, `—`, `bdl`, blank, FeO vs FeOtotal) is flagged, never guessed.
+- Every inclusion and derived value gets an **extraction confidence** (high/medium/low) computed by the
+  versioned rules in [docs/confidence.md](docs/confidence.md); set `extraction_method` in each paper's
+  `source.json`. Never assign a level by hand.
 
 ## Layout (grows over time)
 ```

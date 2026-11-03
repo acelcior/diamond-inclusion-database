@@ -52,6 +52,20 @@ class GoldTest(unittest.TestCase):
         self.assertEqual(self.one(f"SELECT COUNT(*) FROM inclusion_observation WHERE publication_id <> {self.phillips} "
                                   "AND workflow_status <> 'pending_review'"), 0)
 
+    def test_confidence(self):
+        # every inclusion and estimate has exactly one level (docs/confidence.md)
+        self.assertEqual(self.one("SELECT COUNT(*) FROM inclusion_observation i WHERE NOT EXISTS "
+                                  "(SELECT 1 FROM extraction_confidence c WHERE c.inclusion_observation_id = i.id)"), 0)
+        self.assertEqual(self.one("SELECT COUNT(*) FROM derived_parameter d WHERE NOT EXISTS "
+                                  "(SELECT 1 FROM extraction_confidence c WHERE c.derived_parameter_id = d.id)"), 0)
+        levels = lambda pub: {r[0] for r in self.db.execute(
+            "SELECT DISTINCT c.level FROM extraction_confidence c JOIN inclusion_observation i "
+            "ON i.id = c.inclusion_observation_id WHERE i.publication_id = ?", (pub,))}
+        self.assertEqual(levels(self.phillips), {"high"})                                   # text layer + reviewed
+        self.assertEqual(levels(self.papers["stachel-2000-kankan2"]["pub"]), {"medium"})    # read from images
+        with self.assertRaises(build_gold.sqlite3.IntegrityError):
+            self.db.execute("INSERT INTO extraction_confidence (level, reasons, rule_version) VALUES ('high', 'x', 'v')")
+
     def test_every_phase_mapped(self):
         # Phillips and Sobolev map fully; Kankan II keeps uncertain names (e.g. 'Olivine?', 'Fper-(ol)') unmapped on purpose
         self.assertEqual(self.one(f"SELECT COUNT(*) FROM inclusion_observation WHERE phase_id IS NULL AND publication_id IN "

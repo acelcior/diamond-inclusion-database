@@ -374,10 +374,62 @@ def write_simple_review(db, paper, res):
     (folder / "README.md").write_text("\n".join(L), encoding="utf-8")
 
 
+RULES = "conf-v1"  # docs/confidence.md
+BASE = {"spreadsheet": ("high", "read from a spreadsheet"),
+        "text_layer": ("high", "read from the PDF text layer by column position, checked against page images"),
+        "image_transcription": ("medium", "transcribed by eye from page images")}
+DOWN = {"high": "medium", "medium": "low", "low": "low"}
+
+
+def assess_confidence(db, papers):
+    """Store an extraction-confidence level for every inclusion and derived value (rules in docs/confidence.md)."""
+    for p in papers.values():
+        src = json.loads((p["dir"] / "source.json").read_text())
+        base, why = BASE[src["extraction_method"]]
+        approved = (src.get("review") or {}).get("workflow_status") == "approved"
+        explained = set(src.get("total_notes", {}))
+        res = checks(db, p["pub"], p["tol"])
+        state = {}
+        for mid, _, row, *_ in res["sums"]:
+            state[mid] = "match"
+        for mid, _, row, *_ in res["sum_mismatch"]:
+            state[mid] = "explained" if row in explained else "mismatch"
+        for iid, mid in db.execute("""SELECT i.id, m.id FROM inclusion_observation i
+                LEFT JOIN measurement m ON m.inclusion_observation_id = i.id WHERE i.publication_id = ?""", (p["pub"],)):
+            level, reasons = base, [why]
+            if mid is None:
+                reasons.append("named in the paper, no analysis printed")
+            elif state.get(mid) is None:
+                level = DOWN[level]
+                reasons.append("no printed total to check against")
+            elif state[mid] == "mismatch":
+                level = "low"
+                reasons.append("printed total does not match the sum of the oxides")
+            else:
+                reasons.append("printed total matches the oxide sum" if state[mid] == "match" else
+                               "printed total differs, explained by the source (see flags)")
+            if approved:
+                reasons.append("paper spot-checked against the PDF by a curator")
+                if level == "medium" and state.get(mid) in ("match", "explained"):
+                    level = "high"
+            insert(db, "extraction_confidence", inclusion_observation_id=iid, level=level,
+                   reasons="; ".join(reasons), rule_version=RULES)
+        for (did,) in db.execute("""SELECT d.id FROM derived_parameter d JOIN evidence e ON e.id = d.evidence_id
+                                    WHERE e.publication_id = ?""", (p["pub"],)).fetchall():
+            reasons = [why, "no printed check value for estimates"]
+            level = DOWN[base]
+            if approved:
+                reasons.append("paper spot-checked against the PDF by a curator")
+                level = base
+            insert(db, "extraction_confidence", derived_parameter_id=did, level=level,
+                   reasons="; ".join(reasons), rule_version=RULES)
+
+
 def build(path=":memory:"):
     db = sqlite3.connect(path)
     db.execute("PRAGMA foreign_keys = ON")
     db.executescript(SCHEMA.read_text())
+    db.executescript((ROOT / "schema" / "002_extraction_confidence.sql").read_text())
     load_vocab(db)
     papers = {}
     for src in sorted(GOLD.glob("*/source.json")):
@@ -387,6 +439,7 @@ def build(path=":memory:"):
         apply_review(db, folder, pub)
         papers[folder.name] = {"dir": folder, "pub": pub, "flags": flags,
                                "tol": json.loads(src.read_text()).get("total_tolerance", 0.05)}
+    assess_confidence(db, papers)
     db.commit()
     return db, papers
 
@@ -405,6 +458,7 @@ def checks(db, pub, tol=0.05):
         JOIN measured_value t ON t.measurement_id = m.id AND t.quantity_code = 'oxide_total'
         WHERE """ + P + """ GROUP BY m.id ORDER BY m.id""").fetchall()
     sums = [s for s in sums if s[5] is not None and s[6] is not None]
+    out["sums"] = sums
     out["sum_mismatch"] = [s for s in sums if abs(s[6] - s[5]) > tol]
     out["tol"] = tol
     out["max_sum_diff"] = max(abs(s[6] - s[5]) for s in sums)

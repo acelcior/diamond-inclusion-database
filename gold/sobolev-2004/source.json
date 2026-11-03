@@ -7,12 +7,18 @@
     "pub_type": "journal_article",
     "notes": "Tables 3-6 and 8 print selected analyses of inclusions in microdiamonds (< 1 mm). Table 7 (SIMS trace elements) is not extracted yet."
   },
-  "source_file": {"file_role": "main_text", "filename": "sobolev-2004.pdf"},
+  "source_file": {
+    "file_role": "main_text",
+    "filename": "sobolev-2004.pdf"
+  },
   "tool": "extraction/parse_sobolev_2004.py (pdftotext -layout; headers from page images) + scripts/build_gold.py",
   "analyses": "analyses.csv",
   "diamond_key": "table_sample",
   "same_diamond": {
-    "Yum-27": {"page": "229", "excerpt": "garnet inclusions from microdiamond Yum-27, associated with pyrope-uvarovitic garnet and olivine"}
+    "Yum-27": {
+      "page": "229",
+      "excerpt": "garnet inclusions from microdiamond Yum-27, associated with pyrope-uvarovitic garnet and olivine"
+    }
   },
   "method": {
     "code": "EPMA",
@@ -20,26 +26,128 @@
     "page": "229"
   },
   "localities": [
-    {"name": "Yubileynaya", "locality_type": "mine", "prefixes": ["Yum", "Yub"], "page": "235", "excerpt": "Yub and Yum=Yubileynaya mines"},
-    {"name": "Sytykanskaya", "locality_type": "mine", "prefixes": ["Syt", "ST", "STI", "SYT", "S"], "page": "235", "excerpt": "Syt, ST and STI=Sytykanskaya"},
-    {"name": "Udachnaya", "locality_type": "mine", "prefixes": ["UDV", "UVI", "UD", "UV"], "page": "231", "excerpt": "UDV, UVI and UD = Udachnaya"},
-    {"name": "Mir", "locality_type": "mine", "prefixes": ["Mrm"], "page": "231", "excerpt": "Mrm = Mir mines"},
-    {"name": "Aykhal", "locality_type": "mine", "prefixes": ["AL"], "page": "235", "excerpt": "AL=Aykhal"},
-    {"name": "Internatsionalnaya", "locality_type": "mine", "prefixes": ["Im"], "page": "235", "excerpt": "Im=Internatsionalnaya"},
-    {"name": "Komsomolskaya", "locality_type": "mine", "prefixes": ["Km", "Kmsm"], "page": "235", "excerpt": "Km=Komsomolskaya"},
-    {"name": "Yakutia", "locality_type": "region", "prefixes": ["Kr"], "page": "236", "excerpt": "microdiamonds from Yakutian kimberlites (Ym-27, Km-88/23, Kr-119/13)",
-     "notes": "Kr-119/13: the paper gives only 'Yakutian kimberlites'; the pipe is not stated for this sample."},
-    {"name": "Arkhangelsk", "locality_type": "region", "prefixes": ["Po"], "page": "236", "excerpt": "and Arkhangelsk kimberlite (Po-99)",
-     "notes": "Po-99: 'Arkhangelsk kimberlite'; the pipe is not stated."}
+    {
+      "name": "Yubileynaya",
+      "locality_type": "mine",
+      "prefixes": [
+        "Yum",
+        "Yub"
+      ],
+      "page": "235",
+      "excerpt": "Yub and Yum=Yubileynaya mines"
+    },
+    {
+      "name": "Sytykanskaya",
+      "locality_type": "mine",
+      "prefixes": [
+        "Syt",
+        "ST",
+        "STI",
+        "SYT",
+        "S"
+      ],
+      "page": "235",
+      "excerpt": "Syt, ST and STI=Sytykanskaya"
+    },
+    {
+      "name": "Udachnaya",
+      "locality_type": "mine",
+      "prefixes": [
+        "UDV",
+        "UVI",
+        "UD",
+        "UV"
+      ],
+      "page": "231",
+      "excerpt": "UDV, UVI and UD = Udachnaya"
+    },
+    {
+      "name": "Mir",
+      "locality_type": "mine",
+      "prefixes": [
+        "Mrm"
+      ],
+      "page": "231",
+      "excerpt": "Mrm = Mir mines"
+    },
+    {
+      "name": "Aykhal",
+      "locality_type": "mine",
+      "prefixes": [
+        "AL"
+      ],
+      "page": "235",
+      "excerpt": "AL=Aykhal"
+    },
+    {
+      "name": "Internatsionalnaya",
+      "locality_type": "mine",
+      "prefixes": [
+        "Im"
+      ],
+      "page": "235",
+      "excerpt": "Im=Internatsionalnaya"
+    },
+    {
+      "name": "Komsomolskaya",
+      "locality_type": "mine",
+      "prefixes": [
+        "Km",
+        "Kmsm"
+      ],
+      "page": "235",
+      "excerpt": "Km=Komsomolskaya"
+    },
+    {
+      "name": "Yakutia",
+      "locality_type": "region",
+      "prefixes": [
+        "Kr"
+      ],
+      "page": "236",
+      "excerpt": "microdiamonds from Yakutian kimberlites (Ym-27, Km-88/23, Kr-119/13)",
+      "notes": "Kr-119/13: the paper gives only 'Yakutian kimberlites'; the pipe is not stated for this sample."
+    },
+    {
+      "name": "Arkhangelsk",
+      "locality_type": "region",
+      "prefixes": [
+        "Po"
+      ],
+      "page": "236",
+      "excerpt": "and Arkhangelsk kimberlite (Po-99)",
+      "notes": "Po-99: 'Arkhangelsk kimberlite'; the pipe is not stated."
+    }
   ],
   "country_code": "RU",
   "tables": {
-    "Table 3": {"notation": {"n.d.": "not_measured"}, "footnote": "n.d. = not determined (Table 3 footnote)"},
-    "Table 4": {"notation": {}},
-    "Table 5": {"notation": {}, "uncertainty_note": "Numbers in ( ) are not defined in Table 5 (Table 6 defines them as 1 sigma); kept in the printed text only."},
-    "Table 6": {"notation": {"n.d.": "ambiguous"}, "uncertainty": "1sd",
-                "footnote": "Numbers in ( ) are the one sigma variance in analyses for the least unit cited (Table 6 footnote); n.d. is not defined in Table 6."},
-    "Table 8": {"notation": {"n.d.": "not_measured"}, "footnote": "n.d. = not determined (Table 8 footnote)"}
+    "Table 3": {
+      "notation": {
+        "n.d.": "not_measured"
+      },
+      "footnote": "n.d. = not determined (Table 3 footnote)"
+    },
+    "Table 4": {
+      "notation": {}
+    },
+    "Table 5": {
+      "notation": {},
+      "uncertainty_note": "Numbers in ( ) are not defined in Table 5 (Table 6 defines them as 1 sigma); kept in the printed text only."
+    },
+    "Table 6": {
+      "notation": {
+        "n.d.": "ambiguous"
+      },
+      "uncertainty": "1sd",
+      "footnote": "Numbers in ( ) are the one sigma variance in analyses for the least unit cited (Table 6 footnote); n.d. is not defined in Table 6."
+    },
+    "Table 8": {
+      "notation": {
+        "n.d.": "not_measured"
+      },
+      "footnote": "n.d. = not determined (Table 8 footnote)"
+    }
   },
-  "total_tolerance": 0.15
+  "total_tolerance": 0.15,
+  "extraction_method": "text_layer"
 }

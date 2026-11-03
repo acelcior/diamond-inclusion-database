@@ -7,6 +7,15 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-03 — Extraction confidence for every record
+- New table `extraction_confidence` (`schema/002_extraction_confidence.sql`) and rules `conf-v1` in
+  [confidence](confidence.md): start from how values were read (text layer high, page images medium),
+  drop to low if a printed total fails unexplained, one level down if there is no total to check,
+  curator review lifts a passing medium to high. Ambiguities in the source stay separate flags.
+- Applied backwards: Phillips 231 records high, Sobolev 63 high, Kankan II 37 medium.
+- Website: Confidence column (hover for reasons), quick filter, "Why this confidence" column.
+- **Next:** calibrate rule 1 by transcribing Phillips Table 3 from images and measuring the error rate.
+
 ## 2026-11-03 — Kankan II extracted (not yet reviewed)
 - Kankan II Tables 2–4 (37 analyses, 485 values; ferropericlase, CaSiO3, MgSiO3, siderite, microcline,
   Mg-hornblende, and the KK-83a symplectite with its bulk analysis) transcribed by Claude from page

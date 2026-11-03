@@ -41,6 +41,11 @@ def main():
         r = q(f"SELECT value_text FROM assertion WHERE {col} = ? AND property_code = ? ORDER BY id DESC", subject_id, prop)
         return r[0][0] if r else None
 
+    conf = {("i", i): (lvl, why) for i, lvl, why in q("""SELECT inclusion_observation_id, level, reasons
+              FROM extraction_confidence WHERE inclusion_observation_id IS NOT NULL""")}
+    conf.update({("d", d): (lvl, why) for d, lvl, why in q("""SELECT derived_parameter_id, level, reasons
+              FROM extraction_confidence WHERE derived_parameter_id IS NOT NULL""")})
+
     inclusions = []
     for (iid, pub, short, sample, loc, phase, printed, status, did, page, table, row, col) in q("""
             SELECT i.id, p.id, p.short_ref, s.identifier || COALESCE(i.reported_label, ''), d.reported_locality,
@@ -55,7 +60,8 @@ def main():
              "mineral_printed": printed, "paragenesis": assertion("inclusion_observation_id", iid, "paragenesis"),
              "touching": {"y": "yes", "n": "no"}.get(assertion("inclusion_observation_id", iid, "touching")),
              "assemblage": assertion("diamond_observation_id", did, "reported_assemblage"),
-             "status": status_label(status), "where": ref(page, table, row, col), "_txt": {}, "_st": {}}
+             "status": status_label(status), "where": ref(page, table, row, col), "_txt": {}, "_st": {},
+             "confidence": conf[("i", iid)][0], "confidence_why": conf[("i", iid)][1]}
         m = q("SELECT id, method_code FROM measurement WHERE inclusion_observation_id = ?", iid)
         r["method"] = m[0][1] if m else None
         r["analysed"] = "yes" if m else "no"
@@ -68,9 +74,9 @@ def main():
         inclusions.append(r)
 
     estimates = []
-    for (sid, pub, short, page, table, row, qcode, text, value, unit, method, assumptions, dstatus) in q("""
+    for (sid, pub, short, page, table, row, qcode, text, value, unit, method, assumptions, dstatus, did) in q("""
             SELECT s.id, p.id, p.short_ref, e.page, e.table_label, e.row_label, d.quantity_code, d.original_text,
-                   d.value, d.original_unit, d.method, d.assumptions, d.workflow_status
+                   d.value, d.original_unit, d.method, d.assumptions, d.workflow_status, d.id
             FROM derived_parameter d JOIN inclusion_set s ON s.id = d.inclusion_set_id
             JOIN publication p ON p.id = s.publication_id JOIN evidence e ON e.id = d.evidence_id ORDER BY d.id"""):
         members = q("""SELECT ph.name, i.diamond_observation_id,
@@ -87,7 +93,8 @@ def main():
             "paragenesis": assertion("inclusion_set_id", sid, "paragenesis"),
             "estimate": {"T_equilibration": "Temperature", "P_equilibration": "Pressure"}.get(qcode, qcode),
             "value": value, "value_text": text, "unit": {"degC": "°C"}.get(unit, unit), "method": method,
-            "assumption": assumptions, "status": status_label(dstatus), "where": ref(page, table, row, None)})
+            "assumption": assumptions, "status": status_label(dstatus), "where": ref(page, table, row, None),
+            "confidence": conf[("d", did)][0], "confidence_why": conf[("d", did)][1]})
 
     sources = []
     for (pid, doi, citation, short, notes) in q("SELECT id, doi, citation, short_ref, notes FROM publication ORDER BY year, short_ref"):
