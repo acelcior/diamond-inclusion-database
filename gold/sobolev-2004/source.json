@@ -149,5 +149,24 @@
     }
   },
   "total_tolerance": 0.15,
-  "extraction_method": "text_layer"
+  "extraction_method": "text_layer",
+  "setting": {
+    "region": {
+      "value": "Yakutia",
+      "page": "225",
+      "excerpt": "microdiamonds and macrodiamonds from kimberlites of Yakutia",
+      "by_locality": {
+        "Arkhangelsk": {
+          "value": "Arkhangelsk",
+          "page": "236",
+          "excerpt": "Arkhangelsk kimberlite (Po-99)"
+        }
+      }
+    },
+    "host_rock": {
+      "value": "kimberlite",
+      "page": "225",
+      "excerpt": "microdiamonds and macrodiamonds from kimberlites of Yakutia"
+    }
+  }
 }

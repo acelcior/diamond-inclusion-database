@@ -47,17 +47,67 @@ def main():
     conf.update({("d", d): (lvl, why) for d, lvl, why in q("""SELECT derived_parameter_id, level, reasons
               FROM extraction_confidence WHERE derived_parameter_id IS NOT NULL""")})
 
+    def decode(pub, prop, code):
+        legend = codes_by_pub.get(pub, {}).get(prop, {})
+        if not code or not legend:
+            return code
+        return "/".join(legend.get(c, c) for c in code.split("/")) + f" ({code})"
+
+    COUNTRY = {"ZA": "South Africa", "RU": "Russia", "GN": "Guinea"}
+    short_of = dict(q("SELECT id, short_ref FROM publication"))
+    pub_of_dia = dict(q("SELECT id, publication_id FROM diamond_observation"))
+    cluster = dict(q("SELECT diamond_observation_id, cluster_id FROM diamond_cluster"))
+    members = {}
+    for d, c in cluster.items():
+        members.setdefault(c, []).append(d)
+
+    def dia_prop(did, prop, decoded=True):
+        """A diamond-level value from this record, else from a linked record of the same diamond (named)."""
+        if did is None:
+            return None
+        for other in [did] + [x for x in members.get(cluster.get(did), []) if x != did]:
+            v = assertion("diamond_observation_id", other, prop)
+            if v:
+                pub = pub_of_dia[other]
+                v = decode(pub, prop, v) if decoded else v
+                return v if other == did else f"{v} [{short_of[pub]}]"
+        return None
+
+    def country(did):
+        r = q("""SELECT l.country_code FROM assertion a JOIN locality l ON l.id = a.value_locality_id
+                 WHERE a.diamond_observation_id = ? AND a.property_code = 'collection_locality'""", did) if did else []
+        return COUNTRY.get(r[0][0], r[0][0]) if r and r[0][0] else None
+
+    def depth(col, sid):
+        r = q(f"""SELECT value_text, notes FROM assertion WHERE {col} = ? AND property_code = 'formation_depth_domain'""", sid)
+        return r[0] if r else (None, None)
+
+    def clean_notes(n):
+        # inclusion notes start with where it was printed (shown elsewhere); keep only what follows
+        if not n:
+            return None
+        n = n.split("; ", 1)[1] if n.startswith("Table") and "; " in n else (None if n.startswith("Table") else n)
+        return n or None
+
     inclusions = []
-    for (iid, pub, short, sample, loc, phase, printed, status, did, page, table, row, col) in q("""
-            SELECT i.id, p.id, p.short_ref, s.identifier || COALESCE(i.reported_label, ''), d.reported_locality,
+    for (iid, pub, short, sample, loc, phase, printed, status, did, page, table, row, col, inc_label, notes) in q("""
+            SELECT i.id, p.id, p.short_ref, s.identifier, d.reported_locality,
                    ph.name, i.reported_phase,
-                   i.workflow_status, d.id, e.page, e.table_label, e.row_label, e.column_label
+                   i.workflow_status, d.id, e.page, e.table_label, e.row_label, e.column_label, i.reported_label, i.notes
             FROM inclusion_observation i JOIN publication p ON p.id = i.publication_id
             LEFT JOIN diamond_observation d ON d.id = i.diamond_observation_id
             LEFT JOIN specimen_identifier s ON s.diamond_observation_id = d.id
             LEFT JOIN phase ph ON ph.id = i.phase_id
             JOIN evidence e ON e.id = i.evidence_id ORDER BY i.id"""):
-        r = {"id": iid, "source_id": pub, "source": short, "sample": sample, "locality": loc, "mineral": phase,
+        dd, basis = depth("inclusion_observation_id", iid)
+        if dd is None:
+            dd, basis = depth("diamond_observation_id", did) if did else (None, None)
+        r = {"id": iid, "source_id": pub, "source": short, "diamond_id": sample,
+             "inclusion_id": f"{sample}{inc_label}" if inc_label else None, "locality": loc, "mineral": phase,
+             "country": country(did), "region": dia_prop(did, "region"), "host_rock": dia_prop(did, "host_rock"),
+             "diamond_type": dia_prop(did, "diamond_type"), "diamond_morphology": dia_prop(did, "shape"),
+             "color": dia_prop(did, "colour"), "formation_depth_domain": dd, "depth_interpretation_basis": basis,
+             "notes": clean_notes(notes),
              "mineral_printed": printed, "paragenesis": assertion("inclusion_observation_id", iid, "paragenesis"),
              "touching": {"y": "yes", "n": "no"}.get(assertion("inclusion_observation_id", iid, "touching")),
              "assemblage": assertion("diamond_observation_id", did, "reported_assemblage"),
@@ -65,6 +115,7 @@ def main():
              "confidence": conf[("i", iid)][0], "confidence_why": conf[("i", iid)][1]}
         m = q("SELECT id, method_code FROM measurement WHERE inclusion_observation_id = ?", iid)
         r["method"] = m[0][1] if m else None
+        r["identification_method"] = f"{m[0][1]} (phase named from its analysis)" if m and m[0][1] else None
         r["analysed"] = "yes" if m else "no"
         for code, text, value, vstatus in (q("""SELECT quantity_code, original_text, value, value_status
                                                FROM measured_value WHERE measurement_id = ?""", m[0][0]) if m else []):
@@ -100,12 +151,6 @@ def main():
     conf.update({("dia", d): (lvl, why) for d, lvl, why in q("""SELECT diamond_observation_id, level, reasons
               FROM extraction_confidence WHERE diamond_observation_id IS NOT NULL""")})
 
-    def decode(pub, prop, code):
-        legend = codes_by_pub.get(pub, {}).get(prop, {})
-        if not code or not legend:
-            return code
-        return "/".join(legend.get(c, c) for c in code.split("/")) + f" ({code})"
-
     diamonds = []
     for did, pub, short, sample, loc, status, page, table, row in q("""
             SELECT d.id, p.id, p.short_ref, s.identifier, d.reported_locality, d.workflow_status,
@@ -114,8 +159,12 @@ def main():
             LEFT JOIN specimen_identifier s ON s.diamond_observation_id = d.id
             JOIN evidence e ON e.id = d.evidence_id ORDER BY d.id"""):
         get = lambda prop: assertion("diamond_observation_id", did, prop)
+        dd, basis = depth("diamond_observation_id", did)
+        dnotes = q("SELECT notes FROM diamond_observation WHERE id = ?", did)[0][0]
         r = {"id": did, "source_id": pub, "source": short, "sample": sample, "locality": loc,
-             "shape": decode(pub, "shape", get("shape")), "colour": decode(pub, "colour", get("colour")),
+             "country": country(did), "region": get("region"), "host_rock": get("host_rock"),
+             "formation_depth_domain": dd, "depth_interpretation_basis": basis, "notes": dnotes,
+             "diamond_morphology_d": decode(pub, "shape", get("shape")), "color_d": decode(pub, "colour", get("colour")),
              "plastic_deformation": decode(pub, "plastic_deformation", get("plastic_deformation")),
              "type": get("diamond_type"), "paragenesis": get("paragenesis"), "inclusions": get("reported_assemblage"),
              "inclusions_in_db": q("SELECT COUNT(*) FROM inclusion_observation WHERE diamond_observation_id = ?", did)[0][0],
@@ -130,7 +179,7 @@ def main():
             r[code], r["_txt"][code] = value, text
             if vstatus != "reported":
                 r["_st"][code] = vstatus.replace("_", " ")
-        r["has_data"] = "yes" if r["_txt"] or r["shape"] else "no"
+        r["has_data"] = "yes" if r["_txt"] or r["diamond_morphology_d"] else "no"
         diamonds.append(r)
 
     sources = []

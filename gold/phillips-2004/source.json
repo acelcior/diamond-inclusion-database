@@ -93,5 +93,17 @@
       "DP539": "Keep both: the paper's 'Web' and the compilation's 'e' stay as separate, attributed classifications."
     }
   },
-  "extraction_method": "text_layer"
+  "extraction_method": "text_layer",
+  "setting": {
+    "region": {
+      "value": "Kimberley",
+      "page": "155",
+      "excerpt": "De Beers Pool kimberlites in Kimberley, South Africa"
+    },
+    "host_rock": {
+      "value": "kimberlite",
+      "page": "155",
+      "excerpt": "De Beers Pool kimberlites in Kimberley, South Africa"
+    }
+  }
 }

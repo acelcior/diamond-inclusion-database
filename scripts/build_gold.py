@@ -531,6 +531,41 @@ def link_shared_samples(db, papers):
                    notes="; ".join(x for x in [why, link.get("notes", {}).get(sample)] if x))
 
 
+def apply_setting(db, papers):
+    """Region, host rock and depth domain, only where a paper states them (source.json "setting"), with evidence."""
+    for p in papers.values():
+        src = json.loads((p["dir"] / "source.json").read_text())
+        cfg, pub = src.get("setting", {}), p["pub"]
+        ev_cache = {}
+
+        def ev(spec):
+            key = (spec["page"], spec["excerpt"])
+            if key not in ev_cache:
+                ev_cache[key] = insert(db, "evidence", publication_id=pub, source_type="paper", page=spec["page"],
+                                       excerpt=spec["excerpt"])
+            return ev_cache[key]
+
+        for did, loc in db.execute("SELECT id, (SELECT l.name FROM assertion a JOIN locality l ON l.id = a.value_locality_id "
+                                   "WHERE a.diamond_observation_id = d.id LIMIT 1) FROM diamond_observation d "
+                                   "WHERE publication_id = ?", (pub,)).fetchall():
+            for prop in ["region", "host_rock"]:
+                if prop in cfg:
+                    spec = cfg[prop].get("by_locality", {}).get(loc, cfg[prop])
+                    insert(db, "assertion", diamond_observation_id=did, property_code=prop, value_text=spec["value"],
+                           asserted_by="authors", value_status="reported", derivation="reported", evidence_id=ev(spec))
+        dd = cfg.get("depth_domain")
+        if dd:
+            for col, sid, text in db.execute("""SELECT CASE WHEN inclusion_observation_id IS NOT NULL THEN 'inclusion_observation_id'
+                    ELSE 'diamond_observation_id' END, COALESCE(inclusion_observation_id, diamond_observation_id), value_text
+                    FROM assertion a JOIN evidence e ON e.id = a.evidence_id
+                    WHERE a.property_code = 'paragenesis' AND e.publication_id = ?
+                    AND (inclusion_observation_id IS NOT NULL OR diamond_observation_id IS NOT NULL)""", (pub,)).fetchall():
+                if text in dd["map"]:
+                    insert(db, "assertion", **{col: sid}, property_code="formation_depth_domain", value_text=dd["map"][text],
+                           asserted_by="authors", value_status="reported", derivation="interpreted", evidence_id=ev(dd),
+                           notes=dd["basis"])
+
+
 def build(path=":memory:"):
     db = sqlite3.connect(path)
     db.execute("PRAGMA foreign_keys = ON")
@@ -547,6 +582,7 @@ def build(path=":memory:"):
         apply_review(db, folder, pub)
         papers[folder.name] = {"dir": folder, "pub": pub, "flags": flags,
                                "tol": json.loads(src.read_text()).get("total_tolerance", 0.05)}
+    apply_setting(db, papers)
     link_shared_samples(db, papers)
     assess_confidence(db, papers)
     db.commit()

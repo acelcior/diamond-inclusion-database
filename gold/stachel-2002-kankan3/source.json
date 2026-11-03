@@ -57,5 +57,17 @@
   "compilation_explained": {
     "KK-25": "Compilation has %B = 2 where the paper prints 0: the compiler substitutes 2 for values below detection (compilation dictionary).",
     "KK-68": "Compilation has %B = 2 where the paper prints 0: the compiler substitutes 2 for values below detection (compilation dictionary)."
+  },
+  "setting": {
+    "depth_domain": {
+      "map": {
+        "Lower mantle": "lower mantle",
+        "Lower Mantle": "lower mantle",
+        "Majoritic": "asthenosphere or transition zone"
+      },
+      "page": "468",
+      "excerpt": "majorite garnet (derived from the asthenosphere and the transition zone) and lower mantle inclusions",
+      "basis": "authors' paragenesis in Table 1; majoritic = asthenosphere and transition zone (text, p. 468)"
+    }
   }
 }

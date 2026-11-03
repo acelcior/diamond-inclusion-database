@@ -103,7 +103,7 @@
   </div>
 
   <div class="toolbar">
-    <input type="search" id="search" placeholder="Search all columns (sample, mineral, method…)" aria-label="Search">
+    <input type="search" id="search" placeholder="Search all columns (diamond ID, mineral, country…)" aria-label="Search">
     <span id="quick"></span>
     <button class="btn" id="cols-btn" aria-expanded="false" aria-controls="colpanel">Columns</button>
     <button class="btn" id="download">Download CSV</button>
@@ -179,31 +179,48 @@ const confCol = () => textCol("confidence", "Confidence", {
   },
 });
 
+// Columns from the requested list that no extracted paper reports yet: shown, never filled.
+const emptyCol = (field, title) => textCol(field, title + " *", { headerTooltip: "Not reported in any paper extracted so far" });
+
 const TABS = {
   inclusions: {
     url: "data/inclusions.json", file: "diamond-inclusions.csv", noun: "inclusions",
-    quick: [["mineral", "Mineral"], ["paragenesis", "Paragenesis"], ["touching", "Touching"], ["source", "Source"],
-            ["confidence", "Confidence"]],
+    quick: [["mineral", "Mineral"], ["country", "Country"], ["paragenesis", "Paragenesis"], ["touching", "Touching"],
+            ["source", "Source"], ["confidence", "Confidence"]],
     toggles: [["analysed", "yes", "Analysed only", true]],
-    essentials: ["sample", "mineral", "mineral_printed", "locality", "SiO2", "Al2O3", "Cr2O3", "FeOT", "FeO", "MgO", "CaO",
+    essentials: ["diamond_id", "inclusion_id", "mineral", "mineral_printed", "country", "locality", "diamond_type",
+                 "paragenesis", "formation_depth_domain", "SiO2", "Al2O3", "Cr2O3", "FeOT", "FeO", "MgO", "CaO",
                  "oxide_total", "source", "confidence", "status"],
     legend: "Chemistry in wt% oxide, as printed. <span class='na'>na</span>, <span class='na'>n.d.</span> = not analysed " +
             "(as defined by the source); <span class='na'>&lt;0.03</span>, <span class='na'>≤0.01</span> = below detection or upper limit; " +
             "FeO (total Fe) only where the source says so, otherwise FeO as printed; 41.7 (2) = value with its " +
             "uncertainty in the last digit. " +
             "<span class='amb'>nd</span> = notation the source does not define, so it is left uninterpreted. " +
+            "Diamond values in [brackets] come from another paper's record of the same diamond (approved link). " +
+            "Columns marked * are not reported in any paper extracted so far. " +
             "Number filters accept 40, &gt;40, &lt;1 or 40-45. Confidence says how sure we are that a record matches " +
             "what the paper printed (not whether the science is right); hover it for the reasons.",
     groups(meta) {
       return [
-        ["Identification", [textCol("sample", "Sample", { frozen: true }), textCol("mineral", "Mineral"),
-                            textCol("mineral_printed", "Mineral as printed")]],
-        ["Context", [textCol("locality", "Locality"), textCol("paragenesis", "Paragenesis"),
-                     textCol("touching", "Touching"), textCol("assemblage", "Diamond's assemblage"),
-                     textCol("analysed", "Analysed"), textCol("method", "Method")]],
+        ["Identification", [textCol("diamond_id", "Diamond ID", { frozen: true }), textCol("inclusion_id", "Inclusion ID"),
+                            textCol("mineral", "Mineral name"), textCol("mineral_printed", "Mineral as printed")]],
+        ["Diamond and setting", [textCol("country", "Country"), textCol("region", "Region"), emptyCol("craton", "Craton"),
+                                 textCol("locality", "Locality"), textCol("host_rock", "Host rock"),
+                                 emptyCol("weight_carat", "Weight (ct)"), textCol("color", "Color"),
+                                 emptyCol("transparency", "Transparency"), textCol("diamond_morphology", "Diamond morphology"),
+                                 emptyCol("resorption_surface_features", "Resorption / surface features"),
+                                 emptyCol("fracture_features", "Fracture features"), textCol("diamond_type", "Diamond type"),
+                                 emptyCol("growth_structure", "Growth structure")]],
+        ["Inclusion context", [textCol("paragenesis", "Paragenesis"), textCol("touching", "Touching"),
+                               textCol("assemblage", "Diamond's assemblage"), textCol("analysed", "Analysed"),
+                               textCol("identification_method", "Identification method"),
+                               textCol("formation_depth_domain", "Formation depth domain"),
+                               textCol("depth_interpretation_basis", "Depth interpretation basis"),
+                               emptyCol("relative_timing", "Relative timing"), emptyCol("timing_basis", "Timing basis")]],
         ["Chemistry (wt%)", meta.oxides.map(o => oxideCol(o.code, o.label))],
         ["Provenance", [textCol("source", "Source"), textCol("where", "Printed at"), confCol(),
-                        textCol("confidence_why", "Why this confidence"), textCol("status", "Review status")]],
+                        textCol("confidence_why", "Why this confidence"), textCol("status", "Review status"),
+                        textCol("notes", "Notes")]],
       ];
     },
   },
@@ -211,21 +228,29 @@ const TABS = {
     url: "data/diamonds.json", file: "diamonds.csv", noun: "diamond records",
     quick: [["paragenesis", "Paragenesis"], ["type", "Type"], ["source", "Source"], ["confidence", "Confidence"]],
     toggles: [["has_data", "yes", "With diamond data only", true]],
-    essentials: ["sample", "locality", "shape", "colour", "d13C", "type", "N_content", "N_pct_B", "paragenesis",
-                 "inclusions", "also_in", "source", "confidence", "status"],
+    essentials: ["sample", "country", "locality", "diamond_morphology_d", "color_d", "d13C", "type", "N_content", "N_pct_B",
+                 "paragenesis", "formation_depth_domain", "inclusions", "also_in", "source", "confidence", "status"],
     legend: "One row per diamond as reported by one paper; the same diamond in two papers appears twice, linked under " +
             "Also reported in. δ¹³C in ‰; nitrogen in atomic ppm. For Type II diamonds the printed 0 is stored as " +
             "<span class='na'>below detection</span> and %B as not applicable, as the paper defines Type II.",
     groups() {
       return [
-        ["Identification", [textCol("sample", "Sample", { frozen: true }), textCol("locality", "Locality")]],
-        ["Description", [textCol("shape", "Shape"), textCol("colour", "Colour"), textCol("plastic_deformation", "Plastic deformation"),
-                         textCol("type", "Type"), textCol("paragenesis", "Paragenesis"),
+        ["Identification", [textCol("sample", "Diamond ID", { frozen: true })]],
+        ["Setting", [textCol("country", "Country"), textCol("region", "Region"), emptyCol("craton", "Craton"),
+                     textCol("locality", "Locality"), textCol("host_rock", "Host rock")]],
+        ["Description", [emptyCol("weight_carat", "Weight (ct)"), textCol("color_d", "Color"),
+                         emptyCol("transparency", "Transparency"), textCol("diamond_morphology_d", "Diamond morphology"),
+                         emptyCol("resorption_surface_features", "Resorption / surface features"),
+                         emptyCol("fracture_features", "Fracture features"), textCol("plastic_deformation", "Plastic deformation"),
+                         textCol("type", "Diamond type"), emptyCol("growth_structure", "Growth structure"),
+                         textCol("paragenesis", "Paragenesis"), textCol("formation_depth_domain", "Formation depth domain"),
+                         textCol("depth_interpretation_basis", "Depth interpretation basis"),
                          textCol("inclusions", "Inclusions (as printed)"), numCol("inclusions_in_db", "Inclusion records"),
                          textCol("also_in", "Also reported in")]],
         ["Measurements", [oxideCol("d13C", "δ¹³C (‰)"), oxideCol("N_content", "N (at. ppm)"), oxideCol("N_pct_B", "%B")]],
         ["Provenance", [textCol("source", "Source"), textCol("where", "Printed at"), confCol(),
-                        textCol("confidence_why", "Why this confidence"), textCol("status", "Review status")]],
+                        textCol("confidence_why", "Why this confidence"), textCol("status", "Review status"),
+                        textCol("notes", "Notes")]],
       ];
     },
   },
@@ -270,7 +295,7 @@ function applyVisibility() {
     const show = s.chosen.has(f) && (!hideEmpty || hasValue(rows, f));
     show ? col.show() : col.hide();
   }
-  store.set("cols4:" + active, [...s.chosen]);
+  store.set("cols5:" + active, [...s.chosen]);
   store.set("hideEmpty", hideEmpty);
 }
 
@@ -311,7 +336,7 @@ function showDetails(d) {
     const st = d._st?.[c.field];
     return `<dt>${esc(c.title)}</dt><dd>${esc(v)}${st ? ` <span class="na">(${esc(st)})</span>` : ""}</dd>`;
   }).join("");
-  $("#details-body").innerHTML = `<h2 style="margin:0;font-size:19px">${esc(d.sample || "")} ${esc(d.mineral || d.estimate || "")}</h2>
+  $("#details-body").innerHTML = `<h2 style="margin:0;font-size:19px">${esc(d.inclusion_id || d.diamond_id || d.sample || "")} ${esc(d.mineral || d.estimate || "")}</h2>
     <p class="meta" style="font-size:13px">Confidence: ${esc(d.confidence)}. ${esc(d.confidence_why)}</p>
     <dl>${items}</dl>` + (src ? `<p class="meta" style="font-size:13px">${esc(src.citation)} ` +
     (src.doi ? `<a href="https://doi.org/${esc(src.doi)}" target="_blank" rel="noopener">doi:${esc(src.doi)}</a>` : "") + `</p>` : "");
@@ -323,7 +348,7 @@ async function initTab(tab) {
   const cfg = TABS[tab];
   const data = await (await fetch(cfg.url)).json();
   const groups = cfg.groups(meta);
-  const saved = store.get("cols4:" + tab);
+  const saved = store.get("cols5:" + tab);
   const s = state[tab] = { data, groups, quick: {}, toggles: {},
     chosen: new Set(saved && saved.length ? saved : cfg.essentials) };
   for (const [f, , , on] of cfg.toggles) s.toggles[f] = on;

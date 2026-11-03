@@ -7,6 +7,20 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-03 — Requested columns added to the website
+- Renamed: Sample → Diamond ID (+ Inclusion ID where a label is printed, e.g. KK-16a), Mineral →
+  Mineral name, Shape → Diamond morphology, Colour → Color, Type → Diamond type.
+- New, filled only where a paper states it (with page and quote): country, region (Kimberley,
+  Yakutia, Arkhangelsk), host rock (kimberlite), formation depth domain + basis (Kankan "l.m." →
+  lower mantle; Kankan III majoritic → asthenosphere or transition zone, p. 468), identification
+  method (EPMA where the phase is named from its analysis), notes.
+- Inclusions inherit diamond-level values from another paper's record of the same diamond only
+  through an approved identity link, labelled with that paper (e.g. KK-16a type `II [Stachel et al. (2002)]`).
+- Empty, marked *: craton, weight_carat, transparency, resorption/surface features, fracture
+  features, growth structure, relative timing, timing basis (not reported in any extracted paper).
+- New `apply_setting` step in `scripts/build_gold.py`; properties region, host_rock,
+  formation_depth_domain in `vocab/property.csv`.
+
 ## 2026-11-03 — Kankan II–III diamond links approved
 - User compared both papers' inclusion lists for the 15 shared KK numbers and approved all 15
   links; recorded in `gold/identity-links.json` (read by `link_shared_samples`). Records stay
