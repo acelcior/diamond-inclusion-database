@@ -18,3 +18,6 @@ P_equilibration,derived,GPa,Equilibration pressure from a barometer
 P2O5,oxide,wt%,
 FeO,oxide,wt%,FeO as printed; the source does not say whether it is total iron
 SrO,oxide,wt%,
+d13C,isotope_delta,permil,δ13C of the host diamond
+N_content,concentration,at_ppm,Nitrogen content of the host diamond
+N_pct_B,other,percent,Percentage of nitrogen in B centres (%B)

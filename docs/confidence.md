@@ -14,7 +14,7 @@ Levels are computed by the rules below in `scripts/build_gold.py` (`assess_confi
 in `extraction_confidence` with the rule version, so every level can be traced and recomputed.
 Related: [schema issues](schema-issues.md) · [log](log.md)
 
-## Rules, version `conf-v2` (from 2026-11-03; `conf-v1` had no calibration step)
+## Rules, version `conf-v3` (from 2026-11-03; v1 had no calibration step, v2 no independent-copy check)
 
 1. **Start from how the values were read**:
    - spreadsheet or machine-readable supplement → *high*
@@ -29,9 +29,12 @@ Related: [schema issues](schema-issues.md) · [log](log.md)
    out (matches, or differs for a reason the source gives) is raised to *high*. Image-read records
    with no total to check stay *medium*: the calibration doesn't cover the errors only a total
    would catch.
-4. **Curator review**: a paper approved after a spot-check against the PDF raises a *medium*
+4. **Independent copy** (new in v3, host-diamond records): if a compilation that cites this paper
+   (an independent transcription) has the same values, the record is *high*. If it differs and the
+   difference isn't explained (e.g. by a documented compiler convention), the record is *low*.
+5. **Curator review**: a paper approved after a spot-check against the PDF raises a *medium*
    record whose total check passed to *high*. Review never raises a *low*.
-5. Records **named but not analysed** (a phase listed in an assemblage) keep the level from rule 1.
+6. Records **named but not analysed** (a phase listed in an assemblage) keep the level from rule 1.
 
 ## What the levels mean in practice
 

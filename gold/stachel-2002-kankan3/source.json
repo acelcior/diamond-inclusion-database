@@ -1,0 +1,61 @@
+{
+  "publication": {
+    "doi": "10.1007/s004100100297",
+    "citation": "Stachel, T., Harris, J.W., Aulbach, S., Deines, P. (2002). Kankan diamonds (Guinea) III: δ13C and nitrogen characteristics of deep diamonds. Contributions to Mineralogy and Petrology 142, 465-475.",
+    "short_ref": "Stachel et al. (2002)",
+    "year": 2002,
+    "pub_type": "journal_article",
+    "notes": "Table 1 (pp. 467-468): shape, colour, deformation, δ13C, nitrogen content and aggregation, paragenesis and inclusions of 91 Kankan diamonds."
+  },
+  "source_file": {
+    "file_role": "main_text",
+    "filename": "stachel-2002-kankan3.pdf"
+  },
+  "tool": "Transcribed by Claude from 220-dpi page images of pp. 467-468 (the text layer is unreadable) + scripts/build_gold.py",
+  "extraction_method": "image_transcription",
+  "diamonds": "diamonds.csv",
+  "locality": {
+    "name": "Kankan",
+    "reported": "Kankan (Guinea)",
+    "page": "467",
+    "excerpt": "Physical and chemical characteristics of Kankan diamonds"
+  },
+  "units": {
+    "N_ppm": {
+      "unit": "at_ppm",
+      "page": "468",
+      "excerpt": "from below detection up to 1,313 atomic ppm"
+    }
+  },
+  "type_II_rule": {
+    "page": "468",
+    "excerpt": "all lower mantle diamonds are Type II (i.e. nitrogen below detection)"
+  },
+  "codes": {
+    "shape": {
+      "o": "octahedral",
+      "d": "dodecahedral",
+      "m": "macle",
+      "i": "irregular",
+      "a": "aggregate",
+      "twin": "twin"
+    },
+    "colour": {
+      "c": "colourless",
+      "b": "brownish"
+    },
+    "plastic_deformation": {
+      "y": "present",
+      "n": "absent"
+    },
+    "page": "467",
+    "excerpt": "Shape: o octahedral, d dodecahedral, m macle, i irregular, a aggregate. Colour: c colourless, b brownish."
+  },
+  "notes_per_sample": {
+    "KK-47": "Printed as Type IaA with %B = 100, which contradicts IaA; source inconsistency, kept as printed. The compilation has the same values."
+  },
+  "compilation_explained": {
+    "KK-25": "Compilation has %B = 2 where the paper prints 0: the compiler substitutes 2 for values below detection (compilation dictionary).",
+    "KK-68": "Compilation has %B = 2 where the paper prints 0: the compiler substitutes 2 for values below detection (compilation dictionary)."
+  }
+}

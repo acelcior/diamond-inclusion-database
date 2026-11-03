@@ -29,7 +29,8 @@ def ref(page, table, row, col):
 
 
 def main():
-    db, _ = build_gold.build()  # all papers in gold/
+    db, papers = build_gold.build()  # all papers in gold/
+    codes_by_pub = {pp["pub"]: json.loads((pp["dir"] / "source.json").read_text()).get("codes", {}) for pp in papers.values()}
     q = lambda sql, *a: db.execute(sql, a).fetchall()
 
     # oxide columns in vocab order, only those that hold data
@@ -96,6 +97,42 @@ def main():
             "assumption": assumptions, "status": status_label(dstatus), "where": ref(page, table, row, None),
             "confidence": conf[("d", did)][0], "confidence_why": conf[("d", did)][1]})
 
+    conf.update({("dia", d): (lvl, why) for d, lvl, why in q("""SELECT diamond_observation_id, level, reasons
+              FROM extraction_confidence WHERE diamond_observation_id IS NOT NULL""")})
+
+    def decode(pub, prop, code):
+        legend = codes_by_pub.get(pub, {}).get(prop, {})
+        if not code or not legend:
+            return code
+        return "/".join(legend.get(c, c) for c in code.split("/")) + f" ({code})"
+
+    diamonds = []
+    for did, pub, short, sample, loc, status, page, table, row in q("""
+            SELECT d.id, p.id, p.short_ref, s.identifier, d.reported_locality, d.workflow_status,
+                   e.page, e.table_label, e.row_label
+            FROM diamond_observation d JOIN publication p ON p.id = d.publication_id
+            LEFT JOIN specimen_identifier s ON s.diamond_observation_id = d.id
+            JOIN evidence e ON e.id = d.evidence_id ORDER BY d.id"""):
+        get = lambda prop: assertion("diamond_observation_id", did, prop)
+        r = {"id": did, "source_id": pub, "source": short, "sample": sample, "locality": loc,
+             "shape": decode(pub, "shape", get("shape")), "colour": decode(pub, "colour", get("colour")),
+             "plastic_deformation": decode(pub, "plastic_deformation", get("plastic_deformation")),
+             "type": get("diamond_type"), "paragenesis": get("paragenesis"), "inclusions": get("reported_assemblage"),
+             "inclusions_in_db": q("SELECT COUNT(*) FROM inclusion_observation WHERE diamond_observation_id = ?", did)[0][0],
+             "also_in": ", ".join(f"{x} (link pending review)" if st != "approved" else x for x, st in q("""
+                 SELECT p2.short_ref, l.workflow_status FROM diamond_identity_link l
+                 JOIN diamond_observation d2 ON d2.id = CASE WHEN l.observation_a = ? THEN l.observation_b ELSE l.observation_a END
+                 JOIN publication p2 ON p2.id = d2.publication_id WHERE ? IN (l.observation_a, l.observation_b)""", did, did)) or None,
+             "status": status_label(status), "where": ref(page, table, row, None),
+             "confidence": conf[("dia", did)][0], "confidence_why": conf[("dia", did)][1], "_txt": {}, "_st": {}}
+        for code, text, value, vstatus in q("""SELECT v.quantity_code, v.original_text, v.value, v.value_status
+                FROM measured_value v JOIN measurement m ON m.id = v.measurement_id WHERE m.diamond_observation_id = ?""", did):
+            r[code], r["_txt"][code] = value, text
+            if vstatus != "reported":
+                r["_st"][code] = vstatus.replace("_", " ")
+        r["has_data"] = "yes" if r["_txt"] or r["shape"] else "no"
+        diamonds.append(r)
+
     sources = []
     for (pid, doi, citation, short, notes) in q("SELECT id, doi, citation, short_ref, notes FROM publication ORDER BY year, short_ref"):
         n = lambda sql: q(sql, pid)[0][0]
@@ -107,8 +144,11 @@ def main():
                              ON i.id = m.inclusion_observation_id WHERE i.publication_id = ?"""),
             "estimates": n("""SELECT COUNT(*) FROM derived_parameter d JOIN evidence e ON e.id = d.evidence_id
                               WHERE e.publication_id = ?"""),
+            "diamond_data": n("""SELECT COUNT(DISTINCT m.diamond_observation_id) FROM measurement m
+                                 JOIN diamond_observation d ON d.id = m.diamond_observation_id WHERE d.publication_id = ?"""),
             "status": sorted({status_label(s) for (s,) in q(
-                "SELECT DISTINCT workflow_status FROM inclusion_observation WHERE publication_id = ?", pid)}),
+                """SELECT workflow_status FROM inclusion_observation WHERE publication_id = ?
+                   UNION SELECT workflow_status FROM diamond_observation WHERE publication_id = ?""", pid, pid)}),
         })
 
     meta = {"oxides": [{"code": c, "label": label(c)} for c in oxides],
@@ -117,7 +157,8 @@ def main():
                        "values": q("SELECT COUNT(*) FROM measured_value")[0][0], "estimates": len(estimates)}}
 
     OUT.mkdir(parents=True, exist_ok=True)
-    for name, obj in [("inclusions", inclusions), ("estimates", estimates), ("sources", sources), ("meta", meta)]:
+    for name, obj in [("inclusions", inclusions), ("estimates", estimates), ("diamonds", diamonds),
+                      ("sources", sources), ("meta", meta)]:
         (OUT / f"{name}.json").write_text(json.dumps(obj, ensure_ascii=False, separators=(",", ":")), encoding="utf-8")
     print(meta["counts"], [o["code"] for o in meta["oxides"]])
 

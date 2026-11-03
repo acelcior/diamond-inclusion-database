@@ -3,3 +3,7 @@ paragenesis,any,"Paragenesis or suite as stated (peridotitic, harzburgitic, eclo
 touching,inclusion,Whether the inclusion was touching (intergrown with) another inclusion
 reported_assemblage,diamond,All phases the source lists for the diamond
 collection_locality,diamond,Reported collection locality (mine/pipe/deposit)
+shape,diamond,Diamond shape as reported
+colour,diamond,Diamond colour as reported
+plastic_deformation,diamond,Plastic deformation present (y) or absent (n)
+diamond_type,diamond,"Nitrogen-based diamond type (II, IaA, IaAB, IaB...)"

@@ -31,3 +31,11 @@ Related: [roadmap](roadmap.md) · [decisions](decisions/README.md) · [Phillips 
 | S-11 | The same label in different tables (Sobolev AL-1: chromite in Table 4, eclogitic garnet in Table 5) may or may not be one diamond. | Kept as separate diamonds unless the text links them (Yum-27). | Record a `pending_review` identity link when labels repeat, so a curator decides. |
 | S-12 | A printed Total can leave out an oxide the row reports (Kankan II KK-66a, KK-87a omit SrO). | Recorded in `source.json` `total_notes`; values unchanged. | Optional note on the `oxide_total` value saying which oxides it sums. |
 | S-13 | Whether `FeO` means total iron is often unstated. | `FeO` kept as its own quantity; `FeOT` only where the source says total iron. | Keep; add a conversion rule only when a source states Fe³⁺ handling. |
+
+## From Kankan III (Stachel et al. 2002)
+
+| # | Issue | What we did for now | Likely fix |
+|---|---|---|---|
+| S-14 | A printed `0` can mean "below detection" (Type II nitrogen) or a real zero (%B = 0 for IaA). Only the paper's definitions say which. | Type II: N `0` → `below_detection`, %B `0` → `not_applicable`, with the p. 468 evidence. | Keep; record the rule per paper in `source.json`. |
+| S-15 | Inclusion lists per diamond (`2 Fe-per, MgSiO3, siderite`; `cpx-opx` = touching pair) are stored as text only, not as inclusion records. | `reported_assemblage` assertion; shown on the Diamonds tab. | Parse into named-only inclusion observations with counts, once a rule for `altered`, `Ca-silicates` and `?` is agreed. |
+| S-16 | Analytical methods for δ¹³C and nitrogen are not in Table 1, and the text layer can't be read. | `method_code` NULL with a note. | Read the methods section from the page images. |

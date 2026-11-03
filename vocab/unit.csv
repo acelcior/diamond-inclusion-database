@@ -2,3 +2,6 @@ code,dimension,description
 wt%,mass_fraction,Weight percent
 degC,temperature,Degrees Celsius
 GPa,pressure,Gigapascal
+at_ppm,atomic_fraction,Atomic parts per million
+permil,isotope_delta,Per mil (‰)
+percent,fraction,Percent

@@ -7,6 +7,19 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-03 — Kankan III extracted; Diamonds tab
+- Kankan III Table 1 (91 diamonds: shape, colour, deformation, δ13C, type, N, %B, paragenesis,
+  inclusion list) transcribed from 220-dpi page images. Checks: matches every statistic the text
+  gives (majoritic δ13C −3.13 to +0.89, mean −1.29; 36 lower-mantle diamonds, all Type II; N ranges),
+  and **268 of 270 values match the Stachel compilation** (`scripts/compare_kankan3.py`); the two
+  differences are the compiler's documented %B = 2 substitution. KK-47 (IaA with %B = 100) is a
+  source inconsistency.
+- New `load_diamonds`; Type II N `0` stored as below detection. 15 pending-review identity links to
+  Kankan II diamonds with the same KK number. Confidence rules `conf-v3` (independent-copy check):
+  90 diamonds high, KK-41 medium (not in the compilation).
+- Website: new Diamonds tab (one row per diamond per paper, decoded shape/colour codes, δ13C/N/%B,
+  inclusion list, Also reported in).
+
 ## 2026-11-03 — Calibration test 2; confidence rules v2
 - Gress 2021 Table 5 (unseen; negative values, dashes, blanks) transcribed from images:
   **0 errors in 97 values**; planted sign/misread/swap errors caught. Combined with test 1:

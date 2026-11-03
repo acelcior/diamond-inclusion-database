@@ -67,6 +67,18 @@ class GoldTest(unittest.TestCase):
         with self.assertRaises(build_gold.sqlite3.IntegrityError):
             self.db.execute("INSERT INTO extraction_confidence (level, reasons, rule_version) VALUES ('high', 'x', 'v')")
 
+    def test_kankan3_diamonds(self):
+        pub = self.papers["stachel-2002-kankan3"]["pub"]
+        self.assertEqual(self.one(f"SELECT COUNT(*) FROM diamond_observation WHERE publication_id = {pub}"), 91)
+        # Type II: printed N = 0 means below detection (p. 468), never a measured zero
+        self.assertEqual(self.one(f"""SELECT COUNT(*) FROM measured_value v JOIN measurement m ON m.id = v.measurement_id
+            JOIN diamond_observation d ON d.id = m.diamond_observation_id JOIN assertion a ON a.diamond_observation_id = d.id
+            AND a.property_code = 'diamond_type' AND a.value_text = 'II'
+            WHERE d.publication_id = {pub} AND v.quantity_code = 'N_content' AND v.value_status <> 'below_detection'"""), 0)
+        # same KK number in Kankan II and III: linked for review, never merged
+        self.assertEqual(self.one("SELECT COUNT(*) FROM diamond_identity_link WHERE workflow_status <> 'pending_review'"), 0)
+        self.assertGreater(self.one("SELECT COUNT(*) FROM diamond_identity_link"), 0)
+
     def test_every_phase_mapped(self):
         # Phillips and Sobolev map fully; Kankan II keeps uncertain names (e.g. 'Olivine?', 'Fper-(ol)') unmapped on purpose
         self.assertEqual(self.one(f"SELECT COUNT(*) FROM inclusion_observation WHERE phase_id IS NULL AND publication_id IN "

@@ -47,7 +47,7 @@ What follows from that:
 ## Phase 2 — Gold standard from real papers
 - [x] Hand-curate seed paper 1 into the schema (Claude drafts, you verify): Phillips 2004, approved 2026-11-03 → [review page](../gold/phillips-2004/README.md)
 - [ ] Record every awkward fit as a schema issue → revise schema *(8 so far: [schema issues](schema-issues.md))*
-- [ ] Curate seed papers 2–5, covering different reporting styles *(Sobolev 2004 and Kankan II extracted, awaiting review; Kankan III next)*
+- [ ] Curate seed papers 2–5, covering different reporting styles *(Sobolev 2004, Kankan II and Kankan III extracted, awaiting review)*
 - [ ] Freeze gold set in `gold/` (versioned)
 
 **Exit gate:** all seed papers representable without loss or forced certainty; schema v1 tagged.

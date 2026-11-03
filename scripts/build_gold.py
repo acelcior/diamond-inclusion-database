@@ -374,7 +374,7 @@ def write_simple_review(db, paper, res):
     (folder / "README.md").write_text("\n".join(L), encoding="utf-8")
 
 
-RULES = "conf-v2"  # docs/confidence.md
+RULES = "conf-v3"  # docs/confidence.md (v3 adds the independent-copy check for host-diamond records)
 BASE = {"spreadsheet": ("high", "read from a spreadsheet"),
         "text_layer": ("high", "read from the PDF text layer by column position, checked against page images"),
         "image_transcription": ("medium", "transcribed by eye from page images")}
@@ -388,7 +388,7 @@ def assess_confidence(db, papers):
         base, why = BASE[src["extraction_method"]]
         approved = (src.get("review") or {}).get("workflow_status") == "approved"
         explained = set(src.get("total_notes", {}))
-        res = checks(db, p["pub"], p["tol"])
+        res = checks(db, p["pub"], p["tol"]) if "diamonds" not in src else {"sums": [], "sum_mismatch": []}
         state = {}
         for mid, _, row, *_ in res["sums"]:
             state[mid] = "match"
@@ -418,6 +418,29 @@ def assess_confidence(db, papers):
                     level = "high"
             insert(db, "extraction_confidence", inclusion_observation_id=iid, level=level,
                    reasons="; ".join(reasons), rule_version=RULES)
+        comp = {r["sample_no"]: r["result"] for r in rows(p["dir"] / "compilation-check.csv")} \
+            if (p["dir"] / "compilation-check.csv").exists() and "diamonds" in src else {}
+        explained_comp = src.get("compilation_explained", {})
+        for dia, sample, n_meas in db.execute("""SELECT d.id, s.identifier, (SELECT COUNT(*) FROM measurement m
+                WHERE m.diamond_observation_id = d.id) FROM diamond_observation d
+                JOIN specimen_identifier s ON s.diamond_observation_id = d.id WHERE d.publication_id = ?""",
+                                              (p["pub"],)).fetchall():
+            level, reasons = base, [why]
+            if n_meas:
+                result = comp.get(sample, "")
+                if (" ok" in result and "DIFF" not in result) or sample in explained_comp:
+                    level = "high"  # conf-v3: two independent transcriptions agree
+                    reasons.append("values match the Stachel compilation, an independent transcription citing this paper"
+                                   + (" (one difference explained by the compiler's conventions)" if sample in explained_comp else ""))
+                elif "DIFF" in result:
+                    level = "low"
+                    reasons.append("values differ from the Stachel compilation: " + result)
+                else:
+                    reasons.append("no printed total or independent copy to check against")
+            if approved:
+                reasons.append("paper spot-checked against the PDF by a curator")
+            insert(db, "extraction_confidence", diamond_observation_id=dia, level=level,
+                   reasons="; ".join(reasons), rule_version=RULES)
         for (did,) in db.execute("""SELECT d.id FROM derived_parameter d JOIN evidence e ON e.id = d.evidence_id
                                     WHERE e.publication_id = ?""", (p["pub"],)).fetchall():
             reasons = [why, "no printed check value for estimates"]
@@ -429,6 +452,80 @@ def assess_confidence(db, papers):
                    reasons="; ".join(reasons), rule_version=RULES)
 
 
+def load_diamonds(db, folder):
+    """Host-diamond tables (gold/<paper>/diamonds.csv): one row per diamond, values as printed."""
+    src = json.loads((folder / "source.json").read_text())
+    flags = []
+    pub = insert(db, "publication", **src["publication"])
+    sf = insert(db, "source_file", publication_id=pub, **src["source_file"])
+    run = insert(db, "import_run", run_type="claude_extraction", started_at=date.today().isoformat(),
+                 tool=src.get("tool"), operator="Claude (Claude Code); values to be verified by a curator")
+
+    def evidence(**kw):
+        return insert(db, "evidence", publication_id=pub, source_file_id=sf, source_type="paper", import_run_id=run, **kw)
+
+    loc = src["locality"]
+    loc_ev = evidence(page=loc["page"], excerpt=loc["excerpt"])
+    loc_id = insert(db, "locality", name=loc["name"], locality_type="district", country_code="GN",
+                    precision_class="approximate", notes="No coordinates entered yet (Phase 6 gazetteer).")
+    unit_ev = evidence(**{k: src["units"]["N_ppm"][k] for k in ("page", "excerpt")})
+    type2_ev = evidence(**src["type_II_rule"])
+    for r in rows(folder / src["diamonds"]):
+        where = f"{r['table']}, p. {r['page']}, {r['sample_no']}"
+        ev = evidence(page=r["page"], table_label=r["table"], row_label=r["sample_no"],
+                      excerpt=" ".join(r[c] for c in ["sample_no", "shape", "colour", "plastic_deformation", "d13C",
+                                                     "type", "N_ppm", "pct_B", "paragenesis", "inclusions"] if r[c]))
+        d = insert(db, "diamond_observation", publication_id=pub, evidence_id=ev, reported_locality=loc["reported"],
+                   import_run_id=run, notes=src.get("notes_per_sample", {}).get(r["sample_no"]))
+        insert(db, "specimen_identifier", diamond_observation_id=d, identifier=r["sample_no"], id_type="author_sample")
+        a = lambda prop, text, derivation="reported", e=ev: insert(
+            db, "assertion", diamond_observation_id=d, property_code=prop, value_text=text, asserted_by="authors",
+            value_status="reported", derivation=derivation, evidence_id=e)
+        a("collection_locality", loc["reported"], e=loc_ev)
+        db.execute("UPDATE assertion SET value_locality_id = ? WHERE id = (SELECT MAX(id) FROM assertion)", (loc_id,))
+        for prop in ["shape", "colour", "plastic_deformation"]:
+            a(prop, r[prop])
+        a("diamond_type", r["type"], "interpreted")
+        a("paragenesis", r["paragenesis"], "interpreted")
+        if r["inclusions"]:
+            a("reported_assemblage", r["inclusions"])
+        m = insert(db, "measurement", diamond_observation_id=d, evidence_id=ev, import_run_id=run,
+                   notes="δ13C; method not recorded here (text layer unreadable)")
+        insert(db, "measured_value", measurement_id=m, quantity_code="d13C", original_text=r["d13C"], original_unit="‰",
+               value=float(r["d13C"]), value_status="reported", derivation="reported")
+        m = insert(db, "measurement", diamond_observation_id=d, evidence_id=ev, import_run_id=run,
+                   notes="Nitrogen content and aggregation; method not recorded here (text layer unreadable)")
+        type2 = r["type"] == "II"
+        n_status = "below_detection" if type2 and r["N_ppm"] == "0" else "reported"
+        insert(db, "measured_value", measurement_id=m, quantity_code="N_content", original_text=r["N_ppm"],
+               original_unit="ppm (atomic, p. 468)", value=None if n_status != "reported" else float(r["N_ppm"].replace(",", "")),
+               value_status=n_status, derivation="reported", evidence_id=type2_ev if type2 else unit_ev)
+        b_status = "not_applicable" if type2 and r["pct_B"] == "0" else "reported"
+        insert(db, "measured_value", measurement_id=m, quantity_code="N_pct_B", original_text=r["pct_B"], original_unit="%B",
+               value=None if b_status != "reported" else float(r["pct_B"]), value_status=b_status, derivation="reported",
+               evidence_id=type2_ev if type2 else None)
+        if r["sample_no"] in src.get("notes_per_sample", {}):
+            flags.append(("source inconsistency", where, src["notes_per_sample"][r["sample_no"]]))
+    flags.append(("interpretation", "Type II rows", "Printed N = 0 stored as below detection and %B = 0 as not "
+                  "applicable, because the paper defines Type II as nitrogen below detection (p. 468)."))
+    return flags, pub
+
+
+def link_shared_samples(db, papers, pairs):
+    """Pending-review identity links between diamonds that two papers of one series report under the same number."""
+    for a, b, why in pairs:
+        if a not in papers or b not in papers:
+            continue
+        for da, db_ in db.execute("""SELECT da.id, dbb.id FROM diamond_observation da
+                JOIN specimen_identifier sa ON sa.diamond_observation_id = da.id
+                JOIN specimen_identifier sb ON sb.identifier = sa.identifier
+                JOIN diamond_observation dbb ON dbb.id = sb.diamond_observation_id
+                WHERE da.publication_id = ? AND dbb.publication_id = ?""", (papers[a]["pub"], papers[b]["pub"])).fetchall():
+            lo, hi = sorted((da, db_))
+            insert(db, "diamond_identity_link", observation_a=lo, observation_b=hi, basis="shared_sample_id",
+                   asserted_by="curator", confidence="high", workflow_status="pending_review", notes=why)
+
+
 def build(path=":memory:"):
     db = sqlite3.connect(path)
     db.execute("PRAGMA foreign_keys = ON")
@@ -438,11 +535,15 @@ def build(path=":memory:"):
     papers = {}
     for src in sorted(GOLD.glob("*/source.json")):
         folder = src.parent
-        loader = load_phillips if (folder / "table4.csv").exists() else load_simple
+        kind = json.loads(src.read_text())
+        loader = (load_phillips if (folder / "table4.csv").exists() else load_diamonds if "diamonds" in kind
+                  else load_simple)
         flags, pub = loader(db, folder)
         apply_review(db, folder, pub)
         papers[folder.name] = {"dir": folder, "pub": pub, "flags": flags,
                                "tol": json.loads(src.read_text()).get("total_tolerance", 0.05)}
+    link_shared_samples(db, papers, [("stachel-2000-kankan2", "stachel-2002-kankan3",
+                                      "Same KK number in the same 'Kankan diamonds (Guinea)' series by the same authors")])
     assess_confidence(db, papers)
     db.commit()
     return db, papers
@@ -465,7 +566,7 @@ def checks(db, pub, tol=0.05):
     out["sums"] = sums
     out["sum_mismatch"] = [s for s in sums if abs(s[6] - s[5]) > tol]
     out["tol"] = tol
-    out["max_sum_diff"] = max(abs(s[6] - s[5]) for s in sums)
+    out["max_sum_diff"] = max((abs(s[6] - s[5]) for s in sums), default=0)
     out["total_range"] = [s for s in sums if not 98.0 <= s[5] <= 101.5]
     V = "FROM measured_value v JOIN measurement m ON m.id = v.measurement_id JOIN evidence e ON e.id = m.evidence_id"
     out["below_dl"] = db.execute(f"""SELECT quantity_code, COUNT(*) {V}
@@ -629,6 +730,11 @@ def main():
     db, papers = build(str(DB_PATH))
     for name, p in papers.items():
         res = checks(db, p["pub"], p["tol"])
+        if (p["dir"] / "diamonds.csv").exists():
+            print(f"{name}: {res['counts']['diamond_observation']} diamonds, {len(p['flags'])} flags")
+            for f in p["flags"]:
+                print("   ", *f)
+            continue
         if p["dir"] == PAPER:
             write_review(db, p["flags"], res, p["pub"])
         else:
