@@ -22,8 +22,7 @@ PAPER = GOLD / "phillips-2004"
 DB_PATH = ROOT / "gold" / "gold.sqlite"
 
 OXIDES = ["SiO2", "Al2O3", "TiO2", "Cr2O3", "FeO", "MnO", "NiO", "MgO", "CaO", "Na2O", "K2O", "V2O5", "ZnO", "Total"]
-OXIDE_COLUMNS = ["P2O5", *OXIDES]  # analyses.csv columns load_simple reads
-QUANTITY = {"FeO": "FeOT", "Total": "oxide_total"}  # shortcut: FeO read as total iron; true where papers say so
+OXIDE_COLUMNS = ["P2O5", *OXIDES, "SrO"]  # analyses.csv columns load_simple reads
 SUITE_TO_T4 = {"Per (hz)": "Harzburgitic", "Per (lhz)": "Lherzolitic", "Ecl": "Eclogitic", "Web": "Websteritic"}
 
 
@@ -268,14 +267,20 @@ def load_simple(db, folder):
                       excerpt=f"Sample {r['sample_no']}; {r['mineral']}" +
                               (f"; {r['n_analyses']} analyses" if r["n_analyses"] else ""),
                       cited_reference_text=r["cited_source"] or None)
-        key = r["sample_no"] if r["sample_no"] in same or src.get("diamond_key") == "sample" else (r["table"], r["sample_no"])
+        key = (r.get("diamond_no") if src.get("diamond_key") == "diamond_no" else
+               r["sample_no"] if r["sample_no"] in same or src.get("diamond_key") == "sample" else (r["table"], r["sample_no"]))
         if key not in diamonds:
             m = re.match(r"[A-Za-z]+", r["sample_no"])
             loc = prefix_to_loc.get(m.group() if m else "")
             d = insert(db, "diamond_observation", publication_id=pub, evidence_id=same.get(r["sample_no"], ev),
                        reported_locality=loc[0] if loc else None, import_run_id=run,
                        notes="Same diamond in several tables (see evidence)" if r["sample_no"] in same else None)
-            insert(db, "specimen_identifier", diamond_observation_id=d, identifier=r["sample_no"], id_type="author_sample")
+            insert(db, "specimen_identifier", diamond_observation_id=d, identifier=r.get("diamond_no") or r["sample_no"],
+                   id_type="author_sample")
+            if r.get("assemblage"):
+                insert(db, "assertion", diamond_observation_id=d, property_code="reported_assemblage",
+                       value_text=r["assemblage"], asserted_by="authors", value_status="reported", derivation="reported",
+                       evidence_id=ev)
             if loc:
                 insert(db, "assertion", diamond_observation_id=d, property_code="collection_locality", value_text=loc[0],
                        value_locality_id=loc[1], asserted_by="authors", value_status="reported", derivation="reported",
@@ -285,10 +290,14 @@ def load_simple(db, folder):
             diamonds[key] = d
         pid = phase_id(r.get("phase_hint") or r["mineral"])
         inc = insert(db, "inclusion_observation", publication_id=pub, evidence_id=ev, diamond_observation_id=diamonds[key],
+                     reported_label=r.get("inclusion_label") or None,
                      reported_phase=r["mineral"], phase_id=pid, phase_match_status="mapped" if pid else "unmapped",
                      import_run_id=run, notes="; ".join(x for x in [where, r["note"]] if x))
         if pid is None:
             flags.append(("unmapped phase", where, f"'{r['mineral']}' is not in vocab/"))
+        if r.get("paragenesis"):
+            insert(db, "assertion", inclusion_observation_id=inc, property_code="paragenesis", value_text=r["paragenesis"],
+                   asserted_by="authors", value_status="reported", derivation="interpreted", evidence_id=ev)
         if r["touching"]:
             insert(db, "assertion", inclusion_observation_id=inc, property_code="touching", value_text=r["touching"],
                    asserted_by="authors", value_status="reported", derivation="reported", evidence_id=ev,
@@ -307,7 +316,7 @@ def load_simple(db, folder):
                 status = cfg["notation"][text]
                 if status == "ambiguous":
                     flags.append(("ambiguous notation", where, f"{col} = '{text}': {cfg.get('footnote', 'not defined')}"))
-            elif text.startswith("<"):
+            elif text[0] in "<≤":                        # '≤x' read as an upper limit; flagged per table
                 status, dl = "below_detection", float(text[1:])
             elif m:
                 status, value = "reported", float(m["v"])
@@ -316,13 +325,17 @@ def load_simple(db, folder):
                     unc = int(m["u"]) * 10 ** -decimals
             else:
                 sys.exit(f"Unrecognised notation {text!r} at {where}, {col}")
-            insert(db, "measured_value", measurement_id=meas, quantity_code=QUANTITY.get(col, col), original_text=text,
+            quantity = {"Total": "oxide_total", **src.get("column_quantity", {})}.get(col, col)
+            insert(db, "measured_value", measurement_id=meas, quantity_code=quantity, original_text=text,
                    original_unit="wt%", value=value, detection_limit=dl, uncertainty=unc,
                    uncertainty_type=cfg.get("uncertainty") if unc is not None else None, value_status=status,
                    derivation="calculated_by_authors" if col == "Total" else "reported")
     for t, cfg in src["tables"].items():
-        if cfg.get("uncertainty_note"):
-            flags.append(("undefined notation", t, cfg["uncertainty_note"]))
+        for k in ["uncertainty_note", "notation_note"]:
+            if cfg.get(k):
+                flags.append(("undefined notation", t, cfg[k]))
+    for sample, note in src.get("total_notes", {}).items():
+        flags.append(("total excludes an oxide", sample, note))
     for sample, ts in tables_of.items():
         if len(ts) > 1 and sample not in same:
             flags.append(("same label, kept apart", sample, f"appears in {', '.join(sorted(ts))}; the paper does not "

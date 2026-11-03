@@ -21,3 +21,13 @@ Related: [roadmap](roadmap.md) · [decisions](decisions/README.md) · [Phillips 
 | S-6 | `Suite` combines paragenesis and subtype (`Per (hz)`) in one code. Table 4 spells out `Harzburgitic`. | Stored as printed, as `interpreted` assertions. | A paragenesis vocabulary with mappings from printed codes (`Per (hz)`, `h`, `Harzburgitic`) to one term. |
 | S-7 | `locality.precision_class` is required, but it describes coordinates, and this locality has none. | Set to `region` with a note. | Allow `precision_class` to be NULL when there are no coordinates, or rename it to describe the place. |
 | S-8 | The compilation's values are **rescaled to 100 % with V₂O₅ converted to V₂O₃**. They are not the printed values. | Found by [the compilation cross-check](../gold/phillips-2004/compilation-check.md). | When compilations are imported (D-013), mark their values `calculated_by_compiler` and record the transformation. |
+
+## From Sobolev et al. (2004) and Kankan II (Stachel et al. 2000b)
+
+| # | Issue | What we did for now | Likely fix |
+|---|---|---|---|
+| S-9 | One physical inclusion analysed as several phases plus a **bulk** analysis (KK-83a symplectite: cpx, olivine, "garnet", bulk mix). Each became its own inclusion observation with the same label. | Same `reported_label`; bulk mapped to `polyphase inclusion (bulk)`. | A parent–child link: phase analyses belong to one polyphase inclusion. |
+| S-10 | Uncertain phase names (`Olivine?`, `"Garnet"`, `Fper-(ol)`, `MgSiO3-(ol)`) have no honest standard phase. | Left unmapped (`phase_match_status = unmapped`), name kept as printed. | Use `phase_match_status = ambiguous` with candidate phases. |
+| S-11 | The same label in different tables (Sobolev AL-1: chromite in Table 4, eclogitic garnet in Table 5) may or may not be one diamond. | Kept as separate diamonds unless the text links them (Yum-27). | Record a `pending_review` identity link when labels repeat, so a curator decides. |
+| S-12 | A printed Total can leave out an oxide the row reports (Kankan II KK-66a, KK-87a omit SrO). | Recorded in `source.json` `total_notes`; values unchanged. | Optional note on the `oxide_total` value saying which oxides it sums. |
+| S-13 | Whether `FeO` means total iron is often unstated. | `FeO` kept as its own quantity; `FeOT` only where the source says total iron. | Keep; add a conversion rule only when a source states Fe³⁺ handling. |

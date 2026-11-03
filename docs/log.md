@@ -7,6 +7,18 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-03 — Kankan II extracted (not yet reviewed)
+- Kankan II Tables 2–4 (37 analyses, 485 values; ferropericlase, CaSiO3, MgSiO3, siderite, microcline,
+  Mg-hornblende, and the KK-83a symplectite with its bulk analysis) transcribed by Claude from page
+  images: the PDF's text layer is unreadable. Diamonds grouped by number (KK-16a/c/d = diamond KK-16).
+- 35 of 37 printed totals match the oxide sums within 0.06 wt%. KK-66a and KK-87a totals leave out SrO
+  (source inconsistency, recorded, values unchanged). `≤x` is undefined in the tables: stored as an
+  upper limit and flagged. Eight uncertain names (`Olivine?`, `"Garnet"`, `Fper-(ol)`…) kept unmapped.
+- Loader fix: FeO is total iron only where the source says so (Phillips); Sobolev and Kankan FeO stay
+  `FeO` as printed. Website shows both columns.
+- Not done: Kankan III Table 1 (host-diamond data for ~140 diamonds) needs a Diamonds tab and ~1,400
+  cells transcribed from images.
+
 ## 2026-11-03 — Sobolev 2004 extracted (not yet reviewed)
 - `extraction/parse_sobolev_2004.py`: Tables 3, 4, 5, 6, 8 (63 analyses, 579 values: olivine, chrome
   spinel, garnet, majoritic garnet, pyroxenes) from the text layer; column headers listed by hand

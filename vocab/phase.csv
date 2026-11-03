@@ -9,3 +9,10 @@ Cr-diopside,variety,clinopyroxene,,Cr-rich diopside
 omphacite,mineral_species,clinopyroxene,,Na-rich clinopyroxene
 enstatite,mineral_species,orthopyroxene,MgSiO3,Mg-rich orthopyroxene
 majoritic garnet,variety,garnet,,Garnet with excess Si (majorite component)
+ferropericlase,solid_solution,,"(Mg,Fe)O",
+CaSiO3 phase,composition_only,,CaSiO3,"Reported by composition only; structure (e.g. walstromite, breyite) or a former Ca-perovskite are interpretations"
+MgSiO3 phase,composition_only,,MgSiO3,Reported by composition only; a former bridgmanite is an interpretation
+siderite,mineral_species,,FeCO3,
+microcline,mineral_species,,KAlSi3O8,
+magnesio-hornblende,mineral_species,,,Amphibole
+polyphase inclusion (bulk),polyphase,,,"Bulk analysis of an intergrowth, not a single phase"

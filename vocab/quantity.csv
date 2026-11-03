@@ -16,3 +16,5 @@ oxide_total,other,wt%,Analytical total as printed by the source
 T_equilibration,derived,degC,Equilibration temperature from a thermometer
 P_equilibration,derived,GPa,Equilibration pressure from a barometer
 P2O5,oxide,wt%,
+FeO,oxide,wt%,FeO as printed; the source does not say whether it is total iron
+SrO,oxide,wt%,

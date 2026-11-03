@@ -43,7 +43,8 @@ def main():
 
     inclusions = []
     for (iid, pub, short, sample, loc, phase, printed, status, did, page, table, row, col) in q("""
-            SELECT i.id, p.id, p.short_ref, s.identifier, d.reported_locality, ph.name, i.reported_phase,
+            SELECT i.id, p.id, p.short_ref, s.identifier || COALESCE(i.reported_label, ''), d.reported_locality,
+                   ph.name, i.reported_phase,
                    i.workflow_status, d.id, e.page, e.table_label, e.row_label, e.column_label
             FROM inclusion_observation i JOIN publication p ON p.id = i.publication_id
             LEFT JOIN diamond_observation d ON d.id = i.diamond_observation_id

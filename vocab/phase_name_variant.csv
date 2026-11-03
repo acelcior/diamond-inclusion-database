@@ -11,3 +11,9 @@ Cr-diopside,cr-di,abbreviation,
 enstatite,en,abbreviation,
 omphacite,omph,abbreviation,
 majoritic garnet,majorite,compiler_label,"As a garnet type label, e.g. Sobolev et al. (2004) Table 6 'Gt type'"
+ferropericlase,fper,abbreviation,
+ferropericlase,fe-per,abbreviation,
+CaSiO3 phase,casio3,compiler_label,Composition used as the phase name
+MgSiO3 phase,mgsio3,compiler_label,Composition used as the phase name
+magnesio-hornblende,mg-hbl,abbreviation,
+polyphase inclusion (bulk),bulk mix,compiler_label,Stachel et al. (2000) Table 3

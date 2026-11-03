@@ -36,19 +36,19 @@ Open the PDF at each page and check the printed cell, then tell Claude the resul
 | ✓ | Page | Table | Row / column | Quantity | Printed |
 |---|---|---|---|---|---|
 | ☐ | 231 | Table 3 | Mrm-8 olivine (column 18) | Cr2O3 | <0.03 |
-| ☐ | 231 | Table 3 | UDV-2 olivine (column 14) | FeOT | 6.55 |
+| ☐ | 231 | Table 3 | UDV-2 olivine (column 14) | FeO | 6.55 |
 | ☐ | 231 | Table 3 | Yum-10 olivine (column 1) | MgO | 46.4 |
 | ☐ | 231 | Table 3 | Yum-162 olivine (column 5) | NiO | 0.40 |
 | ☐ | 231 | Table 3 | Yum-174 olivine (column 8) | NiO | 0.36 |
 | ☐ | 232 | Table 4 | AL-10 chrome spinel (column 4) | MnO | 0.17 |
 | ☐ | 232 | Table 4 | AL-4 chrome spinel (column 2) | MgO | 12.4 |
 | ☐ | 232 | Table 4 | AL-5 chrome spinel (column 3) | Cr2O3 | 62.8 |
-| ☐ | 232 | Table 4 | UD-PL/2 chrome spinel (column 9) | FeOT | 16.0 |
+| ☐ | 232 | Table 4 | UD-PL/2 chrome spinel (column 9) | FeO | 16.0 |
 | ☐ | 235 | Table 5 | AL-8 garnet (column 8) | CaO | 2.70 |
 | ☐ | 235 | Table 5 | Km-69/23 garnet (column 13) | CaO | 5.40 (4) |
 | ☐ | 235 | Table 5 | Km-71/49 garnet (column 14) | Al2O3 | 15.7 (1) |
 | ☐ | 235 | Table 5 | Km-94/49 garnet (column 21) | MnO | 0.38 (1) |
-| ☐ | 235 | Table 5 | STI-203/98 garnet (column 16) | FeOT | 13.0 |
+| ☐ | 235 | Table 5 | STI-203/98 garnet (column 16) | FeO | 13.0 |
 | ☐ | 235 | Table 5 | Yub-322 garnet (column 6) | CaO | 3.04 |
 | ☐ | 235 | Table 5 | Yum-31 garnet (column 20) | Cr2O3 | 0.01 |
 | ☐ | 239 | Table 8 | Kmsm-21 En (column 3) | TiO2 | <0.03 |

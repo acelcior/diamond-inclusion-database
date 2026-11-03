@@ -1,0 +1,54 @@
+{
+  "publication": {
+    "doi": "10.1007/s004100000174",
+    "citation": "Stachel, T., Harris, J.W., Brey, G.P., Joswig, W. (2000). Kankan diamonds (Guinea) II: lower mantle inclusion parageneses. Contributions to Mineralogy and Petrology 140, 16-27.",
+    "short_ref": "Stachel et al. (2000b)",
+    "year": 2000,
+    "pub_type": "journal_article",
+    "notes": "Tables 2-4 print selected inclusions; the full EPMA dataset is in Table 1 of the electronic supplementary material of Kankan I (not obtained). Phase names are as printed (e.g. CaSiO3, MgSiO3, Fper); interpretations such as former perovskite are not recorded yet."
+  },
+  "source_file": {
+    "file_role": "main_text",
+    "filename": "stachel-2000-kankan2.pdf"
+  },
+  "tool": "Transcribed by Claude from page images of pp. 17-18 (the text layer is unreadable) + scripts/build_gold.py",
+  "analyses": "analyses.csv",
+  "diamond_key": "diamond_no",
+  "method": {
+    "code": "EPMA",
+    "conditions": null,
+    "page": "17"
+  },
+  "localities": [
+    {
+      "name": "Kankan",
+      "locality_type": "district",
+      "prefixes": [
+        "KK"
+      ],
+      "page": "17",
+      "excerpt": "selected inclusions in diamonds from Guinea",
+      "notes": "Kankan diamonds, Guinea (paper title and table captions). Deposit and coordinates not recorded yet."
+    }
+  ],
+  "country_code": "GN",
+  "tables": {
+    "Table 2": {
+      "notation": {},
+      "notation_note": "'≤x' is not defined in the table; stored as an upper limit (below detection, limit x)."
+    },
+    "Table 3": {
+      "notation": {},
+      "notation_note": "'≤x' is not defined in the table; stored as an upper limit (below detection, limit x)."
+    },
+    "Table 4": {
+      "notation": {},
+      "notation_note": "'≤x' is not defined in the table; stored as an upper limit (below detection, limit x)."
+    }
+  },
+  "total_tolerance": 0.06,
+  "total_notes": {
+    "KK-66a": "Printed Total 99.35 equals the oxide sum without SrO (0.73); other analyses (e.g. KK-9, KK-83a cpx) include SrO. Source inconsistency, values kept as printed.",
+    "KK-87a": "Printed Total 98.72 equals the oxide sum without SrO (0.85). Source inconsistency, values kept as printed."
+  }
+}
