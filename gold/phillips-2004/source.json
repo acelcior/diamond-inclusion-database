@@ -1,0 +1,46 @@
+{
+  "publication": {
+    "doi": "10.1016/j.lithos.2004.04.005",
+    "citation": "Phillips, D., Harris, J.W., Viljoen, K.S. (2004). Mineral chemistry and thermobarometry of inclusions from De Beers Pool diamonds, Kimberley, South Africa. Lithos 77, 155-179.",
+    "short_ref": "Phillips et al. (2004)",
+    "year": 2004,
+    "pub_type": "journal_article",
+    "notes": "Table 3 prints representative analyses only; the complete dataset is in the Lithos online data repository (not obtained)."
+  },
+  "source_file": {"file_role": "main_text", "filename": "phillips-2004.pdf"},
+  "locality": {
+    "reported": "De Beers Pool",
+    "name": "De Beers Pool",
+    "locality_type": "field",
+    "country_code": "ZA",
+    "precision_class": "region",
+    "notes": "Pooled run-of-mine production of four Kimberley mines (De Beers, Du Toit's Pan, Bultfontein, Wesselton); the mine of any single diamond is not reported. No coordinates entered yet (Phase 6 gazetteer).",
+    "evidence": {"page": "158", "excerpt": "pooled run-of-mine production from the De Beers, Du Toit’s Pan, Bultfontein and Wesselton (De Beers Pool) mines"}
+  },
+  "epma": {
+    "conditions": "Cameca SX-50, De Beers Geoscience Centre; 20 kV, 20 nA; PAP matrix correction; 40 s peak and 10 s background counting; Na2O and K2O detection limits typically 0.02 wt%. Inclusions released by crushing or cleaving the diamond and mounted in epoxy.",
+    "spot_label": "average of at least three analyses, core to rim",
+    "evidence": {"page": "159", "excerpt": "electron microprobe compositions are reported as averaged values of at least three analyses per inclusion"}
+  },
+  "table3": {
+    "label": "Table 3",
+    "notation": {"na": "not_measured", "nd": "ambiguous"},
+    "notation_notes": {
+      "na": "Table 3 footnote: na = not analysed.",
+      "nd": "Not defined in the Table 3 footnote (Table 1 uses nd = not determined); flagged, not interpreted."
+    },
+    "column_quantity": {"FeO": "FeOT", "Total": "oxide_total"},
+    "column_quantity_notes": {"FeO": "Table 3 footnote: total iron is given as FeO."}
+  },
+  "table4": {
+    "label": "Table 4",
+    "columns": {
+      "T_gt_opx":   {"quantity": "T_equilibration", "unit": "degC", "method": "Harley (1984) garnet-orthopyroxene thermometer"},
+      "P_gt_opx_b": {"quantity": "P_equilibration", "unit": "GPa",  "method": "Brey and Köhler (1990) Al-exchange barometer"},
+      "P_gt_opx_c": {"quantity": "P_equilibration", "unit": "GPa",  "method": "MacGregor (1974) barometer"},
+      "T_gt_ol":    {"quantity": "T_equilibration", "unit": "degC", "method": "O'Neill and Wood (1979) and O'Neill (1980) garnet-olivine thermometer", "pressure_column": "P_gt_ol"},
+      "T_gt_cpx":   {"quantity": "T_equilibration", "unit": "degC", "method": "Krogh (1988) garnet-clinopyroxene thermometer", "pressure_column": "P_gt_cpx"}
+    },
+    "assumed_pressure_note": "Table 4 note e: assumed pressure = 5.0 GPa"
+  }
+}

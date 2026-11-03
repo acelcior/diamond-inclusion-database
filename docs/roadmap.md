@@ -37,7 +37,7 @@ What follows from that:
 - [ ] Entity-relationship overview (inclusion ↔ host ↔ observation ↔ measurement ↔ publication ↔ locality)
 - [x] Decide the blocking ADRs: D-001 – D-004 accepted; D-005 proposed, awaiting the professor ([decisions](decisions/README.md))
 - [x] `schema/001_core.sql` — portable DDL (SQLite now, Postgres-compatible; not yet tested in PostgreSQL)
-- [ ] Seed vocabularies in `vocab/`: phases + synonyms, paragenesis, methods, units, status enums
+- [ ] Seed vocabularies in `vocab/`: phases + synonyms, paragenesis, methods, units, status enums *(started: what Phillips 2004 needs)*
 - [ ] Tier 1 data dictionary (`docs/data-dictionary.md`)
 - [x] Read the Dataset 0 data dictionaries; map their columns to our schema and note what they can't represent → [compilations mapping](compilations-mapping.md)
 - [x] Tests: schema loads; constraints reject obviously bad rows (`tests/test_schema.py`)
@@ -45,8 +45,8 @@ What follows from that:
 **Exit gate:** schema loads; an illustrative (clearly labelled) record round-trips.
 
 ## Phase 2 — Gold standard from real papers
-- [ ] Hand-curate seed paper 1 into the schema (Claude drafts, you verify every value)
-- [ ] Record every awkward fit as a schema issue → revise schema
+- [ ] Hand-curate seed paper 1 into the schema (Claude drafts, you verify every value): *Phillips 2004 drafted, awaiting your check* → [review page](../gold/phillips-2004/README.md)
+- [ ] Record every awkward fit as a schema issue → revise schema *(8 so far: [schema issues](schema-issues.md))*
 - [ ] Curate seed papers 2–5, covering different reporting styles
 - [ ] Freeze gold set in `gold/` (versioned)
 

@@ -1,0 +1,17 @@
+code,kind,default_unit,description
+SiO2,oxide,wt%,
+TiO2,oxide,wt%,
+Al2O3,oxide,wt%,
+Cr2O3,oxide,wt%,
+V2O5,oxide,wt%,Vanadium reported as V2O5 (some compilations convert to V2O3)
+FeOT,oxide,wt%,Total iron expressed as FeO (source states total iron given as FeO)
+MnO,oxide,wt%,
+NiO,oxide,wt%,
+MgO,oxide,wt%,
+CaO,oxide,wt%,
+Na2O,oxide,wt%,
+K2O,oxide,wt%,
+ZnO,oxide,wt%,
+oxide_total,other,wt%,Analytical total as printed by the source
+T_equilibration,derived,degC,Equilibration temperature from a thermometer
+P_equilibration,derived,GPa,Equilibration pressure from a barometer

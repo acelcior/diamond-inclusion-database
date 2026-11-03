@@ -7,6 +7,22 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-03 — Phase 2: Phillips 2004 extracted (awaiting review)
+- `extraction/parse_phillips_2004.py` reads Tables 3 and 4 from the PDF's text layer by column
+  position; checked against page images of pp. 160, 161, 171. Output, as printed:
+  `gold/phillips-2004/table3.csv` (80 EPMA analyses, 36 diamonds), `table4.csv` (50 P-T rows).
+- `scripts/build_gold.py` loads schema + `vocab/` (new, minimal) + the CSVs into `gold/gold.sqlite`:
+  50 diamonds, 109 inclusion observations, 1120 values, 122 temperatures/pressures on 50 inclusion
+  sets, each traceable to page/table/column. Writes the review page `gold/phillips-2004/README.md`.
+- Checks: every printed Total equals the sum of its printed oxides; flags `nd` (DP209 chromite SiO2)
+  and the blank DP497 Brey & Köhler pressure. Nothing guessed.
+- `scripts/compare_compilation.py`: 57/80 analyses match Stachel's compilation within rounding
+  once its V2O5→V2O3 conversion and 100 % rescaling are applied; 10 differ by >0.1 wt% (different
+  analyses, likely from the paper's online data repository); DP539 paragenesis differs (Web vs e).
+- 8 schema issues recorded in [schema issues](schema-issues.md). Tests: 9 pass.
+- **Next:** you work through the spot-check list; then mark records approved. Getting the paper's
+  online data repository file would let us add all ~650 analyses.
+
 ## 2026-11-03 — Docs website on Vercel
 - `index.html` renders the repo's Markdown docs and schema in the browser (no build step), so the
   site always shows the committed docs. Hosted on Vercel (team linked to GitHub `acelcior`),

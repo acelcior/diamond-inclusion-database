@@ -1,0 +1,5 @@
+code,applies_to,description
+paragenesis,any,"Paragenesis or suite as stated (peridotitic, harzburgitic, eclogitic, websteritic...)"
+touching,inclusion,Whether the inclusion was touching (intergrown with) another inclusion
+reported_assemblage,diamond,All phases the source lists for the diamond
+collection_locality,diamond,Reported collection locality (mine/pipe/deposit)
