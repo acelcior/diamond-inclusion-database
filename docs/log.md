@@ -28,6 +28,8 @@ what's next. Related: [roadmap](roadmap.md)
   site always shows the committed docs. Hosted on Vercel (team linked to GitHub `acelcior`),
   public at https://diamond-inclusion-database.vercel.app; every push to `main` redeploys.
   Preview links need a Vercel login. No data pages yet.
+- Repo commit email set to acelcior's GitHub noreply address (repo-only setting), so Vercel
+  accepts pushes; commits with the Mac's default email were blocked.
 
 ## 2026-11-03 — Demo tables removed
 - Removed the compilation-table demo (`scripts/build_demo_db.py`, `demo/`): its data came only
