@@ -7,6 +7,13 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-03 — Image-reading calibration, test 1
+- Phillips Table 3 was unusable for a blind test (values already seen), so used Gress 2021 Table 3
+  (unseen, born-digital): transcribed from 220-dpi images only, saved, then compared with the text
+  layer by `extraction/calibrate_gress_2021.py`. **0 errors in 576 cells** (416 values); a planted-
+  error copy was caught 3/3. Error rate likely < 0.7 % for clean tables. Rules kept at `conf-v1`;
+  a harder second test (rotated, negative numbers) is needed before raising image-read confidence.
+
 ## 2026-11-03 — Extraction confidence for every record
 - New table `extraction_confidence` (`schema/002_extraction_confidence.sql`) and rules `conf-v1` in
   [confidence](confidence.md): start from how values were read (text layer high, page images medium),
