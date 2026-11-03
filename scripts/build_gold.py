@@ -511,19 +511,24 @@ def load_diamonds(db, folder):
     return flags, pub
 
 
-def link_shared_samples(db, papers, pairs):
-    """Pending-review identity links between diamonds that two papers of one series report under the same number."""
-    for a, b, why in pairs:
+def link_shared_samples(db, papers):
+    """Identity links between diamonds that two papers of one series report under the same number
+    (gold/identity-links.json). Links stay pending_review until a recorded curator review approves them."""
+    cfg = json.loads((GOLD / "identity-links.json").read_text())
+    for link in cfg["series_links"]:
+        (a, b), why = link["papers"], link["why"]
+        status = (link.get("review") or {}).get("workflow_status", "pending_review")
         if a not in papers or b not in papers:
             continue
-        for da, db_ in db.execute("""SELECT da.id, dbb.id FROM diamond_observation da
+        for da, db_, sample in db.execute("""SELECT da.id, dbb.id, sa.identifier FROM diamond_observation da
                 JOIN specimen_identifier sa ON sa.diamond_observation_id = da.id
                 JOIN specimen_identifier sb ON sb.identifier = sa.identifier
                 JOIN diamond_observation dbb ON dbb.id = sb.diamond_observation_id
                 WHERE da.publication_id = ? AND dbb.publication_id = ?""", (papers[a]["pub"], papers[b]["pub"])).fetchall():
             lo, hi = sorted((da, db_))
-            insert(db, "diamond_identity_link", observation_a=lo, observation_b=hi, basis="shared_sample_id",
-                   asserted_by="curator", confidence="high", workflow_status="pending_review", notes=why)
+            insert(db, "diamond_identity_link", observation_a=lo, observation_b=hi, basis=link["basis"],
+                   asserted_by="curator", confidence="high", workflow_status=status,
+                   notes="; ".join(x for x in [why, link.get("notes", {}).get(sample)] if x))
 
 
 def build(path=":memory:"):
@@ -542,8 +547,7 @@ def build(path=":memory:"):
         apply_review(db, folder, pub)
         papers[folder.name] = {"dir": folder, "pub": pub, "flags": flags,
                                "tol": json.loads(src.read_text()).get("total_tolerance", 0.05)}
-    link_shared_samples(db, papers, [("stachel-2000-kankan2", "stachel-2002-kankan3",
-                                      "Same KK number in the same 'Kankan diamonds (Guinea)' series by the same authors")])
+    link_shared_samples(db, papers)
     assess_confidence(db, papers)
     db.commit()
     return db, papers

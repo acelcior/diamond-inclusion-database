@@ -359,7 +359,9 @@ async function switchTab(tab) {
 async function main() {
   [meta, sources] = await Promise.all(["data/meta.json", "data/sources.json"].map(u => fetch(u).then(r => r.json())));
   const c = meta.counts;
-  $("#stats").innerHTML = [[c.papers, c.papers === 1 ? "paper" : "papers"], [c.diamonds, "diamonds"],
+  // physical diamonds: records linked as the same stone (approved links) count once
+  $("#stats").innerHTML = [[c.papers, c.papers === 1 ? "paper" : "papers"],
+    [c.physical_diamonds, `diamonds (${c.diamonds} records)`],
     [c.inclusions, "inclusions"], [c.analysed, "with chemistry"], [c.values.toLocaleString(), "measured values"],
     [c.estimates, "P–T estimates"]].map(([n, l]) => `<span class="stat"><b>${n}</b>${l}</span>`).join("");
   $("#sources-title").textContent = `Sources (${sources.length} ${sources.length === 1 ? "paper" : "papers"})`;

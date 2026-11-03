@@ -153,6 +153,7 @@ def main():
 
     meta = {"oxides": [{"code": c, "label": label(c)} for c in oxides],
             "counts": {"papers": len(sources), "diamonds": sum(s["diamonds"] for s in sources),
+                       "physical_diamonds": q("SELECT COUNT(DISTINCT cluster_id) FROM diamond_cluster")[0][0],
                        "inclusions": len(inclusions), "analysed": sum(r["analysed"] == "yes" for r in inclusions),
                        "values": q("SELECT COUNT(*) FROM measured_value")[0][0], "estimates": len(estimates)}}
 

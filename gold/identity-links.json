@@ -1,0 +1,20 @@
+{
+  "series_links": [
+    {
+      "papers": ["stachel-2000-kankan2", "stachel-2002-kankan3"],
+      "basis": "shared_sample_id",
+      "why": "Same KK number in the same 'Kankan diamonds (Guinea)' series by the same authors; inclusion lists agree",
+      "review": {
+        "workflow_status": "approved",
+        "reviewer": "J. Dasroy",
+        "date": "2026-11-03",
+        "method": "Both papers' inclusion lists and parageneses compared side by side for all 15 diamonds."
+      },
+      "notes": {
+        "KK-45": "Same two inclusions named differently: Kankan II 'MgSiO3 + microcl.', Kankan III 'opx, K-fsp (hollandite?)'. Both kept as each paper reports them.",
+        "KK-66": "CaSiO3 count differs: Kankan II assemblage '2Fper + CaSiO3', Kankan III '2 Fe-per, 2 CaSiO3'. Both kept as each paper reports them.",
+        "KK-84": "Paragenesis differs: Kankan II 'l.m.(?)', Kankan III 'Unknown'. Both kept, attributed to each paper."
+      }
+    }
+  ]
+}

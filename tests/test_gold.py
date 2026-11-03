@@ -75,9 +75,11 @@ class GoldTest(unittest.TestCase):
             JOIN diamond_observation d ON d.id = m.diamond_observation_id JOIN assertion a ON a.diamond_observation_id = d.id
             AND a.property_code = 'diamond_type' AND a.value_text = 'II'
             WHERE d.publication_id = {pub} AND v.quantity_code = 'N_content' AND v.value_status <> 'below_detection'"""), 0)
-        # same KK number in Kankan II and III: linked for review, never merged
-        self.assertEqual(self.one("SELECT COUNT(*) FROM diamond_identity_link WHERE workflow_status <> 'pending_review'"), 0)
-        self.assertGreater(self.one("SELECT COUNT(*) FROM diamond_identity_link"), 0)
+        # same KK number in Kankan II and III: 15 links, approved by the curator (gold/identity-links.json);
+        # the records stay separate, and the physical-diamond count drops by one per link
+        self.assertEqual(self.one("SELECT COUNT(*) FROM diamond_identity_link WHERE workflow_status = 'approved'"), 15)
+        records = self.one("SELECT COUNT(*) FROM diamond_observation")
+        self.assertEqual(self.one("SELECT COUNT(DISTINCT cluster_id) FROM diamond_cluster"), records - 15)
 
     def test_every_phase_mapped(self):
         # Phillips and Sobolev map fully; Kankan II keeps uncertain names (e.g. 'Olivine?', 'Fper-(ol)') unmapped on purpose

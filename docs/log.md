@@ -7,6 +7,14 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-03 — Kankan II–III diamond links approved
+- User compared both papers' inclusion lists for the 15 shared KK numbers and approved all 15
+  links; recorded in `gold/identity-links.json` (read by `link_shared_samples`). Records stay
+  separate; the `diamond_cluster` view now counts 201 physical diamonds from 216 records.
+- Differences kept as each paper's own statement, noted on the links: KK-45 (names: MgSiO3 +
+  microcline vs opx + K-fsp/hollandite?), KK-66 (1 vs 2 CaSiO3), KK-84 (l.m.(?) vs Unknown).
+- Website: header counts physical diamonds; "Also reported in" no longer says pending.
+
 ## 2026-11-03 — Kankan III extracted; Diamonds tab
 - Kankan III Table 1 (91 diamonds: shape, colour, deformation, δ13C, type, N, %B, paragenesis,
   inclusion list) transcribed from 220-dpi page images. Checks: matches every statistic the text
