@@ -168,5 +168,16 @@
       "page": "225",
       "excerpt": "microdiamonds and macrodiamonds from kimberlites of Yakutia"
     }
+  },
+  "review": {
+    "workflow_status": "approved",
+    "reviewer": "J. Dasroy",
+    "date": "2026-11-05",
+    "method": "Checked the 20-value spot-check list against the PDF: all matched.",
+    "decisions": {
+      "Table 6 n.d.": "Keep as ambiguous: 'n.d.' is not defined in Table 6 (same rule as Phillips DP209). Claude's recommended default, not objected to.",
+      "Table 5 brackets": "Keep in printed text only; not stored as 1 sigma, because Table 5 does not define them. Claude's recommended default, not objected to.",
+      "AL-1": "Keep Table 4 and Table 5 AL-1 as separate diamonds: no explicit statement that they are the same. Claude's recommended default, not objected to."
+    }
   }
 }
