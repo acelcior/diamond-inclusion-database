@@ -29,7 +29,7 @@ What follows from that:
 - [x] First commit
 - [x] Seed papers proposed and citations verified (Batch A, Batch B, Dataset 0 in [inputs needed](inputs-needed.md))
 - [ ] Download the Batch A PDFs and the Dataset 0 compilations into `papers/`
-- [ ] Ask the professor the questions in [inputs needed](inputs-needed.md), especially D-013
+- [ ] Ask the professor the questions in [inputs needed](inputs-needed.md) *(D-013 decided by J. Dasroy 2026-11-05: import the compilations as a source layer)*
 
 **Exit gate:** Batch A available locally; professor's view on D-013 known (or a provisional choice recorded).
 
@@ -49,6 +49,10 @@ What follows from that:
 - [ ] Record every awkward fit as a schema issue → revise schema *(8 so far: [schema issues](schema-issues.md))*
 - [ ] Curate seed papers 2–5, covering different reporting styles *(Sobolev 2004, Kankan II and Kankan III extracted, awaiting review)*
 - [ ] Freeze gold set in `gold/` (versioned)
+- [x] **Import the Stachel major-element compilation as a source layer** (D-013, 2026-11-05): 8,634 inclusion reports
+  from 139 cited papers, `imported_unverified` → [import report](../compilations/stachel-major/README.md)
+- [ ] Next compilation steps: Stachel host-diamond fields and compiler P-T columns; Stachel trace elements; Walter
+  sublithospheric; Smit radiogenic isotopes; value-level check of compiled rows against extracted papers (raises confidence)
 
 **Exit gate:** all seed papers representable without loss or forced certainty; schema v1 tagged.
 

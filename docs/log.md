@@ -7,6 +7,24 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-05 — Stachel compilation imported (D-013)
+- D-013 accepted by J. Dasroy: compilations are imported as their own source layer. Proposed D-016 (open
+  vocabulary: match a paper's columns to existing fields, add unmatched ones as *proposed*, never drop data).
+- Stachel major-element compilation (CC0) converted to `compilations/stachel-major/rows.jsonl` (all 10,472 rows,
+  values as stored; MD5 of the .xlsm matches) and loaded by new `scripts/load_compilation.py`: 8,634 inclusion
+  reports, 95,096 values, 139 cited references, 98% of mineral names mapped (vocab extended with the dictionary's
+  phases; 176 rows with rare or uncertain names kept as printed and flagged). Every row: evidence = compilation row +
+  the compiler's citation and DOI; status `imported_unverified`; confidence medium (new rule 7, `conf-v4`).
+- Schema migration `003_compilation_import.sql`: `evidence.cited_doi` + indexes.
+- Not merged with extracted papers. The website flags compilation rows that repeat a paper extracted here (same
+  cited DOI, sample number and phase; Kankan II declared as cited under Kankan I's DOI): Phillips 191, Sobolev 52,
+  Kankan 38. Shown by default (Phillips' "unpubl and" rows hold extra analyses), hideable with a checkbox.
+- Website: 8,843 inclusion reports (stats now say *reports*), craton filled, source type and cited paper columns,
+  the 139 cited papers listed under the compilation, Cl and F columns. Data files trimmed (inclusions.json 7.7 MB,
+  ~0.5 MB compressed).
+- Found in the source: 13 rows with no reference; 222 cells holding only spaces; FeO not stated as total iron.
+- **Next:** host-diamond fields and P-T columns of the same sheet; then trace elements, Walter, Smit.
+
 ## 2026-11-05 — Literature triage, batch 1
 - Added `next` and `decide` commands to `scripts/literature.py`; triage rules written into the
   [literature workflow](literature-workflow.md).

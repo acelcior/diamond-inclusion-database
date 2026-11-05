@@ -161,6 +161,17 @@ spacing in the same notation (`-11+9` and `-11 +9`).
 workflow status `imported, unverified`. When we curate the original paper, the curated
 observation is linked to the compiled one instead of replacing it.
 
+## Import status (2026-11-05)
+
+Stachel major elements, sheet `All diamonds`, is imported: `scripts/convert_stachel.py` (once, from the local
+`.xlsm`) → `compilations/stachel-major/rows.jsonl` (committed; CC0) → `scripts/load_compilation.py` during the build.
+What was imported, what was flagged, and the counts: [import report](../compilations/stachel-major/README.md).
+Rules applied: blank = not analysed (not stored); `b.d.`/`bdl` = below detection; `<x`/`≤x` (incl. non-breaking
+space) = below detection with limit x; cells holding only spaces = ambiguous; `0` = reported zero (dictionary p. 5);
+FeO kept as printed (see the source.json note); compiler's paragenesis and craton stored as *compiler* assertions.
+Not yet imported: host-diamond columns (O–AE), P-T columns (AF–AK), δ¹⁸O (AL–AN), the 1,838 host-only rows,
+per-mineral sheets, and the other three compilations.
+
 ## Not yet checked
 
 - Whether host-diamond fields agree across rows that share (reference, locality, sample #).

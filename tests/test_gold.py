@@ -49,8 +49,37 @@ class GoldTest(unittest.TestCase):
         # Phillips is approved; papers without a recorded review stay pending
         self.assertEqual(self.one(f"SELECT COUNT(*) FROM inclusion_observation WHERE publication_id = {self.phillips} "
                                   "AND workflow_status <> 'approved'"), 0)
-        self.assertEqual(self.one(f"SELECT COUNT(*) FROM inclusion_observation WHERE publication_id <> {self.phillips} "
-                                  "AND workflow_status <> 'pending_review'"), 0)
+        self.assertEqual(self.one(f"SELECT COUNT(*) FROM inclusion_observation i JOIN publication p ON p.id = i.publication_id "
+                                  f"WHERE p.id <> {self.phillips} AND p.pub_type <> 'dataset' "
+                                  "AND i.workflow_status <> 'pending_review'"), 0)
+
+    def test_compilation_layer(self):
+        """Stachel compilation (D-013): every row with a mineral is one report; nothing reviewed, nothing merged."""
+        pub = self.one("SELECT id FROM publication WHERE doi = '10.7939/DVN/EJUE1G'")
+        n = lambda sql: self.one(sql.replace("PUB", str(pub)))
+        self.assertEqual(n("SELECT COUNT(*) FROM inclusion_observation WHERE publication_id = PUB"), 8634)
+        self.assertEqual(n("""SELECT COUNT(*) FROM inclusion_observation WHERE publication_id = PUB
+                              AND workflow_status <> 'imported_unverified'"""), 0)
+        # every compiled inclusion's evidence names the compilation row and the paper the compiler cites
+        self.assertEqual(n("""SELECT COUNT(*) FROM inclusion_observation i JOIN evidence e ON e.id = i.evidence_id
+                              WHERE i.publication_id = PUB AND (e.source_type <> 'compilation' OR e.row_label IS NULL)"""), 0)
+        # ...except 13 rows the compilation itself gives no reference for (kept and flagged, never filled in)
+        self.assertEqual(n("""SELECT COUNT(*) FROM inclusion_observation i JOIN evidence e ON e.id = i.evidence_id
+                              WHERE i.publication_id = PUB AND e.cited_reference_text IS NULL"""), 13)
+        # no compiled diamond record is linked or merged with a directly extracted paper's record
+        self.assertEqual(n("""SELECT COUNT(*) FROM diamond_identity_link l JOIN diamond_observation d
+                              ON d.id IN (l.observation_a, l.observation_b) WHERE d.publication_id = PUB"""), 0)
+        # notation: '<0.02' with a non-breaking space keeps its original text and its limit
+        self.assertEqual(n("""SELECT COUNT(*) FROM measured_value WHERE original_text LIKE '<' || char(160) || '%'
+                              AND (value_status <> 'below_detection' OR detection_limit IS NULL)"""), 0)
+        self.assertGreater(n("""SELECT COUNT(*) FROM measured_value WHERE original_text LIKE '<' || char(160) || '%'"""), 0)
+        # spot check, Kankan KK-001a garnet core as cited to Stachel et al. (2000): SiO2 42.425, NiO 0.0115
+        self.assertEqual(n("""SELECT GROUP_CONCAT(x, ' ') FROM (SELECT v.quantity_code || '=' || v.original_text AS x FROM measured_value v
+                              JOIN measurement m ON m.id = v.measurement_id JOIN inclusion_observation i ON i.id = m.inclusion_observation_id
+                              JOIN evidence e ON e.id = i.evidence_id JOIN specimen_identifier s ON s.diamond_observation_id = i.diamond_observation_id
+                              WHERE i.publication_id = PUB AND s.identifier = 'KK-001a' AND i.reported_phase = 'garnet (core)'
+                              AND v.quantity_code IN ('SiO2', 'NiO') AND e.cited_reference_text = 'Stachel et al. (2000)'
+                              ORDER BY v.quantity_code)"""), "NiO=0.0115 SiO2=42.425")
 
     def test_confidence(self):
         # every inclusion and estimate has exactly one level (docs/confidence.md)

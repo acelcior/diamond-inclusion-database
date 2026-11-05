@@ -17,3 +17,19 @@ CaSiO3 phase,casio3,compiler_label,Composition used as the phase name
 MgSiO3 phase,mgsio3,compiler_label,Composition used as the phase name
 magnesio-hornblende,mg-hbl,abbreviation,
 polyphase inclusion (bulk),bulk mix,compiler_label,Stachel et al. (2000) Table 3
+ferropericlase,fe-periclase,spelling,Stachel compilation
+majoritic garnet,garnet (maj),compiler_label,Stachel compilation
+majoritic garnet,garnet (majorite),compiler_label,Stachel compilation
+sulphide,sulfide,spelling,
+sulphide,sul,abbreviation,
+coesite,sio2 (coesite),compiler_label,Stachel compilation: composition plus the phase named in parentheses
+corundum,al2o3 (corundum),compiler_label,Stachel compilation
+jeffbenite,tapp,historical,Tetragonal almandine-pyrope phase
+jeffbenite,tapp (jeffbenite),compiler_label,Stachel compilation
+dolomite,carbonate (dolomite),compiler_label,Stachel compilation
+SiO2 phase,sio2,compiler_label,Composition used as the phase name
+kyanite,kya,abbreviation,
+rutile,rut,abbreviation,
+phlogopite,phl,abbreviation,
+ilmenite,ilm,abbreviation,
+carbonate,carb,abbreviation,

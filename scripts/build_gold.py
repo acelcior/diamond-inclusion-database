@@ -14,6 +14,9 @@ from collections import Counter
 from datetime import date
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+import load_compilation  # noqa: E402
+
 ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = ROOT / "schema" / "001_core.sql"
 VOCAB = ROOT / "vocab"
@@ -374,7 +377,7 @@ def write_simple_review(db, paper, res):
     (folder / "README.md").write_text("\n".join(L), encoding="utf-8")
 
 
-RULES = "conf-v3"  # docs/confidence.md (v3 adds the independent-copy check for host-diamond records)
+RULES = "conf-v4"  # docs/confidence.md (v4 adds compilation rows: medium, not checked against the cited paper)
 BASE = {"spreadsheet": ("high", "read from a spreadsheet"),
         "text_layer": ("high", "read from the PDF text layer by column position, checked against page images"),
         "image_transcription": ("medium", "transcribed by eye from page images")}
@@ -566,11 +569,12 @@ def apply_setting(db, papers):
                            notes=dd["basis"])
 
 
-def build(path=":memory:"):
+def build(path=":memory:", with_compilations=True):
     db = sqlite3.connect(path)
     db.execute("PRAGMA foreign_keys = ON")
     db.executescript(SCHEMA.read_text())
     db.executescript((ROOT / "schema" / "002_extraction_confidence.sql").read_text())
+    db.executescript((ROOT / "schema" / "003_compilation_import.sql").read_text())
     load_vocab(db)
     papers = {}
     for src in sorted(GOLD.glob("*/source.json")):
@@ -585,6 +589,8 @@ def build(path=":memory:"):
     apply_setting(db, papers)
     link_shared_samples(db, papers)
     assess_confidence(db, papers)
+    if with_compilations:  # separate source layer (D-013); not in `papers`: no paper-style checks or review pages
+        load_compilation.load_all(db, insert, phase_lookup(db), RULES)
     db.commit()
     return db, papers
 
@@ -767,7 +773,7 @@ def write_review(db, flags, res, pub):
 def main():
     if DB_PATH.exists():
         DB_PATH.unlink()
-    db, papers = build(str(DB_PATH))
+    db, papers = build(str(DB_PATH), with_compilations=False)  # loaded below, after the per-paper reports
     for name, p in papers.items():
         res = checks(db, p["pub"], p["tol"])
         if (p["dir"] / "diamonds.csv").exists():
@@ -784,6 +790,10 @@ def main():
               f"{res['untraceable']} untraceable")
         for f in p["flags"]:
             print("   ", *f)
+    for name, c in load_compilation.load_all(db, insert, phase_lookup(db), RULES).items():
+        db.commit()
+        load_compilation.write_report(db, name, c)
+        print(f"{name}: compilation layer loaded; report in compilations/{name}/README.md")
 
 
 if __name__ == "__main__":

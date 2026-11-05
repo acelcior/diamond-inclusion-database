@@ -35,6 +35,7 @@
   .sources .meta { color: var(--muted); font-size: 13px; }
   .sources .cite-note { font-size: 13px; color: var(--muted); margin: 6px 0 0; }
   a { color: var(--accent); }
+  .cited { margin: 6px 0 0; } .cited ul { max-height: 260px; overflow: auto; margin: 6px 0; padding-left: 18px; font-size: 13px; }
   .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--line); margin-bottom: 12px; }
   .tabs button { background: none; border: 0; border-bottom: 3px solid transparent; padding: 8px 12px;
                  font: inherit; color: var(--muted); cursor: pointer; }
@@ -162,12 +163,13 @@ const numCol = (field, title, extra = {}) => ({ field, title, sorter: "number", 
 function oxideCol(code, label) {
   return numCol(code, label, {
     formatter(cell) {
-      const d = cell.getRow().getData(), t = d._txt?.[code], st = d._st?.[code];
+      const d = cell.getRow().getData(), st = d._st?.[code];
+      const t = d._txt?.[code] ?? (d[code] != null ? String(d[code]) : undefined);  // text sent only when it differs
       if (t === undefined) return "";
       cell.getElement().title = `${t} as printed (${st || "reported"}). ${d.source}, ${d.where}`;
       return st === "ambiguous" ? `<span class="amb">${esc(t)}</span>` : st ? `<span class="na">${esc(t)}</span>` : esc(t);
     },
-    accessorDownload: (v, d) => d._txt?.[code] ?? "",
+    accessorDownload: (v, d) => d._txt?.[code] ?? (d[code] ?? ""),
   });
 }
 
@@ -186,18 +188,22 @@ const emptyCol = (field, title) => textCol(field, title + " *", { headerTooltip:
 const TABS = {
   inclusions: {
     url: "data/inclusions.json", file: "diamond-inclusions.csv", noun: "inclusions",
-    quick: [["mineral", "Mineral"], ["country", "Country"], ["paragenesis", "Paragenesis"], ["touching", "Touching"],
-            ["source", "Source"], ["confidence", "Confidence"]],
-    toggles: [["analysed", "yes", "Analysed only", true]],
-    essentials: ["diamond_id", "inclusion_id", "mineral", "mineral_printed", "country", "locality", "diamond_type",
+    quick: [["mineral", "Mineral"], ["craton", "Craton"], ["country", "Country"], ["paragenesis", "Paragenesis"],
+            ["source_type", "Source type"], ["source", "Source"], ["confidence", "Confidence"]],
+    toggles: [["analysed", "yes", "Analysed only", true],
+              ["dup", "no", "Hide compilation rows that repeat a paper extracted here", false]],
+    essentials: ["diamond_id", "inclusion_id", "mineral", "mineral_printed", "craton", "country", "locality", "diamond_type",
                  "paragenesis", "formation_depth_domain", "SiO2", "Al2O3", "Cr2O3", "FeOT", "FeO", "MgO", "CaO",
-                 "oxide_total", "source", "confidence", "status"],
+                 "oxide_total", "source", "cited", "confidence", "status"],
     legend: "Chemistry in wt% oxide, as printed. <span class='na'>na</span>, <span class='na'>n.d.</span> = not analysed " +
             "(as defined by the source); <span class='na'>&lt;0.03</span>, <span class='na'>≤0.01</span> = below detection or upper limit; " +
             "FeO (total Fe) only where the source says so, otherwise FeO as printed; 41.7 (2) = value with its " +
             "uncertainty in the last digit. " +
             "<span class='amb'>nd</span> = notation the source does not define, so it is left uninterpreted. " +
             "Diamond values in [brackets] come from another paper's record of the same diamond (approved link). " +
+            "Rows from the Stachel (2021) compilation are as stored there, not yet checked against the paper they cite " +
+            "(shown under Cited paper); the same inclusion can appear in several rows when several papers or the compilation " +
+            "report it, so rows are reports, not physical inclusions. " +
             "Columns marked * are not reported in any paper extracted so far. " +
             "Number filters accept 40, &gt;40, &lt;1 or 40-45. Confidence says how sure we are that a record matches " +
             "what the paper printed (not whether the science is right); hover it for the reasons.",
@@ -205,7 +211,7 @@ const TABS = {
       return [
         ["Identification", [textCol("diamond_id", "Diamond ID", { frozen: true }), textCol("inclusion_id", "Inclusion ID"),
                             textCol("mineral", "Mineral name"), textCol("mineral_printed", "Mineral as printed")]],
-        ["Diamond and setting", [textCol("country", "Country"), textCol("region", "Region"), emptyCol("craton", "Craton"),
+        ["Diamond and setting", [textCol("country", "Country"), textCol("region", "Region"), textCol("craton", "Craton"),
                                  textCol("locality", "Locality"), textCol("host_rock", "Host rock"),
                                  emptyCol("weight_carat", "Weight (ct)"), textCol("color", "Color"),
                                  emptyCol("transparency", "Transparency"), textCol("diamond_morphology", "Diamond morphology"),
@@ -219,7 +225,9 @@ const TABS = {
                                textCol("depth_interpretation_basis", "Depth interpretation basis"),
                                emptyCol("relative_timing", "Relative timing"), emptyCol("timing_basis", "Timing basis")]],
         ["Chemistry (wt%)", meta.oxides.map(o => oxideCol(o.code, o.label))],
-        ["Provenance", [textCol("source", "Source"), textCol("where", "Printed at"), confCol(),
+        ["Provenance", [textCol("source", "Source"), textCol("source_type", "Source type"),
+                        textCol("cited", "Cited paper (compilation rows)"),
+                        textCol("also_extracted", "Also extracted here from"), textCol("where", "Printed at"), confCol(),
                         textCol("confidence_why", "Why this confidence"), textCol("status", "Review status"),
                         textCol("notes", "Notes")]],
       ];
@@ -237,7 +245,7 @@ const TABS = {
     groups() {
       return [
         ["Identification", [textCol("sample", "Diamond ID", { frozen: true })]],
-        ["Setting", [textCol("country", "Country"), textCol("region", "Region"), emptyCol("craton", "Craton"),
+        ["Setting", [textCol("country", "Country"), textCol("region", "Region"), textCol("craton", "Craton"),
                      textCol("locality", "Locality"), textCol("host_rock", "Host rock")]],
         ["Description", [emptyCol("weight_carat", "Weight (ct)"), textCol("color_d", "Color"),
                          emptyCol("transparency", "Transparency"), textCol("diamond_morphology_d", "Diamond morphology"),
@@ -249,7 +257,9 @@ const TABS = {
                          textCol("inclusions", "Inclusions (as printed)"), numCol("inclusions_in_db", "Inclusion records"),
                          textCol("also_in", "Also reported in")]],
         ["Measurements", [oxideCol("d13C", "δ¹³C (‰)"), oxideCol("N_content", "N (at. ppm)"), oxideCol("N_pct_B", "%B")]],
-        ["Provenance", [textCol("source", "Source"), textCol("where", "Printed at"), confCol(),
+        ["Provenance", [textCol("source", "Source"), textCol("source_type", "Source type"),
+                        textCol("cited", "Cited paper (compilation rows)"),
+                        textCol("also_extracted", "Also extracted here from"), textCol("where", "Printed at"), confCol(),
                         textCol("confidence_why", "Why this confidence"), textCol("status", "Review status"),
                         textCol("notes", "Notes")]],
       ];
@@ -271,7 +281,9 @@ const TABS = {
                         formatter: c => esc(c.getRow().getData().value_text),
                         accessorDownload: (v, d) => d.value_text }),
                       textCol("unit", "Unit"), textCol("method", "Method"), textCol("assumption", "Assumption")]],
-        ["Provenance", [textCol("source", "Source"), textCol("where", "Printed at"), confCol(),
+        ["Provenance", [textCol("source", "Source"), textCol("source_type", "Source type"),
+                        textCol("cited", "Cited paper (compilation rows)"),
+                        textCol("also_extracted", "Also extracted here from"), textCol("where", "Printed at"), confCol(),
                         textCol("confidence_why", "Why this confidence"), textCol("status", "Review status")]],
       ];
     },
@@ -386,17 +398,24 @@ async function main() {
   [meta, sources] = await Promise.all(["data/meta.json", "data/sources.json"].map(u => fetch(u).then(r => r.json())));
   const c = meta.counts;
   // physical diamonds: records linked as the same stone (approved links) count once
-  $("#stats").innerHTML = [[c.papers, c.papers === 1 ? "paper" : "papers"],
-    [c.physical_diamonds, `diamonds (${c.diamonds} records)`],
-    [c.inclusions, "inclusions"], [c.analysed, "with chemistry"], [c.values.toLocaleString(), "measured values"],
-    [c.estimates, "P–T estimates"]].map(([n, l]) => `<span class="stat"><b>${n}</b>${l}</span>`).join("");
-  $("#sources-title").textContent = `Sources (${sources.length} ${sources.length === 1 ? "paper" : "papers"})`;
+  $("#stats").innerHTML = [[c.papers, c.papers === 1 ? "paper extracted" : "papers extracted"],
+    [c.compilations, `compilation (${c.cited_papers} papers cited)`],
+    [c.inclusions.toLocaleString(), "inclusion reports"], [c.analysed.toLocaleString(), "with chemistry"],
+    [c.values.toLocaleString(), "measured values"], [c.estimates, "P–T estimates"],
+    [c.physical_diamonds, `diamonds in extracted papers (${c.diamonds} records)`]]
+    .map(([n, l]) => `<span class="stat"><b>${n}</b>${l}</span>`).join("");
+  $("#sources-title").textContent = `Sources (${c.papers} papers, ${c.compilations} compilation)`;
   $("#sources").innerHTML = sources.map(s => `<li>${esc(s.citation)} ` +
     (s.doi ? `<a href="https://doi.org/${esc(s.doi)}" target="_blank" rel="noopener">doi:${esc(s.doi)}</a>` : "") +
     `<div class="meta">${s.diamonds} diamonds · ${s.inclusions} inclusions · ${s.analyses} analyses · ` +
     `${s.estimates} P–T estimates · ${s.diamond_data} diamonds with host data · review status: ${esc(s.status.join(", "))}` +
     ` · licence: ${esc(s.licence)}` +
-    (s.notes ? `<br>${esc(s.notes)}` : "") + `</div></li>`).join("");
+    (s.notes ? `<br>${esc(s.notes)}` : "") + `</div>` +
+    (s.cited ? `<details class="cited"><summary>Papers cited by this compilation (${s.cited.length}); please cite these ` +
+      `as well</summary><ul>` + s.cited.map(x => `<li>${esc(x.ref)} ` +
+        (x.doi ? `<a href="https://doi.org/${esc(x.doi)}" target="_blank" rel="noopener">doi:${esc(x.doi)}</a>` : "") +
+        ` <span class="meta">${x.n} rows</span></li>`).join("") + `</ul></details>` : "") +
+    `</li>`).join("");
   $("#hide-empty").checked = !!store.get("hideEmpty");
   await switchTab("inclusions");
 }

@@ -63,5 +63,11 @@
       "excerpt": "Kankan diamonds (Guinea) II: lower mantle inclusion parageneses",
       "basis": "authors' paragenesis 'l.m.' (lower mantle; paper title), Tables 2-4"
     }
+  },
+  "compilation_cited_as": {
+    "dois": [
+      "10.1007/s004100000173"
+    ],
+    "basis": "This paper prints selected inclusions; its full EPMA dataset is Table 1 of Kankan I's electronic supplement (publication notes), and the Stachel compilation cites Kankan I's DOI for these rows."
   }
 }

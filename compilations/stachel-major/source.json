@@ -1,0 +1,47 @@
+{
+  "publication": {
+    "doi": "10.7939/DVN/EJUE1G",
+    "citation": "Stachel, T. (2021). Diamond Inclusion Database [dataset], version October 2021. Borealis. https://doi.org/10.7939/DVN/EJUE1G. Associated publication: Stachel, T., Aulbach, S., Harris, J.W. (2022). Mineral Inclusions in Lithospheric Diamonds. Reviews in Mineralogy and Geochemistry 88, 307-391. https://doi.org/10.2138/rmg.2022.88.06",
+    "short_ref": "Stachel (2021) compilation",
+    "year": 2021,
+    "pub_type": "dataset",
+    "notes": "CC0 literature compilation. Each row cites the paper its data came from (shown per row). Values are as stored in the compilation, not yet checked against those papers; the compiler converted or renormalised some analyses (e.g. Phillips et al. 2004: V2O5 to V2O3, totals rescaled to 100%). Imported so far: inclusion chemistry, paragenesis, locality and craton; host-diamond data and the compiler's P-T estimates are not imported yet."
+  },
+  "source_file": {
+    "file_role": "compilation",
+    "filename": "Diamond_Database_Oct-2021.xlsm",
+    "md5": "08cefbcd7fe545c78d7a0795884c4fd9",
+    "url": "https://doi.org/10.7939/DVN/EJUE1G",
+    "notes": "Sheet 'All diamonds'. Converted to compilations/stachel-major/rows.jsonl by scripts/convert_stachel.py (values only; macros never run)."
+  },
+  "sheet": "All diamonds",
+  "rows": "rows.jsonl",
+  "dictionary": "Dictionary for Diamond_Database_Oct-2021.pdf (T. Stachel, 21 Oct 2021)",
+  "columns": {
+    "locality": "sample",
+    "craton": "craton",
+    "cited_reference": "EPMA reference (or both)",
+    "cited_doi": "EPMA DOI",
+    "mineral": "mineral",
+    "sample": "#_sample",
+    "paragenesis": "paragenesis",
+    "assemblage": "assemblage",
+    "remarks": "Remarks"
+  },
+  "oxides": {"P2O5": "P2O5", "Nb2O5": "Nb2O5", "SiO2": "SiO2", "TiO2": "TiO2", "ZrO2": "ZrO2", "Al2O3": "Al2O3",
+             "Cr2O3": "Cr2O3", "V2O3": "V2O3", "FeO": "FeO", "MnO": "MnO", "NiO": "NiO", "MgO": "MgO", "CaO": "CaO",
+             "CoO": "CoO", "ZnO": "ZnO", "SrO": "SrO", "BaO": "BaO", "Na2O": "Na2O", "K2O": "K2O",
+             "Total": "oxide_total", "Cl": "Cl", "F": "F"},
+  "notation": {
+    "b.d.": "below_detection",
+    "bdl": "below_detection"
+  },
+  "notation_source": "Dictionary p. 5: 'Blanks typically indicate that an oxide was not analysed ... values below the limit of detection are indicated as b.d. or bdl, or in other cases as the actual limit of detection (≤ 0.02, or similar)'. Blank cells are not stored (not analysed); cells holding only spaces are stored as ambiguous.",
+  "number_text": "Numeric cells are written with 12 significant digits (Excel binary-float noise removed, e.g. 99.86999999999999 -> 99.87); the raw value is in rows.jsonl.",
+  "feo_note": "FeO is kept as printed. The dictionary implies it is total iron (p. 6: 'for all minerals except spinel, Fe2+=Fetotal'; spinel Fe3+ is recalculated only in the per-mineral sheets), but does not state it for the oxide column; not relabelled as FeO (total Fe) until a curator decides.",
+  "codes": {
+    "paragenesis": {"e": "eclogitic", "p": "peridotitic", "wb": "websteritic", "l.m.": "lower mantle",
+                    "h": "harzburgitic", "l": "lherzolitic", "wehr": "wehrlitic"},
+    "codes_source": "Dictionary p. 2, column L"
+  }
+}

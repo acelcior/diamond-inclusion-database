@@ -10,3 +10,4 @@ diamond_type,diamond,"Nitrogen-based diamond type (II, IaA, IaAB, IaB...)"
 region,diamond,"Region as named by the source (e.g. Kimberley, Yakutia)"
 host_rock,diamond,Host rock of the diamond as named by the source (e.g. kimberlite)
 formation_depth_domain,any,Depth domain the authors assign (e.g. lower mantle); an interpretation
+craton,diamond,"Craton or tectonic unit the source assigns to the locality; an interpretation (Stachel compilation column E)"

@@ -14,7 +14,7 @@ Levels are computed by the rules below in `scripts/build_gold.py` (`assess_confi
 in `extraction_confidence` with the rule version, so every level can be traced and recomputed.
 Related: [schema issues](schema-issues.md) · [log](log.md)
 
-## Rules, version `conf-v3` (from 2026-11-03; v1 had no calibration step, v2 no independent-copy check)
+## Rules, version `conf-v4` (from 2026-11-05; v1 had no calibration step, v2 no independent-copy check, v3 no compilation rule)
 
 1. **Start from how the values were read**:
    - spreadsheet or machine-readable supplement → *high*
@@ -35,6 +35,10 @@ Related: [schema issues](schema-issues.md) · [log](log.md)
 5. **Curator review**: a paper approved after a spot-check against the PDF raises a *medium*
    record whose total check passed to *high*. Review never raises a *low*.
 6. Records **named but not analysed** (a phase listed in an assemblage) keep the level from rule 1.
+7. **Compilation rows** (new in v4, D-013): *medium*. Our copy of the compilation is exact, but the
+   compiler's copy of the paper has not been checked: in the Phillips 2004 check the compiler had
+   converted V₂O₅ to V₂O₃ and rescaled totals for some analyses. A compilation row is raised only
+   when the cited paper is extracted and the values agree (rule 4 applied to inclusions; not yet built).
 
 ## What the levels mean in practice
 

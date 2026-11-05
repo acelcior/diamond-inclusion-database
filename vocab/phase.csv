@@ -16,3 +16,17 @@ siderite,mineral_species,,FeCO3,
 microcline,mineral_species,,KAlSi3O8,
 magnesio-hornblende,mineral_species,,,Amphibole
 polyphase inclusion (bulk),polyphase,,,"Bulk analysis of an intergrowth, not a single phase"
+sulphide,solid_solution,,,"Sulphide inclusion, species not specified"
+rutile,mineral_species,,TiO2,
+coesite,mineral_species,,SiO2,
+SiO2 phase,composition_only,,SiO2,"Reported by composition only; coesite or former stishovite are interpretations"
+phlogopite,mineral_species,,,Mica
+corundum,mineral_species,,Al2O3,
+ilmenite,mineral_species,,FeTiO3,
+kyanite,mineral_species,,Al2SiO5,
+magnetite,mineral_species,,Fe3O4,
+spinel,solid_solution,,,"Spinel group, as named by the source"
+jeffbenite,mineral_species,,,"Formerly TAPP (tetragonal almandine-pyrope phase)"
+carbonate,solid_solution,,,"Carbonate, species not specified"
+dolomite,mineral_species,carbonate,"CaMg(CO3)2",
+feldspar,solid_solution,,,"Feldspar group, as named by the source"

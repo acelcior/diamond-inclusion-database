@@ -21,3 +21,10 @@ SrO,oxide,wt%,
 d13C,isotope_delta,permil,δ13C of the host diamond
 N_content,concentration,at_ppm,Nitrogen content of the host diamond
 N_pct_B,other,percent,Percentage of nitrogen in B centres (%B)
+Nb2O5,oxide,wt%,
+ZrO2,oxide,wt%,
+V2O3,oxide,wt%,"V2O3 as stored by the source (the Stachel compilation converts some papers' V2O5)"
+CoO,oxide,wt%,
+BaO,oxide,wt%,
+Cl,element,wt%,"Chlorine, wt% (not included in oxide totals in the Stachel compilation)"
+F,element,wt%,"Fluorine, wt% (not included in oxide totals in the Stachel compilation)"

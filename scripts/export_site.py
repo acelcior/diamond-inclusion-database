@@ -5,6 +5,7 @@ Reads only the database (built by scripts/build_gold.py), so new papers appear w
 """
 import csv
 import json
+import re
 import sys
 from pathlib import Path
 
@@ -18,7 +19,27 @@ LABEL = {"FeOT": "FeO (total Fe)", "oxide_total": "Total"}
 
 
 def status_label(s):
-    return {"pending_review": "not yet reviewed"}.get(s, s.replace("_", " "))
+    return {"pending_review": "not yet reviewed", "imported_unverified": "imported, not checked against the paper"}.get(
+        s, s.replace("_", " "))
+
+
+def sample_key(s):
+    """('DP', 14) for 'DP014', ('', 14) for '14', ('KK', 1) for 'KK-001a'. The compiler drops prefixes and pads numbers."""
+    m = re.match(r"\s*([A-Za-z]*)[-\s]*0*(\d+)", s or "")
+    return (m[1].upper(), int(m[2])) if m else None
+
+
+def js_text(v):
+    """How the browser will print a number; when it equals the original text, the text need not be sent."""
+    return str(int(v)) if float(v).is_integer() else repr(v)
+
+
+def compact(r):
+    """Drop empty fields and original texts the browser can rebuild from the number (keeps the files small)."""
+    for k in ("_txt", "_st"):
+        if k in r and not r[k]:
+            del r[k]
+    return {k: v for k, v in r.items() if v is not None and v != ""}
 
 
 def label(code):
@@ -33,10 +54,39 @@ def main():
     db, papers = build_gold.build()  # all papers in gold/
     codes_by_pub = {pp["pub"]: json.loads((pp["dir"] / "source.json").read_text()).get("codes", {}) for pp in papers.values()}
     q = lambda sql, *a: db.execute(sql, a).fetchall()
+    for s in (ROOT / "compilations").glob("*/source.json"):
+        src = json.loads(s.read_text())
+        for (pid,) in q("SELECT id FROM publication WHERE doi = ?", src["publication"]["doi"]):
+            codes_by_pub[pid] = src.get("codes", {})
+    is_compilation = {pid for (pid,) in q("SELECT id FROM publication WHERE pub_type = 'dataset'")}
+
+    # compilation rows that repeat a paper extracted here: same cited DOI (or the paper's declared alias) + sample number
+    extracted = {}
+    for name, pp in papers.items():
+        src = json.loads((pp["dir"] / "source.json").read_text())
+        short = q("SELECT short_ref FROM publication WHERE id = ?", pp["pub"])[0][0]
+        for doi in [src["publication"]["doi"], *src.get("compilation_cited_as", {}).get("dois", [])]:
+            for ident, phase in q("""SELECT s.identifier, ph.name FROM inclusion_observation i
+                                     JOIN specimen_identifier s ON s.diamond_observation_id = i.diamond_observation_id
+                                     LEFT JOIN phase ph ON ph.id = i.phase_id WHERE i.publication_id = ?""", pp["pub"]):
+                k = sample_key(ident)
+                if k:
+                    extracted.setdefault(doi.lower(), {}).setdefault(k[1], set()).add((k[0], phase, short))
+
+    def also_extracted(cited_doi, sample, phase):
+        """shortcut: same cited DOI + sample number (+ prefix when the compiler kept it) + same standardized phase.
+        A display flag, not an identity link; a phase family mismatch (e.g. garnet vs majoritic garnet) is not flagged."""
+        k = sample_key(sample)
+        if not cited_doi or not k or not phase:
+            return None
+        hits = {short for prefix, ph, short in extracted.get(cited_doi, {}).get(k[1], set())
+                if (not k[0] or k[0] == prefix) and ph == phase}
+        return ", ".join(sorted(hits)) or None
 
     # oxide columns in vocab order, only those that hold data
     present = {c for (c,) in q("SELECT DISTINCT quantity_code FROM measured_value")}
-    oxides = [c for (c,) in q("SELECT code FROM quantity WHERE kind = 'oxide' OR code = 'oxide_total' ORDER BY rowid")
+    oxides = [c for (c,) in q("""SELECT code FROM quantity WHERE kind = 'oxide' OR code = 'oxide_total'
+                                 OR (kind = 'element' AND default_unit = 'wt%') ORDER BY rowid""")
               if c in present]
 
     def assertion(col, subject_id, prop):
@@ -48,10 +98,12 @@ def main():
     conf.update({("d", d): (lvl, why) for d, lvl, why in q("""SELECT derived_parameter_id, level, reasons
               FROM extraction_confidence WHERE derived_parameter_id IS NOT NULL""")})
 
-    def decode(pub, prop, code):
+    def decode(pub, prop, code, whole=False):
         legend = codes_by_pub.get(pub, {}).get(prop, {})
         if not code or not legend:
             return code
+        if whole:  # only codes the source defines exactly, e.g. 'e' -> 'eclogitic (e)'; 'deep-e' stays as printed
+            return f"{legend[code]} ({code})" if code in legend else code
         return "/".join(legend.get(c, c) for c in code.split("/")) + f" ({code})"
 
     COUNTRY = {"ZA": "South Africa", "RU": "Russia", "GN": "Guinea"}
@@ -91,10 +143,12 @@ def main():
         return n or None
 
     inclusions = []
-    for (iid, pub, short, sample, loc, phase, printed, status, did, page, table, row, col, inc_label, notes) in q("""
+    for (iid, pub, short, sample, loc, phase, printed, status, did, page, table, row, col, inc_label, notes,
+         cited, cited_doi) in q("""
             SELECT i.id, p.id, p.short_ref, s.identifier, d.reported_locality,
                    ph.name, i.reported_phase,
-                   i.workflow_status, d.id, e.page, e.table_label, e.row_label, e.column_label, i.reported_label, i.notes
+                   i.workflow_status, d.id, e.page, COALESCE(e.table_label, e.sheet), e.row_label, e.column_label,
+                   i.reported_label, i.notes, e.cited_reference_text, e.cited_doi
             FROM inclusion_observation i JOIN publication p ON p.id = i.publication_id
             LEFT JOIN diamond_observation d ON d.id = i.diamond_observation_id
             LEFT JOIN specimen_identifier s ON s.diamond_observation_id = d.id
@@ -109,22 +163,30 @@ def main():
              "diamond_type": dia_prop(did, "diamond_type"), "diamond_morphology": dia_prop(did, "shape"),
              "color": dia_prop(did, "colour"), "formation_depth_domain": dd, "depth_interpretation_basis": basis,
              "notes": clean_notes(notes),
-             "mineral_printed": printed, "paragenesis": assertion("inclusion_observation_id", iid, "paragenesis"),
+             "mineral_printed": printed,
+             "paragenesis": decode(pub, "paragenesis", assertion("inclusion_observation_id", iid, "paragenesis"), whole=True),
+             "craton": assertion("diamond_observation_id", did, "craton") if did else None,
+             "source_type": "compilation" if pub in is_compilation else "paper", "cited": cited,
+             "cited_doi": cited_doi,
+             "also_extracted": also_extracted(cited_doi, sample, phase) if pub in is_compilation else None,
              "touching": {"y": "yes", "n": "no"}.get(assertion("inclusion_observation_id", iid, "touching")),
              "assemblage": assertion("diamond_observation_id", did, "reported_assemblage"),
              "status": status_label(status), "where": ref(page, table, row, col), "_txt": {}, "_st": {},
              "confidence": conf[("i", iid)][0], "confidence_why": conf[("i", iid)][1]}
         m = q("SELECT id, method_code FROM measurement WHERE inclusion_observation_id = ?", iid)
         r["method"] = m[0][1] if m else None
-        r["identification_method"] = f"{m[0][1]} (phase named from its analysis)" if m and m[0][1] else None
+        r["identification_method"] = (f"{m[0][1]} (phase named from its analysis)" if m and m[0][1] else
+                                      "not recorded in the compilation" if pub in is_compilation else None)
         r["analysed"] = "yes" if m else "no"
         for code, text, value, vstatus in (q("""SELECT quantity_code, original_text, value, value_status
                                                FROM measured_value WHERE measurement_id = ?""", m[0][0]) if m else []):
-            r[code] = value
-            r["_txt"][code] = text
+            r[code] = int(value) if value is not None and float(value).is_integer() else value
+            if value is None or text != js_text(value):
+                r["_txt"][code] = text
             if vstatus != "reported":
                 r["_st"][code] = vstatus.replace("_", " ")
-        inclusions.append(r)
+        r["dup"] = "yes" if r["also_extracted"] else "no"
+        inclusions.append(compact(r))
 
     estimates = []
     for (sid, pub, short, page, table, row, qcode, text, value, unit, method, assumptions, dstatus, did) in q("""
@@ -139,7 +201,7 @@ def main():
                        LEFT JOIN phase ph ON ph.id = i.phase_id WHERE m.inclusion_set_id = ? ORDER BY i.id""", sid)
         touch = {t for _, _, t in members}
         samples = q("SELECT identifier FROM specimen_identifier WHERE diamond_observation_id = ?", members[0][1])
-        estimates.append({
+        estimates.append(compact({
             "source_id": pub, "source": short, "sample": samples[0][0] if samples else None,
             "assemblage": " + ".join(n for n, _, _ in members),
             "touching": "yes" if touch == {"y"} else "no" if touch == {"n"} else "mixed",
@@ -147,7 +209,7 @@ def main():
             "estimate": {"T_equilibration": "Temperature", "P_equilibration": "Pressure"}.get(qcode, qcode),
             "value": value, "value_text": text, "unit": {"degC": "°C"}.get(unit, unit), "method": method,
             "assumption": assumptions, "status": status_label(dstatus), "where": ref(page, table, row, None),
-            "confidence": conf[("d", did)][0], "confidence_why": conf[("d", did)][1]})
+            "confidence": conf[("d", did)][0], "confidence_why": conf[("d", did)][1]}))
 
     conf.update({("dia", d): (lvl, why) for d, lvl, why in q("""SELECT diamond_observation_id, level, reasons
               FROM extraction_confidence WHERE diamond_observation_id IS NOT NULL""")})
@@ -174,14 +236,17 @@ def main():
                  JOIN diamond_observation d2 ON d2.id = CASE WHEN l.observation_a = ? THEN l.observation_b ELSE l.observation_a END
                  JOIN publication p2 ON p2.id = d2.publication_id WHERE ? IN (l.observation_a, l.observation_b)""", did, did)) or None,
              "status": status_label(status), "where": ref(page, table, row, None),
-             "confidence": conf[("dia", did)][0], "confidence_why": conf[("dia", did)][1], "_txt": {}, "_st": {}}
+             "confidence": conf.get(("dia", did), (None, None))[0],
+             "confidence_why": conf.get(("dia", did), (None, None))[1], "_txt": {}, "_st": {}}
         for code, text, value, vstatus in q("""SELECT v.quantity_code, v.original_text, v.value, v.value_status
                 FROM measured_value v JOIN measurement m ON m.id = v.measurement_id WHERE m.diamond_observation_id = ?""", did):
             r[code], r["_txt"][code] = value, text
             if vstatus != "reported":
                 r["_st"][code] = vstatus.replace("_", " ")
         r["has_data"] = "yes" if r["_txt"] or r["diamond_morphology_d"] else "no"
-        diamonds.append(r)
+        if pub in is_compilation and r["has_data"] == "no":
+            continue  # compiled host-diamond data not imported yet; their inclusions are in the Inclusions tab
+        diamonds.append(compact(r))
 
     sources = []
     reg = Path(__file__).resolve().parent.parent / "docs" / "licence-register.csv"  # from scripts/licence_audit.py
@@ -203,11 +268,22 @@ def main():
             "status": sorted({status_label(s) for (s,) in q(
                 """SELECT workflow_status FROM inclusion_observation WHERE publication_id = ?
                    UNION SELECT workflow_status FROM diamond_observation WHERE publication_id = ?""", pid, pid)}),
+            "compilation": pid in is_compilation,
+            "cited": [{"ref": ref_, "doi": d, "n": n_} for ref_, d, n_ in q(
+                """SELECT e.cited_reference_text, MAX(e.cited_doi), COUNT(*) FROM inclusion_observation i
+                   JOIN evidence e ON e.id = i.evidence_id WHERE i.publication_id = ? AND e.cited_reference_text IS NOT NULL
+                   GROUP BY e.cited_reference_text ORDER BY e.cited_reference_text""", pid)] if pid in is_compilation else None,
         })
 
+    papers_only = [s for s in sources if not s["compilation"]]
     meta = {"oxides": [{"code": c, "label": label(c)} for c in oxides],
-            "counts": {"papers": len(sources), "diamonds": sum(s["diamonds"] for s in sources),
-                       "physical_diamonds": q("SELECT COUNT(DISTINCT cluster_id) FROM diamond_cluster")[0][0],
+            "counts": {"papers": len(papers_only), "compilations": len(sources) - len(papers_only),
+                       "cited_papers": sum(len(s["cited"]) for s in sources if s["compilation"]),
+                       "compiled_reports": sum(r["source_type"] == "compilation" for r in inclusions),
+                       "diamonds": sum(s["diamonds"] for s in papers_only),
+                       "physical_diamonds": q("""SELECT COUNT(DISTINCT c.cluster_id) FROM diamond_cluster c
+                           JOIN diamond_observation d ON d.id = c.diamond_observation_id
+                           JOIN publication p ON p.id = d.publication_id WHERE p.pub_type <> 'dataset'""")[0][0],
                        "inclusions": len(inclusions), "analysed": sum(r["analysed"] == "yes" for r in inclusions),
                        "values": q("SELECT COUNT(*) FROM measured_value")[0][0], "estimates": len(estimates)}}
 
