@@ -7,6 +7,14 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-05 — Extraction queue
+- Asked to import all 265 newly relevant papers into the database. Declined as asked: importing means extracting
+  each paper's tables from a legally held full text, one session per paper (D-014); registering empty publication
+  rows would inflate the database's counts. Instead `literature.py queue` ranks every relevant paper for
+  extraction by a fixed rule (tier by gap and access, reviews last, then links and year) into
+  `bibliography/extraction-queue.csv`: 61 in tier A (2022+, readable), 16 in B, 74 in C, 275 in D, 4 already done.
+- **Next:** take the top tier-A papers one or two a week; check each one's licence before downloading.
+
 ## 2026-11-05 — Bulk triage of the literature inventory
 - Claude proposed a label for every one of the 1,440 untriaged candidates from title, venue and OpenAlex
   abstract (no abstract for roughly a third; those were judged from the title alone): 265 relevant,

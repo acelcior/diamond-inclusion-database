@@ -93,7 +93,14 @@ Related: [roadmap](roadmap.md) (Phase 4) · [licence register](licence-register.
 3. Ask Consensus 2–3 gap questions (a mineral, method or locality the inventory is thin on).
    Save the listed papers (DOIs or titles) to a file and `add` it with
    `--source "consensus:<question>"`.
-4. Re-run the [licence audit](licence-register.md) for papers chosen for extraction.
+4. `python3 -I scripts/literature.py queue` rewrites `bibliography/extraction-queue.csv`, the ranked order in
+   which relevant papers are extracted. The rule is fixed so the order is reproducible: tier A = published
+   after the Stachel compilation (2022+) with a readable copy online; B = 2022+ but closed; C = older, readable;
+   D = older, closed. Within a tier, reviews go last (they rarely print primary tables), then more-linked and
+   newer papers first. `compiled = yes` means the Stachel compilation already cites the paper, so its
+   major-element data is in the database and only the rest (trace elements, isotopes, P-T, context) is new.
+   Papers already in `gold/` are marked `done`. Pick the top one or two each week.
+5. Re-run the [licence audit](licence-register.md) for papers chosen for extraction.
 
 **Stopping rule (when the inventory is "complete enough"):** a chaining round over all
 relevant papers adds fewer than 5% new relevant papers, and the last 10 Connected Papers /

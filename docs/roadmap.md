@@ -70,6 +70,7 @@ What follows from that:
 - [ ] OpenAlex + Crossref harvesting scripts; search-term list incl. synonyms and historical terms *(started: `scripts/literature.py`, [literature workflow](literature-workflow.md); keyword search not yet added)*
 - [x] Citation chaining from key reviews/compilations *(2026-11-05: seeded with the 138 seed + Stachel-compilation DOIs; Connected Papers and Consensus as manual supplements, D-015)*
 - [ ] Master bibliography table + publication dedup (DOI, title/author/year fuzzy, preprint ↔ published) *(started: `bibliography/inventory.csv`, dedup by OpenAlex ID, DOI and exact normalized title + year; no fuzzy or preprint matching yet)*
+- [x] Ranked extraction queue from the relevant papers *(2026-11-05: `literature.py queue` → `bibliography/extraction-queue.csv`, 430 papers in tiers A–D by gap and access)*
 - [x] First-pass triage of every candidate *(2026-11-05: all 1,440 candidates labelled by Claude from title, venue and abstract; proposals carry a `Claude:` note until a human spot-checks them; decisions kept in `bibliography/triage/`)*
 - [ ] Access-status tracking (open / institutional / unavailable) — no circumvention *(started: [licence register](licence-register.md) for the 15 seed sources, `scripts/licence_audit.py`)*
 

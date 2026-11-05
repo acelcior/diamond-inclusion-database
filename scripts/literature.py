@@ -9,6 +9,7 @@ Workflow and reasons: docs/literature-workflow.md. Run from the project folder:
   python3 -I scripts/literature.py next 50            # the next candidates to triage, with abstracts (not stored)
   python3 -I scripts/literature.py decide FILE        # apply a CSV of openalex_id,triage,note decisions
   python3 -I scripts/literature.py status             # counts
+  python3 -I scripts/literature.py queue              # ranked extraction queue of relevant papers -> bibliography/extraction-queue.csv
 
 Metadata comes from OpenAlex (CC0). Abstracts are read to set a priority but never stored.
 An OpenAlex key is optional: put it in the file .openalex-key (gitignored) or OPENALEX_API_KEY.
@@ -301,6 +302,47 @@ def cmd_decide(inv, file):
     print(f"applied {done} of {len(decisions)} decisions")
 
 
+QUEUE = ROOT / "bibliography" / "extraction-queue.csv"
+OA_READABLE = {"gold", "hybrid", "diamond", "green", "bronze"}  # a copy can be read; licence for mining differs
+TIERS = {  # (post-compilation, readable) -> tier letter and the reason, fixed rule so the order is reproducible
+    (True, True): ("A", "published after the Stachel compilation (2022+) and a readable copy is online"),
+    (True, False): ("B", "published after the Stachel compilation (2022+), closed access"),
+    (False, True): ("C", "pre-2022, readable copy online"),
+    (False, False): ("D", "pre-2022, closed access"),
+}
+
+
+def cmd_queue(inv):
+    """Rank every 'relevant' paper for extraction. Tier by gap (new papers first) and access; within a tier by
+    links then year. Papers already extracted (DOI in gold/*/source.json) go last. Compiled = cited by the Stachel
+    compilation, so its major-element data is already in the database and only the rest is new."""
+    gold_dois = set()
+    for f in (ROOT / "gold").glob("*/source.json"):
+        gold_dois.add(json.loads(f.read_text()).get("publication", {}).get("doi", "").lower())
+    rows = []
+    for r in inv.rows:
+        if r["triage"] != "relevant":
+            continue
+        post = bool(r["year"]) and int(r["year"]) >= 2022
+        tier, why = TIERS[(post, r["oa_status"] in OA_READABLE)]
+        extracted = r["doi"].lower() in gold_dois if r["doi"] else False
+        rows.append({"tier": "done" if extracted else tier, "why": "already extracted into gold/" if extracted else why,
+                     "compiled": "yes" if "compilation:" in r["found_by"] else "",
+                     "seed": "yes" if "seed:" in r["found_by"] else "",
+                     **{k: r[k] for k in ("openalex_id", "doi", "year", "first_author", "title", "venue", "oa_status",
+                                           "links", "triage_note")}})
+    # reviews and compilations last within a tier: they rarely print primary tables (judged from the triage note)
+    rows.sort(key=lambda x: (x["tier"] == "done", x["tier"], "review" in x["triage_note"].lower(),
+                             -int(x["links"] or 0), -int(x["year"] or 0)))
+    with open(QUEUE, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=["rank"] + list(rows[0]))
+        w.writeheader()
+        for n, x in enumerate(rows, 1):
+            w.writerow({"rank": n, **x})
+    from collections import Counter
+    print(f"{len(rows)} relevant papers ranked -> {QUEUE.relative_to(ROOT)}; tiers:", dict(Counter(x["tier"] for x in rows)))
+
+
 def cmd_status(inv):
     from collections import Counter
     print(f"{len(inv.rows)} papers in {INVENTORY.relative_to(ROOT)}")
@@ -311,12 +353,14 @@ def cmd_status(inv):
 
 
 def main(argv):
-    if not argv or argv[0] not in ("seed", "chain", "add", "next", "decide", "status"):
+    if not argv or argv[0] not in ("seed", "chain", "add", "next", "decide", "status", "queue"):
         print(__doc__)
         return
     inv = Inventory()
     if argv[0] == "next":
         return cmd_next(inv, int(argv[1]) if len(argv) > 1 else 50)
+    if argv[0] == "queue":
+        return cmd_queue(inv)
     if argv[0] == "seed":
         cmd_seed(inv)
     elif argv[0] == "chain":
