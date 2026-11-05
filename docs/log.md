@@ -7,6 +7,23 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-05 — Bulk triage of the literature inventory
+- Claude proposed a label for every one of the 1,440 untriaged candidates from title, venue and OpenAlex
+  abstract (no abstract for roughly a third; those were judged from the title alone): 265 relevant,
+  308 maybe, 867 not relevant. Each note starts with `Claude:` and nobody has spot-checked them yet.
+  Decisions file: `bibliography/triage/2026-11-05-claude-batch2.csv`.
+- Most "maybe" calls are papers that depend on scope decision D-005 (diamonds in xenoliths, fibrous and
+  fluid-inclusion diamonds, polycrystalline diamonds, ophiolite and metamorphic diamonds, conference
+  abstracts and theses). Once D-005 is decided, that pile can be split by rule rather than reread.
+- Found and fixed: a triage note containing a comma was cut short by `decide` (the CSV was unquoted).
+  The 365 affected notes were patched in the inventory and the workflow doc now says to quote.
+- Citation chaining from the newly relevant papers: 246 of 288 chained (815 new candidates, 469 high priority)
+  before the OpenAlex daily budget ran out; 42 remain. `python3 -I scripts/literature.py chain` tomorrow
+  finishes them. Without a key the shared budget ran out in one session: the free personal key
+  (see [literature workflow](literature-workflow.md), Setup) would avoid this.
+- **Next:** you or the professor spot-check the `Claude:` labels (start with the 430 relevant); decide D-005
+  to resolve the maybe pile; then triage the new candidates from this chaining round.
+
 ## 2026-11-05 — PostgreSQL portability check
 - Decided not to switch databases yet: the database is rebuilt from source files, so more papers don't make
   the later move harder; the risk is SQLite-only SQL creeping in. D-004 revisit triggers not yet met.

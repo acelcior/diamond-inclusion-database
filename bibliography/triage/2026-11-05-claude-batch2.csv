@@ -1,0 +1,1441 @@
+openalex_id,triage,note
+W2011379242,relevant,Claude: review of mineral inclusions in Brazilian sublithospheric diamonds
+W1986027069,maybe,Claude: mainly experimental Na-majorite; compares to natural inclusion data
+W3194910843,maybe,"Claude: thesis with inclusion chemistry (Cr-pyrope, chromite, olivine); theses depend on D-005"
+W4206373160,relevant,Claude: mineral inclusions in Lace diamonds
+W4321793851,relevant,"Claude: Koidu diamonds and inclusions, isotopes and elemental compositions"
+W4387731501,relevant,"Claude: São Francisco diamonds and their inclusions, stable isotopes"
+W2075417039,maybe,"Claude: host-diamond C isotopes; inclusions likely used for depth, no abstract"
+W1035521363,relevant,"Claude: review of inclusion associations, TZ and lower mantle"
+W2801437571,relevant,"Claude: ferropericlase inclusions Sao Luiz, Li and trace elements"
+W2804322668,maybe,Claude: host-diamond C-N in ultradeep diamonds; inclusion data not certain
+W2075330301,maybe,"Claude: diamondites (polycrystalline), scope D-005"
+W2802507608,maybe,Claude: Orapa host-diamond SIMS isotopes; inclusion parageneses probably given
+W2090410331,not_relevant,Claude: deposit geology review
+W4294653319,maybe,"Claude: Coromandel diamond formation, no abstract; likely inclusion data"
+W1986388720,relevant,"Claude: sulphide-bearing diamonds Finsch, micro-analytical"
+W4387744247,relevant,"Claude: sulfide and CaSiO3 inclusions dated, Juina and Kankan"
+W2067968983,relevant,"Claude: high-Fe (Mg,Fe)O inclusion"
+W2086598523,not_relevant,Claude: host-diamond C and N isotope variability only
+W1989081562,maybe,Claude: host-diamond C-N of Kankan ultradeep diamonds; inclusions probably listed
+W4410063358,not_relevant,Claude: experimental CaSiO3-CaTiO3 perovskite
+W2063065780,relevant,"Claude: TEM nanoinclusions in placer microdiamonds, Ukraine"
+W1997677207,relevant,"Claude: majoritic garnet inclusions, Siberian placers"
+W3136153363,relevant,"Claude: orientation and chemistry of 76 inclusions, Yakutia"
+W2114145909,not_relevant,Claude: host-diamond IR and C isotopes only
+W4410522932,maybe,"Claude: Victor diamonds, no abstract; may include inclusions"
+W2809614505,not_relevant,"Claude: thesis on diamond and ruby impurities, host only"
+W2161733805,not_relevant,"Claude: mantle xenolith garnets, no diamond inclusions"
+W4415221290,relevant,"Claude: ferropericlase inclusions Mg-Fe isotopes, Juina and Kankan"
+W2508481996,maybe,Claude: non-destructive characterisation of Roosevelt diamonds; inclusion ID possible
+W4411132419,relevant,Claude: tomography and Raman of CaSi-perovskite inclusions
+W1992886136,maybe,"Claude: fluid microinclusions in Kankan diamonds, scope D-005"
+W3006419984,not_relevant,Claude: breyite experiments
+W2763728158,not_relevant,Claude: experimental Cr phases
+W4411923458,relevant,"Claude: Fort à la Corne diamonds, title implies inclusion thermobarometry; verify"
+W2615277527,not_relevant,Claude: experimental/theoretical book chapter
+W2325876585,not_relevant,Claude: model paper on metallic Fe and N
+W2811017101,relevant,Claude: Cullinan mineral inclusions
+W2140478491,maybe,"Claude: broad review, may list inclusion papers"
+W4283805461,relevant,Claude: RiMG review of diamond and inclusion morphology
+W2520122157,maybe,"Claude: polycrystalline aggregates Mir, scope D-005"
+W1966619169,maybe,"Claude: diamondiferous eclogite xenoliths, scope D-005"
+W2330121627,maybe,Claude: review of inclusion ages
+W2461580601,not_relevant,Claude: resorption morphology experiments
+W2041149617,maybe,"Claude: ophiolite diamonds, scope D-005"
+W2001214682,not_relevant,Claude: thermodynamic modelling
+W2796694743,relevant,"Claude: aragonite-bearing polyphase inclusion, Komsomolskaya"
+W2537287796,maybe,"Claude: ultradeep diamonds from carbonates, no abstract; review or model"
+W2922567621,maybe,"Claude: IKC abstract on sulphide inclusions, scope D-005"
+W2974067447,relevant,Claude: SiO2 inclusions in sublithospheric diamonds
+W2055508323,relevant,Claude: review of asthenospheric and TZ inclusions
+W4297243154,relevant,"Claude: hydrous peridotitic inclusions, 660 km"
+W4393123320,relevant,Claude: DO-27 sublithospheric inclusions
+W4386814811,relevant,"Claude: ferropericlase inclusion groups, Juina"
+W1995722995,relevant,Claude: Li abundances in inclusions
+W3014233685,maybe,"Claude: Siberian placer diamonds, no abstract; likely inclusions"
+W2935387199,not_relevant,"Claude: micro-diamond origin review, host only"
+W4309204642,relevant,"Claude: magnesiochromite-olivine pair Udachnaya, fO2"
+W2998173758,maybe,Claude: deformation of super-deep diamonds; inclusions mentioned as evidence
+W3011514201,not_relevant,Claude: partitioning experiment
+W2588249903,relevant,Claude: dated eclogitic inclusions in growth zones
+W3000024384,not_relevant,Claude: growth experiment
+W4382456956,not_relevant,Claude: thermodynamic model
+W4413381636,relevant,Claude: lithospheric diamond Rio Sorriso with inclusions and P-T
+W2079491509,maybe,Claude: integrated models review
+W2048893944,relevant,Claude: review of southern African inclusion ages and parageneses
+W2013729584,not_relevant,Claude: experiment
+W2055106424,maybe,"Claude: fluid and silicate inclusions in fibrous diamonds, scope D-005"
+W4403134180,relevant,Claude: Koidu diamond substrates from inclusions
+W3048706464,relevant,Claude: compilation of inclusion-based depths
+W4307254726,maybe,Claude: eclogite xenoliths; re-uses Siberian eclogitic inclusion data
+W2027428113,maybe,"Claude: Dachine komatiite diamonds, host isotopes; inclusions uncertain"
+W2010662695,maybe,"Claude: mineral inclusions in fibrous diamonds, scope D-005"
+W2546578271,maybe,"Claude: eclogite-hosted diamonds, scope D-005"
+W1995323970,not_relevant,Claude: host-diamond N isotopes
+W2278224493,maybe,"Claude: diamondiferous eclogite xenolith, scope D-005"
+W1968204255,not_relevant,Claude: experiment
+W2035646479,maybe,Claude: review of metasomatism using inclusion garnet compositions
+W2322379827,relevant,Claude: merwinite inclusion Sao Luiz
+W2935539518,maybe,"Claude: ophiolite diamonds, scope D-005"
+W2941482554,maybe,"Claude: ophiolite diamond review, scope D-005"
+W197619525,not_relevant,"Claude: host-diamond morphology, spectra and C isotopes"
+W4410005326,not_relevant,Claude: experiment
+W2086070454,maybe,"Claude: fluid-inclusion trace elements in fibrous diamonds, scope D-005"
+W4313544928,relevant,Claude: redox of superdeep diamond inclusions
+W2016242918,not_relevant,Claude: experimental garnet overview
+W4206917788,relevant,"Claude: new mineral heamanite as inclusion, Gahcho Kué"
+W7150731645,not_relevant,Claude: experiment
+W2141395955,not_relevant,Claude: Type II origin discussion
+W2761614076,not_relevant,Claude: xenoliths
+W4409666694,maybe,Claude: metallic inclusions discussed from experiments; may compile data
+W4410553551,not_relevant,Claude: experiment
+W2936687108,not_relevant,Claude: experiment
+W4386447043,not_relevant,Claude: experiment preprint
+W7220373510,relevant,Claude: review compiling inclusion ages
+W4366779118,maybe,"Claude: framesite review, scope D-005"
+W2311958752,maybe,"Claude: fluid microinclusions, scope D-005"
+W2052801121,relevant,Claude: regional compilation of inclusion paragenesis and ages
+W1967835004,not_relevant,Claude: placer indicator minerals
+W4283758761,relevant,Claude: EPMA of inclusions in Fuxian diamonds
+W2028910617,not_relevant,Claude: host-diamond trace elements
+W2803376016,maybe,"Claude: diamonds in eclogite xenoliths, scope D-005"
+W2027304926,relevant,"Claude: orientation of 43 olivine inclusions, Udachnaya"
+W1860345605,relevant,"Claude: inclusions in large Yakutian diamonds, garnet REE"
+W2189499657,maybe,"Claude: diamondiferous eclogite xenolith, scope D-005"
+W2075135115,maybe,"Claude: diamondites, scope D-005"
+W2461125375,not_relevant,Claude: host-diamond C-N isotopes
+W2955684654,relevant,Claude: silicate-melt inclusions with cpx and omphacite in placer diamonds
+W1998264376,maybe,"Claude: fluid and mineral inclusions in cloudy diamonds, scope D-005"
+W4409186114,relevant,"Claude: new superdeep diamond location, Sequoia; inclusions expected"
+W2791039182,relevant,Claude: CaSiO3 perovskite inclusion
+W2558618837,relevant,Claude: jeffbenite new mineral from diamond inclusion
+W4283812545,relevant,Claude: RiMG review of Raman identification of inclusions
+W1976403284,relevant,Claude: hollandite + SiO2 inclusions
+W2488854513,relevant,Claude: NanoSIMS C isotopes on diamond with carbonate inclusion
+W3167485552,relevant,Claude: review of super-deep diamond inclusions
+W2079073018,relevant,"Claude: Phase Egg inclusions, Juina"
+W2903208769,relevant,"Claude: Fe-rich ferropericlase inclusions, Juina"
+W4313528909,not_relevant,"Claude: thermodynamic stability of jeffbenite, experimental"
+W4401427851,not_relevant,Claude: larnite experiments
+W7161262834,relevant,Claude: lower mantle inclusion assemblages with tuite Sr isotopes
+W2076573064,maybe,Claude: majorite barometry method applied to inclusions; no abstract
+W2789961200,not_relevant,Claude: experiment
+W1483633,maybe,"Claude: book chapter on ultradeep rocks and diamonds, no abstract"
+W2602274580,maybe,"Claude: ophiolite microdiamonds spectroscopy, scope D-005"
+W2029161278,not_relevant,Claude: synthetic HPHT diamond
+W2146861339,maybe,"Claude: fluid inclusions, scope D-005"
+W1970624733,maybe,"Claude: nanometre mineral and fluid inclusions in cloudy diamonds, scope D-005"
+W2005226367,relevant,"Claude: Re-Os dating of sulphide inclusions, Yakutia"
+W4412455016,maybe,"Claude: review of inclusions and C-N isotopes, broad; may list papers"
+W4390974269,not_relevant,"Claude: metamorphic spinels, not diamond inclusions"
+W1964218614,relevant,Claude: TEM phase composition of nanoinclusions in placer diamonds
+W2332117620,not_relevant,Claude: peridotite xenoliths
+W7225241606,relevant,"Claude: garnet-cpx inclusion pairs in 19 Siberian eclogitic diamonds, fO2 and P-T"
+W2070818842,relevant,Claude: Cr-diopside inclusion thermobarometry compilation
+W2608501516,not_relevant,Claude: host-diamond spectroscopy
+W4313259610,not_relevant,"Claude: diamond included in olivine, not inclusion in diamond"
+W2090538574,relevant,"Claude: Ar-Ar dating of mineral inclusions, Orapa"
+W3119275037,relevant,Claude: Guyana diamonds provenance and paragenesis; inclusions likely
+W4280540893,relevant,Claude: supplement with ringwoodite and zirconia inclusion data
+W2058205386,maybe,"Claude: diamondiferous eclogite xenolith, scope D-005"
+W2135553596,relevant,Claude: multiple inclusions in Mir eclogitic diamonds
+W2152181052,maybe,"Claude: diamondiferous eclogite xenolith, scope D-005"
+W2050353791,maybe,"Claude: diamondiferous eclogite tomography, scope D-005"
+W1967994839,relevant,Claude: subcalcic garnet inclusions Ekati and Murowa
+W4407823662,relevant,Claude: Ti-rich garnets and superdeep diamonds DO-27
+W2073344581,relevant,Claude: eclogite formation constrained by diamond inclusions
+W2072756610,not_relevant,Claude: host-diamond C-N
+W2230633998,maybe,Claude: reconnaissance of Behradih diamonds; inclusions uncertain
+W7218780420,not_relevant,Claude: experiment
+W1996517339,maybe,"Claude: eclogite-hosted diamonds C-N, scope D-005"
+W2034929682,maybe,"Claude: microxenoliths, scope D-005"
+W2042934619,relevant,Claude: CL and EBSD of chromite inclusions with Mg# and Cr#
+W4411310881,relevant,Claude: Knee Lake diamonds thermal conditions; inclusion thermobarometry implied
+W2884962566,relevant,Claude: blue boron-bearing diamonds with lower-mantle inclusions
+W2936818146,maybe,Claude: host-diamond isotopes; inclusions used for paragenesis
+W3133246547,maybe,"Claude: ophiolite review, scope D-005"
+W2909358537,relevant,Claude: periclase inclusion elastic barometry
+W2530602888,not_relevant,Claude: growth review
+W2592807798,relevant,Claude: solid N2 inclusions in Juina diamonds
+W2925156203,not_relevant,Claude: experiment
+W2194669978,not_relevant,Claude: experiment
+W4409314218,maybe,Claude: Type II sublithospheric gems; inclusions possibly reviewed
+W2804650692,relevant,"Claude: molybdenite in sulphide inclusions, Mir"
+W4236291851,relevant,Claude: phase transitions in inclusions in Sao Luiz diamonds
+W4392881295,not_relevant,Claude: thermoelastic experiments on jeffbenite
+W1970306532,relevant,Claude: ringwoodite inclusion
+W4392746960,relevant,Claude: humite-group inclusions
+W2040139327,relevant,"Claude: ferropericlase and MgSi-perovskite inclusions, Eurelia"
+W2149403899,not_relevant,Claude: experiment
+W2320328019,relevant,"Claude: Fe speciation of inclusion cloud, Rio Soriso"
+W2972847976,not_relevant,Claude: experiment
+W4407766991,relevant,"Claude: CaSiO3 inclusion types, Juina"
+W2107015288,relevant,"Claude: majoritic garnet inclusions, Jagersfontein"
+W2533317360,not_relevant,Claude: FTIR thermochronometry of host
+W2939751112,relevant,Claude: Zimmi eclogitic diamonds growth; inclusion data expected
+W2790699507,not_relevant,Claude: experiment
+W4376107777,not_relevant,Claude: experiment
+W2489307800,not_relevant,Claude: experiment
+W2616010602,not_relevant,Claude: experimental book chapter
+W4311114768,relevant,"Claude: ferropericlase and magnesiowüstite inclusions Fe3+, Sao Luiz"
+W1978679002,maybe,"Claude: framesite nano-inclusions, scope D-005"
+W3017952471,maybe,"Claude: diamondiferous eclogite, scope D-005"
+W2569064173,not_relevant,Claude: experimental depth of formation
+W2897512540,not_relevant,Claude: kimberlite prospecting
+W1997649631,relevant,Claude: major elements of 32 coexisting minerals in eclogitic inclusions
+W2071671960,relevant,"Claude: EBSD of olivine inclusions, Yubileinaya"
+W3012327462,maybe,"Claude: diamondiferous xenoliths, scope D-005"
+W2519311894,maybe,Claude: kimberlite field mantle reconstruction; reuses diamond inclusion data
+W2006561375,not_relevant,Claude: garnet classification scheme
+W4413735653,not_relevant,Claude: lamproite olivine xenocrysts
+W2802426881,not_relevant,Claude: host-diamond microstructure
+W2884493410,relevant,"Claude: kyanite inclusion elastic geobarometry, Voorspoed"
+W3166104192,relevant,Claude: Voorspoed diamond-forming events; inclusion data expected
+W2338760948,maybe,"Claude: thesis with inclusion compositions, Jericho and Wawa; theses depend on D-005"
+W7130384805,not_relevant,Claude: nitrogen aggregation modelling of host
+W2018164646,not_relevant,Claude: stable isotope review of host diamond
+W2032073169,maybe,"Claude: diamondiferous microxenoliths, scope D-005"
+W4210745240,not_relevant,Claude: host-diamond textures and N defects
+W1967142733,maybe,"Claude: inclusions in garnets from polycrystalline aggregates, scope D-005"
+W2002364863,relevant,"Claude: Re-Os of sulfide inclusions, Jagersfontein"
+W2613306013,relevant,Claude: sulphide inclusion homogenisation method with data
+W1975274187,relevant,"Claude: inclusion chemistry and C isotopes, Orapa cluster"
+W7212083419,not_relevant,"Claude: host-diamond cuboid study, N defects"
+W4281700630,relevant,Claude: Mesoarchean diamonds; inclusion dating and thermobarometry implied
+W2046107383,maybe,"Claude: submicroscopic inclusions in coated diamond, scope D-005"
+W7164889436,relevant,Claude: zircon inclusions U-Pb and O isotopes in placer diamonds
+W145911986,not_relevant,Claude: host-diamond IR growth history
+W2512661172,not_relevant,Claude: barometer calibration
+W2800862981,maybe,Claude: thesis with garnet inclusion trace elements; theses depend on D-005
+W2582267120,relevant,"Claude: protogenesis of cpx inclusions, with xenolith comparison"
+W2008292218,relevant,Claude: majorite inclusion compilation and classification
+W2044113442,not_relevant,Claude: experimental ferric iron in ferropericlase
+W2602459730,not_relevant,Claude: xenolith garnet exsolution
+W2336426361,maybe,"Claude: cuboid placer diamonds, no abstract; inclusions uncertain"
+W2590878558,relevant,Claude: review of super-deep inclusions
+W4396707481,not_relevant,Claude: experiment
+W2972088619,not_relevant,Claude: experiment
+W4237889979,not_relevant,Claude: synthetic jeffbenite
+W2951620446,not_relevant,Claude: reply letter
+W3013726905,maybe,Claude: chapter on carbonaceous inclusion minerals; review
+W4382058313,not_relevant,Claude: experiment
+W7166883549,not_relevant,Claude: thermodynamic modelling
+W7221675736,maybe,"Claude: coesite-bearing microdiamonds in dolerite, unusual host; scope"
+W2087033874,not_relevant,Claude: XRF methodology
+W2529936433,not_relevant,Claude: experimental concept paper
+W2059541708,not_relevant,Claude: experiment
+W1998889345,maybe,Claude: XANES method applied to diamond inclusions; data minimal
+W2527761050,maybe,"Claude: nitrogen nanoinclusions in milky diamonds, scope D-005"
+W2331573230,maybe,Claude: nano-XRF method with one Juina diamond inclusion
+W4323349511,relevant,Claude: ferropericlase inclusion origins
+W4393904301,not_relevant,Claude: stishovite genesis model
+W3157177036,maybe,"Claude: IKC abstract on Li in inclusions, scope D-005"
+W4402300920,not_relevant,Claude: stishovite genesis model (Russian version)
+W2149919098,not_relevant,Claude: experiment
+W2478036415,not_relevant,Claude: experimental book chapter
+W4390115309,not_relevant,Claude: kimberlite petrography
+W2486755499,not_relevant,Claude: host-diamond internal structure
+W4200108061,relevant,Claude: ellinaite new mineral including a Juína diamond inclusion
+W2110463726,maybe,Claude: thermodynamic analysis using inclusion data
+W2095186464,not_relevant,Claude: host-diamond FTIR
+W1971556192,maybe,Claude: Los Coquitos diamonds characterisation; inclusions possible
+W2972803007,not_relevant,Claude: melt inclusions in xenolith olivine
+W7202073968,relevant,Claude: needle inclusions in placer diamonds
+W4388572528,not_relevant,Claude: Mt Carmel corundum assemblages
+W2065409026,not_relevant,Claude: Type II discussion
+W7168519363,maybe,Claude: discussion of Fe-Ni inclusion diamonds; may compile data
+W2017871388,relevant,Claude: iron carbide inclusions Juina
+W1049258189,relevant,Claude: isotopes of decomposed lower-mantle inclusions
+W1987930959,not_relevant,Claude: xenolith mineral chemistry
+W4352981142,not_relevant,Claude: experiment
+W2041258124,maybe,"Claude: discussion of zincian chromite inclusions, reuses Meyer & Boyd data"
+W2077947643,relevant,Claude: Elements review of sublithospheric inclusions
+W3211325810,not_relevant,Claude: experiment
+W2898142749,maybe,"Claude: olivine in nano fluid inclusions, scope D-005"
+W7125522245,not_relevant,Claude: xenocrysts
+W2754584158,maybe,"Claude: rutile-diamond intergrowths, not clearly inclusions"
+W7165376389,relevant,Claude: fluoride inclusions in placer diamonds
+W2809871190,maybe,"Claude: diamond-forming fluids, scope D-005"
+W1973594267,relevant,Claude: single diamond with subduction evidence; inclusion data likely
+W3097370852,relevant,Claude: Guyana inclusion suite with Raman thermobarometry
+W2074703934,relevant,"Claude: sulfur isotopes of sulfide inclusions, Orapa"
+W4304124322,relevant,Claude: type IIb diamond growth environment; inclusions likely
+W4386482145,maybe,Claude: garnet O isotopes in eclogitic parageneses; may include inclusions
+W4409483133,relevant,"Claude: six eclogitic cpx inclusions, EPMA and Raman"
+W4406301644,not_relevant,Claude: peridotite xenoliths
+W2755564339,relevant,"Claude: Sm-Nd of 26 garnet inclusions, Venetia"
+W2124492372,not_relevant,Claude: xenolith garnets
+W2046032462,not_relevant,Claude: experiment
+W4242881798,maybe,"Claude: IKC abstract on Sese and Murowa inclusions, scope D-005"
+W4231703969,not_relevant,Claude: host-diamond C-N abstract
+W3198758907,maybe,"Claude: fluid microinclusions abstract, scope D-005"
+W2039711575,relevant,Claude: craton-scale review of inclusion compositions
+W2055724384,not_relevant,Claude: SIMS method on host diamond
+W2804719531,relevant,Claude: Jwaneng inclusion abundances and parageneses
+W844019727,not_relevant,Claude: host-diamond N isotope fractionation
+W3157116532,relevant,Claude: protogenetic sulfide inclusions Re-Os
+W2766887824,relevant,"Claude: mackinawite in sulfide inclusions, Udachnaya"
+W4394580748,not_relevant,Claude: xenocrysts
+W2266038328,relevant,Claude: Witwatersrand diamonds; inclusions expected
+W1983334081,not_relevant,Claude: host-diamond C-N variations
+W2162292147,maybe,"Claude: diamondiferous eclogite xenoliths, scope D-005"
+W3097235238,maybe,"Claude: high-density fluids, scope D-005"
+W2286448173,maybe,"Claude: fibrous diamonds host isotopes, scope D-005"
+W4238240328,maybe,"Claude: IKC abstract duplicate of Palot 2013 Finsch, scope D-005"
+W2095234983,not_relevant,Claude: host-diamond C-N
+W3161851937,not_relevant,Claude: host-diamond C-N abstract
+W1994003641,relevant,Claude: inclusion chemistry of Jwaneng diamonds
+W2809524288,maybe,"Claude: yellow Orapa diamonds, no abstract"
+W2030451710,not_relevant,Claude: xenolith compilation
+W2789955055,relevant,Claude: diamond ages from Victor inclusions
+W4319066327,not_relevant,Claude: experiment
+W4407116750,not_relevant,Claude: eclogite xenoliths
+W3149361015,maybe,Claude: oxythermobarometry reusing pyrope inclusion analyses
+W4406405872,maybe,Claude: Prairie Creek diamond morphology; reviews inclusion suites
+W7155646766,maybe,Claude: thermal modelling using inclusion thermobarometry literature
+W2027463264,maybe,"Claude: diamond-bearing eclogite xenolith, scope D-005"
+W2017484455,relevant,Claude: mixed eclogite-peridotite inclusions
+W2475350016,relevant,Claude: H2O-bearing lower mantle inclusion
+W4311854654,relevant,Claude: boron isotopes in blue diamond; lower-mantle inclusions
+W4282046138,relevant,"Claude: ringwoodite, zirconia and coesite composite inclusion"
+W4396686786,relevant,Claude: K- and Na-rich davemaoite inclusion
+W4375834620,maybe,"Claude: book chapter, no abstract; likely review"
+W3159612780,maybe,"Claude: IKC abstract on Juina-5 lower mantle diamonds, scope D-005"
+W7204069471,not_relevant,Claude: PGE deposit and craton discussion
+W1965834657,not_relevant,Claude: experimental/theoretical origin
+W3118853835,relevant,"Claude: breyite inclusion structure and properties, new mineral"
+W2604674803,relevant,Claude: compilation of all natural ferropericlase-bridgmanite inclusion pairs
+W1967208619,relevant,"Claude: ATEM of lower mantle inclusions, retrograde reactions"
+W2028849458,not_relevant,Claude: kimberlite petrogenesis
+W4317564832,relevant,"Claude: ferropericlase, opx and magnesite inclusions, Koffiefontein"
+W1498367105,not_relevant,Claude: perspective piece
+W4295679978,not_relevant,Claude: experiment
+W4402656420,not_relevant,Claude: experiment
+W2616181313,not_relevant,Claude: experimental book chapter
+W7170654608,not_relevant,Claude: experiment
+W2330913680,relevant,"Claude: carbonatitic inclusions with new minerals, Juina"
+W1987689478,relevant,"Claude: micro- and nano-inclusions, Juina"
+W2085349237,relevant,Claude: ferropericlase inclusions oxidation state
+W2758485727,not_relevant,Claude: ilmenite indicator minerals
+W2990194313,not_relevant,Claude: XRF method
+W2011508615,relevant,Claude: Raman and EBSD on lower-mantle inclusion-host systems
+W1088894924,not_relevant,Claude: host-diamond photoluminescence
+W2047025428,maybe,"Claude: lower mantle composition from inclusions, no abstract; may compile"
+W4415878548,not_relevant,"Claude: halogens in diamond lattice or microinclusions, host"
+W4234200883,maybe,"Claude: IKC abstract on Juina mineralogy, scope D-005"
+W4414428690,relevant,Claude: Ni-rich inclusions redox
+W4385993730,not_relevant,Claude: experiment
+W2415512576,not_relevant,Claude: synthesis experiment
+W2480305607,not_relevant,Claude: synthetic diamonds with inclusions
+W4386951736,not_relevant,Claude: experiment
+W2047473768,not_relevant,Claude: xenocryst garnet sampling
+W2078926498,relevant,Claude: classic inclusion assemblage chemistry
+W1999351938,maybe,"Claude: diamondiferous peridotite xenoliths, scope D-005"
+W2624958831,not_relevant,Claude: isotope fractionation modelling
+W2068284041,relevant,"Claude: proton microprobe of inclusions, West Australia"
+W2042805047,not_relevant,Claude: xenolith and xenocryst garnets
+W3138885012,not_relevant,Claude: thermodynamic simulation
+W4328115555,not_relevant,Claude: xenolith garnet dating
+W2901421063,relevant,"Claude: Raman and IR of olivine inclusions in Yakutian diamonds, Russian"
+W2000492997,not_relevant,Claude: xenocryst Cr-diopsides
+W2078521830,not_relevant,Claude: xenolith chrome spinels
+W2626338823,relevant,"Claude: EPMA of olivine, garnet, pyroxene inclusions, Snap Lake"
+W4361290416,maybe,"Claude: diamond-forming fluids, scope D-005"
+W3217311149,maybe,"Claude: thermobarometry of inclusions, no abstract; compilation likely"
+W2950228094,not_relevant,Claude: experiment
+W2014285705,not_relevant,Claude: xenolith redox
+W3167654299,maybe,"Claude: IKC abstract on garnet inclusions De Beers Pool, scope D-005"
+W2049594258,relevant,Claude: first crystal structure of olivine in diamond
+W2114212797,not_relevant,Claude: garnet xenocrysts
+W2034518834,not_relevant,Claude: analytical method on host trace elements
+W2472455093,relevant,Claude: crystallographic orientations of olivine inclusions
+W1991871689,relevant,"Claude: Ar-Ar dating of cpx inclusions, Namibia"
+W4240517004,maybe,"Claude: IKC abstract on inclusion trace elements Premier and Finsch, scope D-005"
+W2040776181,relevant,Claude: Guaniamo diamonds and xenocrysts; inclusions expected
+W3008491757,not_relevant,Claude: gemological pink diamonds
+W2067312348,not_relevant,Claude: garnet xenocrysts O isotopes
+W4392872834,maybe,"Claude: Golkonda diamond sources, no abstract"
+W2962798795,not_relevant,Claude: moissanite in shoshonite
+W2028332875,maybe,Claude: spectroscopy of NSW alluvial diamonds; inclusions uncertain
+W4401889466,relevant,Claude: olivine inclusions Liaoning with compiled data
+W7162798060,relevant,"Claude: silicic fluid rims around mineral inclusions, trace elements"
+W4223571135,relevant,Claude: V in garnet inclusions vs xenoliths
+W4392501482,not_relevant,Claude: historical review
+W2159768528,maybe,Claude: NSW alluvial diamonds; inclusions possibly reported
+W2042099905,not_relevant,Claude: xenocrysts
+W2396506019,maybe,"Claude: CH4 micro-inclusions in mixed-habit diamonds, scope D-005"
+W2086595032,maybe,"Claude: fluid inclusion isotopes, scope D-005"
+W2067833038,not_relevant,Claude: EoS methods
+W4292641225,not_relevant,Claude: detrital garnets
+W4390929149,not_relevant,Claude: xenocrysts
+W2963738293,not_relevant,Claude: garnet xenocrysts
+W2051500846,not_relevant,Claude: host-diamond C-N
+W2048321441,not_relevant,Claude: host-diamond N isotopes
+W2022004532,maybe,"Claude: diamondites C isotopes, scope D-005"
+W2010214942,not_relevant,Claude: mantle N isotopes
+W2940826215,relevant,"Claude: S isotopes of sulfide inclusions, West Africa"
+W4408961438,relevant,Claude: H2O in 118 nominally anhydrous inclusions
+W2012802474,maybe,"Claude: diamonds in xenoliths FTIR, scope D-005"
+W4390414512,not_relevant,Claude: laboratory growth
+W7128925926,not_relevant,Claude: host-diamond H isotope method
+W2164721198,not_relevant,Claude: experiment
+W2101910999,not_relevant,Claude: experiment
+W3034137936,not_relevant,Claude: experiment
+W7139980005,not_relevant,Claude: experiment
+W3094879729,not_relevant,Claude: eclogite xenolith redox
+W4327703844,not_relevant,Claude: growth rate experiment
+W2792102677,maybe,"Claude: cloudy diamonds N-C-inclusion profiles, scope D-005"
+W7201959125,relevant,"Claude: FTIR at inclusion interfaces in four eclogitic diamonds with graphite, sulfide, garnet"
+W3200977106,not_relevant,Claude: host-diamond FTIR and isotopes abstract
+W2025549535,relevant,Claude: sulphide inclusions Re-Os Koffiefontein
+W1499320648,not_relevant,Claude: heavy mineral review
+W2006268421,maybe,"Claude: polycrystalline diamond review, scope D-005"
+W4244054334,maybe,"Claude: IKC abstract duplicating Smart 2012, scope D-005"
+W2017823479,not_relevant,Claude: xenolith review
+W2589334293,not_relevant,Claude: host-diamond platelets
+W1968516644,relevant,Claude: Re-Os of Panda peridotitic inclusions
+W2032387720,relevant,"Claude: metasomatic cpx inclusions, Liaoning"
+W2040365786,relevant,Claude: REE in garnet inclusions and xenoliths
+W2033936418,maybe,"Claude: microinclusions in octahedral and coated diamonds, scope D-005"
+W2117281250,not_relevant,Claude: metaconglomerate provenance
+W2027621661,maybe,"Claude: fibrous diamond fluids, scope D-005"
+W4296638400,not_relevant,Claude: geotherm modelling using literature inclusion P-T
+W4403418028,relevant,Claude: multiphase inclusions with carbides and moissanite in placer diamonds
+W2924557624,maybe,"Claude: IKC abstract on microinclusions, scope D-005"
+W2054518955,not_relevant,Claude: kimberlite olivine abundance
+W2002443197,maybe,"Claude: fluid inclusions Diavik, scope D-005"
+W4200081289,relevant,Claude: multiple magnesiochromite inclusions in six Yakutian diamonds
+W2045696333,maybe,"Claude: co-existing fluid and silicate inclusions, scope D-005"
+W3092563543,relevant,Claude: subduction-related placer diamonds; inclusions expected
+W2736662717,not_relevant,Claude: experiment
+W2048449755,not_relevant,Claude: experiment
+W2419156600,maybe,"Claude: ophiolite UHP phases, scope D-005"
+W3048691860,relevant,Claude: FeNi(Cu) inclusions in superdeep diamond
+W2789643037,not_relevant,Claude: graphitization experiment
+W3036543651,maybe,"Claude: Panda diamond fluids, scope D-005"
+W4210511272,maybe,Claude: comment piece on inclusions; no new data likely
+W2908836510,not_relevant,Claude: core Si isotope model
+W3017150570,not_relevant,Claude: elastic anisotropy method review
+W2920797924,not_relevant,Claude: IaB diamond abstract
+W4384568121,not_relevant,Claude: experiment
+W4394788666,not_relevant,Claude: experiment (Russian version)
+W2031751752,not_relevant,Claude: experiment
+W2023887453,maybe,"Claude: carbonate nanoinclusions in Kokchetav metamorphic diamonds, scope D-005"
+W3157028715,maybe,Claude: re-analysis of ice-VII inclusion pressures from literature
+W4285606973,not_relevant,Claude: experiment
+W2092909901,maybe,"Claude: lower-mantle formation conditions, no abstract; may reuse inclusion data"
+W3012177032,not_relevant,Claude: experiment
+W4243804137,maybe,"Claude: IKC abstract on TEM of Kankan inclusions, scope D-005"
+W7170078675,relevant,Claude: Candle Lake lithospheric and sublithospheric diamonds with inclusions
+W2341145814,relevant,"Claude: lower-mantle rock microinclusion, Rio Soriso"
+W1982386078,maybe,"Claude: kimberlitic sources of Juina super-deep diamonds, no abstract"
+W2079151737,maybe,Claude: Mn-ilmenite megacrysts compared to inclusions in diamond
+W2093319359,relevant,Claude: corundum inclusion compositional dataset
+W2066602585,not_relevant,Claude: thermoelastic model
+W2573314759,not_relevant,Claude: XANES method
+W3201546733,maybe,"Claude: IKC abstract on Collier 4 ultra-deep diamonds, scope D-005"
+W7134914236,relevant,Claude: Guiratinga lithospheric diamonds mineralogical signatures (preprint)
+W4304893126,not_relevant,Claude: experiment
+W4404347349,maybe,"Claude: fluid and melt inclusion review chapter, scope D-005"
+W4409505375,relevant,Claude: bradleyite inclusion in diamond
+W2008350311,not_relevant,Claude: plume geodynamics
+W1162713245,not_relevant,Claude: experiment
+W4224273583,not_relevant,Claude: experiment
+W4416418933,maybe,"Claude: micro-CT methods for inclusions, no abstract"
+W2057337416,not_relevant,Claude: xenolith fluids
+W2740398551,relevant,"Claude: iron nitrides and carbonitrides inclusions, Rio Soriso"
+W2789865598,not_relevant,Claude: experiment
+W2592768236,not_relevant,Claude: experiment
+W2885458241,not_relevant,"Claude: eclogite inclusions, not diamond"
+W1994499897,not_relevant,Claude: C isotope review of host
+W2066150374,not_relevant,Claude: exploration mineral chemistry review
+W2143250979,relevant,Claude: strain birefringence halos around inclusions
+W2002187455,not_relevant,Claude: experiment
+W2043480566,not_relevant,Claude: host-diamond trace elements
+W4213155006,not_relevant,Claude: molecular dynamics
+W4412951396,relevant,"Claude: nine eclogitic inclusions in one Udachnaya diamond, elastic geobarometry"
+W2050206300,relevant,Claude: SiC and quartz inclusions in Fuxian diamonds
+W2088436025,relevant,Claude: Mn-rich eclogitic garnet inclusions
+W1979167814,maybe,Claude: Japanese review of inclusions
+W2095268016,maybe,"Claude: chromium and diamond genesis, no abstract; likely compiles Cr inclusion data"
+W2023847393,not_relevant,Claude: experiment
+W3198784086,not_relevant,Claude: experiment
+W1975852682,not_relevant,Claude: exploration review
+W2722396007,not_relevant,Claude: experiment
+W2013849648,not_relevant,Claude: xenolith mineralogy
+W2965262198,relevant,Claude: Raman of 169 garnet inclusions in Siberian diamonds
+W2000099854,not_relevant,Claude: regional petrology
+W2042644376,not_relevant,Claude: nanodiamond in Hawaiian xenolith
+W2033696483,relevant,"Claude: Ar-Ar of cpx inclusions, African diamonds"
+W2190495221,relevant,Claude: water contents in inclusions
+W2493514385,relevant,Claude: olivine inclusions water and trace elements
+W2895879722,not_relevant,Claude: Cr-spinel in sediments
+W4327737571,not_relevant,Claude: modelling
+W2316496052,not_relevant,Claude: host-diamond nitrogen defects
+W2795416797,relevant,Claude: inclusions constrain Kaapvaal metasomatism
+W2929713913,relevant,Claude: crystallographic orientations of magnesiochromite inclusions
+W1983374842,maybe,Claude: Garnet Lake kimberlite with diamond occurrence; inclusions uncertain
+W2801585377,maybe,Claude: detrital diamond provenance; inclusion dating possible
+W2890657036,not_relevant,Claude: thermodynamic modelling reusing inclusion data
+W4404220838,not_relevant,Claude: experiment
+W2089485854,not_relevant,Claude: experiment
+W2528902723,not_relevant,Claude: radiohaloes on diamond surface
+W2317339688,not_relevant,Claude: garnets from stream sediments
+W2783175854,relevant,Claude: Raman of inclusions in 23 Chapada Diamantina diamonds
+W4283820587,relevant,Claude: RiMG review of crystallographic methods for inclusions
+W2085534357,not_relevant,"Claude: inclusions in garnet nodules, not diamond"
+W7154835124,not_relevant,Claude: kimberlite olivine Fe isotopes
+W2890465072,relevant,Claude: diamond formation in eclogite with chloride-carbonate melt; inclusion data expected
+W4244270040,maybe,"Claude: IKC abstract on syngenesis criteria, scope D-005"
+W2984577893,maybe,"Claude: IKC abstract on Buffalo Hills inclusions, scope D-005"
+W2046981570,maybe,"Claude: Carolina kimberlite, no abstract; diamond inclusions possible"
+W7116974212,relevant,Claude: Espinhaço diamonds with mineral inclusions (preprint)
+W3108445038,relevant,Claude: Argyle fancy diamonds with paragenesis from inclusions
+W2385940970,not_relevant,"Claude: zircon provenance of placer, not inclusions"
+W2285886836,maybe,Claude: Borneo alluvial diamond provenance; inclusions possible
+W1998587299,not_relevant,Claude: host-diamond C isotopes
+W3207163558,not_relevant,Claude: lamproite olivine
+W4380874496,not_relevant,Claude: thermodynamic modelling of inclusion morphology
+W1991797208,not_relevant,Claude: buffering model
+W1988623878,not_relevant,Claude: garnet xenocrysts
+W2016917895,maybe,"Claude: diamond eclogite xenoliths, scope D-005"
+W1970082532,not_relevant,Claude: xenolith oxidation state
+W2902750392,not_relevant,Claude: resorption experiment
+W2921773057,relevant,Claude: protogenetic garnet inclusions and diamond ages
+W4413377841,relevant,Claude: inclusions in 50 Mengyin diamonds by Raman and CT
+W2014054043,not_relevant,Claude: crystallography essay
+W4386028692,not_relevant,"Claude: garnet xenocrysts, reuses literature inclusion data"
+W4247313173,maybe,"Claude: IKC abstract on Jericho eclogites and diamonds, scope D-005"
+W2891649169,maybe,"Claude: thesis on Jericho eclogite xenoliths with diamonds, scope D-005"
+W3199588612,not_relevant,Claude: garnet xenocryst grade indicators
+W4231088228,maybe,"Claude: IKC abstract on olivine inclusion orientations, scope D-005"
+W2007204330,not_relevant,Claude: growth experiment
+W2067032589,maybe,"Claude: carbonado, scope D-005"
+W2980188069,maybe,"Claude: diamondite fluid inclusion He, scope D-005"
+W2105890594,not_relevant,Claude: bachelor literature study
+W4241207044,maybe,"Claude: IKC abstract on polycrystalline diamonds, scope D-005"
+W4254135798,not_relevant,Claude: fO2 abstract
+W2019552330,not_relevant,Claude: ab initio surfaces
+W2806375387,not_relevant,Claude: growth experiment
+W3200306558,not_relevant,Claude: growth experiment
+W3208999457,not_relevant,Claude: pyroxenite sulphides
+W3093452114,not_relevant,Claude: experiment with literature fluid inclusions
+W4406757280,relevant,"Claude: six olivine inclusions, orientation and CL"
+W2066654341,not_relevant,Claude: experiment
+W3035340351,not_relevant,Claude: experiment
+W2075247692,not_relevant,Claude: experiment
+W3095485259,not_relevant,Claude: experiment
+W7117241450,not_relevant,Claude: experiment
+W7202287517,not_relevant,Claude: experiment
+W1850101942,relevant,"Claude: iron carbide inclusions C isotopes, Jagersfontein"
+W2069003732,maybe,"Claude: N-rich fluid inclusions, scope D-005"
+W2890824429,not_relevant,Claude: host-diamond growth and fracture
+W2136738844,maybe,"Claude: fluid inclusions in Kokchetav metamorphic microdiamonds, scope D-005"
+W2052093113,relevant,Claude: Wellington NSW diamonds with mineral inclusions
+W4244403045,maybe,"Claude: IKC abstract on Premier peridotitic diamonds, scope D-005"
+W2051257504,not_relevant,Claude: experiment
+W1980952757,not_relevant,Claude: experiment
+W2027621161,not_relevant,Claude: geodynamics
+W2993841559,maybe,"Claude: Fe valence in fibrous diamond microinclusions, scope D-005"
+W2091556041,relevant,Claude: NaPx-En inclusion REE
+W2323119315,relevant,"Claude: ruby inclusion in diamond, Brazil"
+W1983557059,relevant,"Claude: sulfide inclusion chemistry, African diamonds"
+W2031296873,relevant,"Claude: Re-Os of eclogitic sulfide inclusions, Kaapvaal"
+W2924779155,maybe,"Claude: IKC abstract duplicate of Timmerman 2018 yellow Orapa, scope D-005"
+W2888736830,not_relevant,Claude: Type IIa origin discussion
+W2136763150,maybe,"Claude: nano inclusions as probes, no abstract"
+W2117071874,not_relevant,Claude: kimberlite olivine
+W7212061101,relevant,Claude: review compiling phlogopite inclusion compositions
+W2011135502,maybe,"Claude: high-density fluids in cuboid diamonds, scope D-005"
+W2111094575,maybe,"Claude: diamond-bearing eclogite xenoliths, scope D-005"
+W2061346797,relevant,Claude: Re-Os and Ar-Ar of inclusions in Ural placer diamonds
+W2992221997,maybe,"Claude: IKC abstract, scope D-005"
+W3138590616,maybe,"Claude: IKC abstract Re-Os Mwadui, scope D-005"
+W2036185984,relevant,Claude: pyroxene solid solution in garnet inclusions
+W1979354803,not_relevant,Claude: diamond morphology
+W4250115175,maybe,"Claude: IKC abstract on Finsch eclogitic inclusions, scope D-005"
+W2921605381,maybe,"Claude: IKC abstract on Karowe inclusions, scope D-005"
+W2955920852,not_relevant,Claude: host-diamond noble gases
+W4283807182,maybe,"Claude: RiMG review of non-cratonic diamonds, scope D-005"
+W4414021972,relevant,Claude: Sm-Nd and chemistry of Voorspoed inclusions
+W4280578812,relevant,Claude: supplement on protogenetic cpx inclusions and Nd diffusion
+W1980050447,not_relevant,Claude: experiment
+W1969918545,not_relevant,Claude: craton modelling
+W2075690423,not_relevant,Claude: experiment
+W3171976224,maybe,"Claude: IKC abstract on inclusion trace element database, scope D-005"
+W2037085475,relevant,"Claude: mineral inclusions, River Ranch"
+W1968330365,not_relevant,Claude: garnet classification
+W4242452575,maybe,"Claude: IKC abstract on carbon sources in inclusion-bearing diamonds, scope D-005"
+W2036351687,maybe,Claude: Raman mapping around graphite inclusions; minimal inclusion data
+W3185354152,maybe,"Claude: IKC abstract on metasomatic diamonds in xenoliths, scope D-005"
+W3005525289,not_relevant,Claude: kimberlite emplacement
+W2890879298,not_relevant,Claude: kimberlite emplacement
+W1988129548,maybe,"Claude: diamondiferous lherzolite xenolith, scope D-005"
+W2616653028,not_relevant,Claude: experimental book chapter
+W4229028455,maybe,"Claude: fluid inclusions Chidliak, scope D-005"
+W2068917411,maybe,"Claude: fluid evolution in one diamond, scope D-005"
+W2075171131,maybe,"Claude: TEM of fibrous diamond microinclusions, scope D-005"
+W2094426689,relevant,"Claude: mineral inclusions, Sputnik pipe"
+W1970527462,relevant,"Claude: trace elements in sulfide inclusions, Yakutia"
+W2136656291,relevant,"Claude: Re-Os of single sulfide inclusions, Siberia"
+W2058796152,relevant,"Claude: micro-inclusions at diamond nucleation centres, Yakutia"
+W2035865639,relevant,Claude: sulfide inclusion exsolution with data
+W2019397135,not_relevant,Claude: annealing experiment
+W2129833445,maybe,"Claude: diamondites, scope D-005"
+W2010026423,not_relevant,Claude: resorption experiment
+W2529046331,maybe,"Claude: eclogite xenolith with diamond, scope D-005"
+W2951198927,relevant,Claude: Fe-rich magnetic inclusions characterisation
+W2435081651,not_relevant,Claude: experiment
+W2901326220,maybe,"Claude: IKC abstract on garnet inclusion trace elements, scope D-005"
+W1977876964,maybe,"Claude: Kokchetav UHP metamorphic diamonds review, scope D-005"
+W2064604933,maybe,"Claude: fibrous diamond microinclusions, scope D-005"
+W1991922369,not_relevant,Claude: xenocrystic olivine FTIR
+W4249477130,not_relevant,Claude: xenocrystic olivine FTIR abstract
+W1990267538,not_relevant,Claude: xenoliths in lamprophyres
+W4400970734,maybe,"Claude: IKC abstract on Knee Lake diamonds, scope D-005"
+W2891830043,not_relevant,Claude: plume model
+W4411311250,maybe,"Claude: eclogite xenoliths with diamond inventory, scope D-005"
+W2317691790,maybe,"Claude: ophiolite diamonds review, scope D-005"
+W3011357762,not_relevant,Claude: graphite-diamond transition theory
+W2801898426,not_relevant,Claude: meteorite diamonds
+W3132269946,not_relevant,Claude: experiment
+W2466444152,relevant,Claude: Mössbauer method on Fe-bearing inclusions in diamonds
+W2530539490,relevant,Claude: micro and nano-inclusions in São Luiz superdeep diamond
+W4402302161,not_relevant,Claude: kimberlite viscosity
+W2978648057,not_relevant,Claude: experiment
+W2967135503,not_relevant,Claude: experiment
+W4224217527,not_relevant,Claude: post-spinel phase review
+W4391682329,not_relevant,Claude: computer modelling
+W2599260704,maybe,Claude: review questioning lower-mantle inclusions; re-analysis of data
+W2057585982,not_relevant,Claude: editorial
+W4308045430,not_relevant,Claude: news piece
+W4403431512,not_relevant,Claude: computer modelling (Russian version)
+W2794129871,relevant,Claude: ice-VII inclusions in diamonds
+W2323639621,not_relevant,Claude: experiment
+W2087265209,relevant,"Claude: Cr valence in ferropericlase inclusions, XANES"
+W4228996976,maybe,"Claude: response on davemaoite, re-analysis"
+W1978220166,not_relevant,Claude: XRF method
+W1528440358,not_relevant,Claude: eclogite xenoliths thesis
+W3113143722,not_relevant,Claude: lamproite geochemistry
+W2042375042,not_relevant,Claude: experimental concept
+W2782982779,not_relevant,Claude: XRF method
+W2094600021,not_relevant,Claude: crustal garnetite
+W2211185996,not_relevant,Claude: host-diamond luminescence
+W3177131158,not_relevant,Claude: host trace elements abstract
+W2335768925,relevant,"Claude: in situ XRD of multiphase inclusion, Juina"
+W1967130585,relevant,Claude: Li isotopes of ferropericlase inclusions
+W2416372613,not_relevant,Claude: model
+W3161207800,maybe,"Claude: IKC abstract on Juina kimberlite super-deep diamonds with inclusions, scope D-005"
+W2029225362,not_relevant,Claude: experiment
+W4238072418,maybe,"Claude: IKC abstract on Lac de Gras microdiamonds, scope D-005"
+W4385957592,not_relevant,Claude: eclogite essay
+W3183289893,not_relevant,"Claude: Arkhangelsk diamond chapter, host focus"
+W2025189454,maybe,"Claude: UHP microdiamond review, scope D-005"
+W1233791839,maybe,"Claude: ophiolite diamonds discussion, scope D-005"
+W2549055936,not_relevant,Claude: experiment
+W4210335447,relevant,Claude: merrillite inclusion in lower-mantle diamond
+W2026078855,not_relevant,Claude: geodynamics review
+W4381485962,relevant,Claude: elastic geobarometry of ferropericlase inclusion
+W2342478808,not_relevant,Claude: diamond morphology
+W2605474565,not_relevant,Claude: nyerereite in olivine inclusions
+W2080583981,not_relevant,Claude: experiment
+W4375866206,not_relevant,Claude: xenolith melt inclusions
+W4377985087,not_relevant,Claude: experiment
+W4200112827,not_relevant,Claude: CL method on host
+W2068725010,not_relevant,Claude: host-diamond isotopes
+W2008768289,not_relevant,Claude: harzburgite xenoliths
+W2018617700,maybe,"Claude: fluid inclusions in diamond coats, scope D-005"
+W2042141673,relevant,Claude: U-Pb of zircon inclusion in diamond
+W2049984422,relevant,"Claude: remnant pressure of olivine inclusions, multi-technique"
+W1569571137,relevant,Claude: 100 inclusion analyses from Finsch diamonds
+W2081810843,maybe,"Claude: diamond-bearing peridotite xenoliths, scope D-005"
+W1596548755,not_relevant,Claude: xenoliths
+W2069128461,not_relevant,Claude: host-diamond C isotopes
+W2013379655,relevant,Claude: thermometry of olivine-garnet inclusion pairs
+W1969967795,maybe,Claude: cluster analysis including diamond pyroxenes; reuses data
+W2072534066,not_relevant,Claude: model
+W1981536579,not_relevant,Claude: kimberlite chemistry
+W2073404420,not_relevant,Claude: defect centre
+W1586160060,not_relevant,Claude: ophiolite chromite
+W2981542939,relevant,Claude: U-Pb of rutile inclusions
+W2069211055,not_relevant,Claude: garnet xenocrysts
+W1996951608,maybe,"Claude: diamondiferous eclogites, scope D-005"
+W2125510263,maybe,"Claude: diamond in lherzolite xenolith, scope D-005"
+W1605068029,relevant,Claude: inclusions from four African localities
+W2033978675,relevant,Claude: divalent Cr in olivine inclusions
+W2136476617,not_relevant,Claude: exploration
+W2048651997,relevant,Claude: minor elements in 55 silicate inclusions
+W1967122138,not_relevant,Claude: tectonics
+W2092526248,relevant,Claude: peridotitic suite inclusions formation
+W1977815159,relevant,Claude: compressed garnet inclusion barometry
+W1969675794,not_relevant,Claude: host impurities
+W2156095359,not_relevant,Claude: exploration
+W1988467900,not_relevant,Claude: indicator minerals
+W4382050646,not_relevant,Claude: chromite in sediments
+W2058545002,relevant,Claude: classic P-T of inclusion suites
+W1532873726,maybe,"Claude: sulfides in xenoliths and diamond inclusions, S isotopes"
+W3023680153,maybe,Claude: duplicate of Meyer 1975 chromium chapter
+W1499000510,maybe,Claude: spinel compilation including diamond inclusions
+W2014621580,maybe,"Claude: biotite inclusions in diamond coat, scope D-005"
+W2338849582,relevant,"Claude: mineral inclusions identified by XRD, African and Brazilian diamonds"
+W283352812,not_relevant,Claude: hydrothermal carbon review
+W2083217472,not_relevant,Claude: INAA of host
+W2064480261,relevant,Claude: review of inclusions and upper mantle chemistry
+W2330877604,relevant,Claude: ruby inclusion in diamond
+W4248548822,maybe,"Claude: IKC abstract on Zn-chromite in diamonds, scope D-005"
+W2333878513,maybe,"Claude: EELS of nanometre inclusions, conference"
+W3209889050,not_relevant,Claude: host trace elements
+W2030608436,maybe,"Claude: epitaxial intergrowths, not inclusions"
+W2325087889,not_relevant,Claude: prospecting review
+W2529061859,not_relevant,Claude: popular article
+W7108080374,relevant,"Claude: microinclusions in cubic diamonds, Mir and Udachnaya"
+W2335295373,not_relevant,Claude: growth experiment
+W2008735184,not_relevant,Claude: growth experiment
+W2081011820,relevant,Claude: Mössbauer of chromite inclusions in diamond
+W2045281625,not_relevant,Claude: host magnetic susceptibility
+W2084975624,not_relevant,Claude: kimberlite potential
+W3195186381,maybe,"Claude: IKC abstract on Kankan fluids, scope D-005"
+W1579397387,not_relevant,Claude: review essay
+W4283330460,not_relevant,Claude: kimberlite olivine
+W2507445902,not_relevant,Claude: exploration rutile
+W3009751706,not_relevant,Claude: host spectroscopy
+W2990826239,maybe,"Claude: high-density fluids in coated diamonds, scope D-005"
+W1480115161,not_relevant,Claude: kimberlite melt
+W4323044873,not_relevant,Claude: experiment
+W2766804981,relevant,"Claude: orientation of 19 olivine inclusions, Udachnaya"
+W4284711428,not_relevant,Claude: melt inclusions in chromian spinel
+W4402692992,not_relevant,Claude: kimberlite olivine
+W2007826040,maybe,"Claude: metamorphic diamonds noble gases, scope D-005"
+W2807711042,maybe,"Claude: noble gases in fluid inclusions, scope D-005"
+W2041899832,not_relevant,Claude: mechanism discussion
+W1984206488,relevant,Claude: O isotopes of coesite inclusions
+W2113395463,not_relevant,Claude: host C isotope mapping
+W2472553032,not_relevant,Claude: dissolution experiment
+W4394988690,relevant,Claude: kokchetavite inclusion in Guaniamo diamond
+W3187082812,maybe,"Claude: IKC abstract on Guaniamo polymineralic inclusions, scope D-005"
+W4252375837,maybe,"Claude: IKC abstract on Guaniamo, scope D-005"
+W4405351756,relevant,Claude: kokchetavite inclusion (Russian version of W4394988690)
+W4410461077,not_relevant,Claude: gemological
+W4229007864,maybe,"Claude: comment on davemaoite, re-analysis"
+W1985106894,not_relevant,Claude: low-N genesis discussion
+W2065484581,not_relevant,Claude: meteorite perspective
+W2963680072,maybe,Claude: synchrotron method for inclusion identification
+W2891562276,not_relevant,Claude: dissolution experiment
+W2782071290,relevant,Claude: Raman barometry of CaSiO3-walstromite inclusions
+W2971086390,relevant,"Claude: diamond-magnesiochromite elastic geothermobarometry, Udachnaya"
+W2890213082,not_relevant,Claude: host defects
+W4407039375,maybe,Claude: review of HP polymorphs including diamond inclusions
+W4405010695,not_relevant,Claude: fracture modelling
+W2908203996,maybe,"Claude: IKC abstract on super-deep depths, scope D-005"
+W4407491886,not_relevant,Claude: structural mineralogy review
+W2952066605,not_relevant,Claude: letter
+W3024403437,not_relevant,Claude: synthesis
+W4391131545,not_relevant,Claude: synthesis
+W1498024296,not_relevant,Claude: experiment
+W2038326099,maybe,"Claude: diamondiferous eclogite xenolith, scope D-005"
+W2155023116,not_relevant,Claude: macrocrystal garnet
+W4206756468,not_relevant,Claude: placer sedimentology
+W4244268429,maybe,"Claude: IKC abstract on Brazilian diamonds, scope D-005"
+W3128359880,not_relevant,Claude: host defects
+W4281644339,relevant,Claude: protogenetic cpx inclusions and Nd diffusion
+W4401752409,not_relevant,Claude: software
+W2028828132,not_relevant,Claude: placer geology
+W2006150473,not_relevant,Claude: radio-colouration
+W2024296659,not_relevant,Claude: industry review
+W4242833843,maybe,"Claude: Espinhaço diamond origin, mineralogical; inclusions possible"
+W2007796819,maybe,"Claude: Primorie placer diamonds with inclusions; carbonado, scope D-005"
+W2625519287,relevant,Claude: Coromandel diamonds with microanalysis of inclusions
+W2620453347,maybe,"Claude: microinclusions in cuboid diamonds, scope D-005"
+W1766101237,maybe,"Claude: saline fluids, scope D-005"
+W2036806929,maybe,"Claude: diamond-forming fluids, scope D-005"
+W2495251437,not_relevant,Claude: xenoliths
+W3137478877,not_relevant,Claude: experiment
+W2030561655,not_relevant,Claude: xenoliths
+W2809941799,not_relevant,Claude: orogenic peridotite
+W1749626140,not_relevant,Claude: resorption
+W2114876956,not_relevant,Claude: orangeite petrology
+W2921425770,not_relevant,Claude: surface features abstract
+W2994377566,maybe,"Claude: IKC abstract on Dachine diamonds, scope D-005"
+W4240921452,not_relevant,Claude: encyclopedia entry
+W3200428402,not_relevant,Claude: synthesis
+W4235177555,not_relevant,Claude: orangeite abstract
+W2043728112,relevant,"Claude: Re-Os of eclogitic sulfide inclusions, Kimberley"
+W2044452920,not_relevant,Claude: experiment
+W2084922690,relevant,Claude: coesite-in-diamond barometer
+W1982762198,maybe,"Claude: melt inclusions in metamorphic microdiamond, scope D-005"
+W1594925198,not_relevant,Claude: perspective
+W4230818367,maybe,"Claude: fluid inclusion review abstract, scope D-005"
+W2547271472,relevant,"Claude: coesite inclusion residual pressures, Yakutia"
+W2024932945,not_relevant,Claude: host volatiles
+W4240482967,not_relevant,Claude: host C recycling abstract
+W2924016433,not_relevant,Claude: growth events abstract
+W2953098706,not_relevant,Claude: experiment
+W2924267451,maybe,"Claude: IKC abstract on S isotopes in sulfide inclusions, scope D-005"
+W2924440838,not_relevant,Claude: diamond ages abstract
+W2093875259,not_relevant,Claude: cratonic mantle
+W2762048081,not_relevant,Claude: experiment
+W2076424465,not_relevant,Claude: genesis model
+W3013383739,not_relevant,Claude: phase diagram review
+W1975829177,not_relevant,Claude: experiment
+W2766129453,maybe,"Claude: cubic diamonds with fluid inclusion data, scope D-005"
+W2066841263,not_relevant,Claude: host defects
+W2214722272,not_relevant,Claude: experiment
+W3165258159,maybe,"Claude: IKC abstract duplicate of Laiginhas 2009, scope D-005"
+W4238563885,maybe,"Claude: IKC abstract on UHP macrodiamonds, scope D-005"
+W7125155144,relevant,"Claude: D/H in opx and olivine inclusions, Guyana"
+W2103470219,maybe,"Claude: metamorphic microdiamonds isotopes, scope D-005"
+W2044995627,maybe,"Claude: metamorphic microdiamonds, scope D-005"
+W4411770102,maybe,"Claude: high-density fluids Wafangdian, scope D-005"
+W1983226559,not_relevant,Claude: genesis model
+W2043054317,relevant,Claude: new Ca-silicate inclusions
+W2052365388,not_relevant,Claude: distribution of intrusions
+W2081782464,relevant,"Claude: (Mg,Fe)O inclusions transition zone origin"
+W2048649363,not_relevant,Claude: experiment
+W1967236858,not_relevant,Claude: exploration statistics
+W3046093460,maybe,"Claude: IKC abstract on moissanite and ferropericlase inclusions, scope D-005"
+W2019320451,relevant,Claude: NaPx-En inclusion discovery
+W3000450957,maybe,"Claude: XRF of fluids in cloudy diamonds, scope D-005"
+W4229709821,maybe,"Claude: IKC abstract on South Australian diamonds, scope D-005"
+W2006532542,not_relevant,Claude: growth modelling
+W1966054750,not_relevant,Claude: host N isotopes
+W169622158,not_relevant,Claude: host IR characteristics
+W1964094664,relevant,Claude: ruby inclusion São Luiz
+W1980020551,relevant,Claude: review of time and depth from inclusions
+W4414216770,not_relevant,Claude: gold deposit model
+W182513848,not_relevant,Claude: host C isotopes
+W3046184252,not_relevant,Claude: host C-N and CL abstract
+W2040507226,maybe,"Claude: coated and polycrystalline diamond gases, scope D-005"
+W2072057811,not_relevant,Claude: graphite pseudomorphs
+W2140128090,maybe,"Claude: polycrystalline diamonds gases, scope D-005"
+W1981512512,not_relevant,Claude: essay
+W2924674608,not_relevant,Claude: host isotopes abstract
+W4231654802,not_relevant,Claude: models abstract
+W2030777189,not_relevant,Claude: noble gas review of host
+W4254368256,maybe,"Claude: IKC abstract on iron carbide inclusions Jagersfontein, scope D-005"
+W3098789557,maybe,"Claude: IKC abstract on majoritic inclusion oxidation state, scope D-005"
+W2801312361,maybe,Claude: pyroxenite-diamond link; re-analysis of majorite inclusion data
+W2335712638,maybe,"Claude: diamondites IR, scope D-005"
+W4232258356,not_relevant,Claude: classification abstract
+W2019035841,relevant,Claude: compilation of inclusion isotopic and chemical data
+W2945920586,not_relevant,Claude: host boron
+W5512760,not_relevant,Claude: tectonics
+W2086990102,not_relevant,Claude: xenolith review
+W2924444815,not_relevant,Claude: craton review abstract
+W3134204943,not_relevant,Claude: withdrawn
+W2084250087,relevant,Claude: eclogitic inclusion ages
+W2469461394,relevant,Claude: pyrrhotite-magnetite inclusion redox
+W2063975418,relevant,Claude: Ar-Ar of cpx inclusions
+W1983093503,not_relevant,Claude: xenolith redox
+W2971402604,relevant,Claude: goldschmidtite new mineral inclusion
+W2063114246,not_relevant,Claude: economic models
+W1971681439,not_relevant,Claude: kimberlite indicators
+W4412469108,not_relevant,Claude: indicator mineral correlations
+W2115010634,not_relevant,Claude: thermodynamic modelling
+W4241290922,not_relevant,Claude: xenolith abstract
+W4252762167,maybe,"Claude: IKC abstract on sulfide Re-Os Murowa, scope D-005"
+W2899709760,not_relevant,Claude: model
+W2945886677,maybe,"Claude: IKC abstract duplicate of Czas 2018, scope D-005"
+W2945219356,not_relevant,Claude: host trace elements and noble gases
+W3040067670,not_relevant,Claude: elastic properties of synthetic majorite
+W2946662357,not_relevant,Claude: contamination debate
+W2980824554,not_relevant,Claude: comment
+W3120167542,not_relevant,Claude: contamination debate
+W2980977854,not_relevant,Claude: reply
+W4407857161,not_relevant,Claude: lamproite isotopes
+W2805465720,not_relevant,Claude: host spectroscopy
+W4400843131,not_relevant,Claude: host spectroscopy
+W4407121868,not_relevant,Claude: host spectroscopy
+W2034017105,relevant,"Claude: Re-Os of sulphide inclusions, Ellendale"
+W2037789178,relevant,"Claude: age and origin of Venetia peridotitic diamonds, inclusion data"
+W2598711045,not_relevant,Claude: synthesis
+W3027032093,maybe,"Claude: diamondiferous eclogites, scope D-005"
+W2925695976,maybe,"Claude: fibrous diamond dating, scope D-005"
+W4236484866,maybe,"Claude: IKC abstract on Orapa sulfide Re-Os, scope D-005"
+W2004063010,relevant,"Claude: microinclusions in dark gray octahedral diamonds, Yakutia"
+W2155789573,not_relevant,Claude: synthetic mica
+W2049137445,relevant,"Claude: mineral microinclusions in cubic diamonds, Yakutia"
+W2088532836,not_relevant,Claude: experiment
+W2076498731,relevant,Claude: microinclusions in Shandong diamonds
+W2920838694,maybe,"Claude: coated and cloudy diamonds, scope D-005"
+W2616947349,not_relevant,Claude: host spectroscopy
+W2065009202,relevant,"Claude: inclusion thermobarometry, Archaean lithosphere"
+W2011399272,relevant,Claude: inclusion composition Roberts Victor
+W2012299494,relevant,Claude: Nd-Sr of eclogite and websterite inclusions
+W2056831239,relevant,"Claude: inclusion-bearing diamonds Yakutia, paragenesis"
+W4236882117,maybe,"Claude: IKC abstract on xenoliths, scope D-005"
+W4239952043,maybe,"Claude: IKC abstract on inclusion spinel model, scope D-005"
+W2132988654,not_relevant,Claude: garnets in sediments
+W2136837208,not_relevant,Claude: tectonics
+W1991300959,not_relevant,Claude: host platelets
+W1972493234,relevant,Claude: Raman of inclusions in Copeton diamonds
+W2164825568,relevant,Claude: Raman of inclusions in six Copeton diamonds
+W2618258278,relevant,"Claude: coesite inclusions birefringence modelling, Bingara"
+W4407779701,not_relevant,Claude: kimberlite olivine review
+W4410129070,not_relevant,Claude: zircon discrimination
+W4412904612,not_relevant,Claude: large diamond find
+W4210406396,not_relevant,Claude: thermoelastic experiment
+W7154330049,maybe,"Claude: fibrous diamond HDFs, scope D-005"
+W2058301623,not_relevant,Claude: volcanology
+W2131527818,relevant,"Claude: Re-Os and S isotopes of sulfide inclusions, Klipspringer"
+W4390906777,not_relevant,Claude: host spectroscopy
+W2999725357,maybe,Claude: episodic growth; inclusions uncertain
+W1972597152,maybe,"Claude: brine inclusions, scope D-005"
+W2008776000,not_relevant,Claude: N aggregation kinetics
+W4283803902,not_relevant,Claude: spectroscopy review
+W2136763210,not_relevant,Claude: meteorite diamonds
+W2911278573,not_relevant,Claude: surface features review
+W2495218842,not_relevant,Claude: crystal growth chapter
+W1988551198,not_relevant,Claude: host trace element method
+W1980185796,not_relevant,Claude: synthesis
+W1981869527,not_relevant,Claude: deformation experiment
+W2278170894,relevant,Claude: X-ray topography of inclusions in Udachnaya diamond
+W2088235643,not_relevant,Claude: experiment
+W4311035471,not_relevant,Claude: polishing technology
+W4376274407,not_relevant,Claude: thermal transport
+W2078954829,not_relevant,Claude: host chemical variations
+W2024142230,maybe,"Claude: cavities in fibrous diamonds, scope D-005"
+W2057976919,not_relevant,Claude: experiment
+W4230624227,not_relevant,Claude: experiment
+W2005992694,maybe,"Claude: diamond occurrence in mantle xenoliths, scope D-005"
+W2065393021,maybe,Claude: Myanmar diamonds; inclusions possible
+W2072924052,not_relevant,Claude: experiment
+W2959350064,not_relevant,Claude: experiment
+W4226304174,not_relevant,Claude: synthesis
+W4394810391,maybe,Claude: re-analysis of published inclusion orientation data
+W1995668962,maybe,"Claude: diamondiferous eclogite xenoliths, scope D-005"
+W2169619143,not_relevant,Claude: experiment
+W1969962120,maybe,"Claude: metamorphic microdiamond CL, scope D-005"
+W2010413158,not_relevant,Claude: synthesis
+W2892294039,relevant,"Claude: CL and EBSD of 37 eclogitic inclusions, Jwaneng"
+W2099045497,not_relevant,Claude: redox calculation
+W3209195703,maybe,"Claude: IKC abstract on perovskite inclusion U-Pb, scope D-005"
+W3085941330,not_relevant,Claude: synthesis
+W2182809822,not_relevant,Claude: annealing
+W2022607042,not_relevant,Claude: host CL and FTIR
+W1974446330,maybe,"Claude: chloride microinclusions, scope D-005"
+W4392470172,not_relevant,Claude: materials science
+W2188831992,not_relevant,Claude: prospecting
+W4237975557,not_relevant,Claude: experiment abstract
+W4239282194,not_relevant,Claude: morphology abstract
+W4251446751,maybe,"Claude: IKC abstract on sulfide melt inclusions Yubileinaya, scope D-005"
+W4413611691,not_relevant,Claude: surface etch features
+W4416401599,not_relevant,Claude: thermodynamic discussion
+W7108444496,not_relevant,Claude: materials science
+W7125769668,not_relevant,Claude: experiment
+W2095469270,not_relevant,Claude: experiment
+W2954066580,not_relevant,Claude: peridotite xenoliths
+W2093832213,not_relevant,"Claude: diamond in peridotite claim, Syria"
+W2998646164,maybe,"Claude: IKC abstract on garnet REE in diamonds and peridotites, scope D-005"
+W4248612281,maybe,"Claude: IKC abstract on Snap Lake inclusions, scope D-005"
+W2042702621,not_relevant,Claude: experiment
+W2949538060,relevant,Claude: carbonatite melt inclusion in gem diamond
+W2058296919,maybe,"Claude: Kokchetav UHP calcsilicate, scope D-005"
+W1988923996,maybe,"Claude: cloudy microinclusions, scope D-005"
+W2066503829,maybe,"Claude: coated diamond microinclusions, scope D-005"
+W3160006586,maybe,"Claude: He in fluid-bearing diamonds, scope D-005"
+W4210312622,not_relevant,Claude: experiment
+W2131866334,not_relevant,Claude: experiment
+W4389991460,not_relevant,Claude: phlogopite macrocrysts
+W2089555148,not_relevant,Claude: exploration
+W2076575602,relevant,"Claude: young peridotitic diamonds Mir, inclusion dating"
+W2035839130,relevant,Claude: Raman barometry of inclusions
+W2071957856,relevant,Claude: Siberian peridotitic inclusion ages
+W1988600722,not_relevant,Claude: fluid processes review
+W1983848649,not_relevant,Claude: exploration garnets
+W2990611385,maybe,Claude: Sask craton diamond-bearing mantle; inclusion data possible
+W2076343269,relevant,"Claude: garnet xenocrysts and diamond inclusions, Sino-Korea"
+W3086296184,maybe,"Claude: IKC abstract on Zarnitsa and Dalnaya diamonds, scope D-005"
+W3177136425,maybe,"Claude: IKC abstract with 53 inclusion analyses, Sino-Korean craton, scope D-005"
+W2048448412,relevant,Claude: Fe and Mn heterogeneity in inclusions by nuclear microscopy
+W141508368,not_relevant,Claude: exploration chapter
+W2037964180,not_relevant,Claude: experiment
+W2901947341,maybe,"Claude: IKC abstract on Letseng inclusions, scope D-005"
+W3177432809,not_relevant,Claude: thermobarometer calibration abstract
+W1860947709,not_relevant,Claude: synthetic knorringite structure
+W2052678159,not_relevant,Claude: experiment
+W2024110734,not_relevant,Claude: kimberlite timing
+W2019129067,not_relevant,Claude: xenoliths
+W1817882188,maybe,"Claude: polycrystalline metamorphic diamond nanoinclusions, scope D-005"
+W2995970366,maybe,Claude: diamond-bearing basalts; inclusions uncertain
+W4248185852,not_relevant,Claude: lithosphere composition abstract
+W2050818896,maybe,"Claude: fibrous diamond microinclusions, scope D-005"
+W2016243335,not_relevant,Claude: N aggregation
+W2048594475,maybe,"Claude: diamond-bearing eclogites Re-Os, scope D-005"
+W2039509618,not_relevant,Claude: barometer calibration applied to inclusions
+W2187233084,not_relevant,Claude: eclogite carbon discussion
+W2972222874,maybe,"Claude: IKC abstract on eclogite partitioning, scope D-005"
+W4230528036,maybe,"Claude: IKC abstract on multiple inclusions, scope D-005"
+W2155949725,not_relevant,Claude: reply letter
+W4242641372,maybe,"Claude: IKC abstract on eclogite secondary phases, scope D-005"
+W2326465780,relevant,"Claude: in situ XRD of garnet inclusion, Jericho"
+W2328197392,maybe,"Claude: carbonado, scope D-005"
+W4294844961,not_relevant,Claude: eclogite xenoliths
+W2042823735,not_relevant,Claude: kimberlite petrogenesis
+W3155149250,maybe,"Claude: graphite-diamond eclogites, scope D-005"
+W4238548217,maybe,"Claude: IKC abstract on diamondiferous eclogite, scope D-005"
+W2070925306,not_relevant,Claude: kimberlite magmatism
+W2774883034,not_relevant,Claude: kimberlite geology
+W2918690610,not_relevant,Claude: tomography
+W4253568191,not_relevant,Claude: host isotopes abstract
+W2908897886,maybe,"Claude: microinclusions in cuboid diamonds, scope D-005"
+W2897844112,not_relevant,Claude: kimberlite xenocrysts
+W3186193118,not_relevant,Claude: zircon megacrysts
+W4386542145,relevant,"Claude: Raman and EPMA of peridotitic inclusions, Yakutia"
+W3110503783,relevant,Claude: Raman of 51 cpx inclusions in diamonds
+W4210785303,maybe,Claude: Elements review of carbonatitic melts and inclusions
+W4412514684,not_relevant,Claude: materials synthesis
+W2922789209,not_relevant,Claude: exploration abstract
+W2924509159,maybe,"Claude: IKC abstract on Victor sulfide Re-Os, scope D-005"
+W2901052639,not_relevant,Claude: host trace elements
+W4412154762,relevant,"Claude: lherzolitic diamond ages, Sask craton; inclusion data"
+W4236250826,relevant,Claude: supplement to Pamato 2021 sulfide inclusions
+W4400970658,not_relevant,Claude: lamprophyre abstract
+W1975439972,relevant,"Claude: 71 rutile inclusions in diamonds, EPMA"
+W2066810851,not_relevant,Claude: kimberlite ilmenite
+W2029943653,relevant,Claude: carbon-rich multiphase inclusion in Chinese diamond
+W2106985297,maybe,"Claude: ophiolite diamond inclusion XRD, scope D-005"
+W2528233481,not_relevant,Claude: xenocryst cpx
+W4246193766,maybe,"Claude: IKC abstract with in-situ inclusion analyses from Diavik, scope D-005"
+W4255268469,not_relevant,Claude: sulfide survival abstract
+W7171647463,relevant,"Claude: H2O in 21 garnet and cpx inclusions, Canadian diamonds"
+W1966614619,maybe,"Claude: XRD method on fibrous diamond fluid inclusions, scope D-005"
+W2028132433,not_relevant,Claude: carbonatite geology
+W4237510052,maybe,"Claude: IKC abstract on harzburgitic diamonds Superior, scope D-005"
+W3142440879,relevant,"Claude: garnet inclusion trace elements, Akwatia and De Beers Pool"
+W2326575333,maybe,"Claude: fibrous diamond fluids, scope D-005"
+W2946978365,not_relevant,Claude: intrusive petrology
+W2206673996,maybe,"Claude: ophiolite diamonds, scope D-005"
+W3123145178,not_relevant,Claude: host diamond type
+W4284678866,relevant,Claude: RiMG compilation of diamond P-T data
+W1622679368,not_relevant,Claude: thesis on host isotopes
+W4293192584,not_relevant,Claude: host C-N of 95-2 pipe diamonds
+W4307248936,not_relevant,Claude: modelling thesis
+W4283815996,maybe,"Claude: RiMG polycrystalline diamond review, scope D-005"
+W2269689247,maybe,Claude: subduction component review using xenoliths and inclusions
+W2273650039,not_relevant,Claude: sulfide geochronology review
+W4388830365,not_relevant,Claude: garnet xenocrysts
+W2328946492,not_relevant,Claude: host nitrogen
+W3194556868,not_relevant,Claude: host C isotopes
+W4200033257,not_relevant,Claude: genesis review
+W2308028215,not_relevant,Claude: microdiamond grade
+W2147851311,not_relevant,Claude: exploration review
+W2969562200,maybe,"Claude: diamondites garnet intergrowths, scope D-005"
+W4384341492,not_relevant,Claude: experimental review
+W4402961252,not_relevant,Claude: experimental review
+W2123246753,not_relevant,Claude: radiohalos
+W4319968577,not_relevant,Claude: SCLM thesis
+W2091676566,not_relevant,Claude: formation review of host
+W2104085112,not_relevant,Claude: microxenoliths
+W2969124740,maybe,"Claude: He in sublithospheric diamond fluid inclusions, scope D-005"
+W2801501827,not_relevant,Claude: oceanic crust carbonates
+W1678058799,not_relevant,Claude: mantle oxidation review
+W2995353684,maybe,"Claude: diamondiferous eclogite olivine, scope D-005"
+W2321043556,not_relevant,Claude: ilmenite indicator
+W2758261677,not_relevant,Claude: host C-N
+W4280497495,not_relevant,Claude: placer geology
+W2182257123,not_relevant,Claude: xenoliths
+W4410857701,not_relevant,Claude: indicator minerals
+W7142686785,not_relevant,Claude: xenocrysts
+W3127481990,not_relevant,Claude: dissolution experiment
+W2790304040,not_relevant,Claude: dissolution experiment
+W2168087472,maybe,"Claude: diamondiferous xenoliths O isotopes, scope D-005"
+W4401885996,not_relevant,Claude: xenocrysts
+W4411463627,not_relevant,Claude: tuff petrography
+W4403910636,maybe,"Claude: polycrystalline aggregates, scope D-005"
+W7166503889,not_relevant,Claude: lamprophyre review
+W3099637704,not_relevant,Claude: xenocrysts
+W2808981438,not_relevant,Claude: geophysics
+W2108024648,not_relevant,Claude: review
+W2324636335,maybe,Claude: gemology review of diamond geology
+W2262992553,not_relevant,Claude: experiment
+W4387611259,not_relevant,Claude: xenoliths
+W2965453240,not_relevant,Claude: experiment
+W4386542200,not_relevant,Claude: host morphology and spectroscopy
+W2913693438,not_relevant,Claude: experiment
+W7127043319,not_relevant,Claude: experimental review
+W2316294401,not_relevant,Claude: host growth structure
+W2087973533,maybe,"Claude: carbonado, scope D-005"
+W3081329085,not_relevant,Claude: xenoliths
+W3135154759,not_relevant,Claude: experimental review
+W4211101848,not_relevant,Claude: book of synthesis papers
+W2520034404,not_relevant,Claude: garnet xenocrysts
+W2040228757,not_relevant,Claude: thermodynamics
+W4292879251,not_relevant,Claude: gemology overview
+W2917587422,not_relevant,Claude: host IR
+W2037302132,maybe,"Claude: diamonds from eclogite xenolith, scope D-005"
+W4392264722,not_relevant,Claude: tectonics
+W3136233201,not_relevant,Claude: exploration
+W3048330834,not_relevant,Claude: experiment
+W4321455424,not_relevant,Claude: SIMS method on host
+W2806973508,not_relevant,Claude: host isotopes
+W7128196817,not_relevant,Claude: host isotopes
+W2096559627,maybe,"Claude: diamond-bearing eclogite xenoliths, scope D-005"
+W2328799353,not_relevant,Claude: resorption morphology
+W2803038016,not_relevant,Claude: platelets
+W2792383333,not_relevant,Claude: dissolution experiment
+W2917519281,not_relevant,Claude: eclogite xenoliths
+W1974257784,not_relevant,Claude: experiment
+W2897020651,not_relevant,Claude: experiment
+W2908457030,not_relevant,Claude: experiment
+W2570387915,not_relevant,Claude: review of host rocks
+W2010230728,not_relevant,Claude: host IR
+W2321789190,not_relevant,Claude: host luminescence
+W7167474929,maybe,Claude: trace elements in chrome spinels from diamonds vs sediments
+W2441680703,not_relevant,Claude: xenoliths
+W2133466930,not_relevant,Claude: xenolith thermobarometry
+W4320919367,not_relevant,Claude: eclogite xenolith
+W4402493824,not_relevant,Claude: tourmaline
+W2318295706,not_relevant,Claude: dissolution experiment
+W2906374514,not_relevant,Claude: experiment
+W1520790674,not_relevant,Claude: seismics
+W2054246584,not_relevant,Claude: geophysics
+W4288451350,not_relevant,Claude: discussion
+W4283796291,not_relevant,Claude: experiment
+W4284686217,not_relevant,Claude: kimberlite olivine
+W2025880991,not_relevant,Claude: Malaita xenoliths
+W2943637230,not_relevant,Claude: pyrope xenocrysts
+W7124749427,not_relevant,Claude: kimberlite potential
+W2064656154,not_relevant,Claude: essay
+W3018965643,not_relevant,Claude: experiment
+W2013051707,not_relevant,Claude: xenoliths
+W7116086749,not_relevant,Claude: host N isotopes
+W2785703278,maybe,"Claude: ophiolite microdiamonds, scope D-005"
+W2125179588,not_relevant,Claude: host C-N
+W2085350372,not_relevant,Claude: host C-N
+W2513951915,not_relevant,Claude: mine description
+W2990535964,maybe,"Claude: diamond from eclogite xenolith, scope D-005"
+W3210687693,not_relevant,Claude: host FTIR and C of microdiamonds in dolerite
+W4323022655,not_relevant,Claude: comparative host mineralogy
+W4232771798,not_relevant,Claude: host isotopes abstract
+W2741320821,not_relevant,Claude: host internal structure
+W4403607026,not_relevant,Claude: indicator minerals
+W2461423256,not_relevant,Claude: tectonics
+W2112487562,not_relevant,Claude: boron in host
+W2921029637,not_relevant,Claude: ophiolite lherzolites
+W2945550496,not_relevant,Claude: ab initio
+W3213081400,not_relevant,Claude: experiment
+W3093109477,not_relevant,Claude: experiment
+W4324365828,not_relevant,Claude: experiment
+W2091751414,not_relevant,Claude: review
+W2043003387,not_relevant,Claude: thermodynamics
+W4297267192,not_relevant,Claude: experiment
+W2614607000,not_relevant,Claude: experiment
+W3142597679,not_relevant,Claude: experiment
+W2066647800,not_relevant,Claude: ophiolite chromitite phases
+W4324146642,not_relevant,Claude: lamprophyre oxides
+W1987579324,not_relevant,Claude: commentary
+W1983929186,not_relevant,Claude: host FTIR
+W4223569107,not_relevant,Claude: host morphology and FTIR
+W2902934582,not_relevant,Claude: ilmenite
+W4232962835,not_relevant,Claude: kimberlite exploration abstract
+W2129297328,not_relevant,Claude: carbon phases review
+W3214924086,not_relevant,Claude: experiment
+W2765311227,not_relevant,Claude: nanodiamond review
+W4401484542,not_relevant,Claude: xenoliths
+W2788555420,not_relevant,Claude: editorial
+W2110211855,not_relevant,Claude: garnet xenocrysts
+W568859720,not_relevant,Claude: kimberlite olivine
+W4296889860,not_relevant,Claude: xenoliths
+W2734900719,not_relevant,Claude: surface sculptures
+W2888885877,not_relevant,Claude: seismics
+W3029895972,not_relevant,Claude: seismics
+W4412629583,not_relevant,Claude: magnetotellurics
+W2900326856,not_relevant,Claude: experiment
+W1980347233,not_relevant,Claude: resorption
+W2096240897,not_relevant,Claude: dissolution experiment
+W2317394856,not_relevant,Claude: host C-N
+W2161933262,not_relevant,Claude: xenoliths
+W4391693577,not_relevant,Claude: experiment
+W2803015155,not_relevant,Claude: exploration
+W4413413822,not_relevant,Claude: harzburgite volatiles
+W2329532844,not_relevant,Claude: xenocrysts
+W3081075425,not_relevant,Claude: xenolith redox
+W2953012817,not_relevant,Claude: kimberlite spinel
+W1964583018,not_relevant,Claude: host C-N
+W1970132789,not_relevant,Claude: ab initio
+W2886027639,not_relevant,Claude: synthesis
+W2398060396,not_relevant,Claude: synthesis
+W3043373736,not_relevant,Claude: synthesis
+W3003091961,not_relevant,Claude: experiment
+W4412925433,maybe,"Claude: CT of diamonds in eclogite xenoliths, scope D-005"
+W2100124711,not_relevant,Claude: introduction
+W2041178147,not_relevant,Claude: host N isotopes of microdiamonds
+W2120940335,not_relevant,Claude: lithosphere review
+W4365520178,not_relevant,Claude: experiment
+W4242905790,not_relevant,Claude: xenoliths
+W7125937860,not_relevant,Claude: lamprophyre potential
+W4361292380,maybe,"Claude: diamonds in eclogite xenoliths CT, scope D-005"
+W1981858155,not_relevant,Claude: dissolution experiment
+W2186865001,not_relevant,Claude: carbonatite petrology
+W2313461793,not_relevant,Claude: EoS
+W4235573144,not_relevant,Claude: orangeite petrology
+W4402839028,not_relevant,Claude: kimberlite Re-Os
+W4401945679,not_relevant,Claude: host typomorphism
+W2906779050,not_relevant,Claude: EoS
+W231123621,maybe,"Claude: EGU abstract on Wawa diamonds, scope D-005"
+W2328053540,not_relevant,Claude: xenocrysts
+W4384938954,not_relevant,Claude: host diamond types
+W4394830508,not_relevant,Claude: host diamond types (Russian version)
+W3007421572,not_relevant,Claude: eclogite metasomatism
+W4394840895,maybe,"Claude: eclogite xenoliths with diamond, scope D-005"
+W3135884940,not_relevant,Claude: zircon megacrysts
+W3186472855,not_relevant,Claude: host spectroscopy
+W2039686075,not_relevant,Claude: host IR
+W4394572056,not_relevant,Claude: materials science
+W2185989591,not_relevant,Claude: experiment
+W3022617963,not_relevant,Claude: experiment
+W2582441094,not_relevant,Claude: experiment
+W4206397851,not_relevant,Claude: experiment
+W2791302897,not_relevant,Claude: impact crater diamonds
+W2113654584,not_relevant,Claude: experiment
+W2768743350,not_relevant,Claude: experiment
+W2800473902,not_relevant,Claude: experiment
+W2319878360,not_relevant,Claude: experiment
+W2611857353,not_relevant,Claude: experiment
+W2964850580,not_relevant,Claude: experiment
+W2583521552,not_relevant,Claude: experiment
+W2079063585,maybe,"Claude: metamorphic microdiamond C isotopes, scope D-005"
+W4377088093,not_relevant,Claude: physics
+W2095859283,not_relevant,Claude: experiment
+W2737175600,not_relevant,Claude: experiment
+W4292267775,not_relevant,Claude: experiment
+W4395684788,not_relevant,Claude: simulation
+W3048279742,not_relevant,Claude: methods
+W2488515758,not_relevant,Claude: experiment
+W4391430361,not_relevant,Claude: experiment
+W4401032497,not_relevant,Claude: calcite in xenolith
+W2072913020,not_relevant,Claude: synthetic diamond
+W3000590990,not_relevant,Claude: dissolution experiment
+W3175006383,not_relevant,Claude: experiment preprint
+W7160856385,relevant,Claude: iron oxyhydroxide inclusion in super-deep diamond
+W2073526003,not_relevant,Claude: experiment
+W2085820764,not_relevant,Claude: experiment
+W1972567144,not_relevant,Claude: experiment
+W2736330996,not_relevant,Claude: nomenclature
+W4408216070,not_relevant,Claude: experiment
+W3068554523,not_relevant,Claude: experiment
+W2530545386,not_relevant,Claude: synthesis
+W3103659857,not_relevant,Claude: aillikite
+W2799567500,not_relevant,Claude: host IR
+W2004716437,not_relevant,Claude: accessory minerals review
+W4285188701,not_relevant,Claude: indicator minerals
+W3115534801,not_relevant,Claude: lava isotopes
+W2907357374,not_relevant,Claude: review
+W3082794368,not_relevant,Claude: experiment
+W4296818651,not_relevant,Claude: experiment
+W2574788110,not_relevant,Claude: experiment
+W2063974184,not_relevant,Claude: oxidation experiment
+W2330410875,not_relevant,Claude: experiment
+W3096468677,not_relevant,Claude: experiment
+W4405927245,not_relevant,Claude: crustal fluids
+W2398222869,not_relevant,Claude: plume thermodynamics
+W4413281498,not_relevant,Claude: flamite structure
+W7151920518,not_relevant,Claude: organic carbon
+W2944670057,not_relevant,Claude: host optical centres
+W3005299293,not_relevant,Claude: host IR
+W1996464890,not_relevant,Claude: graphite-diamond boundary
+W2999523674,not_relevant,Claude: nitrogen review
+W2022159916,not_relevant,Claude: garnet classification incl. diamond garnets
+W165741900,not_relevant,Claude: genesis model
+W1572653945,maybe,"Claude: diamond-graphite eclogite xenolith, scope D-005"
+W2024856437,maybe,"Claude: diamonds in peridotite nodule, scope D-005"
+W2182460325,not_relevant,Claude: synthetic structure
+W2646552049,not_relevant,Claude: garnet concentrates
+W2150725798,not_relevant,Claude: review
+W2461629578,not_relevant,Claude: memorial
+W7223199636,not_relevant,Claude: kimberlite olivine water
+W2060591505,relevant,"Claude: XRD and EPMA of chromite included in diamond, Siberia"
+W2483541428,not_relevant,Claude: K/T boundary
+W3012207323,not_relevant,Claude: crustal majorite
+W3179167477,not_relevant,Claude: synthesis
+W4304892728,not_relevant,Claude: xenocrysts
+W7203908557,not_relevant,Claude: garnet xenocrysts
+W2137756444,maybe,"Claude: diamond-bearing eclogite xenoliths, scope D-005"
+W2789657261,not_relevant,Claude: xenoliths
+W2600677958,not_relevant,Claude: kimberlite olivine
+W3198235752,not_relevant,Claude: experiment
+W7152721754,not_relevant,Claude: olivine
+W4391576385,not_relevant,Claude: phlogopite
+W2134543492,maybe,Claude: Garnet Lake diamonds; inclusions possibly reported
+W1976541824,not_relevant,Claude: redox barometer
+W2036128139,not_relevant,Claude: carbonatites
+W2736113530,not_relevant,Claude: experiment
+W7115572347,not_relevant,Claude: kimberlite review
+W4292377183,not_relevant,Claude: UHP garnetites
+W2124490248,not_relevant,Claude: host CL
+W2039110048,maybe,"Claude: carbonado, scope D-005"
+W2039633015,not_relevant,Claude: placer spinels
+W2266812313,not_relevant,Claude: pink colour
+W3127059116,not_relevant,Claude: gemology
+W4413231907,not_relevant,Claude: kimberlite distribution
+W4390095889,not_relevant,Claude: dissolution experiment
+W3199837957,not_relevant,Claude: regional geology
+W4315646644,not_relevant,Claude: mineral resources
+W4410360238,not_relevant,Claude: gemology
+W2969785851,not_relevant,Claude: kimberlite thesis
+W4220715753,not_relevant,Claude: experiment
+W1948449075,not_relevant,Claude: experiment
+W2610564751,maybe,"Claude: ophiolite diamonds, scope D-005"
+W3185141830,not_relevant,Claude: experiment
+W4406188215,not_relevant,Claude: synthetic parabreyite
+W2998294334,not_relevant,Claude: kimberlite review
+W4285506288,not_relevant,Claude: geodynamics
+W2103844028,maybe,Claude: Karashoho diamond deposit; inclusions uncertain
+W4225476265,not_relevant,Claude: magnetotellurics
+W2283365737,not_relevant,Claude: deposits overview
+W2788105224,not_relevant,Claude: engineering
+W2744752043,not_relevant,Claude: seismology
+W2896896333,not_relevant,Claude: placers review
+W4307557613,not_relevant,Claude: xenoliths
+W7160036789,not_relevant,Claude: geomythology
+W2316845738,not_relevant,Claude: gem localities
+W4367323469,not_relevant,Claude: anthropology
+W2982400072,not_relevant,Claude: host morphology
+W2772928921,not_relevant,Claude: shocked minerals
+W2775654354,not_relevant,Claude: host morphology
+W3019256801,not_relevant,Claude: kimberlite genesis
+W3036182239,not_relevant,Claude: xenocrysts
+W7224005857,not_relevant,Claude: materials science
+W1967193964,not_relevant,Claude: metallogeny
+W4398782767,not_relevant,Claude: eclogite xenoliths
+W4401581610,not_relevant,Claude: xenocrysts
+W2998534886,not_relevant,Claude: exploration
+W3113099583,not_relevant,Claude: geophysics
+W945653908,not_relevant,Claude: ilmenite
+W2154150127,not_relevant,Claude: orogenic majorite
+W2125316791,not_relevant,Claude: garnet xenocrysts
+W1512207131,not_relevant,Claude: forensic host trace elements
+W4239019427,not_relevant,Claude: kimberlite petrology
+W3191353111,not_relevant,Claude: xenolith garnets
+W4361221303,not_relevant,Claude: synthesis
+W1971062203,not_relevant,Claude: isotope model
+W1977660472,maybe,"Claude: framesite silicates, scope D-005"
+W3128298506,not_relevant,Claude: synthesis
+W1975211176,maybe,"Claude: ophiolite UHP minerals, scope D-005"
+W4211018667,not_relevant,Claude: experiment
+W2903957009,not_relevant,Claude: experiment
+W1939275820,not_relevant,Claude: thermodynamic model
+W4283820055,not_relevant,Claude: experimental review
+W2016453562,not_relevant,Claude: host C-N
+W2167372231,not_relevant,Claude: N recycling
+W2317979469,not_relevant,"Claude: qingsongite in chromitite, not diamond"
+W1972730461,maybe,"Claude: carbonado, scope D-005"
+W2172057020,not_relevant,Claude: xenocrysts
+W2098071006,not_relevant,Claude: lamproite petrogenesis
+W2997868813,not_relevant,Claude: kimberlite petrogenesis
+W2170794656,not_relevant,Claude: perovskite barometer
+W2143308701,not_relevant,Claude: gemstones review
+W4416283433,not_relevant,Claude: lamproite classification
+W4415559343,not_relevant,Claude: gold review
+W4405293230,not_relevant,Claude: C isotope method
+W4410029514,not_relevant,Claude: indicator minerals
+W2071731529,not_relevant,Claude: xenoliths
+W3167742562,not_relevant,Claude: eclogite water
+W2997179652,not_relevant,Claude: eclogite redox
+W4399532353,not_relevant,Claude: non-diamondiferous xenolith dataset
+W2096008518,not_relevant,Claude: exploration review
+W2624089954,not_relevant,Claude: soil remediation
+W4295884602,not_relevant,Claude: magnetotellurics
+W2492968100,not_relevant,Claude: exploration
+W2996030252,maybe,"Claude: Argyle mantle incl. diamonds and diamondiferous xenoliths, scope D-005"
+W4388730919,not_relevant,Claude: UHP schists
+W7162752932,not_relevant,Claude: xenocryst redox
+W4384206900,not_relevant,Claude: historical
+W2923887299,not_relevant,Claude: growth structures abstract
+W4399773394,not_relevant,Claude: tomography
+W2994813982,not_relevant,Claude: deposit geology
+W4412513650,maybe,"Claude: HDF isotopes Voorspoed, scope D-005"
+W2125838356,not_relevant,Claude: deposit distribution
+W2084142934,not_relevant,Claude: experiment
+W2043687606,not_relevant,Claude: host noble gases
+W2332484405,not_relevant,Claude: gemology
+W4281568455,not_relevant,Claude: kimberlite dating
+W4241627923,not_relevant,Claude: exploration software
+W2530439618,not_relevant,Claude: Tolbachik diamonds
+W1986531900,maybe,Claude: NSW diamonds multiple origins; inclusions possible
+W4415370751,not_relevant,Claude: gemology
+W3150980044,not_relevant,Claude: granulites
+W4403871896,not_relevant,Claude: host typomorphism (Russian version)
+W4229675773,not_relevant,Claude: crustal sutures
+W3011847454,not_relevant,Claude: lamproite geology
+W2162137794,not_relevant,Claude: redox melting
+W2036680871,not_relevant,Claude: materials science
+W2289666836,not_relevant,Claude: experiment
+W2327118104,not_relevant,Claude: synthesis
+W2911705629,not_relevant,Claude: graphite cuboids
+W2001717175,not_relevant,Claude: synthesis
+W1979129827,not_relevant,Claude: experiment
+W4393242906,not_relevant,Claude: synthetic diamonds
+W2068782100,not_relevant,Claude: experiment
+W4220662915,not_relevant,Claude: resorption experiment
+W4400118508,not_relevant,Claude: synthesis
+W2467993791,not_relevant,Claude: experiment
+W2313673187,not_relevant,Claude: ab initio
+W2519881447,not_relevant,Claude: synthesis
+W2558734056,not_relevant,Claude: experiment
+W4311196253,not_relevant,Claude: synthesis
+W4313255021,not_relevant,Claude: experiment
+W2349829545,not_relevant,Claude: annealing
+W2755631515,not_relevant,Claude: exploration
+W2768824305,not_relevant,Claude: host isotopes abstract
+W4409619612,not_relevant,Claude: surface features tribute
+W992757173,not_relevant,Claude: experiment
+W2600908952,not_relevant,Claude: annealing
+W2800586305,not_relevant,Claude: experiment
+W1559734693,not_relevant,Claude: biography
+W4387465003,not_relevant,Claude: physics
+W4408823741,not_relevant,Claude: resorption experiment
+W4411656304,not_relevant,Claude: speculative
+W7172539077,not_relevant,Claude: materials science
+W7225018843,not_relevant,Claude: exploration
+W4236017724,not_relevant,Claude: kimberlite abstract
+W1975473662,not_relevant,Claude: experiment
+W2939521897,maybe,"Claude: hydrocarbons in diamonds and minerals of diamondiferous peridotites, scope D-005"
+W3202795073,not_relevant,Claude: kimberlite source
+W2038377004,not_relevant,Claude: modelling
+W2080932459,not_relevant,Claude: indicator minerals
+W2162835757,not_relevant,Claude: garnet barometry
+W2062190186,not_relevant,"Claude: lamprophyre dike diamonds, host only"
+W772040827,not_relevant,Claude: garnet xenocrysts
+W2082438617,not_relevant,Claude: pyrope xenocrysts
+W3161569892,maybe,"Claude: IKC abstract on diamondiferous xenolith REE, scope D-005"
+W2587502801,not_relevant,Claude: xenolith fO2
+W2917242299,not_relevant,Claude: gem localities
+W2007843922,not_relevant,Claude: host CL and IR
+W2523946309,not_relevant,Claude: tectonics
+W2128717335,maybe,"Claude: Yakutian eclogite xenoliths with diamonds, scope D-005"
+W2011810701,not_relevant,Claude: eclogite partial melting
+W2073798543,maybe,"Claude: diamondiferous eclogites, scope D-005"
+W1978096726,not_relevant,Claude: xenolith phlogopite ages
+W1860771617,not_relevant,Claude: eclogite abstract
+W4210840970,not_relevant,Claude: prospecting book
+W4210848773,not_relevant,Claude: prospecting book
+W4210849206,not_relevant,Claude: prospecting book
+W4210851597,not_relevant,Claude: prospecting book
+W4210879786,not_relevant,Claude: prospecting book
+W4210890212,not_relevant,Claude: prospecting book
+W4210893578,not_relevant,Claude: prospecting book
+W4210922133,not_relevant,Claude: prospecting book
+W4210927563,not_relevant,Claude: prospecting book
+W4210929352,not_relevant,Claude: prospecting book
+W4210944460,not_relevant,Claude: prospecting book
+W2161033980,not_relevant,Claude: seismics
+W2895088971,not_relevant,Claude: surface trigons
+W1976768888,not_relevant,Claude: host diamond from metaultramafic rocks
+W1430306388,not_relevant,Claude: exploration history
+W4379534321,not_relevant,Claude: geodynamics
+W4311680674,relevant,Claude: supplement to Meyer 2023 Koffiefontein lower-mantle inclusions
+W4308792077,not_relevant,Claude: provenance methods
+W1975757634,not_relevant,Claude: orangeite origin
+W2099375827,not_relevant,Claude: experiment
+W4385975595,not_relevant,Claude: kimberlite minerals
+W2002150779,not_relevant,Claude: exploration
+W2012512987,not_relevant,Claude: geodynamics
+W2003158547,not_relevant,Claude: editorial
+W2276493204,not_relevant,Claude: zircon ages
+W2479020308,not_relevant,Claude: flood basalts
+W3197382549,not_relevant,Claude: exploration forecast
+W7130368520,not_relevant,Claude: zircon ages
+W2149484741,not_relevant,Claude: magnetotellurics
+W4297814715,not_relevant,Claude: kimberlite thesis

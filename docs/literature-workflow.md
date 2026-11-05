@@ -69,7 +69,8 @@ Related: [roadmap](roadmap.md) (Phase 4) · [licence register](licence-register.
 1. `python3 -I scripts/literature.py status`: what is waiting.
 2. **Triage** the next ~50 candidates (`literature.py next 50` lists them, high priority and
    most-linked first; `literature.py decide FILE` applies a CSV of `openalex_id,triage,note`
-   and never overwrites an earlier decision). Claude reads title, journal and abstract
+   and never overwrites an earlier decision; decision files are kept in `bibliography/triage/`
+   and written with proper CSV quoting, since a note containing a comma is otherwise cut short). Claude reads title, journal and abstract
    (from OpenAlex) and proposes `relevant` / `maybe` / `not_relevant` with a one-line reason
    prefixed `Claude:` in `triage_note`; you or the professor spot-check and change any.
    - **relevant** = reports or re-analyses inclusions in natural diamonds (any data: chemistry,
