@@ -53,3 +53,8 @@ Revisit when any of these happen: more than one person needs to edit at once, th
 ## Evidence / test cases
 Phase 1 exit gate: schema loads in SQLite; an illustrative record round-trips; the same DDL loads
 in PostgreSQL unchanged (or with a documented, scripted diff).
+
+**Result 2026-11-05:** `scripts/check_postgres.py` loads `schema/*.sql` into a throwaway PostgreSQL 17 and copies
+every row of a fresh build into it (26 tables, 2 views, 174,142 rows): passes unchanged. Known diff for
+Phase 6: `INTEGER PRIMARY KEY` auto-numbers ids in SQLite only, so the loaders (which insert without ids)
+need identity columns and a Postgres driver when we move. Run the check after any schema change.

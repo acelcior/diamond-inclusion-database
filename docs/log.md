@@ -7,6 +7,14 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-05 — PostgreSQL portability check
+- Decided not to switch databases yet: the database is rebuilt from source files, so more papers don't make
+  the later move harder; the risk is SQLite-only SQL creeping in. D-004 revisit triggers not yet met.
+- Installed PostgreSQL 17 (Homebrew; no background service). New `scripts/check_postgres.py`: schema + all
+  174,142 rows load into PostgreSQL unchanged. Phase 1's "loads in PostgreSQL" gate is now met.
+- Known Phase 6 diff recorded in the roadmap: auto-numbered ids and the sqlite3 Python API.
+- **Next:** rerun the check whenever `schema/` changes.
+
 ## 2026-11-05 — Stachel compilation imported (D-013)
 - D-013 accepted by J. Dasroy: compilations are imported as their own source layer. Proposed D-016 (open
   vocabulary: match a paper's columns to existing fields, add unmatched ones as *proposed*, never drop data).
