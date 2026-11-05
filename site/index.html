@@ -93,7 +93,8 @@
     <summary id="sources-title">Sources</summary>
     <ol id="sources"></ol>
     <p class="cite-note">If you use these data, please cite the original papers above. Values are as printed in each source;
-      hover over a value or click a row to see exactly where it was printed.</p>
+      hover over a value or click a row to see exactly where it was printed. This site shows extracted values and citations
+      only, never the papers' text, figures or PDFs; read the papers at their DOI links.</p>
   </details>
 
   <div class="tabs" role="tablist">
@@ -394,6 +395,7 @@ async function main() {
     (s.doi ? `<a href="https://doi.org/${esc(s.doi)}" target="_blank" rel="noopener">doi:${esc(s.doi)}</a>` : "") +
     `<div class="meta">${s.diamonds} diamonds · ${s.inclusions} inclusions · ${s.analyses} analyses · ` +
     `${s.estimates} P–T estimates · ${s.diamond_data} diamonds with host data · review status: ${esc(s.status.join(", "))}` +
+    ` · licence: ${esc(s.licence)}` +
     (s.notes ? `<br>${esc(s.notes)}` : "") + `</div></li>`).join("");
   $("#hide-empty").checked = !!store.get("hideEmpty");
   await switchTab("inclusions");

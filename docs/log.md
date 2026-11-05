@@ -7,6 +7,18 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-05 — Licence and access audit
+- `scripts/licence_audit.py` looks up each source in OpenAlex (open access), Crossref (publisher and
+  text-mining licences) and DataCite/Borealis (datasets); writes [licence register](licence-register.md)
+  and `docs/licence-register.csv`. No personal details sent.
+- Result for 15 seed sources: 7 open licence (Nimis 2025, Gress 2021, De Hoog 2019 CC BY; the four
+  Borealis compilations CC0), 2 open non-commercial (Genzel 2023; Anzolini 2016's author manuscript,
+  CC BY-NC-ND), 6 subscription with a publisher text-mining licence (Phillips, Sobolev, Meyer & Boyd
+  via Elsevier; Kankan I–III via Springer). None unknown.
+- Policy recorded: show values + citation + page/table only; never PDFs, figures or text; private
+  quotes ≤ 200 characters. Schema excerpt limit lowered 500 → 200 (all stored quotes ≤ 111).
+- Website: each source shows its licence; note that the site shows values and citations only.
+
 ## 2026-11-03 — Requested columns added to the website
 - Renamed: Sample → Diamond ID (+ Inclusion ID where a label is printed, e.g. KK-16a), Mineral →
   Mineral name, Shape → Diamond morphology, Colour → Color, Type → Diamond type.

@@ -3,6 +3,7 @@
 Run from the project folder after any data change:  python3 -I scripts/export_site.py
 Reads only the database (built by scripts/build_gold.py), so new papers appear without changes here.
 """
+import csv
 import json
 import sys
 from pathlib import Path
@@ -183,10 +184,14 @@ def main():
         diamonds.append(r)
 
     sources = []
+    reg = Path(__file__).resolve().parent.parent / "docs" / "licence-register.csv"  # from scripts/licence_audit.py
+    licence = {r["doi"].lower(): r["what_we_may_do"].split(";")[0].split(":")[0] for r in csv.DictReader(open(reg, encoding="utf-8"))} \
+        if reg.exists() else {}
     for (pid, doi, citation, short, notes) in q("SELECT id, doi, citation, short_ref, notes FROM publication ORDER BY year, short_ref"):
         n = lambda sql: q(sql, pid)[0][0]
         sources.append({
             "id": pid, "doi": doi, "citation": citation, "short": short, "notes": notes,
+            "licence": licence.get((doi or "").lower(), "not checked"),
             "diamonds": n("SELECT COUNT(*) FROM diamond_observation WHERE publication_id = ?"),
             "inclusions": n("SELECT COUNT(*) FROM inclusion_observation WHERE publication_id = ?"),
             "analyses": n("""SELECT COUNT(*) FROM measurement m JOIN inclusion_observation i

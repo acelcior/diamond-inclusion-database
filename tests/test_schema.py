@@ -90,7 +90,7 @@ class SchemaTest(unittest.TestCase):
         self.rejects("INSERT INTO inclusion_observation (publication_id, evidence_id, reported_phase, phase_match_status) VALUES (1, 1, 'x', 'mapped')")  # mapped, no phase
         self.rejects("INSERT INTO measurement (inclusion_observation_id, diamond_observation_id, evidence_id) VALUES (1, 1, 1)")  # two subjects
         self.rejects("INSERT INTO measurement (evidence_id) VALUES (1)")  # no subject
-        self.rejects("INSERT INTO evidence (publication_id, source_type, excerpt) VALUES (1, 'paper', ?)", ("x" * 501,))
+        self.rejects("INSERT INTO evidence (publication_id, source_type, excerpt) VALUES (1, 'paper', ?)", ("x" * 201,))
         self.rejects("INSERT INTO publication (citation, pub_type) VALUES ('x', 'blog')")
         self.rejects("""INSERT INTO assertion (inclusion_observation_id, property_code, value_text, asserted_by, value_status,
                         derivation, evidence_id) VALUES (1, 'paragenesis', 'h', 'authors', 'reported', 'guessed', 1)""")

@@ -66,7 +66,7 @@ What follows from that:
 - [ ] OpenAlex + Crossref harvesting scripts; search-term list incl. synonyms and historical terms
 - [ ] Citation chaining from key reviews/compilations
 - [ ] Master bibliography table + publication dedup (DOI, title/author/year fuzzy, preprint ↔ published)
-- [ ] Access-status tracking (open / institutional / unavailable) — no circumvention
+- [ ] Access-status tracking (open / institutional / unavailable) — no circumvention *(started: [licence register](licence-register.md) for the 15 seed sources, `scripts/licence_audit.py`)*
 
 **Exit gate:** master bibliography of candidate papers with access status and relevance triage.
 

@@ -120,7 +120,7 @@ CREATE TABLE evidence (
     sheet                TEXT,
     row_label            TEXT,
     column_label         TEXT,
-    excerpt              TEXT CHECK (excerpt IS NULL OR length(excerpt) <= 500),  -- short excerpts only (copyright)
+    excerpt              TEXT CHECK (excerpt IS NULL OR length(excerpt) <= 200),  -- short excerpts only: strictest common publisher limit (docs/licence-register.md)
     cited_publication_id INTEGER REFERENCES publication(id),  -- compilations: the paper the compiler cited
     cited_reference_text TEXT,              -- the compiler's citation string, as printed
     import_run_id        INTEGER REFERENCES import_run(id)
