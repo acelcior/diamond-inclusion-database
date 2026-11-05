@@ -67,12 +67,18 @@ Related: [roadmap](roadmap.md) (Phase 4) · [licence register](licence-register.
 **Each week (part of a normal session; Claude runs the commands):**
 
 1. `python3 -I scripts/literature.py status`: what is waiting.
-2. **Triage** the next ~50 `high`-priority candidates: Claude reads title, journal and abstract
+2. **Triage** the next ~50 candidates (`literature.py next 50` lists them, high priority and
+   most-linked first; `literature.py decide FILE` applies a CSV of `openalex_id,triage,note`
+   and never overwrites an earlier decision). Claude reads title, journal and abstract
    (from OpenAlex) and proposes `relevant` / `maybe` / `not_relevant` with a one-line reason
    prefixed `Claude:` in `triage_note`; you or the professor spot-check and change any.
    - **relevant** = reports or re-analyses inclusions in natural diamonds (any data: chemistry,
      identification, isotopes, Raman, P-T), or is a review/compilation listing such papers.
    - **maybe** = can't tell without the full text (e.g. a kimberlite paper with a diamond section).
+     Also used for papers that depend on scope decision D-005 (fibrous diamonds and fluid
+     inclusions, diamonds still in xenoliths, ophiolite diamonds).
+   - **not_relevant** = no inclusion data: experiments, equations of state, modelling, deposit
+     geology, reviews of the host diamond only.
 3. Papers newly marked `relevant` are chained on the next `chain` run: their references and
    citers enter as new candidates. This is how the list grows outward from what we trust.
 

@@ -6,6 +6,8 @@ Workflow and reasons: docs/literature-workflow.md. Run from the project folder:
   python3 -I scripts/literature.py chain              # citation chaining (OpenAlex) from every paper triaged 'relevant'
   python3 -I scripts/literature.py add FILE --source "connected-papers:Phillips 2004"
                                                       # DOIs or titles from Connected Papers / Consensus / Zotero / a list
+  python3 -I scripts/literature.py next 50            # the next candidates to triage, with abstracts (not stored)
+  python3 -I scripts/literature.py decide FILE        # apply a CSV of openalex_id,triage,note decisions
   python3 -I scripts/literature.py status             # counts
 
 Metadata comes from OpenAlex (CC0). Abstracts are read to set a priority but never stored.
@@ -270,6 +272,35 @@ def cmd_add(inv, file, source):
         print("  no exact title match (not added):", t[:100])
 
 
+def cmd_next(inv, n):
+    """Untriaged candidates, high priority first, most-linked first; abstract shown for reading only."""
+    order = {"high": 0, "medium": 1, "low": 2}
+    todo = sorted((r for r in inv.rows if r["triage"] == "candidate" and r["openalex_id"]),
+                  key=lambda r: (order.get(r["priority"], 3), -int(r["links"] or 0)))[:n]
+    ws = {short_id(w): w for w in by_ids([r["openalex_id"] for r in todo])}
+    for r in todo:
+        w = ws.get(r["openalex_id"], {})
+        print(f"\n{r['openalex_id']} | {r['year']} | {r['first_author']} | {r['venue']} | {r['type']} | links {r['links']}")
+        print("  " + r["title"])
+        print("  " + (abstract(w)[:700] or "(no abstract in OpenAlex)"))
+
+
+def cmd_decide(inv, file):
+    """CSV with columns openalex_id,triage,note. Only candidates change; earlier decisions are never overwritten."""
+    with open(file, encoding="utf-8", newline="") as f:
+        decisions = list(csv.DictReader(f))
+    by_id = {r["openalex_id"]: r for r in inv.rows}
+    done = 0
+    for d in decisions:
+        r = by_id.get(d["openalex_id"].strip())
+        if d["triage"] not in TRIAGE or r is None or r["triage"] != "candidate":
+            print("  skipped:", d["openalex_id"], d["triage"], "(unknown id, bad value, or already triaged)")
+            continue
+        r["triage"], r["triage_note"] = d["triage"], d["note"].strip()
+        done += 1
+    print(f"applied {done} of {len(decisions)} decisions")
+
+
 def cmd_status(inv):
     from collections import Counter
     print(f"{len(inv.rows)} papers in {INVENTORY.relative_to(ROOT)}")
@@ -280,16 +311,20 @@ def cmd_status(inv):
 
 
 def main(argv):
-    if not argv or argv[0] not in ("seed", "chain", "add", "status"):
+    if not argv or argv[0] not in ("seed", "chain", "add", "next", "decide", "status"):
         print(__doc__)
         return
     inv = Inventory()
+    if argv[0] == "next":
+        return cmd_next(inv, int(argv[1]) if len(argv) > 1 else 50)
     if argv[0] == "seed":
         cmd_seed(inv)
     elif argv[0] == "chain":
         cmd_chain(inv, int(argv[argv.index("--max") + 1]) if "--max" in argv else None)
     elif argv[0] == "add":
         cmd_add(inv, argv[1], argv[argv.index("--source") + 1] if "--source" in argv else "manual")
+    elif argv[0] == "decide":
+        cmd_decide(inv, argv[1])
     if argv[0] != "status":
         inv.save()
     cmd_status(inv)

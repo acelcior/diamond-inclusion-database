@@ -39,6 +39,15 @@ class LiteratureTest(unittest.TestCase):
         inv.save()
         self.assertEqual(len(L.Inventory(inv.path).rows), 1)
 
+    def test_decide_never_overwrites(self):
+        d = Path(tempfile.mkdtemp())
+        inv = L.Inventory(d / "inv.csv")
+        inv.add(work(1, "A paper"), "chain:x")
+        inv.add(work(2, "Seed paper"), "seed:A1", triage="relevant")
+        (d / "dec.csv").write_text("openalex_id,triage,note\nW1,maybe,Claude: x\nW2,not_relevant,y\nW1,bogus,z\n")
+        L.cmd_decide(inv, d / "dec.csv")
+        self.assertEqual([(r["triage"], r["triage_note"]) for r in inv.rows], [("maybe", "Claude: x"), ("relevant", "")])
+
 
 if __name__ == "__main__":
     unittest.main()

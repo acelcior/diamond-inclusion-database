@@ -7,6 +7,17 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-05 — Literature triage, batch 1
+- Added `next` and `decide` commands to `scripts/literature.py`; triage rules written into the
+  [literature workflow](literature-workflow.md).
+- Claude triaged the 50 most-linked high-priority candidates: 27 relevant, 17 maybe, 6 not
+  relevant (all notes start `Claude:`, not yet checked by a person). Many are reviews (RiMG 2022
+  chapters, Stachel & Harris 2008, Kaminsky 2011), marked relevant so chaining reaches their references.
+- Found the likely source of the Smit compilation's "Gress et al. 2021" Sm-Nd rows: Gress et al.
+  2021, CMP, Orapa cluster (W3175333777); to confirm against the compilation.
+- 5 of the 17 "maybe" depend on scope decision D-005 (fibrous diamonds, xenolith diamonds, ophiolite diamonds).
+- **Next:** a person spot-checks batch 1; `chain` the 27 new relevant papers; next batch of 50.
+
 ## 2026-11-05 — Literature discovery workflow
 - Compared Consensus and Connected Papers with OpenAlex for finding papers (details and
   evidence in [literature workflow](literature-workflow.md)). Both are built on Semantic Scholar
