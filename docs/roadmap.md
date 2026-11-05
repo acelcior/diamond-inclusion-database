@@ -63,9 +63,9 @@ What follows from that:
 **Exit gate:** automated extraction on seed papers meets agreed thresholds for Tier 1 fields.
 
 ## Phase 4 — Bibliography and discovery *(parallel with Phase 2–3)*
-- [ ] OpenAlex + Crossref harvesting scripts; search-term list incl. synonyms and historical terms
-- [ ] Citation chaining from key reviews/compilations
-- [ ] Master bibliography table + publication dedup (DOI, title/author/year fuzzy, preprint ↔ published)
+- [ ] OpenAlex + Crossref harvesting scripts; search-term list incl. synonyms and historical terms *(started: `scripts/literature.py`, [literature workflow](literature-workflow.md); keyword search not yet added)*
+- [x] Citation chaining from key reviews/compilations *(2026-11-05: seeded with the 138 seed + Stachel-compilation DOIs; Connected Papers and Consensus as manual supplements, D-015)*
+- [ ] Master bibliography table + publication dedup (DOI, title/author/year fuzzy, preprint ↔ published) *(started: `bibliography/inventory.csv`, dedup by OpenAlex ID, DOI and exact normalized title + year; no fuzzy or preprint matching yet)*
 - [ ] Access-status tracking (open / institutional / unavailable) — no circumvention *(started: [licence register](licence-register.md) for the 15 seed sources, `scripts/licence_audit.py`)*
 
 **Exit gate:** master bibliography of candidate papers with access status and relevance triage.

@@ -60,5 +60,6 @@ schema/        SQL DDL and migrations            (Phase 1)
 vocab/         controlled vocabularies (CSV)     (Phase 1)
 extraction/    JSON Schema, prompts, scripts     (Phase 3)
 gold/          hand-curated gold-standard records (Phase 2)
+bibliography/  literature inventory (inventory.csv), see docs/literature-workflow.md (Phase 4)
 papers/        local PDFs/supplements — gitignored, never committed
 ```

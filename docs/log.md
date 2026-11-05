@@ -7,6 +7,24 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-05 — Literature discovery workflow
+- Compared Consensus and Connected Papers with OpenAlex for finding papers (details and
+  evidence in [literature workflow](literature-workflow.md)). Both are built on Semantic Scholar
+  / OpenAlex data. Connected Papers has no API (5 free graphs/month, by hand); Consensus has an
+  official MCP connector but needs an account (not tested).
+- Tests: OpenAlex chaining from the 11 seeds reached 72 of 113 compilation papers; a
+  "diamond AND inclusion" filter would lose 34 known papers (missing abstracts), so the filter
+  is "diamond" only. A Connected Papers graph of Phillips 2004 added 4 of 39 over the seeds, but
+  none once chaining ran from all known papers.
+- New `scripts/literature.py` (seed / chain / add / status) and `bibliography/inventory.csv`:
+  138 known-relevant papers (seeds + Stachel-compilation DOIs) and 1,490 candidates from the
+  first chaining run. 16 compilation DOIs are not in OpenAlex (several mistyped); kept as printed.
+- OpenAlex now meters its API: no key = a small shared daily budget; a free personal key gives
+  $1/day. The script stops and resumes when the budget runs out; a key is optional.
+- New decision D-015 (proposed). Tests: `tests/test_literature.py` (offline).
+- **Next:** triage the 1,058 high-priority candidates (~50 per session, Claude proposes, human
+  checks); optionally get a free OpenAlex key; Walter/Smit references (no DOIs) to match by title.
+
 ## 2026-11-05 — Licence and access audit
 - `scripts/licence_audit.py` looks up each source in OpenAlex (open access), Crossref (publisher and
   text-mining licences) and DataCite/Borealis (datasets); writes [licence register](licence-register.md)
