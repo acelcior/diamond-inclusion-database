@@ -59,10 +59,10 @@ What follows from that:
 ## Phase 3 — Extraction spec and validator
 - [ ] `extraction/schema.json` — JSON Schema for paper → records
 - [ ] Extraction prompt (structured output, evidence excerpt per value)
-- [ ] PDF/table/supplement parsing for seed papers (text layer first, OCR fallback) *(started 2026-11-17, D-017: `extraction/extract.py` reads tables with oxides down the side from text-layer PDFs using per-paper hints; not yet: oxides across the top, spreadsheet supplements, P-T and isotope tables)*
+- [ ] PDF/table/supplement parsing for seed papers (text layer first, OCR fallback) *(started 2026-11-17, D-017: `extraction/extract.py` reads tables with oxides down the side or across the top from text-layer PDFs using per-paper hints; continuation pages printed without row labels are read with a hint; not yet: spreadsheet supplements, P-T and isotope tables, element tables such as sulfides)*
 - [ ] `validate.py` — units, oxide totals, stoichiometry, vocab, coordinates, duplicates, references
 - [ ] Importer: validated JSON → DB, with extraction-run and review-status records *(2026-11-17: `scripts/build_gold.py` also loads `extracted/<paper>/`; any value column that is a known quantity is read, an unknown one stops the load)*
-- [ ] Measure per-field precision/recall vs gold; set thresholds (ADR) *(2026-11-17: the extractor agrees with the two approved text-layer papers in 2,986 of 2,986 cells; thresholds not set, D-012)*
+- [ ] Measure per-field precision/recall vs gold; set thresholds (ADR) *(2026-11-17: the extractor agrees with the two approved text-layer papers in 2,986 of 2,986 cells and with the checked Gress 2021 Table 3 transcription in 612 of 612; thresholds not set, D-012)*
 
 **Exit gate:** automated extraction on seed papers meets agreed thresholds for Tier 1 fields.
 
@@ -77,7 +77,7 @@ What follows from that:
 **Exit gate:** master bibliography of candidate papers with access status and relevance triage.
 
 ## Phase 5 — Scaled extraction and review
-- [ ] Batch extraction with cost tracking per paper
+- [ ] Batch extraction with cost tracking per paper *(2026-11-17: first four papers through the general extractor, in `extracted/`: Gress 2018, Kaminsky & Kostitsyn 2025, Wiggers de Vries 2011 and Zhao 2022, all awaiting review)*
 - [ ] Review queue: flagged/ambiguous records, reviewer decisions, revision history
 - [ ] Physical-inclusion and specimen reconciliation across papers (evidence-based links only)
 - [ ] Per-publication processing tracker (which tables/supplements done)

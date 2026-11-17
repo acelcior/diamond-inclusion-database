@@ -28,7 +28,7 @@ DB_PATH = ROOT / "gold" / "gold.sqlite"
 OXIDES = ["SiO2", "Al2O3", "TiO2", "Cr2O3", "FeO", "MnO", "NiO", "MgO", "CaO", "Na2O", "K2O", "V2O5", "ZnO", "Total"]
 OXIDE_COLUMNS = ["P2O5", *OXIDES, "SrO"]  # read first, in this order, so the checked papers load exactly as before
 DESCRIPTION_COLUMNS = {"table", "page", "column", "sample_no", "diamond_no", "inclusion_label", "mineral", "paragenesis",
-                       "assemblage", "touching", "n_analyses", "cited_source", "note", "phase_hint", "suite"}
+                       "assemblage", "touching", "n_analyses", "cited_source", "note", "phase_hint", "suite", "zone"}
 SUITE_TO_T4 = {"Per (hz)": "Harzburgitic", "Per (lhz)": "Lherzolitic", "Ecl": "Eclogitic", "Web": "Websteritic"}
 
 
@@ -278,10 +278,11 @@ def load_simple(db, folder):
                      [c for c in header if c not in OXIDE_COLUMNS and c not in DESCRIPTION_COLUMNS])
     for r in analyses:
         cfg = src["tables"][r["table"]]
-        where = f"{r['table']}, p. {r['page']}, {r['sample_no']} {r['mineral']} (column {r['column']})"
+        position = f"column {r['column']}" if r["column"].isdigit() else r["column"]  # 'row 5' in tables read by row
+        where = f"{r['table']}, p. {r['page']}, {r['sample_no']} {r['mineral']} ({position})"
         tables_of.setdefault(r["sample_no"], set()).add(r["table"])
         ev = evidence(page=r["page"], table_label=r["table"], row_label=r["sample_no"],
-                      column_label=f"{r['mineral']} (column {r['column']})",
+                      column_label=f"{r['mineral']} ({position})",
                       excerpt=f"Sample {r['sample_no']}; {r['mineral']}" +
                               (f"; {r['n_analyses']} analyses" if r["n_analyses"] else ""),
                       cited_reference_text=r["cited_source"] or None)
@@ -320,6 +321,10 @@ def load_simple(db, folder):
             insert(db, "assertion", inclusion_observation_id=inc, property_code="touching", value_text=r["touching"],
                    asserted_by="authors", value_status="reported", derivation="reported", evidence_id=ev,
                    notes=r["note"] or None)
+        if r.get("zone"):
+            insert(db, "assertion", inclusion_observation_id=inc, property_code="position_in_host", value_text=r["zone"],
+                   asserted_by="authors", value_status="reported", derivation="reported", evidence_id=ev,
+                   notes=cfg.get("zone_note"))
         meas = insert(db, "measurement", inclusion_observation_id=inc, method_code=src["method"]["code"],
                       spot_label=f"mean of {r['n_analyses']} analyses" if r["n_analyses"] else "number of analyses not stated",
                       conditions=src["method"]["conditions"], evidence_id=ev, import_run_id=run,
@@ -352,10 +357,12 @@ def load_simple(db, folder):
         for k in ["uncertainty_note", "notation_note"]:
             if cfg.get(k):
                 flags.append(("undefined notation", t, cfg[k]))
+        if cfg.get("identity_note"):
+            flags.append(("inclusion count unclear", t, cfg["identity_note"]))
     for sample, note in src.get("total_notes", {}).items():
         flags.append(("total excludes an oxide", sample, note))
     for sample, ts in tables_of.items():
-        if len(ts) > 1 and sample not in same:
+        if len(ts) > 1 and sample not in same and src.get("diamond_key") != "sample":  # "sample": one record already
             flags.append(("same label, kept apart", sample, f"appears in {', '.join(sorted(ts))}; the paper does not "
                           "say these are the same diamond, so they are separate records"))
     return flags, pub

@@ -1,0 +1,86 @@
+{
+  "publication": {
+    "doi": "10.3390/min12070844",
+    "citation": "Zhao, D. (2022). Electron Probe Microanalysis and Microscopy of Polishing-Exposed Solid-Phase Mineral Inclusions in Fuxian Kimberlite Diamonds. Minerals 12 (7), 844.",
+    "short_ref": "Zhao (2022)",
+    "year": 2022,
+    "pub_type": "journal_article",
+    "notes": "Tables 2-5 (pp. 14-19): electron-microprobe major elements of olivine, chromite, garnet and orthopyroxene inclusions analysed in this study, exposed by polishing. Sample labels (LN50D...) name the host diamond throughout the paper, so the same label in two tables is the same diamond. Not extracted: the columns of Tables 4 and 5 that the footnotes attribute to earlier papers (Harris et al., Wang and Guo, Meyer et al.); the authors' recalculated Fe2O3 and FeO and second total in Tables 3 and 4 (calculated by charge balance, not measured); calculated cations and Mg#, Ca#, Cr#; Table 6 (sulfides, element wt%); Tables 7 and 8 (unknown hydrous and Fe-rich phases; water by difference, several analyses of one inclusion); Table 1 (list of minerals identified)."
+  },
+  "source_file": {
+    "file_role": "main_text",
+    "filename": "oa/zhao-2022.pdf"
+  },
+  "tool": "extraction/extract.py (pdftotext -layout; hints in this file under \"extract\"; tables checked against page images of pp. 14-19) + scripts/build_gold.py",
+  "extraction_method": "text_layer",
+  "analyses": "analyses.csv",
+  "diamond_key": "sample",
+  "method": {
+    "code": "EPMA",
+    "conditions": "Cameca CAMEBAX electron microprobe (University of Michigan), WDS with PAP correction; focused beam in spot mode; peak and background counting 30 s and 15 s (Si in chromite 120 s). Silicates (olivine, pyroxene, garnet): 15 kV, 10 nA. Spinel/chromite: 10 kV, 45 nA.",
+    "page": "3-4"
+  },
+  "country_code": "CN",
+  "localities": [
+    {
+      "name": "No. 50 kimberlite diatreme (Fuxian)",
+      "locality_type": "pipe",
+      "prefixes": ["LN"],
+      "page": "1",
+      "excerpt": "diamond (1–3 mm in diameter) from the No. 50 kimberlite diatreme of Liaoning Province, China"
+    }
+  ],
+  "setting": {
+    "region": {
+      "value": "Liaoning Province",
+      "page": "1",
+      "excerpt": "diamond (1–3 mm in diameter) from the No. 50 kimberlite diatreme of Liaoning Province, China"
+    },
+    "host_rock": {
+      "value": "kimberlite",
+      "page": "1",
+      "excerpt": "diamond (1–3 mm in diameter) from the No. 50 kimberlite diatreme of Liaoning Province, China"
+    }
+  },
+  "column_quantity": {"TFeO": "FeOT"},
+  "tables": {
+    "Table 2": {
+      "notation": {"na": "not_measured"},
+      "footnote": "na: not analyzed (Table 2 footnote, p. 16)"
+    },
+    "Table 3": {
+      "notation": {},
+      "identity_note": "The text and the Figure 3 caption (p. 7) describe three chromite inclusions in diamond LN50D07, but the table lists four grains for it (Sp 1 to Sp 4). The grains of LN50D04 are labelled Sp2 to Sp 5, with no Sp 1. Each column is stored as one inclusion, as the table's 'Grain' row labels it; the paper does not say whether two columns are the same grain."
+    },
+    "Table 4": {
+      "notation": {"na": "not_measured"},
+      "footnote": "na: not analyzed (Table 4 footnote)"
+    },
+    "Table 5": {
+      "notation": {}
+    }
+  },
+  "extract": {
+    "pdf": "papers/oa/zhao-2022.pdf",
+    "tables": [
+      {"label": "Table 2", "page": ["14", "15", "16"], "start": "Average compositions of olivine inclusions",
+       "continued": "unlabelled", "mineral": "olivine", "rows": {"Inclusion": "inclusion_label"},
+       "labels": {"Al2 O3": "Al2O3", "Cr2 O3": "Cr2O3", "Na2 O": "Na2O", "TFeO": "TFeO", "Σ": "Total"}},
+      {"label": "Table 3", "page": "17", "start": "Compositions of chromite inclusions", "mineral": "chromite",
+       "samples": ["LN50D03", "LN50D04", "LN50D04", "LN50D04", "LN50D04", "LN50D07", "LN50D07", "LN50D07", "LN50D07",
+                   "LN50D12", "LN50D20", "LN50D20", "LN50D58", "LN50D58"],
+       "fields": {"inclusion_label": ["", "Sp2", "Sp 3", "Sp 4", "Sp 5", "Sp 1", "Sp 2", "Sp 3", "Sp 4", "Sp", "Sp 1", "Sp 2", "Sp 1", "Sp 2"]},
+       "labels": {"Al2 O3": "Al2O3", "Cr2 O3": "Cr2O3", "V2 O 3": "V2O3", "TFeO": "TFeO", "Σ": "Total"}},
+      {"label": "Table 4", "page": "18", "start": "Compositions of garnet inclusions", "cut": 85, "mineral": "garnet",
+       "labels": {"Al2 O3": "Al2O3", "Cr2 O3": "Cr2O3", "Na2 O": "Na2O", "TFeO": "TFeO", "Σ": "Total"},
+       "fields": {"note": {"0": "LN50D10 has two garnet inclusions (p. 26); the table does not say which column is which grain",
+                           "1": "LN50D10 has two garnet inclusions (p. 26); the table does not say which column is which grain"}}},
+      {"label": "Table 5", "page": "19", "start": "Compositions of pyroxene inclusions", "cut": 95, "mineral": "Orthopyroxene",
+       "rows": {"Grain": "inclusion_label"},
+       "labels": {"Al2 O3": "Al2O3", "Cr2 O3": "Cr2O3", "Na2 O": "Na2O", "TFeO": "TFeO", "Σ": "Total"},
+       "fields": {"touching": {"0": "y", "1": "y"},
+                  "note": {"0": "Two touching orthopyroxene crystals in diamond LN50D40 (p. 7)",
+                           "1": "Two touching orthopyroxene crystals in diamond LN50D40 (p. 7)"}}}
+    ]
+  }
+}

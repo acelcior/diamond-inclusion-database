@@ -24,8 +24,9 @@ v1 is tagged; two of the four gold papers (Kankan II and III) are still waiting 
    transcription; kept only for pages with no usable text layer (the calibrated image route).
 
 ## Decision
-Option 2. `extraction/extract.py` reads tables printed with one analysis per column (oxides down the
-side) from `pdftotext -layout` output. Per-paper knowledge is data, not code: the `extract` hints
+Option 2. `extraction/extract.py` reads tables from `pdftotext -layout` output in both common layouts: one
+analysis per column (oxides down the side) and, with `"layout": "rows"`, one analysis per row (oxides across
+the top). Per-paper knowledge is data, not code: the `extract` hints
 (table title, page, sample and mineral names where the text layer garbles them, facts from footnotes).
 It writes `analyses.csv` in the format `scripts/build_gold.py` (`load_simple`) already loads, so the
 existing checks, flags, confidence rules and review page apply unchanged. New papers go in
@@ -40,10 +41,13 @@ silently. Adding the quantity to the vocabulary is still a deliberate step (D-01
   standard file is the loader's own input, so a schema change is absorbed by the loader, not the files.
 - D-014 (a few papers a week) is no longer the ceiling for text-layer tables; real throughput is not
   measured yet.
-- **Not covered yet:** tables with one analysis per row (oxides across the top), spreadsheet
-  supplements, P-T and isotope tables, and image-only pages. A scan of the 50 downloaded open-access
-  PDFs found oxide tables in 16: 6 with oxides down the side, 10 only across the top. 34 print no oxide
-  table in the main text (data in supplements, or other kinds of data).
+- **Not covered yet:** spreadsheet supplements, P-T and isotope tables, element (non-oxide) tables such as
+  sulfides, PDFs whose text layer scrambles
+  the table (e.g. the accepted manuscript of Smith 2016), and image-only pages.
+- **Coverage (approximate, by text search of the 50 downloaded open-access PDFs):** about 10 print an oxide
+  table in the main text, 9 with oxides down the side and 1 across the top. The other 40 keep their data
+  in supplements or report other kinds of data. A first, cruder search that reported 10 across-the-top
+  tables was wrong: it counted sentences and reference lists that name several oxides.
 - Every extracted paper still needs its `source.json` (citation, method, localities with page and
   excerpt, notation per table) and a human spot-check before approval.
 
@@ -56,6 +60,17 @@ silently. Adding the quantity to the vocabulary is still a deliberate step (D-01
   (63 analyses, 579 values, same flags).
 - Hints used: `extraction/hints/phillips-2004.json`, `extraction/hints/sobolev-2004.json`. Rerun with
   `python3 -I extraction/extract.py extraction/hints/sobolev-2004.json --compare gold/sobolev-2004/analyses.csv`.
+- **Gress et al. (2021) Table 3** (across the top, many blank cells): 612 of 612 cells agree with the
+  transcription made independently from page images (`gold/calibration/`); hints in
+  `extraction/hints/gress-2021-table3.json`.
+- **Two papers never seen before**, checked against their own printed totals (`--totals`), not by a person:
+  Gress et al. (2018) Table 2, across the top: 46 analyses, 42 totals within 0.15 wt% and 4 off by at most
+  0.17 (the table prints rounded averages). Zhao et al. (2022) Table 2, down the side, indented, labels printed
+  as `Al2 O3`, `TFeO`, `Σ`: the first 13 analyses read and all 13 totals add up; the 48 number rows on its two
+  continuation pages carry no labels in the text layer and were reported as not read.
+- **Zhao (2022) Tables 2-5**, loaded: 66 analyses, all 66 totals within 0.05 wt%. Continuation pages printed
+  without row labels are read with `"continued": "unlabelled"` (labels taken from the first page in order; without
+  the hint such rows are still reported as unread, never guessed). Columns cited from other papers are cut off.
 - **Not tested:** Kankan II and III (no usable text layer; read from page images, rule 3 in
   [confidence](../confidence.md)). The hints for the two tested papers were taken from their existing
   parsers, so this shows the general code is equivalent to them, not that an unseen paper works first time.

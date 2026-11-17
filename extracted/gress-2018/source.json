@@ -1,0 +1,58 @@
+{
+  "publication": {
+    "doi": "10.1007/s00710-018-0582-y",
+    "citation": "Gress, M.U., Howell, D., Chinn, I.L., Speich, L., Kohn, S.C., van den Heuvel, Q., Schulten, E., Pals, A.S.M., Davies, G.R. (2018). Episodic diamond growth beneath the Kaapvaal Craton at Jwaneng Mine, Botswana. Mineralogy and Petrology 112 (Suppl 1), S219-S229.",
+    "short_ref": "Gress et al. (2018)",
+    "year": 2018,
+    "pub_type": "journal_article",
+    "notes": "Table 2 (p. S226): averaged major elements of 46 liberated clinopyroxene and garnet inclusions. Printed totals are low (91.8-100.4 wt%): the inclusions were analysed unpolished. Not extracted: Table 1 (inclusion proportions) and the nitrogen (FTIR) data of the host diamonds."
+  },
+  "source_file": {
+    "file_role": "main_text",
+    "filename": "oa/gress-2018.pdf"
+  },
+  "tool": "extraction/extract.py (pdftotext -layout; hints in this file under \"extract\"; table checked against a page image of p. S226) + scripts/build_gold.py",
+  "extraction_method": "text_layer",
+  "analyses": "analyses.csv",
+  "diamond_key": "sample",
+  "method": {
+    "code": "EPMA",
+    "conditions": "JEOL JXA-8350F electron microprobe (Utrecht University); 15 kV, 25 nA, 1 µm beam; CITZAF correction. Inclusions were liberated, mounted unpolished on carbon tape and analysed on a horizontal surface. Data treatment follows Timmerman et al. (2015): normalisation to 100% and only measurements within 2 standard deviations of the mean.",
+    "page": "S221"
+  },
+  "country_code": "BW",
+  "localities": [
+    {
+      "name": "Jwaneng",
+      "locality_type": "mine",
+      "prefixes": ["JW"],
+      "page": "S220",
+      "excerpt": "run of mine production was examined from Jwaneng Mine (north, centre and south pipes)"
+    }
+  ],
+  "setting": {
+    "host_rock": {
+      "value": "kimberlite",
+      "page": "S219",
+      "excerpt": "the 240 Ma Jwaneng kimberlites"
+    }
+  },
+  "tables": {
+    "Table 2": {
+      "notation": {"–": "ambiguous"},
+      "footnote": "'–' (Cr2O3 of JW137 cpx D and JW137 gnt B) is not defined in Table 2",
+      "zone_note": "Zone = approximate location of inclusion in core, intermediate (int) and rim zones based on visual observation only (Table 2 footnote); '?' as printed"
+    }
+  },
+  "total_tolerance": 0.35,
+  "total_tolerance_note": "Table 2 prints averages rounded to 1 or 2 decimals, so the eleven printed oxides can differ from the printed Total by up to about 0.33 wt% through rounding alone; the largest difference found is 0.17.",
+  "extract": {
+    "pdf": "papers/oa/gress-2018.pdf",
+    "tables": [
+      {"label": "Table 2", "page": "S226", "layout": "rows", "start": "Averaged major element composition",
+       "columns": ["sample_no", "zone", "n_analyses", "SiO2", "TiO2", "Al2O3", "Cr2O3", "FeO", "MnO", "MgO", "CaO", "NiO", "Na2O", "K2O", "Total"],
+       "text": ["zone"],
+       "split": {"sample_no": "(?P<sample_no>\\S+) (?P<mineral>\\S+) (?P<inclusion_label>\\S+)"}}
+    ]
+  }
+}

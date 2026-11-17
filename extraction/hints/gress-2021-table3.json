@@ -1,0 +1,9 @@
+{
+  "pdf": "papers/gress-2021.pdf",
+  "tables": [
+    {"label": "Table 3", "page": "5", "layout": "rows", "start": "Major and trace element contents of sulphides",
+     "header": "Inclusion",
+     "columns": ["Inclusion", "Fe", "Ni", "Cu", "Co", "NiCo_Fe", "Cu_metals", "Ir", "Ir_2s", "Pt", "Pt_2s", "Zn", "Zn_2s",
+                 "Mo", "Mo_2s", "Pb", "Pb_2s"]}
+  ]
+}

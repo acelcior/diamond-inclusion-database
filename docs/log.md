@@ -7,6 +7,92 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-17 — Zhao (2022), Fuxian No. 50 pipe, China
+- **Zhao (2022)**, Minerals 12, 844 (CC BY): Tables 2-5, 66 inclusions (42 olivine, 14 chromite, 6 garnet,
+  4 orthopyroxene) in 36 diamonds, 726 values → [review page](../extracted/zhao-2022/README.md). All 66 printed
+  totals equal the oxide sum within 0.05 wt%. Tables checked against page images of pp. 14-19. `pending_review`.
+- **Extractor:** new hint `"continued": "unlabelled"` for continuation pages printed without row labels
+  (Table 2, pp. 15-16): each line takes the label of the same line on the first page. Confirmed on the page
+  images that the printed pages really have no labels. Test added.
+- **Loader:** a table's `identity_note` in `source.json` now shows as a flag "inclusion count unclear"; the
+  "same label, kept apart" flag is no longer raised when a paper's sample label is its diamond key.
+- **Judgements to check at review:**
+  - Table 3 lists four chromite grains for LN50D07 (Sp 1-4) while the text and Figure 3 (p. 7) describe three
+    chromite inclusions. Stored as four, as the table's "Grain" row labels them; flagged, not resolved.
+  - Chromite grain labels (Sp2 ... Sp 2) are listed by hand from the page image: the text layer puts two of
+    them under one column.
+  - `TFeO` is stored as total iron as FeO (`FeOT`).
+  - This PDF's hidden text is offset on some pages (p. 8 carries text printed on p. 7), so page numbers of
+    quoted statements were taken from page images.
+- **Left out, with reasons:** columns of Tables 4 and 5 taken from Harris et al., Wang & Guo and Meyer et al.
+  (repeat reports; to be read from the original papers); the authors' recalculated Fe2O3/FeO and second total
+  (calculated, not measured); Table 6 sulfides (element wt% not in the vocabulary; several columns may be phases
+  of one inclusion); Tables 7-8 unknown phases (water by difference; six analyses of one inclusion).
+- Website data regenerated: 8 papers, 8,970 inclusion reports, 99,011 values. Not committed or pushed.
+- **Next:** Thomson et al. 2014 (`eimf-2014.pdf`) and the 2015 São Luiz paper; then supplements. Zhao's
+  sulfides need a decision on element quantities (D-016).
+
+## 2026-11-17 — Third paper, and what the remaining downloads need
+- **Wiggers de Vries et al. (2011)**, Udachnaya, Yakutia (CC BY-NC): Table 1, 7 chromite, olivine and phlogopite
+  inclusions in one diamond (#3615), 84 values, with each inclusion's position (core, core/intermediate, rim) →
+  [review page](../extracted/wiggers-de-vries-2011/README.md). All totals add up; checked against the page image.
+  `n.a.` = not analysed (defined). Not extracted: trace elements with ± and Zn-thermometry temperatures in the
+  same table.
+- Set aside, each for a stated reason:
+  - **Westerlund & Gurney 2004**: a scan; its text layer is OCR and misreads characters, so it needs the image
+    route. Its major elements are already in the Stachel compilation.
+  - **Kaminsky et al. 2023** (Minerals 13, 1217; listed in the inventory under its preprint DOI): the table's text
+    layer is scrambled, so it needs the image route. Several of its analyses are the same grains as in Kaminsky &
+    Kostitsyn 2025 (same sample labels and values), so loading it also needs identity links between the two papers.
+  - **Zhao et al. 2022**: eight tables; continuation pages without row labels, sample names spanning columns,
+    two totals per analysis (before and after the authors' Fe2O3 recalculation), and columns that may come from
+    other studies. Worth a session of its own.
+- Website data regenerated: 7 papers, 8,904 inclusion reports. Not pushed.
+- **Next:** Zhao 2022 in its own session; Thomson et al. 2014 (Juina-5; filed as `eimf-2014.pdf` because OpenAlex
+  lists a facility as first author) and the 2015 São Luiz paper; then supplements.
+
+## 2026-11-17 — First two papers through the general extractor
+- **Gress et al. (2018)**, Jwaneng, Botswana (CC BY): Table 2, 46 clinopyroxene and garnet inclusions in 16
+  diamonds, 552 values → [review page](../extracted/gress-2018/README.md). All totals agree within the rounding
+  of the printed averages (tolerance 0.35 wt%, largest difference 0.17). Flags: `–` in two Cr₂O₃ cells is not
+  defined in the table, so it is stored as ambiguous. Printed totals are low (91.8-100.4): unpolished grains.
+- **Kaminsky & Kostitsyn (2025)**, Rio Sorriso placer, Juina, Brazil (CC BY): Table 1, 8 CaSiO₃, Ca(Si,Ti)O₃ and
+  ferropericlase inclusions in 3 diamonds, 96 values → [review page](../extracted/kaminsky-2025/README.md).
+  All totals add up. `bdl` is defined by the paper (below detection, no limits given). Flags: `Ca(Si,Ti)O3` is
+  not in the mineral vocabulary and is kept as printed. Grain `2.2.1-2` is assigned to diamond 2.2.2 on the
+  table's grouping and the text's Mg# statement (noted on the record).
+- Both tables were checked against an image of the printed page before loading. Both are `pending_review`,
+  confidence high by rule 1 (text layer, checked against page images) and rule 2 (totals).
+- Not extracted from these papers: host-diamond δ13C and nitrogen, trace elements, isotopes, authors' depth
+  interpretations (listed in each paper's notes).
+- Loader: new column `zone` → assertion `position_in_host` (new vocabulary property; Gress Table 2 gives core /
+  int / rim, with `?` kept as printed). Vocabulary: `gnt` = garnet. Website: Botswana and Brazil country names;
+  licence shown from `bibliography/downloads.csv` when a paper is not in the licence register.
+- Website data regenerated: 6 papers, 8,897 inclusion reports. Not pushed.
+- Tried and set aside: Curtolo 2023 (a review, and the copy is a preprint), Zhao 2022 (continuation pages have
+  no row labels in the text layer), Smith 2016 (accepted manuscript, table text scrambled).
+- **Next:** you spot-check the two review pages; then the remaining downloaded papers with main-text tables
+  (Westerlund 2004, De Vries 2010, Kaminsky 2022), label-less continued tables (Zhao 2022), then supplements.
+
+## 2026-11-17 — Extractor: tables with oxides across the top
+- `extract.py` now reads both layouts. `"layout": "rows"` puts each cell under the header cell it sits below,
+  keeps long names in their own column, splits a combined cell such as `JW030 cpx A` by a stated pattern, and
+  lists any line it did not read as a row. Also new: indented rows, differently printed labels (`Al2 O3`, `Σ`),
+  `Table N. Cont.` blocks, and `--totals` (each analysis against its own printed total).
+- **Gress 2021 Table 3: 612 of 612 cells** agree with the checked image transcription. Phillips and Sobolev still
+  agree in every cell; website data files unchanged; all four test files pass.
+- Two unseen papers, checked by their printed totals only: Gress 2018 Table 2 (46 analyses; 42 totals within
+  0.15 wt%, 4 off by at most 0.17, the table prints rounded averages) and Zhao 2022 Table 2 (first 13 analyses,
+  all totals add up). Zhao's continuation pages print no row labels in the text layer: the extractor now reports
+  those 48 rows as not read instead of passing over them. Hints for both saved in `extraction/hints/`.
+- **Correction:** the earlier count of "10 papers with oxides across the top" was wrong (the search counted
+  sentences that list oxides). A stricter search finds about 10 of the 50 PDFs with an oxide table in the main
+  text: 9 down the side, 1 across the top. D-017 is corrected.
+- Still no paper loaded into the database from the new extractor: each needs its `source.json` (method,
+  localities with page and excerpt, notation) and a spot-check.
+- **Next:** extract Gress 2018 end to end into `extracted/` as the first new paper (needs sulphide/trace
+  quantities added to the vocabulary for its other tables); then spreadsheet supplements.
+
 ## 2026-11-17 — General table extractor (D-017)
 - Decided by J. Dasroy to build one general extractor before the Phase 2 gate; recorded as
   [D-017](decisions/D-017-general-extractor.md).

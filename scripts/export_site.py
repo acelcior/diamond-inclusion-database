@@ -106,7 +106,7 @@ def main():
             return f"{legend[code]} ({code})" if code in legend else code
         return "/".join(legend.get(c, c) for c in code.split("/")) + f" ({code})"
 
-    COUNTRY = {"ZA": "South Africa", "RU": "Russia", "GN": "Guinea"}
+    COUNTRY = {"ZA": "South Africa", "RU": "Russia", "GN": "Guinea", "BW": "Botswana", "BR": "Brazil", "CN": "China"}
     short_of = dict(q("SELECT id, short_ref FROM publication"))
     pub_of_dia = dict(q("SELECT id, publication_id FROM diamond_observation"))
     cluster = dict(q("SELECT diamond_observation_id, cluster_id FROM diamond_cluster"))
@@ -252,6 +252,11 @@ def main():
     reg = Path(__file__).resolve().parent.parent / "docs" / "licence-register.csv"  # from scripts/licence_audit.py
     licence = {r["doi"].lower(): r["what_we_may_do"].split(";")[0].split(":")[0] for r in csv.DictReader(open(reg, encoding="utf-8"))} \
         if reg.exists() else {}
+    dl = ROOT / "bibliography" / "downloads.csv"  # papers fetched by literature.py: the licence OpenAlex gives for that copy
+    if dl.exists():
+        for r in csv.DictReader(open(dl, encoding="utf-8")):
+            if r["status"] == "downloaded" and r["doi"]:
+                licence.setdefault(r["doi"].lower(), f"{r['licence']} (OpenAlex, {r['version']})")
     for (pid, doi, citation, short, notes) in q("SELECT id, doi, citation, short_ref, notes FROM publication ORDER BY year, short_ref"):
         n = lambda sql: q(sql, pid)[0][0]
         sources.append({

@@ -1,0 +1,9 @@
+table,page,column,sample_no,mineral,touching,n_analyses,cited_source,note,phase_hint,diamond_no,inclusion_label,assemblage,SiO2,TiO2,Al2O3,Cr2O3,FeO,NiO,MnO,MgO,CaO,Na2O,K2O,Total
+Table 1,299,1,1.2.2b1,CaSiO3,,,,,,1.2.2,b1,"fPer + CaSiO3 + Ca(Si,Ti)O3",49.98,bdl,bdl,bdl,0.35,bdl,bdl,0.28,48.13,bdl,bdl,98.74
+Table 1,299,2,1.2.2b2,"Ca(Si,Ti)O3",,,,,,1.2.2,b2,"fPer + CaSiO3 + Ca(Si,Ti)O3",12.92,40.28,1.83,1.33,0.51,bdl,bdl,bdl,38.06,bdl,bdl,94.93
+Table 1,299,3,1.2.2a,fPer,,,,,,1.2.2,a,"fPer + CaSiO3 + Ca(Si,Ti)O3",0.05,0.02,0.04,0.15,59.06,0.22,0.37,38.44,bdl,0.09,bdl,98.44
+Table 1,299,4,2.2.2a,CaSiO3,,,,,,2.2.2,a,fPer + CaSiO3,47.92,bdl,0.59,bdl,0.53,bdl,bdl,bdl,49.7,bdl,bdl,98.74
+Table 1,299,5,2.2.1-2,fPer,,,,"Printed label 2.2.1-2; assigned to diamond 2.2.2 because Table 1 groups it with 2.2.2a under one association and one host-diamond δ13C, and the text gives its Mg# (0.756) for sample #2.2.2 (p. 299)",,2.2.2,,fPer + CaSiO3,bdl,bdl,0.11,0.54,35.25,1.15,0.27,61.23,bdl,0.17,0.01,98.74
+Table 1,299,6,2.2.3b,CaSiO3,,,,,,2.2.3,b,fPer + CaSiO3,51.58,0.04,0.09,0.01,0.28,0.02,0.03,bdl,47.44,0.06,0.02,99.56
+Table 1,299,7,2.2.3c,CaSiO3,,,,,,2.2.3,c,fPer + CaSiO3,50.64,0.02,0.06,0.02,0.08,bdl,0.03,bdl,47.46,0.02,bdl,98.33
+Table 1,299,8,2.2.3a,fPer,,,,,,2.2.3,a,fPer + CaSiO3,0.06,0.01,0.04,0.53,35.88,1.18,0.29,60.52,bdl,0.21,0.01,98.73

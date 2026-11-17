@@ -1,0 +1,8 @@
+table,page,column,sample_no,mineral,touching,n_analyses,cited_source,note,phase_hint,diamond_no,inclusion_label,zone,SiO2,TiO2,Al2O3,Cr2O3,FeO,MnO,MgO,NiO,CaO,Na2O,K2O,Total
+Table 1,571,1,chr-1,chr,,,,,,3615,chr-1,Core,0.14,0.02,7.28,61.48,15.23,n.a.,12.39,0.04,0,0,0,96.58
+Table 1,571,2,ol,ol,,,,,,3615,ol,Core,41.13,0,0,0.2,7.21,0,52.67,n.a.,0,0,0,101.21
+Table 1,571,3,chr-2,chr,,,,,,3615,chr-2,Core,0.16,0.02,8.8,59.99,15.55,n.a.,12.58,0.05,0,0,0,97.15
+Table 1,571,4,phl,phl,,,,,,3615,phl,Core,42.3,0.1,10.57,1.73,3.3,0,26.84,n.a.,0.08,0,9.8,94.72
+Table 1,571,5,chr-3,chr,,,,,,3615,chr-3,Core/intermediate,0.48,0,7.08,62.75,17.33,0.1,12.26,n.a.,0,0,0,100
+Table 1,571,6,chr,chr,,,,,,3615,chr,Rim,0.71,0,5.2,65.59,17.85,0.08,12.13,n.a.,0,0,0,101.56
+Table 1,571,7,ol,ol,,,,,,3615,ol,Rim,40.12,0,0,0.01,7.54,0,52.75,n.a.,0,0,0,100.42

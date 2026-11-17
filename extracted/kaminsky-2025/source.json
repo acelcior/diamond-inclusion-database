@@ -1,0 +1,60 @@
+{
+  "publication": {
+    "doi": "10.1134/s0016702924601761",
+    "citation": "Kaminsky, F.V., Kostitsyn, Yu.A. (2025). Different Types of CaSiO3 in the Earth's Mantle and Its Geochemical Heterogeneity: the Juina Area in Brazil as an Example. Geochemistry International 63 (4), 295-306.",
+    "short_ref": "Kaminsky & Kostitsyn (2025)",
+    "year": 2025,
+    "pub_type": "journal_article",
+    "notes": "Table 1 (p. 299): major elements of 8 CaSiO3, Ca(Si,Ti)O3 and ferropericlase inclusions in three diamonds. Not extracted: the host diamonds' δ13C (printed per diamond as mean ± spread, n), Table 2 (trace elements), Table 3 (Rb-Sr, Sm-Nd, U-Pb isotopes) and the authors' depth interpretations. Table 1 labels 2.2.3a and 1.2.2a as ferropericlase, while Table 2 lists 2.2.3a among CaSiO3 grains; kept as printed."
+  },
+  "source_file": {
+    "file_role": "main_text",
+    "filename": "oa/kaminsky-2025.pdf"
+  },
+  "tool": "extraction/extract.py (pdftotext -layout; hints in this file under \"extract\"; table checked against a page image of p. 299) + scripts/build_gold.py",
+  "extraction_method": "text_layer",
+  "analyses": "analyses.csv",
+  "diamond_key": "diamond_no",
+  "method": {
+    "code": "EPMA",
+    "conditions": "Quantitative electron probe microanalysis at 15 kV accelerating voltage, 20 nA sample current and 2 µm beam diameter; reference materials were simple compounds and pure metals.",
+    "page": "297"
+  },
+  "country_code": "BR",
+  "localities": [
+    {
+      "name": "Rio Sorriso",
+      "locality_type": "alluvial_deposit",
+      "prefixes": [""],
+      "page": "299",
+      "excerpt": "from the Rio Sorriso placer, Juina area, Mato Grosso State, Brazil"
+    }
+  ],
+  "setting": {
+    "region": {
+      "value": "Juina area",
+      "page": "299",
+      "excerpt": "from the Rio Sorriso placer, Juina area, Mato Grosso State, Brazil"
+    }
+  },
+  "tables": {
+    "Table 1": {
+      "notation": {"bdl": "below_detection"},
+      "footnote": "bdl = below the detection limit (Table 1 footnote); no detection limits are given"
+    }
+  },
+  "extract": {
+    "pdf": "papers/oa/kaminsky-2025.pdf",
+    "tables": [
+      {"label": "Table 1", "page": "299", "start": "Chemical compositions of CaSiO3 and associated ferropericlase",
+       "end": "below the detection limit", "mineral_row": "Mineral",
+       "fields": {
+         "diamond_no": ["1.2.2", "1.2.2", "1.2.2", "2.2.2", "2.2.2", "2.2.3", "2.2.3", "2.2.3"],
+         "inclusion_label": ["b1", "b2", "a", "a", "", "b", "c", "a"],
+         "assemblage": ["fPer + CaSiO3 + Ca(Si,Ti)O3", "fPer + CaSiO3 + Ca(Si,Ti)O3", "fPer + CaSiO3 + Ca(Si,Ti)O3",
+                        "fPer + CaSiO3", "fPer + CaSiO3", "fPer + CaSiO3", "fPer + CaSiO3", "fPer + CaSiO3"],
+         "note": {"4": "Printed label 2.2.1-2; assigned to diamond 2.2.2 because Table 1 groups it with 2.2.2a under one association and one host-diamond δ13C, and the text gives its Mg# (0.756) for sample #2.2.2 (p. 299)"}
+       }}
+    ]
+  }
+}
