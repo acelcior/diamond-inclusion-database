@@ -1,0 +1,22 @@
+{
+  "pdf": "papers/sobolev-2004.pdf",
+  "tables": [
+    {"label": "Table 3", "page": "231", "start": "Major-element compositions of selected olivine", "mineral": "olivine",
+     "fields": {"cited_source": {"0": "Sobolev et al. (2000)", "1": "Sobolev et al. (2000)", "2": "Sobolev et al. (2000)"}}},
+    {"label": "Table 4", "page": "232", "start": "Selected compositions of chrome spinels", "mineral": "chrome spinel"},
+    {"label": "Table 5", "page": "235", "start": "Selected compositions of garnets", "mineral": "garnet",
+     "samples": ["Syt-1", "Syt-1", "Im-10", "Im-21", "Yub-212", "Yub-322", "Yum-150", "AL-8", "AL-9", "Km-42/35", "Km-64/23",
+                 "Km-68/23", "Km-69/23", "Km-71/49", "Im-3", "STI-203/98", "ST-203/00", "AL-1", "AL-2", "Yum-31", "Km-94/49"],
+     "fields": {"n_analyses": {"9": "10", "10": "15", "11": "10", "12": "10", "13": "12", "20": "8"}}},
+    {"label": "Table 6", "page": "236", "start": "Chemical composition of majoritic and normal garnets", "cut": 72,
+     "samples": ["Yum-27", "Yum-27", "Km-88/23", "Kr-119/13", "Po-99"],
+     "mineral": ["Majorite", "Normal", "Majorite", "Majorite", "Majorite"],
+     "fields": {"n_analyses": ["8", "10", "5", "17", "17"],
+                "phase_hint": ["majoritic garnet", "garnet", "majoritic garnet", "majoritic garnet", "majoritic garnet"]}},
+    {"label": "Table 8", "page": "239", "start": "Selected compositions of pyroxenes", "cut": 66,
+     "samples": ["Kmsm-6", "Kmsm-7", "Kmsm-21", "UD-2", "STI-33", "Yum-20"],
+     "mineral": ["Cr-Di", "Cr-Di", "En", "Omph", "Omph", "Omph"],
+     "fields": {"touching": {"3": "y"},
+                "note": {"3": "Printed as UD-2*: associated (touching) with coesite (Table 8 footnote)"}}}
+  ]
+}

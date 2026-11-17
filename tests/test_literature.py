@@ -48,6 +48,17 @@ class LiteratureTest(unittest.TestCase):
         L.cmd_decide(inv, d / "dec.csv")
         self.assertEqual([(r["triage"], r["triage_note"]) for r in inv.rows], [("maybe", "Claude: x"), ("relevant", "")])
 
+    def test_fetch_picks_open_published_copy(self):
+        loc = lambda url, oa=True, v="publishedVersion": {"pdf_url": url, "is_oa": oa, "version": v}
+        w = {"best_oa_location": loc("https://repo/preprint.pdf", v="submittedVersion"),
+             "locations": [loc("https://repo/preprint.pdf", v="submittedVersion"), loc("https://pub/closed.pdf", oa=False),
+                           loc("http://pub/insecure.pdf"), loc(None), loc("https://pub/final.pdf")]}
+        self.assertEqual([c["pdf_url"] for c in L.oa_copies(w)], ["https://pub/final.pdf", "https://repo/preprint.pdf"])
+        self.assertEqual(L.oa_copies({}), [])
+        r = {"first_author": "Thomas Stächel", "year": "2000", "openalex_id": "W7"}
+        self.assertEqual((L.pdf_name(r, set()), L.pdf_name(r, {"stachel-2000.pdf"})),
+                         ("stachel-2000.pdf", "stachel-2000-w7.pdf"))
+
 
 if __name__ == "__main__":
     unittest.main()

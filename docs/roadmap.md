@@ -59,10 +59,10 @@ What follows from that:
 ## Phase 3 — Extraction spec and validator
 - [ ] `extraction/schema.json` — JSON Schema for paper → records
 - [ ] Extraction prompt (structured output, evidence excerpt per value)
-- [ ] PDF/table/supplement parsing for seed papers (text layer first, OCR fallback)
+- [ ] PDF/table/supplement parsing for seed papers (text layer first, OCR fallback) *(started 2026-11-17, D-017: `extraction/extract.py` reads tables with oxides down the side from text-layer PDFs using per-paper hints; not yet: oxides across the top, spreadsheet supplements, P-T and isotope tables)*
 - [ ] `validate.py` — units, oxide totals, stoichiometry, vocab, coordinates, duplicates, references
-- [ ] Importer: validated JSON → DB, with extraction-run and review-status records
-- [ ] Measure per-field precision/recall vs gold; set thresholds (ADR)
+- [ ] Importer: validated JSON → DB, with extraction-run and review-status records *(2026-11-17: `scripts/build_gold.py` also loads `extracted/<paper>/`; any value column that is a known quantity is read, an unknown one stops the load)*
+- [ ] Measure per-field precision/recall vs gold; set thresholds (ADR) *(2026-11-17: the extractor agrees with the two approved text-layer papers in 2,986 of 2,986 cells; thresholds not set, D-012)*
 
 **Exit gate:** automated extraction on seed papers meets agreed thresholds for Tier 1 fields.
 
@@ -72,7 +72,7 @@ What follows from that:
 - [ ] Master bibliography table + publication dedup (DOI, title/author/year fuzzy, preprint ↔ published) *(started: `bibliography/inventory.csv`, dedup by OpenAlex ID, DOI and exact normalized title + year; no fuzzy or preprint matching yet)*
 - [x] Ranked extraction queue from the relevant papers *(2026-11-05: `literature.py queue` → `bibliography/extraction-queue.csv`, 430 papers in tiers A–D by gap and access)*
 - [x] First-pass triage of every candidate *(2026-11-05: all 1,440 candidates labelled by Claude from title, venue and abstract; proposals carry a `Claude:` note until a human spot-checks them; decisions kept in `bibliography/triage/`)*
-- [ ] Access-status tracking (open / institutional / unavailable) — no circumvention *(started: [licence register](licence-register.md) for the 15 seed sources, `scripts/licence_audit.py`)*
+- [ ] Access-status tracking (open / institutional / unavailable) — no circumvention *(started: [licence register](licence-register.md) for the 15 seed sources, `scripts/licence_audit.py`; 2026-11-17: `literature.py fetch` downloads open-access PDFs and logs source, licence and version in `bibliography/downloads.csv`; the rest are listed in `bibliography/manual-downloads.md`)*
 
 **Exit gate:** master bibliography of candidate papers with access status and relevance triage.
 

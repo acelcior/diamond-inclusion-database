@@ -7,6 +7,41 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-17 — General table extractor (D-017)
+- Decided by J. Dasroy to build one general extractor before the Phase 2 gate; recorded as
+  [D-017](decisions/D-017-general-extractor.md).
+- New `extraction/extract.py`: reads tables with one analysis per column from a text-layer PDF, guided by
+  per-paper hints (no per-paper code), and writes the `analyses.csv` the loader already reads. Against the two
+  approved text-layer papers: **Phillips Table 3: 1,600 of 1,600 cells; Sobolev Tables 3-6 and 8: 1,386 of 1,386.**
+  Loading its Sobolev output gives records identical to the gold load. Hints in `extraction/hints/`.
+- Loader (`load_simple`): reads every value column that is a known quantity, takes the unit from the vocabulary,
+  and stops on an unknown column. `build_gold.py` also loads `extracted/<paper>/`. Website data files are
+  byte-for-byte unchanged; all four test files pass (new `tests/test_extract.py`).
+- **Coverage is the limit.** Of the 50 downloaded PDFs, 16 print an oxide table in the main text: 6 with oxides
+  down the side (handled), 10 only across the top (not handled). The other 34 keep their data in supplements or
+  report other kinds of data.
+- Not tested on Kankan II/III (no usable text layer). No new paper has been extracted yet.
+- **Next:** add tables with oxides across the top, using Gress 2021 Table 3 as the test (its checked transcription
+  is in `gold/calibration/`); then spreadsheet supplements; then extract the first new paper end to end.
+
+## 2026-11-17 — Open-access downloads and Consensus searches
+- Asked to download and extract all relevant papers. Downloading is done as far as a script legally can; bulk
+  extraction is **not started**: it means building the Phase 3 extractor ahead of the Phase 2 gate, which needs a
+  recorded decision first (see Next).
+- New `literature.py fetch`: downloads open-access PDFs of queued papers into `papers/oa/` and logs each in
+  `bibliography/downloads.csv`. Of the 135 open-access papers in the queue: **50 downloaded** (139 MB; 36 published
+  versions, 3 accepted manuscripts, 11 preprints; 27 CC BY), 35 refused the script (publisher sites answer 403 or a
+  web page), 50 have no direct PDF link. Nothing closed-access was touched.
+- `bibliography/manual-downloads.md` lists the 377 papers still to get by hand, as DOI links in queue order:
+  85 free to read, 16 closed 2022+, 162 closed older, 114 closed older whose major elements are already compiled.
+- A quick scan of the 50 PDFs: 49 have a text layer, 30 mention supplementary data, 13 print no numbered table.
+- Consensus connected. Three searches (297 results): 84% already in the inventory; 38 new papers added with
+  `found_by = consensus:…` and a proposed triage (1 relevant, 24 maybe, 13 not relevant; judged from titles only) in
+  `bibliography/triage/2026-11-17-claude-consensus.csv`. Queue is now 431 relevant papers.
+- Seeds Genzel 2023 and Nimis 2025 were downloaded again into `papers/oa/` (they already sit in `papers/`).
+- **Next:** decide how to extract at scale (a general extractor tested against the four gold papers, versus one
+  parser per paper as now); download closed papers through the library into `papers/inbox/`.
+
 ## 2026-11-17 — Website quick fixes
 - The live site still showed Sobolev 2004 as "not yet reviewed": its data files had not been regenerated after
   the approval. Re-ran `scripts/export_site.py`; Sobolev now shows as approved.

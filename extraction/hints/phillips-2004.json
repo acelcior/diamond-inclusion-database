@@ -1,0 +1,8 @@
+{
+  "pdf": "papers/phillips-2004.pdf",
+  "tables": [
+    {"label": "Table 3", "page": ["160", "160", "161", "161"], "start": "Representative electron microprobe analyses of selected inclusions",
+     "end": "Per: peridotitic", "sample_row": "Sample no.", "mineral_row": "Mineral",
+     "rows": {"Suite": {"field": "suite", "pattern": "Per \\(l?hz\\)|Ecl|Web"}, "Assemblage": "assemblage", "Touching": "touching"}}
+  ]
+}

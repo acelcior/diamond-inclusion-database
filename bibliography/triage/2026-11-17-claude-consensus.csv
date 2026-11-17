@@ -1,0 +1,39 @@
+openalex_id,triage,note
+W3213540009,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W4389582818,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W3213398134,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W4313139646,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W3214487135,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W4389562748,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W4400970459,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W2897622193,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W2901025774,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W2342584281,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W2896529545,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W2897449424,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W3110891175,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W2553791058,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W2614725595,maybe,Claude: conference abstract; in scope only if D-005 admits abstracts (title only)
+W4401240432,maybe,Claude: conference paper on the host diamonds' morphology; inclusion data unclear; depends on D-005 (title only)
+W2971581314,maybe,Claude: conference abstract on fluid inclusions; depends on D-005 (title only)
+W1524350377,maybe,Claude: thesis; in scope only if D-005 admits theses (title only)
+W2117004004,maybe,Claude: thesis; in scope only if D-005 admits theses (title only)
+W204949204,maybe,Claude: thesis on micro-inclusions (fluid-bearing diamonds); depends on D-005 (title only)
+W7165645080,maybe,Claude: mineral inclusions identified in a fluid-rich diamond; depends on D-005 for fibrous and fluid-bearing diamonds (title only)
+W3014567989,maybe,Claude: diamonds of disputed origin from a volcano; depends on D-005 (title only)
+W4310184514,maybe,"Claude: metamorphic microdiamonds, the diamond is the inclusion; depends on D-005 (title only)"
+W4410895423,maybe,Claude: gemmology magazine article; cannot tell from the title
+W1974544384,relevant,"Claude: inclusions in Guaniamo diamonds, primary data expected (title only)"
+W2995234064,not_relevant,"Claude: experimental phase relations, no inclusion data (title only)"
+W2187289245,not_relevant,"Claude: experimental petrology, no new inclusion data (title only)"
+W3215716157,not_relevant,"Claude: kimberlite indicator minerals, not inclusions (title only)"
+W2554127633,not_relevant,"Claude: meteorites, not diamonds"
+W4231987699,not_relevant,"Claude: inclusions in chromite macrocrysts, not in diamond (title only)"
+W4410322868,not_relevant,"Claude: diamond in a quartz vein, no inclusions in diamond (title only)"
+W4318541615,not_relevant,"Claude: method review, no inclusion data (title only)"
+W2884914136,not_relevant,"Claude: inclusions in crustal minerals, not diamond"
+W3115191169,not_relevant,"Claude: inclusions in crustal minerals, not diamond (title only)"
+W3159316836,not_relevant,"Claude: zircon in garnet, not diamond"
+W2970874294,not_relevant,"Claude: inclusions in megacrysts, not diamond"
+W2967839301,not_relevant,"Claude: quartz in garnet, not diamond"
+W4391278183,not_relevant,"Claude: experimental zircon inclusions, not diamond"

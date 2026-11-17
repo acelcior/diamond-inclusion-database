@@ -10,6 +10,8 @@ Workflow and reasons: docs/literature-workflow.md. Run from the project folder:
   python3 -I scripts/literature.py decide FILE        # apply a CSV of openalex_id,triage,note decisions
   python3 -I scripts/literature.py status             # counts
   python3 -I scripts/literature.py queue              # ranked extraction queue of relevant papers -> bibliography/extraction-queue.csv
+  python3 -I scripts/literature.py fetch [--dry-run] [--max N]
+                                                      # download the open-access PDFs of queued papers -> papers/oa/
 
 Metadata comes from OpenAlex (CC0). Abstracts are read to set a priority but never stored.
 An OpenAlex key is optional: put it in the file .openalex-key (gitignored) or OPENALEX_API_KEY.
@@ -21,6 +23,7 @@ import os
 import re
 import sys
 import time
+import unicodedata
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -149,21 +152,21 @@ class Inventory:
             w.writerows(self.rows)
 
 
-def works(filter_):
+def works(filter_, select=SELECT):
     """All works matching an OpenAlex filter (page= paging: works without a key, unlike cursor=)."""
     out, page = [], 1
     while True:
-        d = get("works", filter=filter_, select=SELECT, **{"per-page": 200, "page": page})
+        d = get("works", filter=filter_, select=select, **{"per-page": 200, "page": page})
         out += d["results"]
         if not d["results"] or len(out) >= d["meta"]["count"]:
             return out
         page += 1
 
 
-def by_ids(ids, key="ids.openalex"):
+def by_ids(ids, key="ids.openalex", select=SELECT):
     out = []
     for i in range(0, len(ids), 50):
-        out += works(f"{key}:" + "|".join(ids[i:i + 50]))
+        out += works(f"{key}:" + "|".join(ids[i:i + 50]), select)
     return out
 
 
@@ -317,7 +320,7 @@ def cmd_queue(inv):
     links then year. Papers already extracted (DOI in gold/*/source.json) go last. Compiled = cited by the Stachel
     compilation, so its major-element data is already in the database and only the rest is new."""
     gold_dois = set()
-    for f in (ROOT / "gold").glob("*/source.json"):
+    for f in [*(ROOT / "gold").glob("*/source.json"), *(ROOT / "extracted").glob("*/source.json")]:
         gold_dois.add(json.loads(f.read_text()).get("publication", {}).get("doi", "").lower())
     rows = []
     for r in inv.rows:
@@ -343,6 +346,114 @@ def cmd_queue(inv):
     print(f"{len(rows)} relevant papers ranked -> {QUEUE.relative_to(ROOT)}; tiers:", dict(Counter(x["tier"] for x in rows)))
 
 
+DOWNLOADS = ROOT / "bibliography" / "downloads.csv"   # what was fetched, from where, under which licence
+OA_DIR = ROOT / "papers" / "oa"                       # gitignored with the rest of papers/
+DL_FIELDS = ["openalex_id", "doi", "file", "status", "url", "host", "licence", "version", "bytes", "date"]
+MAX_PDF = 80 * 2**20
+VERSION_RANK = {"publishedVersion": 0, "acceptedVersion": 1}  # anything else (preprints) last: tables may differ
+
+
+def pdf_name(r, taken):
+    """firstauthor-year.pdf as elsewhere in papers/; the OpenAlex id is added only when two papers would share a name."""
+    last = (r["first_author"].split() or ["unknown"])[-1]
+    family = re.sub(r"[^a-z]", "", unicodedata.normalize("NFKD", last).lower()) or "unknown"
+    name = f"{family}-{r['year']}.pdf"
+    return name if name not in taken else f"{family}-{r['year']}-{r['openalex_id'].lower()}.pdf"
+
+
+def oa_copies(w):
+    """Open copies OpenAlex lists with a direct PDF link: published version first, then accepted, then preprints."""
+    seen, out = set(), []
+    for loc in [w.get("best_oa_location")] + (w.get("locations") or []):
+        url = (loc or {}).get("pdf_url") or ""
+        if loc and loc.get("is_oa") and url.startswith("https://") and url not in seen:
+            seen.add(url)
+            out.append(loc)
+    return sorted(out, key=lambda loc: VERSION_RANK.get(loc.get("version"), 2))
+
+
+def fetch_pdf(url, dest):
+    """Save url to dest only if it really is a PDF (publishers often answer a script with a login or landing page)."""
+    req = urllib.request.Request(url, headers={**UA, "Accept": "application/pdf"})
+    with urllib.request.urlopen(req, timeout=90) as r:
+        data = r.read(MAX_PDF + 1)
+    if not data.startswith(b"%PDF"):
+        raise ValueError("not a PDF")
+    if len(data) > MAX_PDF:
+        raise ValueError("over the size limit")
+    dest.write_bytes(data)
+    return len(data)
+
+
+def cmd_fetch(dry_run=False, limit=None):
+    """Download open-access PDFs for queued papers, in queue order. Only copies OpenAlex marks as open are used;
+    closed papers are never touched (they come from the library, by hand). Reruns skip what is already there."""
+    from collections import Counter
+    queue = [r for r in csv.DictReader(open(QUEUE, encoding="utf-8"))
+             if r["tier"] != "done" and r["oa_status"] in OA_READABLE]
+    log = {r["openalex_id"]: r for r in csv.DictReader(open(DOWNLOADS, encoding="utf-8"))} if DOWNLOADS.exists() else {}
+    have = lambda i: log.get(i, {}).get("status") == "downloaded" and (OA_DIR / log[i]["file"]).exists()
+    todo = [r for r in queue if not have(r["openalex_id"])][:limit]
+    meta = {short_id(w): w for w in by_ids([r["openalex_id"] for r in todo], select="id,best_oa_location,locations")}
+    taken = {x["file"] for i, x in log.items() if have(i)} | {p.name for p in OA_DIR.glob("*.pdf")}
+    OA_DIR.mkdir(parents=True, exist_ok=True)
+    for r in todo:
+        copies = oa_copies(meta.get(r["openalex_id"], {}))
+        row = {"openalex_id": r["openalex_id"], "doi": r["doi"], "file": "", "status": "no direct PDF link", "url": "",
+               "host": "", "licence": "", "version": "", "bytes": "", "date": date.today().isoformat()}
+        for loc in copies:
+            row.update(url=loc["pdf_url"], host=urllib.parse.urlparse(loc["pdf_url"]).netloc,
+                       licence=loc.get("license") or "none stated", version=loc.get("version") or "")
+            if dry_run:
+                row["status"] = "would download"
+                break
+            name = pdf_name(r, taken)
+            try:
+                row.update(bytes=fetch_pdf(loc["pdf_url"], OA_DIR / name), file=name, status="downloaded")
+                taken.add(name)
+                break
+            except (urllib.error.URLError, ValueError, TimeoutError, OSError) as e:
+                row["status"] = f"failed: {getattr(e, 'code', None) or getattr(e, 'reason', None) or e}"
+            finally:
+                time.sleep(1)  # be polite to publishers and repositories
+        log[r["openalex_id"]] = row
+        print(f"{row['status']:<22} {r['first_author'][:22]:<22} {r['year']}  {row['host']}")
+    if not dry_run:
+        with open(DOWNLOADS, "w", newline="", encoding="utf-8") as f:
+            w = csv.DictWriter(f, fieldnames=DL_FIELDS)
+            w.writeheader()
+            w.writerows(log.values())
+    print(dict(Counter(log[r["openalex_id"]]["status"].split(":")[0] for r in todo)),
+          "| already downloaded:", len(queue) - len([r for r in queue if not have(r["openalex_id"])]) if dry_run else
+          sum(have(r["openalex_id"]) for r in queue), "of", len(queue), "open-access papers in the queue")
+    if not dry_run:
+        write_manual_list()
+
+
+MANUAL = ROOT / "bibliography" / "manual-downloads.md"
+
+
+def write_manual_list():
+    """The queued papers a script cannot or may not fetch, as clickable DOI links in queue order."""
+    log = {r["openalex_id"]: r for r in csv.DictReader(open(DOWNLOADS, encoding="utf-8"))} if DOWNLOADS.exists() else {}
+    groups = {"Free to read, but the script could not get the PDF": [], "Closed access, 2022 or later": [],
+              "Closed access, older, not in the Stachel compilation": [],
+              "Closed access, older, major elements already in the Stachel compilation": []}
+    for r in csv.DictReader(open(QUEUE, encoding="utf-8")):
+        if r["tier"] == "done" or log.get(r["openalex_id"], {}).get("status") == "downloaded":
+            continue
+        key = list(groups)[0 if r["oa_status"] in OA_READABLE else 1 if r["tier"] == "B" else 3 if r["compiled"] else 2]
+        link = f"https://doi.org/{r['doi']}" if r["doi"] else f"https://openalex.org/{r['openalex_id']}"
+        groups[key].append(f"- [{r['first_author']} ({r['year']}) {r['title'][:90]}]({link}), {r['venue'] or 'venue not listed'}")
+    out = ["# Papers to download by hand", "",
+           "Written by `scripts/literature.py fetch`; do not edit. Open a link (through the library for closed papers),",
+           "save the PDF and any data supplement into `papers/inbox/` under any name. Best queue rank first.", ""]
+    for title, lines in groups.items():
+        out += [f"## {title} ({len(lines)})", "", *lines, ""]
+    MANUAL.write_text("\n".join(out), encoding="utf-8")
+    print({k: len(v) for k, v in groups.items()}, "->", MANUAL.relative_to(ROOT))
+
+
 def cmd_status(inv):
     from collections import Counter
     print(f"{len(inv.rows)} papers in {INVENTORY.relative_to(ROOT)}")
@@ -353,9 +464,11 @@ def cmd_status(inv):
 
 
 def main(argv):
-    if not argv or argv[0] not in ("seed", "chain", "add", "next", "decide", "status", "queue"):
+    if not argv or argv[0] not in ("seed", "chain", "add", "next", "decide", "status", "queue", "fetch"):
         print(__doc__)
         return
+    if argv[0] == "fetch":
+        return cmd_fetch("--dry-run" in argv, int(argv[argv.index("--max") + 1]) if "--max" in argv else None)
     inv = Inventory()
     if argv[0] == "next":
         return cmd_next(inv, int(argv[1]) if len(argv) > 1 else 50)

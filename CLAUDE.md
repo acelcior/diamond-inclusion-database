@@ -60,6 +60,7 @@ schema/        SQL DDL and migrations            (Phase 1)
 vocab/         controlled vocabularies (CSV)     (Phase 1)
 extraction/    JSON Schema, prompts, scripts     (Phase 3)
 gold/          hand-curated gold-standard records (Phase 2)
+extracted/     papers read by extraction/extract.py, same files as gold/ but not yet the benchmark (D-017)
 compilations/  CC0 compilations converted to text (rows.jsonl) + source.json; a separate source layer (D-013)
 bibliography/  literature inventory (inventory.csv), see docs/literature-workflow.md (Phase 4)
 papers/        local PDFs/supplements — gitignored, never committed

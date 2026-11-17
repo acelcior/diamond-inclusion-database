@@ -39,7 +39,7 @@ Related: [roadmap](roadmap.md) (Phase 4) · [licence register](licence-register.
 | Connected Papers graph of Phillips 2004 (40 papers) | 35 already in the OpenAlex pool; **4 new**, all relevant (e.g. Appleyard 2004 Finsch eclogitic diamonds) | ~10% extra over a small seed set (but see the full-chaining row below) |
 | **Full chaining from all 138 known papers** (`literature.py chain`, first run) | **1,490 new candidates** (1,058 high priority, 432 medium); 334 published since 2022, i.e. after the compilations; new finds fell from 591 in the first 10 papers to ~10 per 10 at the end | The core literature is a fairly closed citation network: chaining reaches most of it |
 | The same Connected Papers graph, against the full inventory | **All 39** of its papers already in the inventory | Connected Papers adds little in the well-connected core; its value is at the edges |
-| Consensus | Needs a (free) account to search, so not tested here | Judged from its documentation (below) |
+| Consensus, three searches of ~100 papers each through its connector (2026-11-17: a general one, sublithospheric/CLIPPIR diamonds, and thinly covered countries) | **249 of 297** results (84%) already in the inventory; 38 new papers: 1 relevant (Sobolev 1998, Guaniamo), 24 maybe (mostly conference abstracts and theses, which wait on D-005), 13 not relevant; 1 garbled title not matched | Confirms that chaining covers the journal literature. Consensus mainly adds conference abstracts and theses; the free plan returns no DOIs, so papers are matched by exact title |
 
 ## The three tools compared
 
@@ -100,7 +100,13 @@ Related: [roadmap](roadmap.md) (Phase 4) · [licence register](licence-register.
    newer papers first. `compiled = yes` means the Stachel compilation already cites the paper, so its
    major-element data is in the database and only the rest (trace elements, isotopes, P-T, context) is new.
    Papers already in `gold/` are marked `done`. Pick the top one or two each week.
-5. Re-run the [licence audit](licence-register.md) for papers chosen for extraction.
+5. `python3 -I scripts/literature.py fetch` downloads the open-access PDFs of queued papers into `papers/oa/`
+   (gitignored), best queue rank first, and records each one in `bibliography/downloads.csv`: file, source site,
+   licence and version (published, accepted or preprint). It only uses copies OpenAlex marks as open, prefers the
+   published version, keeps a file only if it really is a PDF, and skips what is already there, so it is safe to
+   rerun. `--dry-run` shows what it would do. Closed papers are never fetched by script: download those through the
+   library by hand into `papers/inbox/`, and Claude identifies and renames them.
+6. Re-run the [licence audit](licence-register.md) for papers chosen for extraction.
 
 **Stopping rule (when the inventory is "complete enough"):** a chaining round over all
 relevant papers adds fewer than 5% new relevant papers, and the last 10 Connected Papers /

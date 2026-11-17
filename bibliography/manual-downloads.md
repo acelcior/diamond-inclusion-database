@@ -1,0 +1,393 @@
+# Papers to download by hand
+
+Written by `scripts/literature.py fetch`; do not edit. Open a link (through the library for closed papers),
+save the PDF and any data supplement into `papers/inbox/` under any name. Best queue rank first.
+
+## Free to read, but the script could not get the PDF (85)
+
+- [IGOR VICTOROVICH ASHCHEPKOV (2022) Thermobarometry of diamond inclusions: Mantle structure and evolution beneath Archean crat](https://doi.org/10.1016/j.geogeo.2022.100156), Geosystems and Geoenvironment
+- [Paolo Nimis (2022) Pressure and Temperature Data for Diamonds](https://doi.org/10.2138/rmg.2022.88.10), Reviews in Mineralogy and Geochemistry
+- [Matthew M. Wincott (2025) Six olivine inclusions in diamond are remnants of a syngenetic monocrystal](https://doi.org/10.1016/j.lithos.2025.107953), Lithos
+- [Mei Yan Lai (2022) Formation of mixed paragenesis diamonds during multistage growth – Constraints from in sit](https://doi.org/10.1016/j.gca.2022.02.020), Geochimica et Cosmochimica Acta
+- [Giulia Marras (2026) Oxygen fugacity, temperature, and pressure of Siberian eclogitic diamonds: Implications fo](https://doi.org/10.1126/sciadv.aeb0364), Science Advances
+- [Luísa D.V. Carvalho (2025) The Sequoia kimberlite complex, central Slave Craton – A new superdeep diamond location](https://doi.org/10.1007/s00710-025-00899-0), Mineralogy and Petrology
+- [Leonardo Pasqualetto (2022) Protogenetic clinopyroxene inclusions in diamond and Nd diffusion modeling—Implications fo](https://doi.org/10.1130/g50273.1), Geology
+- [Mei Yan Lai (2023) Nature of slab-mantle interactions recorded by coupled δ13C–δ15N–δ18O signatures and eleme](https://doi.org/10.1016/j.gca.2023.02.016), Geochimica et Cosmochimica Acta
+- [Qiwei Zhang (2024) Sublithospheric diamonds extend Paleoproterozoic record of cold deep subduction into the l](https://doi.org/10.1016/j.epsl.2024.118675), Earth and Planetary Science Letters
+- [Andrea Pezzera (2026) Sublithospheric and lithospheric diamonds from the Candle Lake C29/30 kimberlite, Sask Cra](https://doi.org/10.1016/j.lithos.2026.108719), Lithos
+- [Marta Morana (2025) Diamond – garnet elastic geobarometry applied to an eclogitic system](https://doi.org/10.1016/j.lithos.2025.108205), Lithos
+- [Qiwei Zhang (2025) A link between enhanced sampling of Ti–rich mantle garnets and superdeep diamonds: Insight](https://doi.org/10.1007/s00710-025-00888-3), Mineralogy and Petrology
+- [Qiwei Zhang (2026) Sublithospheric diamond constraints on the state of deeply subducted slabs](https://doi.org/10.1126/sciadv.adz7447), Science Advances
+- [Billy Rayner (2025) Correlative Tomography for Polymineralic Inclusion Composition in Sublithospheric Diamonds](https://doi.org/10.1029/2025gl114704), Geophysical Research Letters
+- [Karen V. Smit (2025) Plume-related diamond formation in reworked Archaean mantle: Sm–Nd age constraints from Vo](https://doi.org/10.1007/s00410-025-02258-w), Contributions to Mineralogy and Petrology
+- [Andrea Pezzera (2025) Cool transient lithospheric thermal conditions driven by subduction recorded by Neoarchean](https://doi.org/10.1007/s00710-025-00927-z), Mineralogy and Petrology
+- [Sarah E. M. Milne (2025) How old are lherzolitic diamonds? Mesoproterozoic diamond formation in the root of the Sas](https://doi.org/10.1007/s00710-025-00946-w), Mineralogy and Petrology
+- [Lucille Daver (2022) From the lithosphere to the lower mantle: An aqueous-rich metal-bearing growth environment](https://doi.org/10.1016/j.chemgeo.2022.121163), Chemical Geology
+- [Wenyu Wang (2025) Formation of Spongy Clinopyroxene: Insights from Eclogitic Inclusions in Diamonds](https://doi.org/10.1093/petrology/egaf036), Journal of Petrology
+- [Luísa D.V. Carvalho (2024) Dense hydrated Mg-silicates in diamond: Implications for transport of H 2 O into the mantl](https://doi.org/10.1126/sciadv.adl4306), Science Advances
+- [Yu-Meng Sun (2025) Textures and Inclusions in Mengyin Diamonds: Insights on Their Formation Within the Southe](https://doi.org/10.3390/min15080856), Minerals
+- [Ingrid de Souza Hoyer (2026) Mineralogical and chemical signatures of lithospheric diamonds from Guiratinga, southeaste](https://doi.org/10.2139/ssrn.6389132), SSRN Electronic Journal
+- [Müller Anna Cecília (2025) The Paleoproterozoic Diamond Province of the Southern Espinhaço Range (Brazil): Primary an](https://doi.org/10.2139/ssrn.5343084), SSRN Electronic Journal
+- [Aleksandr Rakipov (2026) Trace element systematics constrain the origin of fluids that form gem-quality diamonds](https://doi.org/10.1038/s43247-026-03662-1), Communications Earth & Environment
+- [Sofia Lorenzon (2022) Ringwoodite and zirconia inclusions indicate downward travel of super-deep diamonds](https://doi.org/10.1130/g50111.1), Geology
+- [Suzette Timmerman (2022) Mesoarchean diamonds formed in thickened lithosphere, caused by slab-stacking](https://doi.org/10.1016/j.epsl.2022.117633), Earth and Planetary Science Letters
+- [Leonardo Pasqualetto (2022) Supplemental Material: Protogenetic clinopyroxene inclusions in diamond and Nd diffusion m](https://doi.org/10.1130/geol.s.19783150), venue not listed
+- [V. S. Shatsky (2024) EVIDENCE OF EXTREME REDOX VARIATIONS IN SUBDUCTION-ZONE DIAMOND](https://doi.org/10.2113/rgg20244767), Russian Geology and Geophysics
+- [Sofia Lorenzon (2022) Supplemental Material: Ringwoodite and zirconia inclusions indicate downward travel of sup](https://doi.org/10.1130/geol.s.19782985), venue not listed
+- [Andrea Curtolo (2026) H2O-poor minerals in equilibrium with volatile-bearing fluids: Insights from diamond-hoste](https://doi.org/10.1016/j.epsl.2026.120247), Earth and Planetary Science Letters
+- [Nicole A. Meyer (2022) Supplemental Material: Diamonds reveal subducted slab harzburgite in the lower mantle](https://doi.org/10.1130/geol.s.21743381), venue not listed
+- [Karen V. Smit (2022) Geochronology of Diamonds](https://doi.org/10.2138/rmg.2022.88.11), Reviews in Mineralogy and Geochemistry
+- [Michael J. Walter (2022) Geochemistry of Silicate and Oxide Inclusions in Sublithospheric Diamonds](https://doi.org/10.2138/rmg.2022.88.07), Reviews in Mineralogy and Geochemistry
+- [Steven B. Shirey (2024) Sublithospheric Diamonds: Plate Tectonics from Earth's Deepest Mantle Samples](https://doi.org/10.1146/annurev-earth-032320-105438), Annual Review of Earth and Planetary Sciences
+- [Felix V. Kaminsky (2026) Isotopic Dating of Mineral Inclusions in Diamond and Geodynamics](https://doi.org/10.1134/s0016702926600987), Geochemistry International
+- [Ross John Angel (2022) Crystallographic Methods for Non-destructive Characterization of Mineral Inclusions in Dia](https://doi.org/10.2138/rmg.2022.88.05), Reviews in Mineralogy and Geochemistry
+- [Evan M. Smith (2022) Raman Identification of Inclusions in Diamond](https://doi.org/10.2138/rmg.2022.88.08), Reviews in Mineralogy and Geochemistry
+- [Jeff W. Harris (2022) Morphology of Monocrystalline Diamond and its Inclusions](https://doi.org/10.2138/rmg.2022.88.02), Reviews in Mineralogy and Geochemistry
+- [Aleksandra A. Bendeliani (2026) Mantle Metasomatism Recorded in Phlogopite: Compositional Indicators from Kimberlites and ](https://doi.org/10.1134/s0016702926600689), Geochemistry International
+- [Antony D. Burnham (2016) Diamonds from the Machado River alluvial deposit, Rondônia, Brazil, derived from both lith](https://doi.org/10.1016/j.lithos.2016.05.022), Lithos
+- [Michael U. Gress (2020) Sm-Nd isochron ages coupled with C-N isotope data of eclogitic diamonds from Jwaneng, Bots](https://doi.org/10.1016/j.gca.2020.10.010), Geochimica et Cosmochimica Acta
+- [Andrew R. Thomson (2021) Evaluating the Formation Pressure of Diamond‐Hosted Majoritic Garnets: A Machine Learning ](https://doi.org/10.1029/2020jb020604), Journal of Geophysical Research Solid Earth
+- [Michael U. Gress (2021) Mesozoic to Paleoproterozoic diamond growth beneath Botswana recorded by Re-Os ages from i](https://doi.org/10.1016/j.lithos.2021.106058), Lithos
+- [Andrew R. Thomson (2016) Trace element composition of silicate inclusions in sub-lithospheric diamonds from the Jui](https://doi.org/10.1016/j.lithos.2016.08.035), Lithos
+- [Suzette Timmerman (2017) Dated eclogitic diamond growth zones reveal variable recycling of crustal carbon through t](https://doi.org/10.1016/j.epsl.2017.02.001), Earth and Planetary Science Letters
+- [Axel Karl Schmitt (2019) U–Pb ages of rare rutile inclusions in diamond indicate entrapment synchronous with kimber](https://doi.org/10.1016/j.lithos.2019.105251), Lithos
+- [Iain McDonald (2017) Homogenisation of sulphide inclusions within diamonds: A new approach to diamond inclusion](https://doi.org/10.1016/j.gca.2017.04.039), Geochimica et Cosmochimica Acta
+- [Hans-Michael Seitz (2018) Ferropericlase inclusions in ultradeep diamonds from Sao Luiz (Brazil): high Li abundances](https://doi.org/10.1007/s00710-018-0572-0), Mineralogy and Petrology
+- [Martha Giovanna Pamato (2021) Protogenetic sulfide inclusions in diamonds date the diamond formation event using Re-Os i](https://doi.org/10.1130/g48651.1), Geology
+- [Theetso Motsamai (2018) Mineral inclusions in diamonds from Karowe Mine, Botswana: super-deep sources for super-si](https://doi.org/10.1007/s00710-018-0604-9), Mineralogy and Petrology
+- [Yael Kempe (2021) Multiple metasomatic diamond-forming events in a cooling lithosphere beneath Voorspoed, So](https://doi.org/10.1016/j.lithos.2021.106285), Lithos
+- [Chiara Anzolini (2020) Evidence for complex iron oxides in the deep mantle from FeNi(Cu) inclusions in superdeep ](https://doi.org/10.1073/pnas.2004269117), Proceedings of the National Academy of Sciences
+- [Paolo Nimis (2018) Fe-rich ferropericlase and magnesiowüstite inclusions reflecting diamond formation rather ](https://doi.org/10.1130/g45235.1), Geology
+- [Chiara Anzolini (2016) Depth of formation of CaSiO 3 -walstromite included in super-deep diamonds](https://doi.org/10.1016/j.lithos.2016.09.025), Lithos
+- [Frank E. Brenker (2020) Origin, properties, and structure of breyite: The second most abundant mineral inclusion i](https://doi.org/10.2138/am-2020-7513), American Mineralogist
+- [Antony D. Burnham (2015) Stable isotope evidence for crustal recycling as recorded by superdeep diamonds](https://doi.org/10.1016/j.epsl.2015.10.023), Earth and Planetary Science Letters
+- [Dmitry A. Zedgenizov (2019) The inclusions of SiO2 in sublithospheric diamonds](https://doi.org/10.31857/s0016-7525649948-957), Геохимия
+- [Chiara Anzolini (2017) Depth of formation of super-deep diamonds: Raman barometry of CaSiO3-walstromite inclusion](https://doi.org/10.2138/am-2018-6184), American Mineralogist
+- [Fernando Laiginhas (2009) Re–Os and 40Ar/39Ar isotope measurements of inclusions in alluvial diamonds from the Ural ](https://doi.org/10.1016/j.lithos.2009.03.003), Lithos
+- [Daniele Luigi Pinti (2016) Micron-scale δ13C determination by NanoSIMS in a Juina diamond with a carbonate inclusion](https://doi.org/10.2343/geochemj.2.0427), GEOCHEMICAL JOURNAL
+- [Margo E. Regier (2020) The lithospheric-to-lower-mantle carbon cycle recorded in superdeep diamonds](https://doi.org/10.1038/s41586-020-2676-z), Nature
+- [Felix V. Kaminsky (2015) A MICROINCLUSION OF LOWER-MANTLE ROCK AND OTHER MINERAL AND NITROGEN LOWER-MANTLE INCLUSIO](https://doi.org/10.3749/canmin.1400070), The Canadian Mineralogist
+- [Roy Bassoo (2020) Deciphering the Enigmatic Origin of Guyana's Diamonds](https://doi.org/10.2138/am-2020-7486), American Mineralogist
+- [Felix V. Kaminsky (2017) Iron partitioning in natural lower-mantle minerals: Toward a chemically heterogeneous lowe](https://doi.org/10.2138/am-2017-5949), American Mineralogist
+- [Charles W. Kosman (2016) Cretaceous mantle of the Congo craton: Evidence from mineral and fluid inclusions in Kasai](https://doi.org/10.1016/j.lithos.2016.07.004), Lithos
+- [Felix V. Kaminsky (2017) Nitrides and carbonitrides from the lowermost mantle and their importance in the search fo](https://doi.org/10.2138/am-2017-6101), American Mineralogist
+- [Mederic Palot (2016) Evidence for H2O-bearing fluids in the lower mantle from diamond inclusion](https://doi.org/10.1016/j.lithos.2016.06.023), Lithos
+- [L. A. Taylor (2015) Low water contents in diamond mineral inclusions: Proto-genetic origin in a dry cratonic l](https://doi.org/10.1016/j.epsl.2015.10.042), Earth and Planetary Science Letters
+- [David Graham Pearson (2014) Hydrous mantle transition zone indicated by ringwoodite included within diamond](https://doi.org/10.1038/nature13080), Nature
+- [Ekaterina S. Kiseeva (2013) Metapyroxenite in the mantle transition zone revealed from majorite inclusions in diamonds](https://doi.org/10.1130/g34311.1), Geology
+- [Felix V. Kaminsky (2011) IRON CARBIDE INCLUSIONS IN LOWER-MANTLE DIAMOND FROM JUINA, BRAZIL](https://doi.org/10.3749/canmin.49.2.555), The Canadian Mineralogist
+- [Ralf Tappert (2009) Deep mantle diamonds from South Australia: A record of Pacific subduction at the Gondwanan](https://doi.org/10.1130/g25055a.1), Geology
+- [Victor V. Sharygin (2021) Ellinaite, CaCr 2 O 4 , a new natural post-spinel oxide from Hatrurim Basin, Israel, and J](https://doi.org/10.5194/ejm-33-727-2021), European Journal of Mineralogy
+- [Nicole A. Meyer (2019) Goldschmidtite, (K,REE,Sr)(Nb,Cr)O3: A new perovskite supergroup mineral found in diamond ](https://doi.org/10.2138/am-2019-6937), American Mineralogist
+- [Daniel J. Schulze (2013) Anticorrelation between low δ13C of eclogitic diamonds and high δ18O of their coesite and ](https://doi.org/10.1130/g33839.1), Geology
+- [Fabrizio Nestola (2012) In situ analysis of garnet inclusion in diamond using single-crystal X-ray diffraction and](https://doi.org/10.1127/0935-1221/2012/0024-2212), European Journal of Mineralogy
+- [Martha Giovanna Pamato (2021) Supplemental Material: Protogenetic sulfide inclusions in diamonds date the diamond format](https://doi.org/10.1130/geol.s.14347016), venue not listed
+- [Luísa D.V. Carvalho (2018) Mineral inclusions in diamonds from Chapada Diamantina, Bahia, Brazil: a Raman spectroscop](https://doi.org/10.1590/0370-44672016710160), REM - International Engineering Journal
+- [Felix V. Kaminsky (2009) Nyerereite and nahcolite inclusions in diamond: evidence for lower-mantle carbonatitic mag](https://doi.org/10.1180/minmag.2009.073.5.797), Mineralogical Magazine
+- [N. V. Sobolev (2000) Fossilized high pressure from the Earth's deep interior: The coesite-in-diamond barometer](https://doi.org/10.1073/pnas.220408697), Proceedings of the National Academy of Sciences
+- [Yaakov Weiss (2018) Inclusions in diamonds constrain thermo-chemical conditions during Mesozoic metasomatism o](https://doi.org/10.1016/j.epsl.2018.03.014), Earth and Planetary Science Letters
+- [L. M. Barron (2006) Formation conditions of Copeton (NSW) diamonds based on laser Raman spectroscopy of inclus](https://doi.org/10.1071/aseg2006ab011), ASEG Extended Abstracts
+- [Xinchen Xia (2018) Mineral inclusions in diamonds from Chidliak (Nunavut, Canada): constraining the diamond s](https://doi.org/10.7939/r3k35mw24), ERA: Education and Research Archive (University of Alberta)
+- [Felix V. Kaminsky (2001) DIAMONDS FROM THE COROMANDEL AREA, MINAS GERAIS, BRAZIL](https://doi.org/10.25249/0375-7536.2001314583596), Revista Brasileira de Geociências
+- [William K. Siva-Jothy (2020) Studies of inclusions and their host diamonds from the Gahcho Kué mine, Canada](https://doi.org/10.7939/r3-5y8z-rq94), ERA: Education and Research Archive (University of Alberta)
+
+## Closed access, 2022 or later (16)
+
+- [V.S. Shatsky (2025) DIAMOND FORMATION IN SUBDUCTION ZONES: KEY PROCESSES AND FEATURES](https://doi.org/10.2113/rgg20254954), Russian Geology and Geophysics
+- [Marina Karaevangelou (2022) Mineral inclusions in Lace diamonds and the mantle beneath the Kroonstad kimberlite cluste](https://doi.org/10.1007/s00410-021-01880-8), Contributions to Mineralogy and Petrology
+- [Fabrizio Nestola (2023) Elastic geobarometry yielding a faithful sublithospheric depth for a ferropericlase inclus](https://doi.org/10.1016/j.lithos.2023.107265), Lithos
+- [Luísa D.V. Carvalho (2023) Subcretion of altered oceanic crust beneath the SW São Francisco Craton, Brazil – A stable](https://doi.org/10.1016/j.lithos.2023.107395), Lithos
+- [Anetta Banas (2025) Diamonds from Fort à la Corne – post-Archean formation in exceptionally cool and fertile l](https://doi.org/10.1007/s00710-025-00900-w), Mineralogy and Petrology
+- [Tingting Gu (2022) Hydrous peridotitic fragments of Earth’s mantle 660 km discontinuity sampled by a diamond](https://doi.org/10.1038/s41561-022-01024-y), Nature Geoscience
+- [Mei Yan Lai (2024) Lithological and compositional diversity of diamond substrates beneath the Koidu kimberlit](https://doi.org/10.1007/s00410-024-02176-3), Contributions to Mineralogy and Petrology
+- [Fabrizio Nestola (2023) Extreme redox variations in a superdeep diamond from a subducted slab](https://doi.org/10.1038/s41586-022-05392-8), Nature
+- [Yael Kempe (2025) Redox state of the deep upper mantle recorded by nickel-rich diamond inclusions](https://doi.org/10.1038/s41561-025-01791-4), Nature Geoscience
+- [Felix V. Kaminsky (2025) Bradleyite, Na3Mg(PO4)(CO3), inclusion in diamond: Structure and significance](https://doi.org/10.2138/am-2024-9704), American Mineralogist
+- [V. S. Shatsky (2025) EVIDENCE FOR THE INVOLVEMENT OF FLUORIDE MELTS IN DIAMOND FORMATION PROCESSES IN THE MANTL](https://doi.org/10.2113/rgg20265023), Russian Geology and Geophysics
+- [Valentin Afanasiev (2026) Unusual diamonds with needle inclusions from placers in the north of the Siberian platform](https://doi.org/10.1016/j.diamond.2026.114049), Diamond and Related Materials
+- [V. N. Reutsky (2025) AGE OF ROUND DIAMONDS OF VARIETY V FROM PLACERS OF THE NORTHEAST OF THE SIBERIAN PLATFORM](https://doi.org/10.2113/rgg20254979), Russian Geology and Geophysics
+- [Wenqing Sun (2024) K- and Na-rich davemaoite inclusion in diamond is not inherited from deeply subducted ocea](https://doi.org/10.1016/j.epsl.2024.118741), Earth and Planetary Science Letters
+- [Andrey V. Korsakov (2024) Inclusion of Kokchetavite in a Diamond Crystal from Venezuela: Evidence of Subduction of t](https://doi.org/10.1134/s1028334x24601317), Doklady Earth Sciences
+- [Thomas Stachel (2022) Mineral Inclusions in Lithospheric Diamonds](https://doi.org/10.2138/rmg.2022.88.06), Reviews in Mineralogy and Geochemistry
+
+## Closed access, older, not in the Stachel compilation (162)
+
+- [Nikolay V. Sobolev (2019) Mineral and fluid inclusions in diamonds from the Urals placers, Russia: Evidence for soli](https://doi.org/10.1016/j.gca.2019.08.028), Geochimica et Cosmochimica Acta
+- [Dmitry A. Zedgenizov (2016) The mineralogy of Ca-rich inclusions in sublithospheric diamonds](https://doi.org/10.1134/s0016702916100116), Geochemistry International
+- [Karen V. Smit (2016) Type Ib diamond formation and preservation in the West African lithospheric mantle: Re–Os ](https://doi.org/10.1016/j.precamres.2016.09.022), Precambrian Research
+- [Thomas Stachel (2009) Sources of carbon in inclusion bearing diamonds](https://doi.org/10.1016/j.lithos.2009.04.017), Lithos
+- [Galina P. Bulanova (2014) An eclogitic diamond from Mir pipe (Yakutia), recording two growth events from different i](https://doi.org/10.1016/j.chemgeo.2014.05.011), Chemical Geology
+- [Nikolay V. Sobolev (2020) Crystallographic Orientation and Geochemical Features of Mineral Inclusions in Diamonds](https://doi.org/10.15372/rgg2020144), Russian Geology and Geophysics
+- [Dmitry A. Zedgenizov (2015) Evidence for phase transitions in mineral inclusions in superdeep diamonds of the São Luiz](https://doi.org/10.1016/j.rgg.2015.01.021), Russian Geology and Geophysics
+- [Felix V. Kaminsky (2017) Diamond in the Lower Mantle](https://doi.org/10.1007/978-3-319-55684-0_7), Springer geology
+- [Giovanna Agrosì (2017) Non-destructive, multi-method, internal analysis of multiple inclusions in a single diamon](https://doi.org/10.2138/am-2017-6178), American Mineralogist
+- [Dmitry A. Zedgenizov (2020) Retrograde phases of former bridgmanite inclusions in superdeep diamonds](https://doi.org/10.1016/j.lithos.2020.105659), Lithos
+- [Mederic Palot (2013) Multiple growth events, processes and fluid sources involved in diamond genesis: A micro-a](https://doi.org/10.1016/j.gca.2012.12.024), Geochimica et Cosmochimica Acta
+- [Chiara Anzolini (2021) Heamanite-(Ce), (K0.5Ce0.5)TiO3, a new perovskite supergroup mineral found in diamond from](https://doi.org/10.2138/am-2022-8098), American Mineralogist
+- [Dmitry A. Zedgenizov (2019) SiO2 Inclusions in Sublithospheric Diamonds](https://doi.org/10.1134/s0016702919090131), Geochemistry International
+- [D.F. Wiggers de Vries (2013) Re–Os dating of sulphide inclusions zonally distributed in single Yakutian diamonds: Evide](https://doi.org/10.1016/j.gca.2013.06.035), Geochimica et Cosmochimica Acta
+- [Paolo Nimis (2020) Diamond's depth distribution systematics](https://doi.org/10.1016/j.lithos.2020.105729), Lithos
+- [Steven B. Shirey (2003) Regional patterns in the paragenesis and age of inclusions in diamond, diamond composition](https://doi.org/10.1016/j.lithos.2003.07.007), Lithos
+- [A. M. Logvinova (2018) Carbonate–Silicate–Sulfide Polyphase Inclusion in Diamond from the Komsomolskaya Kimberlit](https://doi.org/10.1134/s0016702918040079), Geochemistry International
+- [Nester M. Korolev (2018) The origin of Type II diamonds as inferred from Cullinan mineral inclusions](https://doi.org/10.1007/s00710-018-0601-z), Mineralogy and Petrology
+- [Richard Wirth (2014) High-Fe (Mg, Fe)O inclusion in diamond apparently from the lowermost mantle](https://doi.org/10.1016/j.epsl.2014.08.010), Earth and Planetary Science Letters
+- [Oded Navon (2017) Solid molecular nitrogen (δ-N2) inclusions in Juina diamonds: Exsolution at the base of th](https://doi.org/10.1016/j.epsl.2017.01.035), Earth and Planetary Science Letters
+- [Rolf D. Neuser (2015) An EBSD study of olivine inclusions in Siberian diamonds: evidence for syngenetic growth?](https://doi.org/10.1016/j.rgg.2015.01.023), Russian Geology and Geophysics
+- [Sonja Aulbach (2008) Diamond formation episodes at the southern margin of the Kaapvaal Craton: Re–Os systematic](https://doi.org/10.1007/s00410-008-0350-9), Contributions to Mineralogy and Petrology
+- [Paolo Nimis (2002) THE PRESSURES AND TEMPERATURES OF FORMATION OF DIAMOND BASED ON THERMOBAROMETRY OF CHROMIA](https://doi.org/10.2113/gscanmin.40.3.871), The Canadian Mineralogist
+- [Chiara Anzolini (2019) Depth of diamond formation obtained from single periclase inclusions](https://doi.org/10.1130/g45605.1), Geology
+- [Fabrizio Nestola (2019) Protogenetic garnet inclusions and the age of diamonds](https://doi.org/10.1130/g45781.1), Geology
+- [Evan M. Smith (2018) Blue boron-bearing diamonds from Earth’s lower mantle](https://doi.org/10.1038/s41586-018-0334-5), Nature
+- [Fabrizio Nestola (2016) Synchrotron Mössbauer Source technique for in situ measurement of iron-bearing inclusions ](https://doi.org/10.1016/j.lithos.2016.06.016), Lithos
+- [Roy Bassoo (2021) Composition of the Sub‐Cratonic Mantle of the Guiana Shield Inferred From Diamond‐Hosted I](https://doi.org/10.1029/2021gc009841), Geochemistry Geophysics Geosystems
+- [Karen V. Smit (2019) Evaluating mechanisms for eclogitic diamond growth: An example from Zimmi Neoproterozoic d](https://doi.org/10.1016/j.chemgeo.2019.04.014), Chemical Geology
+- [V. S. Shatsky (2010) Majoritic garnets in diamonds from placers of the Northeastern Siberian Platform](https://doi.org/10.1134/s1028334x10060279), Doklady Earth Sciences
+- [L. A. Taylor (2003) The significance of mineral inclusions in large diamonds from Yakutia, Russia](https://doi.org/10.2138/am-2003-5-621), American Mineralogist
+- [Victor M. Kvasnytsya (2009) Nanoinclusions in microdiamonds from Neogenic sands of the Ukraine (Samotkan’ placer): A T](https://doi.org/10.1016/j.lithos.2009.05.019), Lithos
+- [David Phillips (2008) Provenance studies from 40Ar/39Ar dating of mineral inclusions in diamonds: Methodological](https://doi.org/10.1016/j.epsl.2008.07.019), Earth and Planetary Science Letters
+- [Fabrizio Nestola (2018) CaSiO3 perovskite in diamond indicates the recycling of oceanic crust into the lower mantl](https://doi.org/10.1038/nature25972), Nature
+- [Sonja Aulbach (2018) Diamond ages from Victor (Superior Craton): Intra-mantle cycling of volatiles (C, N, S) du](https://doi.org/10.1016/j.epsl.2018.03.016), Earth and Planetary Science Letters
+- [JORGE PLÁ CID (2014) Acid compositions in a veined-lower mantle, as indicated by inclusions of (K,Na)-Hollandit](https://doi.org/10.1016/j.lithos.2014.02.019), Lithos
+- [Katie A. Smart (2012) Eclogite formation beneath the northern Slave craton constrained by diamond inclusions: Oc](https://doi.org/10.1016/j.epsl.2011.12.032), Earth and Planetary Science Letters
+- [Karen V. Smit (2010) Re–Os isotopic composition of peridotitic sulphide inclusions in diamonds from Ellendale, ](https://doi.org/10.1016/j.gca.2010.03.001), Geochimica et Cosmochimica Acta
+- [David Phillips (2009) Diamond provenance studies from 40Ar/39Ar dating of clinopyroxene inclusions: An example f](https://doi.org/10.1016/j.lithos.2009.05.003), Lithos
+- [Sula Milani (2016) Crystallographic orientations of olivine inclusions in diamonds](https://doi.org/10.1016/j.lithos.2016.06.010), Lithos
+- [Katie A. Smart (2016) Early Archaean tectonics and mantle redox recorded in Witwatersrand diamonds](https://doi.org/10.1038/ngeo2628), Nature Geoscience
+- [Dmitry A. Zedgenizov (2014) Merwinite in diamond from Sao Luiz, Brazil: A new mineral of the Ca-rich mantle environmen](https://doi.org/10.2138/am.2014.4767), American Mineralogist
+- [Geert Silversmit (2011) Three-Dimensional Fe Speciation of an Inclusion Cloud within an Ultradeep Diamond by Confo](https://doi.org/10.1021/ac201073s), Analytical Chemistry
+- [A. M. Logvinova (2011) The phase composition of crystal-fluid nanoinclusions in alluvial diamonds in the northeas](https://doi.org/10.1016/j.rgg.2011.10.002), Russian Geology and Geophysics
+- [Hans-Michael Seitz (2003) Li abundances in inclusions in diamonds from the upper and lower mantle](https://doi.org/10.1016/j.chemgeo.2003.08.001), Chemical Geology
+- [James Douglas Farquhar (2002) Mass-Independent Sulfur of Inclusions in Diamond and Sulfur Recycling on Early Earth](https://doi.org/10.1126/science.1078617), Science
+- [Ofra Klein‐BenDavid (2008) Origins of subcalcic garnets and their relation to diamond forming fluids—Case studies fro](https://doi.org/10.1016/j.gca.2008.04.044), Geochimica et Cosmochimica Acta
+- [Kalle Westerlund (2006) A subduction wedge origin for Paleoarchean peridotitic diamonds and harzburgites from the ](https://doi.org/10.1007/s00410-006-0101-8), Contributions to Mineralogy and Petrology
+- [David Phillips (2003) 40Ar/39Ar analyses of clinopyroxene inclusions in African diamonds: implications for sourc](https://doi.org/10.1016/s0016-7037(03)00411-3), Geochimica et Cosmochimica Acta
+- [L. A. Taylor (1998) Metasomatic Eclogitic Diamond Growth: Evidence from Multiple Diamond Inclusions](https://doi.org/10.1080/00206819809465230), International Geology Review
+- [A. M. Logvinova (2021) Compositional Variations and Rare Parageneses of Multiple Magnesiochromite Inclusions in Y](https://doi.org/10.1134/s1028334x21110088), Doklady Earth Sciences
+- [Dmitry A. Zedgenizov (2018) Diamond formation during metasomatism of mantle eclogite by chloride-carbonate melt](https://doi.org/10.1007/s00410-018-1513-y), Contributions to Mineralogy and Petrology
+- [Felix V. Kaminsky (2015) Oxidation potential in the Earth's lower mantle as recorded by ferropericlase inclusions i](https://doi.org/10.1016/j.epsl.2015.02.029), Earth and Planetary Science Letters
+- [Fabrizio Nestola (2011) First crystal-structure determination of olivine in diamond: Composition and implications ](https://doi.org/10.1016/j.epsl.2011.03.007), Earth and Planetary Science Letters
+- [L. A. Taylor (2009) Sulfide inclusions in diamonds: not monosulfide solid solution](https://doi.org/10.1016/j.rgg.2009.11.018), Russian Geology and Geophysics
+- [Kalle Westerlund (2004) A metasomatic origin for late Archean eclogitic diamonds: Implications from internal morph](https://doi.org/10.2113/107.1-2.119), South African Journal of Geology
+- [N. V. Sobolev (1999) Significance of Eclogitic and Related Parageneses of Natural Diamonds](https://doi.org/10.1080/00206819909465135), International Geology Review
+- [Peter Deines (1997) Carbon isotope ratios, nitrogen content and aggregation state, and inclusion chemistry of ](https://doi.org/10.1016/s0016-7037(97)00199-3), Geochimica et Cosmochimica Acta
+- [Karen V. Smit (2019) Sulfur isotopes in diamonds reveal differences in continent construction](https://doi.org/10.1126/science.aaw9548), Science
+- [A. M. Logvinova (2019) Carbonatite melt in type Ia gem diamond](https://doi.org/10.1016/j.lithos.2019.06.010), Lithos
+- [Felix V. Kaminsky (2013) CARBONATITIC INCLUSIONS IN DEEP MANTLE DIAMOND FROM JUINA, BRAZIL: NEW MINERALS IN THE CAR](https://doi.org/10.3749/canmin.51.5.669), The Canadian Mineralogist
+- [Peter Deines (2009) Systematic regional variations in diamond carbon isotopic composition and inclusion chemis](https://doi.org/10.1016/j.lithos.2009.03.027), Lithos
+- [Richard Wirth (2007) Inclusions of nanocrystalline hydrous aluminium silicate “Phase Egg” in superdeep diamonds](https://doi.org/10.1016/j.epsl.2007.04.041), Earth and Planetary Science Letters
+- [Peter Deines (1995) Sulfide inclusion chemistry and carbon isotopes of African diamonds](https://doi.org/10.1016/0016-7037(95)00205-e), Geochimica et Cosmochimica Acta
+- [Oliver Tschauner (2018) Ice-VII inclusions in diamonds: Evidence for aqueous fluid in Earth’s deep mantle](https://doi.org/10.1126/science.aao3030), Science
+- [M. M. Jean (2016) Olivine inclusions in Siberian diamonds and mantle xenoliths: Contrasting water and trace-](https://doi.org/10.1016/j.lithos.2016.07.023), Lithos
+- [Sami Mikhail (2014) Empirical evidence for the fractionation of carbon isotopes between diamond and iron carbi](https://doi.org/10.1002/2013gc005138), Geochemistry Geophysics Geosystems
+- [Stephen H. Richardson (2009) Age and origin of peridotitic diamonds from Venetia, Limpopo Belt, Kaapvaal–Zimbabwe crato](https://doi.org/10.1016/j.lithos.2009.05.017), Lithos
+- [Ralf Tappert (2005) Subducting oceanic crust: The source of deep diamonds](https://doi.org/10.1130/g21637.1), Geology
+- [Daniel J. Schulze (2004) Evidence of subduction and crust?mantle mixing from a single diamond](https://doi.org/10.1016/j.lithos.2004.04.022), Lithos
+- [Stephen H. Richardson (2001) Archean subduction recorded by Re–Os isotopes in eclogitic sulfide inclusions in Kimberley](https://doi.org/10.1016/s0012-821x(01)00419-8), Earth and Planetary Science Letters
+- [Steven B. Shirey (2001) Archean emplacement of eclogitic components into the lithospheric mantle during formation ](https://doi.org/10.1029/2000gl012589), Geophysical Research Letters
+- [Wuyi Wang (2001) Metasomatic clinopyroxene inclusions in diamonds from the Liaoning Province, China](https://doi.org/10.1016/s0016-7037(00)00553-6), Geochimica et Cosmochimica Acta
+- [David Graham Pearson (1998) Sulphide inclusions in diamonds from the Koffiefontein kimberlite, S Africa: constraints o](https://doi.org/10.1016/s0012-821x(98)00092-2), Earth and Planetary Science Letters
+- [Wuyi Wang (1998) Formation of diamond with mineral inclusions of “mixed” eclogite and peridotite paragenesi](https://doi.org/10.1016/s0012-821x(98)00131-9), Earth and Planetary Science Letters
+- [William L. Griffin (1988) Conditions of diamond growth: a proton microprobe study of inclusions in West Australian d](https://doi.org/10.1007/bf00371457), Contributions to Mineralogy and Petrology
+- [F. R. Boyd (1980) Conditions of origin of natural diamonds of peridotite affinity](https://doi.org/10.1029/jb085ib12p06911), Journal of Geophysical Research Atmospheres
+- [R. L. Hervig (1980) Diamonds: Minor elements in silicate inclusions: Pressure‐temperature implications](https://doi.org/10.1029/jb085ib12p06919), Journal of Geophysical Research Atmospheres
+- [A. L. Zemnukhov (2020) Subduction related population of diamonds in Yakutian placers, northeastern Siberian platf](https://doi.org/10.1007/s00410-020-01741-w), Contributions to Mineralogy and Petrology
+- [A. D. Kalugina (2019) Raman discrimination of garnet inclusions in Siberian diamonds](https://doi.org/10.1002/jrs.5713), Journal of Raman Spectroscopy
+- [Yurii V. Seryotkin (2017) Results of study of crystallographic orientation of olivine and diamond from Udachnaya kim](https://doi.org/10.1134/s1028334x17100099), Doklady Earth Sciences
+- [Steven B. Shirey (2011) Start of the Wilson Cycle at 3 Ga Shown by Diamonds from Subcontinental Mantle](https://doi.org/10.1126/science.1206275), Science
+- [Nicola J. Cayzer (2008) Plastic deformation of lower mantle diamonds by inclusion phase transformations](https://doi.org/10.1127/0935-1221/2008/0020-1811), European Journal of Mineralogy
+- [Daniel J. Schulze (2005) Layered mantle structure beneath the western Guyana Shield, Venezuela: Evidence from diamo](https://doi.org/10.1016/j.gca.2005.08.025), Geochimica et Cosmochimica Acta
+- [David Graham Pearson (1999) Re-Os isotope measurements of single sulfide inclusions in a Siberian diamond and its nitr](https://doi.org/10.1016/s0016-7037(99)00042-3), Geochimica et Cosmochimica Acta
+- [Felix V. Kaminsky (2021) First find of merrillite, Ca3(PO4)2, in a terrestrial environment as an inclusion in lower](https://doi.org/10.2138/am-2022-8175), American Mineralogist
+- [N. V. Sobolev (2013) Inclusions of Mn-rich eclogitic garnets in diamonds: Evidence for recycling of the Earth’s](https://doi.org/10.1134/s1028334x13110202), Doklady Earth Sciences
+- [D. Howell (2012) Inclusions under remnant pressure in diamond: a multi-technique approach](https://doi.org/10.1127/0935-1221/2012/0024-2183), European Journal of Mineralogy
+- [D. Howell (2010) Quantifying strain birefringence halos around inclusions in diamond](https://doi.org/10.1007/s00410-010-0503-5), Contributions to Mineralogy and Petrology
+- [Richard Wirth (2009) Unusual micro- and nano-inclusions in diamonds from the Juina Area, Brazil](https://doi.org/10.1016/j.epsl.2009.06.043), Earth and Planetary Science Letters
+- [L. M. Barron (2008) Ultrahigh pressure macro diamonds from Copeton (New South Wales, Australia), based on Rama](https://doi.org/10.1016/j.oregeorev.2007.07.003), Ore Geology Reviews
+- [Wuyi Wang (2000) Evidence for a Deep-Mantle Origin of a NaPX-EN Inclusion in Diamond](https://doi.org/10.1080/00206810009465122), International Geology Review
+- [Nikolay V. Sobolev (2000) Composition and Petrogenesis of Ti-Oxides Associated with Diamonds](https://doi.org/10.1080/00206810009465110), International Geology Review
+- [Elad S. Izraeli (1999) Raman barometry of diamond formation](https://doi.org/10.1016/s0012-821x(99)00235-6), Earth and Planetary Science Letters
+- [Thomas Stachel (1998) Metasomatic processes in lherzolitic and harzburgitic domains of diamondiferous lithospher](https://doi.org/10.1016/s0012-821x(98)00064-8), Earth and Planetary Science Letters
+- [Wuyi Wang (1998) Geochemical properties of lithospheric mantle beneath the Sino-Korea craton; evidence from](https://doi.org/10.1016/s0031-9201(97)00137-4), Physics of The Earth and Planetary Interiors
+- [Maya Kopylova (1997) Mineral inclusions in diamonds from the River Ranch kimberlite, Zimbabwe](https://doi.org/10.1007/s004100050343), Contributions to Mineralogy and Petrology
+- [I. S. Leung (1996) SiC in Diamond and Kimberlites: Implications for Nucleation and Growth of Diamond](https://doi.org/10.1080/00206819709465348), International Geology Review
+- [Peter D. Kinny (1994) Zircon from the Mantle: A New Way to Date Old Diamonds](https://doi.org/10.1086/629687), The Journal of Geology
+- [Christopher B. Smith (1991) Neodymium and strontium isotope systematics of eclogite and websterite paragenesis inclusi](https://doi.org/10.1016/0016-7037(91)90374-e), Geochimica et Cosmochimica Acta
+- [Rory O. Moore (1985) Pyroxene solid solution in garnets included in diamond](https://doi.org/10.1038/318553a0), Nature
+- [Galina P. Bulanova (2018) The Unique Nature of Argyle Fancy Diamonds: Internal Structure, Paragenesis, and Reasons f](https://doi.org/10.5382/sp.20.07), venue not listed
+- [O. A. Ivanova (2017) Inclusions in diamonds from Snap Lake kimberlites (Slave Craton, Canada): Geochemical feat](https://doi.org/10.1134/s1028334x17050129), Doklady Earth Sciences
+- [L. M. Barron (2017) Modelling the combination of birefringence retardations from strain envelopes around multi](https://doi.org/10.1080/08120099.2017.1317665), Australian Journal of Earth Sciences
+- [Hiroyuki Kagi (2016) Micro- and nano-inclusions in a superdeep diamond from São Luiz, Brazil](https://doi.org/10.1134/s0016702916100062), Geochemistry International
+- [Mark T. Hutchison (2004) Corundum inclusions in diamonds—discriminatory criteria and a corundum compositional datas](https://doi.org/10.1016/j.lithos.2004.04.006), Lithos
+- [Frank E. Brenker (2002) Exhumation of lower mantle inclusions in diamond: ATEM investigation of retrograde phase t](https://doi.org/10.1016/s0012-821x(02)00514-9), Earth and Planetary Science Letters
+- [N. V. Sobolev (1997) Mineral inclusions in diamonds from the Sputnik kimberlite pipe, Yakutia](https://doi.org/10.1016/s0024-4937(96)00022-9), Lithos
+- [Allan James Hall (1994) A high-chromium corundum (ruby) inclusion in diamond from the Luiz alluvial mine, Brazil](https://openalex.org/W2323119315), venue not listed
+- [Ray Burgess (1992) 40Ar-39Ar laser probe studies of clinopyroxene inclusions in eclogitic diamonds](https://doi.org/10.1016/0016-7037(92)90140-e), Geochimica et Cosmochimica Acta
+- [Hsiao-ming Tsai (1979) Mineral inclusions in diamond: Premier, Jagersfontein and Finsch kimberlites, South Africa](https://doi.org/10.1029/sp015p0016), American Geophysical Union eBooks
+- [Martin A. Prinz (1975) Inclusions in diamonds: Garnet lherzolite and eclogite assemblages](https://doi.org/10.1016/0079-1946(75)90052-x), Physics and Chemistry of the Earth
+- [Леонид Даниилович Бардухинов (2016) Coesite inclusions in diamonds of Yakutia](https://doi.org/10.1134/s1028334x16100093), Doklady Earth Sciences
+- [Davide Lenaz (2013) A micro-Mössbauer study of chromites included in diamond and other mantle-related rocks](https://doi.org/10.1007/s00269-013-0602-8), Physics and Chemistry of Minerals
+- [H. M. Seitz (2006) Lithium isotope composition of lower mantle ferropericlase inclusions in diamonds from Sao](https://doi.org/10.1016/j.gca.2006.06.1053), Geochimica et Cosmochimica Acta
+- [S. V. Titkov (2006) Microinclusions in dark gray diamond crystals of octahedral habit from Yakutian kimberlite](https://doi.org/10.1134/s0016702906110036), Geochemistry International
+- [А. И. Горшков (2006) Microinclusions in diamonds of octahedral habit from kimberlites of Shandong Province, Eas](https://doi.org/10.1134/s1075701506040064), Geology of Ore Deposits
+- [Daniel J. Schulze (2003) Extreme crustal oxygen isotope signatures preserved in coesite in diamond](https://doi.org/10.1038/nature01615), Nature
+- [Tibor Gasparik (2000) Evidence for the transition zone origin of some [Mg,Fe]O inclusions in diamonds](https://doi.org/10.1016/s0012-821x(00)00254-5), Earth and Planetary Science Letters
+- [R. Davies (1999) Diamonds from Wellington, NSW: insights into the origin of eastern Australian diamonds](https://doi.org/10.1180/002646199548619), Mineralogical Magazine
+- [Galina P. Bulanova (1998) Nucleation environment of diamonds from Yakutian kimberlites](https://doi.org/10.1180/002646198547675), Mineralogical Magazine
+- [Stephen H. Richardson (1997) Antiquity of peridotitic diamonds from the Siberian craton](https://doi.org/10.1016/s0012-821x(97)81853-5), Earth and Planetary Science Letters
+- [Galina P. Bulanova (1996) Trace elements in sulfide inclusions from Yakutian diamonds](https://doi.org/10.1007/s004100050179), Contributions to Mineralogy and Petrology
+- [G. R. Watt (1994) A high-chromium corundum (ruby) inclusion in diamond from the São Luiz alluvial mine, Braz](https://doi.org/10.1180/minmag.1994.058.392.16), Mineralogical Magazine
+- [Alian Wang (1994) A carbon-rich multiphase inclusion in a Chinese diamond and its geochemical implications](https://doi.org/10.1007/bf00307726), Contributions to Mineralogy and Petrology
+- [S. B. Talnikova (1993) MINERALOGY OF INCLUSIONS IN DIAMOND CRYSTALS OF CUBIC HABIT](https://doi.org/10.2113/rgg.1993.34.7.89), Russian Geology and Geophysics
+- [Stephen H. Richardson (1990) Eclogitic diamonds of Proterozoic age from Cretaceous kimberlites](https://doi.org/10.1038/346054a0), Nature
+- [В. К. Гаранин (1990) Morphology, physical properties and paragenesis of inclusion-bearing diamonds from Yakutia](https://doi.org/10.1016/0024-4937(90)90016-t), Lithos
+- [F. R. Boyd (1985) Evidence for a 150–200-km thick Archaean lithosphere from diamond inclusion thermobarometr](https://doi.org/10.1038/315387a0), Nature
+- [B. Harte (1980) The formation of peridotitic suite inclusions in diamonds](https://doi.org/10.1007/bf00399478), Contributions to Mineralogy and Petrology
+- [Henry O. A. Meyer (1976) Mineral Inclusions in Diamond: Temperature and Pressure of Equilibration](https://doi.org/10.1126/science.191.4229.849), Science
+- [Roger G. Burns (1975) On the occurrence and stability of divalent chromium in olivines included in diamonds](https://doi.org/10.1007/bf00372081), Contributions to Mineralogy and Petrology
+- [Greg L. Melton (2012) Trace element characteristics of diamond and garnet inclusions from Akwatia, Ghana and De ](https://openalex.org/W3142440879), venue not listed
+- [Werner Joswig (2010) In situ X-ray diffraction investigations of a multiphase inclusion in a diamond from the J](https://doi.org/10.1524/zkri.2011.1331), Zeitschrift für Kristallographie
+- [Davide Lenaz (2009) Structural parameters of chromite included in diamond and kimberlites from Siberia: A new ](https://doi.org/10.2138/am.2009.3165), American Mineralogist
+- [S. V. Titkov (2006) Mineral microinclusions in cubic diamonds from the Yakutian deposits based on analytical e](https://doi.org/10.1134/s1028334x06070233), Doklady Earth Sciences
+- [Werner Joswig (1999) New Ca-silicate inclusions in diamonds — tracers from the lower mantle](https://doi.org/10.1016/s0012-821x(99)00210-1), Earth and Planetary Science Letters
+- [Elias Sideras Haddad (1999) Anomalous Fe and Mn heterogeneity observed in microscopic inclusions in diamond using nucl](https://doi.org/10.1016/s0168-583x(99)00508-x), Nuclear Instruments and Methods in Physics Research Section B Beam Interactions with Materials and Atoms
+- [Nobumichi Shimizu B (1995) Young peridotitic diamonds from the Mir kimberlite pipe](https://doi.org/10.1038/375394a0), Nature
+- [Peter Deines (1987) Carbon isotopic composition, nitrogen content and inclusion composition of diamonds from t](https://doi.org/10.1016/0016-7037(87)90215-8), Geochimica et Cosmochimica Acta
+- [J. J. Gurney (1979) Silicate and oxide inclusions in diamonds from the Finsch kimberlite pipe](https://doi.org/10.1029/sp015p0001), American Geophysical Union eBooks
+- [Lewis H. Cohen (1979) Diamond: Depth of Crystallization Inferred from Compressed Included Garnet](https://doi.org/10.1086/628422), The Journal of Geology
+- [R. S. Mitchell (1977) Some mineral inclusions from African and Brazilian diamonds: their nature and significance](https://openalex.org/W2338849582), venue not listed
+- [Thomas Stachel (2000) Kankan diamonds (Guinea) I: from the lithosphere down to the transition zone](https://doi.org/10.1007/s004100000173), Contributions to Mineralogy and Petrology
+- [Nikolay V. Sobolev (1998) Unusual upper mantle beneath Guaniamo, Guyana shield, Venezuela: Evidence from diamond inc](https://doi.org/10.1130/0091-7613(1998)026<0971:uumbgg>2.3.co;2), Geology
+- [Henry O. A. Meyer (1972) Composition and origin of crystalline inclusions in natural diamonds](https://doi.org/10.1016/0016-7037(72)90048-8), Geochimica et Cosmochimica Acta
+- [Steven B. Shirey (2013) Diamonds and the Geology of Mantle Carbon](https://doi.org/10.2138/rmg.2013.75.12), Reviews in Mineralogy and Geochemistry
+- [L. A. Taylor (2004) Diamonds: time capsules from the Siberian Mantle](https://doi.org/10.1016/j.chemer.2003.11.006), Geochemistry
+- [Thomas Stachel (2008) The origin of cratonic diamonds — Constraints from mineral inclusions](https://doi.org/10.1016/j.oregeorev.2007.05.002), Ore Geology Reviews
+- [Thomas Stachel (2015) Diamond formation — Where, when and how?](https://doi.org/10.1016/j.lithos.2015.01.028), Lithos
+- [B. Harte (2010) Diamond formation in the deep mantle: the record of mineral inclusions and their distribut](https://doi.org/10.1180/minmag.2010.074.2.189), Mineralogical Magazine
+- [Felix V. Kaminsky (2011) Mineralogy of the lower mantle: A review of ‘super-deep’ mineral inclusions in diamond](https://doi.org/10.1016/j.earscirev.2011.10.005), Earth-Science Reviews
+- [Evan M. Smith (2021) Super‐Deep Diamonds](https://doi.org/10.1002/9781119528609.ch7), Geophysical monograph
+- [Fabrizio Nestola (2017) Inclusions in super-deep diamonds: windows on the very deep Earth](https://doi.org/10.1007/s12210-017-0607-1), RENDICONTI LINCEI
+- [B. Harte (2013) Mineral Associations in Diamonds from the Lowermost Upper Mantle and Uppermost Lower Mantl](https://doi.org/10.1007/978-81-322-1170-9_15), Springer eBooks
+- [Steven B. Shirey (2004) Age, paragenesis and composition of diamonds and evolution of the Precambrian mantle litho](https://doi.org/10.2113/107.1-2.91), South African Journal of Geology
+- [B. Harte (2011) Mineral inclusions in diamonds track the evolution of a Mesozoic subducted slab beneath We](https://doi.org/10.1016/j.gr.2011.07.001), Gondwana Research
+- [Steven B. Shirey (2002) Diamond Genesis, Seismic Structure, and Evolution of the Kaapvaal-Zimbabwe Craton](https://doi.org/10.1126/science.1072384), Science
+- [Thomas Stachel (2001) Diamonds from the asthenosphere and the transition zone](https://doi.org/10.1127/0935-1221/2001/0013/0883), European Journal of Mineralogy
+- [Thomas Stachel (2005) Inclusions in Sublithospheric Diamonds: Glimpses of Deep Earth](https://doi.org/10.2113/gselements.1.2.73), Elements
+- [Jeff W. Harris (1993) The geology of diamond: Time and depth profiles from inclusions](https://doi.org/10.1016/0925-9635(93)90034-y), Diamond and Related Materials
+- [Henry O. A. Meyer (1979) Inclusions in diamond and the mineral chemistry of the upper mantle](https://doi.org/10.1016/0079-1946(79)90059-4), Physics and Chemistry of the Earth
+
+## Closed access, older, major elements already in the Stachel compilation (114)
+
+- [V. S. Shatsky (2014) Diamondiferous subcontinental lithospheric mantle of the northeastern Siberian Craton: Evi](https://doi.org/10.1016/j.gr.2014.03.018), Gondwana Research
+- [Fanus Viljoen (2010) Trace element chemistry of mineral inclusions in eclogitic diamonds from the Premier (Cull](https://doi.org/10.1016/j.lithos.2010.04.011), Lithos
+- [Pierre Cartigny (2009) A mantle origin for Paleoarchean peridotitic diamonds from the Panda kimberlite, Slave Cra](https://doi.org/10.1016/j.lithos.2009.06.007), Lithos
+- [Lucy Hunt (2018) Diamonds from the Diavik Mine: From Formation Through Mantle Residence to Emplacement](https://doi.org/10.5382/sp.20.16), venue not listed
+- [Thomas Stachel (2006) Archean diamonds from Wawa (Canada): samples from deep cratonic roots predating cratonizat](https://doi.org/10.1007/s00410-006-0090-7), Contributions to Mineralogy and Petrology
+- [Dmitry A. Zedgenizov (2016) Eclogitic diamonds from variable crustal protoliths in the northeastern Siberian craton: T](https://doi.org/10.1016/j.chemgeo.2015.12.018), Chemical Geology
+- [Thomas Stachel (2004) The trace element composition of silicate inclusions in diamonds: a review](https://doi.org/10.1016/j.lithos.2004.03.027), Lithos
+- [Nikolay V. Sobolev (2016) Retrograde isochemical phase transformations of majoritic garnets included in diamonds: A ](https://doi.org/10.1016/j.lithos.2016.07.030), Lithos
+- [Nikolay V. Sobolev (2009) Petrogenetic significance of minor elements in olivines from diamonds and peridotite xenol](https://doi.org/10.1016/j.lithos.2009.06.038), Lithos
+- [Galina P. Bulanova (2010) Mineral inclusions in sublithospheric diamonds from Collier 4 kimberlite pipe, Juina, Braz](https://doi.org/10.1007/s00410-010-0490-6), Contributions to Mineralogy and Petrology
+- [N. V. Sobolev (2008) Olivine inclusions in Siberian diamonds: high-precision approach to minor elements](https://doi.org/10.1127/0935-1221/2008/0020-1829), European Journal of Mineralogy
+- [A. M. Logvinova (2005) Geochemistry of Multiple Diamond Inclusions of Harzburgitic Garnets as Examined In Situ](https://doi.org/10.2747/0020-6814.47.12.1223), International Geology Review
+- [Mederic Palot (2009) Diamond origin and genesis: A C and N stable isotope study on diamonds from a single eclog](https://doi.org/10.1016/j.lithos.2009.04.013), Lithos
+- [Ralf Tappert (2005) Diamonds from Jagersfontein (South Africa): messengers from the sublithospheric mantle](https://doi.org/10.1007/s00410-005-0035-6), Contributions to Mineralogy and Petrology
+- [Fanus Viljoen (2018) An unusual suite of eclogitic, websteritic and transitional websteritic-lherzolitic diamon](https://doi.org/10.1016/j.lithos.2018.09.034), Lithos
+- [Galina P. Bulanova (2018) Diamonds from the Murowa Kimberlites: Formation Within Extremely Depleted and Metasomatize](https://doi.org/10.5382/sp.20.20), venue not listed
+- [Lucy Hunt (2012) Diamonds and their mineral inclusions from the Renard kimberlites in Quebec](https://doi.org/10.1016/j.lithos.2012.02.022), Lithos
+- [Andrea De Stefano (2009) Diamonds and eclogites of the Jericho kimberlite (Northern Canada)](https://doi.org/10.1007/s00410-009-0384-7), Contributions to Mineralogy and Petrology
+- [Fanus Viljoen (2014) Trace element chemistry of peridotitic garnets in diamonds from the Premier (Cullinan) and](https://doi.org/10.1016/j.lithos.2014.08.010), Lithos
+- [Sonja Aulbach (2009) Sulphide survival and diamond genesis during formation and evolution of Archaean subcontin](https://doi.org/10.1016/j.lithos.2009.03.048), Lithos
+- [Daniel J. Schulze (2007) Mineral inclusions in diamonds from the Kelsey Lake Mine, Colorado, USA: Depleted Archean ](https://doi.org/10.1016/j.gca.2007.09.037), Geochimica et Cosmochimica Acta
+- [Rondi M. Davies (2004) Mineral inclusions and geochemical characteristics of microdiamonds from the DO27, A154, A](https://doi.org/10.1016/j.lithos.2004.04.016), Lithos
+- [Karen V. Smit (2014) Diamonds in the Attawapiskat area of the Superior craton (Canada): evidence for a major di](https://doi.org/10.1007/s00410-013-0962-6), Contributions to Mineralogy and Petrology
+- [Thomas Stachel (2004) Diamondiferous lithospheric roots along the western margin of the Kalahari Craton?the peri](https://doi.org/10.1007/s00410-003-0535-1), Contributions to Mineralogy and Petrology
+- [Thomas Stachel (2018) Argyle Diamonds: How Subduction Along the Kimberley Craton Edge Generated the World’s Bigg](https://doi.org/10.5382/sp.20.06), venue not listed
+- [Nester M. Korolev (2018) The uniquely high-temperature character of Cullinan diamonds: A signature of the Bushveld ](https://doi.org/10.1016/j.lithos.2018.02.011), Lithos
+- [Émilie Thomassot (2009) Metasomatic diamond growth: A multi-isotope study (13C, 15N, 33S, 34S) of sulphide inclusi](https://doi.org/10.1016/j.epsl.2009.03.001), Earth and Planetary Science Letters
+- [Chris B. Smith (2009) Extremely depleted lithospheric mantle and diamonds beneath the southern Zimbabwe Craton](https://doi.org/10.1016/j.lithos.2009.05.013), Lithos
+- [Anetta Banas (2006) Diamonds from the Buffalo Head Hills, Alberta: Formation in a non-conventional setting](https://doi.org/10.1016/j.lithos.2006.07.001), Lithos
+- [Patrick C. Hayman (2005) Lower mantle diamonds from Rio Soriso (Juina area, Mato Grosso, Brazil)](https://doi.org/10.1007/s00410-005-0657-8), Contributions to Mineralogy and Petrology
+- [Stephen H. Richardson (2004) Episodic diamond genesis at Jwaneng, Botswana, and implications for Kaapvaal craton evolut](https://doi.org/10.1016/j.lithos.2004.04.027), Lithos
+- [Adrian Van Rythoven (2011) DIAMOND CRYSTALS AND THEIR MINERAL INCLUSIONS FROM THE LYNX KIMBERLITE DYKE COMPLEX, CENTR](https://doi.org/10.3749/canmin.49.3.691), The Canadian Mineralogist
+- [Pierre Cartigny (2004) Constraining diamond metasomatic growth using C- and N-stable isotopes: examples from Nami](https://doi.org/10.1016/j.lithos.2004.03.024), Lithos
+- [Thomas Stachel (2018) The Victor Mine (Superior Craton, Canada): Neoproterozoic lherzolitic diamonds from a ther](https://doi.org/10.1007/s00710-018-0574-y), Mineralogy and Petrology
+- [Ryan B. Ickert (2013) Diamond from recycled crustal carbon documented by coupled δ18O–δ13C measurements of diamo](https://doi.org/10.1016/j.epsl.2013.01.008), Earth and Planetary Science Letters
+- [N. V. Sobolev (2009) Syngenetic phlogopite inclusions in kimberlite-hosted diamonds: implications for role of v](https://doi.org/10.1016/j.rgg.2009.11.021), Russian Geology and Geophysics
+- [Cara Donnelly (2007) Diamonds and their mineral inclusions from the A154 South pipe, Diavik Diamond Mine, North](https://doi.org/10.1016/j.lithos.2007.03.003), Lithos
+- [Jeff W. Harris (2004) Peridotitic diamonds from Namibia: constraints on the composition and evolution of their m](https://doi.org/10.1016/j.lithos.2004.03.028), Lithos
+- [James T Walter (2011) Deep Mantle Cycling of Oceanic Crust: Evidence from Diamonds and Their Mineral Inclusions](https://doi.org/10.1126/science.1209300), Science
+- [Anetta Banas (2009) Ancient metasomatism recorded by ultra-depleted garnet inclusions in diamonds from DeBeers](https://doi.org/10.1016/j.lithos.2009.04.043), Lithos
+- [Sonja Aulbach (2018) The Diamondiferous Mantle Root Beneath the Central Slave Craton](https://doi.org/10.5382/sp.20.15), venue not listed
+- [Sonja Aulbach (2012) Chalcophile and siderophile elements in sulphide inclusions in eclogitic diamonds and meta](https://doi.org/10.1016/j.gca.2012.04.027), Geochimica et Cosmochimica Acta
+- [Adrian Van Rythoven (2009) In-situ analysis of diamonds and their inclusions from the Diavik Mine, Northwest Territor](https://doi.org/10.1016/j.lithos.2009.04.025), Lithos
+- [Ralf Tappert (2005) Mineral inclusions in diamonds from the Panda kimberlite, Slave Province, Canada](https://doi.org/10.1127/0935-1221/2005/0017-0423), European Journal of Mineralogy
+- [Clare M Appleyard (2004) A study of eclogitic diamonds and their inclusions from the Finsch kimberlite pipe, South ](https://doi.org/10.1016/j.lithos.2004.04.023), Lithos
+- [Thomas Stachel (2003) Peridotitic diamonds from the Slave and the Kaapvaal cratons—similarities and differences ](https://doi.org/10.1016/s0024-4937(03)00127-0), Lithos
+- [Nikolay V. Sobolev (1998) Extreme Chemical Diversity in the Mantle during Eclogitic Diamond Formation: Evidence from](https://doi.org/10.1080/00206819809465225), International Geology Review
+- [Christopher B. Smith (2018) Diamonds from the Atri South Pipe, Bunder Lamproite Field, India, and Implications for the](https://doi.org/10.5382/sp.20.11), venue not listed
+- [Sonja Aulbach (2002) Eclogitic and websteritic diamond sources beneath the Limpopo Belt – is slab-melting the l](https://doi.org/10.1007/s00410-001-0331-8), Contributions to Mineralogy and Petrology
+- [Christine E. Miller (2012) Vanished diamondiferous cratonic root beneath the Southern Superior province: evidence fro](https://doi.org/10.1007/s00410-012-0773-1), Contributions to Mineralogy and Petrology
+- [Catherine N. Johnson (2012) The micro-/macro-diamond relationship: A case study from the Artemisia kimberlite (Norther](https://doi.org/10.1016/j.lithos.2012.05.031), Lithos
+- [Rondi M. Davies (2004) Inclusions in diamonds from the K14 and K10 kimberlites, Buffalo Hills, Alberta, Canada: d](https://doi.org/10.1016/j.lithos.2004.04.008), Lithos
+- [Peter Deines (2001) Implications of the carbon isotope and mineral inclusion record for the formation of diamo](https://doi.org/10.1016/s0016-7037(00)00569-x), Geochimica et Cosmochimica Acta
+- [Galina P. Bulanova (1995) The formation of diamond](https://doi.org/10.1016/0375-6742(94)00016-5), Journal of Geochemical Exploration
+- [Chris B. Smith (2009) Nature and genesis of Kalimantan diamonds](https://doi.org/10.1016/j.lithos.2009.05.014), Lithos
+- [Ralf Tappert (2009) The diamonds of South Australia](https://doi.org/10.1016/j.lithos.2009.04.029), Lithos
+- [A. M. Logvinova (2008) Eskolaite associated with diamond from the Udachnaya kimberlite pipe, Yakutia, Russia](https://doi.org/10.2138/am.2008.2670), American Mineralogist
+- [B. Harte (2007) Decompression and unmixing of crystals included in diamonds from the mantle transition zon](https://doi.org/10.1007/s00269-007-0178-2), Physics and Chemistry of Minerals
+- [Émilie Thomassot (2007) Methane-related diamond crystallization in the Earth's mantle: Stable isotope evidences fr](https://doi.org/10.1016/j.epsl.2007.02.020), Earth and Planetary Science Letters
+- [Peter Deines (2004) New insights into the occurrence of 13C-depleted carbon in the mantle from two closely ass](https://doi.org/10.1016/j.lithos.2004.04.015), Lithos
+- [Prinya Promprated (2004) Multiple-mineral inclusions in diamonds from the Snap Lake/King Lake kimberlite dike, Slav](https://doi.org/10.1016/j.lithos.2004.04.009), Lithos
+- [Thomas Stachel (1998) Rare and unusual mineral inclusions in diamonds from Mwadui, Tanzania](https://doi.org/10.1007/s004100050403), Contributions to Mineralogy and Petrology
+- [K. Sims (2018) Discovery of the Murowa Kimberlites, Zimbabwe](https://doi.org/10.5382/sp.20.17), venue not listed
+- [V. S. Shatsky (2014) Carbon isotopes and nitrogen contents in placer diamonds from the NE Siberian craton: impl](https://doi.org/10.1127/0935-1221/2013/0025-2347), European Journal of Mineralogy
+- [Ralf Tappert (2006) Placer Diamonds from Brazil: Indicators of the Composition of the Earth's Mantle and the D](https://doi.org/10.2113/gsecongeo.101.2.453), Economic Geology
+- [Ingrid Léost (2003) Diamond formation and source carbonation: mineral associations in diamonds from Namibia](https://doi.org/10.1007/s00410-003-0442-5), Contributions to Mineralogy and Petrology
+- [Rondi M. Davies (2003) Unusual mineral inclusions and carbon isotopes of alluvial diamonds from Bingara, eastern ](https://doi.org/10.1016/s0024-4937(03)00048-3), Lithos
+- [David Graham Pearson (2018) Characteristics and Origin of the Mantle Root Beneath the Murowa Diamond Mine: Implication](https://doi.org/10.5382/sp.20.19), venue not listed
+- [Владимир Григорьевич Мальковец (2011) Contents of trace elements in olivines from diamonds and peridotite xenoliths of the V. Gr](https://doi.org/10.1134/s1028334x1102005x), Doklady Earth Sciences
+- [Felix V. Kaminsky (2009) Super-deep diamonds from kimberlites in the Juina area, Mato Grosso State, Brazil](https://doi.org/10.1016/j.lithos.2009.03.036), Lithos
+- [Andrea De Stefano (2006) Enigmatic diamonds in Archean calc-alkaline lamprophyres of Wawa, southern Ontario, Canada](https://doi.org/10.1007/s00410-005-0052-5), Contributions to Mineralogy and Petrology
+- [M. Anand (2004) Nature of diamonds in Yakutian eclogites: views from eclogite tomography and mineral inclu](https://doi.org/10.1016/j.lithos.2004.03.026), Lithos
+- [S. Moss (2018) Geology, Structure, and Radiometric Age Determination of the Murowa Kimberlites, Zimbabwe](https://doi.org/10.5382/sp.20.18), venue not listed
+- [N. P. Pokhilenko (2004) Crystalline inclusions and C isotope ratios in diamonds from the Snap Lake/King Lake kimbe](https://doi.org/10.1016/j.lithos.2004.04.019), Lithos
+- [Pierre Cartigny (1997) Nitrogen isotopes in peridotitic diamonds from Fuxian, China: the mantle signature](https://doi.org/10.1046/j.1365-3121.1997.d01-26.x), Terra Nova
+- [S. Moss (2018) Geology, Mineral Chemistry, and Structure of the Kimberlites at Diavik Diamond Mine: Indic](https://doi.org/10.5382/sp.20.14), venue not listed
+- [R. Brett (2018) Exploration History and Discovery of the Diavik Diamond Deposits, Northwest Territories, C](https://doi.org/10.5382/sp.20.12), venue not listed
+- [Felix V. Kaminsky (2000) DIAMOND FROM THE GUANIAMO AREA, VENEZUELA](https://doi.org/10.2113/gscanmin.38.6.1347), The Canadian Mineralogist
+- [Pierre Cartigny (1998) Eclogitic Diamond Formation at Jwaneng: No Room for a Recycled Component](https://doi.org/10.1126/science.280.5368.1421), Science
+- [L Taylor (1996) Eclogitic inclusions in diamonds: Evidence of complex mantle processes over time](https://doi.org/10.1016/0012-821x(96)00106-9), Earth and Planetary Science Letters
+- [Peter Deines (1993) Depth-related carbon isotope and nitrogen concentration variability in the mantle below th](https://doi.org/10.1016/0016-7037(93)90390-i), Geochimica et Cosmochimica Acta
+- [Henry O. A. Meyer (1986) Mineral Inclusions in Diamonds from the Sloan Kimberlites, Colorado](https://doi.org/10.1086/629062), The Journal of Geology
+- [Thomas Stachel (1997) Diamond precipitation and mantle metasomatism - evidence from the trace element chemistry ](https://doi.org/10.1007/s004100050328), Contributions to Mineralogy and Petrology
+- [Peter Deines (1991) The carbon isotopic composition and nitrogen content of lithospheric and asthenospheric di](https://doi.org/10.1016/0016-7037(91)90377-h), Geochimica et Cosmochimica Acta
+- [Henry O. A. Meyer (1975) MINERAL INCLUSIONS IN BRAZILIAN DIAMONDS](https://doi.org/10.1016/b978-0-08-018017-5.50054-7), Elsevier eBooks
+- [Galina P. Bulanova (2004) Syngenetic inclusions of yimengite in diamond from Sese kimberlite (Zimbabwe) — evidence f](https://doi.org/10.1016/j.lithos.2004.04.002), Lithos
+- [N. Mc Kenna (2004) Aspects of diamond mineralisation and distribution at the Helam Mine, South Africa*1](https://doi.org/10.1016/j.lithos.2004.04.004), Lithos
+- [William L. Griffin (2001) Diamonds from Myanmar and Thailand: Characteristics and Possible Origins](https://doi.org/10.2113/96.1.0159), Economic Geology
+- [William L. Griffin (1993) Trace elements in garnets and chromites: Diamond formation in the Siberian lithosphere](https://doi.org/10.1016/0024-4937(93)90019-9), Lithos
+- [K. Pollock (2018) Evaluation of the Diavik Diamond Deposit](https://doi.org/10.5382/sp.20.13), venue not listed
+- [Ekaterina V. Rubanova (2009) Diamonds from the V. Grib pipe, Arkhangelsk kimberlite province, Russia](https://doi.org/10.1016/j.lithos.2009.04.044), Lithos
+- [Felix V. Kaminsky (2001) Superdeep diamonds from the Juina area, Mato Grosso State, Brazil](https://doi.org/10.1007/s004100000221), Contributions to Mineralogy and Petrology
+- [Mark T. Hutchison (2001) Mineral inclusions in diamonds: associations and chemical distinctions around the 670-km d](https://doi.org/10.1007/s004100100279), Contributions to Mineralogy and Petrology
+- [Wuyi Wang (2000) Enrichment processes at the base of the Archean lithospheric mantle: observations from tra](https://doi.org/10.1007/s004100000163), Contributions to Mineralogy and Petrology
+- [Thomas Stachel (1997) Syngenetic inclusions in diamond from the Birim field (Ghana) - a deep peridotitic profile](https://doi.org/10.1007/s004100050284), Contributions to Mineralogy and Petrology
+- [B.H. SCOTT SMITH (1984) Kimberlites Near Orroroo, South Australia](https://doi.org/10.1016/b978-0-444-42273-6.50017-1), Developments in petrology
+- [J. J. Gurney (1984) Silicate and Oxide Inclusions in Diamonds from the Orapa Mine, Botswana.](https://doi.org/10.1016/b978-0-444-42274-3.50007-x), Developments in petrology
+- [J. J. Gurney (1984) Minerals Associated with Diamonds from the Roberts Victor Mine](https://doi.org/10.1016/b978-0-444-42274-3.50009-3), Developments in petrology
+- [ () ](https://doi.org/10.1007/s0041), venue not listed
+- [ () ](https://doi.org/10.1007/s0041000050343), venue not listed
+- [ () ](https://doi.org/10.1016/s0012-821x(96)00106-9), venue not listed
+- [ () ](https://doi.org/10.1026/j.lithos.2009.04.018), venue not listed
+- [ () ](https://doi.org/10.1130/g250055a.1), venue not listed
+- [ () ](https://doi.org/10.25249/0375-7536.2001312583596), venue not listed
+- [ () ](https://doi.org/10.3749/canmin), venue not listed
+- [ () ](https://doi.org/10.5382/sp.20.21), venue not listed
+- [ () ](https://doi.org/10.5382/sp.20.22), venue not listed
+- [ () ](https://doi.org/10.5382/sp.20.23), venue not listed
+- [ () ](https://doi.org/10.5382/sp.20.24), venue not listed
+- [ () ](https://doi.org/10.5382/sp.20.25), venue not listed
+- [ () ](https://doi.org/10.5382/sp.20.26), venue not listed
+- [ () ](https://doi.org/10.5382/sp.20.27), venue not listed
+- [ () ](https://doi.org/10.5382/sp.20.28), venue not listed
+- [ () ](https://doi.org/10.5382/sp.20.29), venue not listed

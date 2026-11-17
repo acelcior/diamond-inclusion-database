@@ -21,11 +21,14 @@ ROOT = Path(__file__).resolve().parent.parent
 SCHEMA = ROOT / "schema" / "001_core.sql"
 VOCAB = ROOT / "vocab"
 GOLD = ROOT / "gold"
+EXTRACTED = ROOT / "extracted"  # papers read by extraction/extract.py, same file format as gold/ (D-017)
 PAPER = GOLD / "phillips-2004"
 DB_PATH = ROOT / "gold" / "gold.sqlite"
 
 OXIDES = ["SiO2", "Al2O3", "TiO2", "Cr2O3", "FeO", "MnO", "NiO", "MgO", "CaO", "Na2O", "K2O", "V2O5", "ZnO", "Total"]
-OXIDE_COLUMNS = ["P2O5", *OXIDES, "SrO"]  # analyses.csv columns load_simple reads
+OXIDE_COLUMNS = ["P2O5", *OXIDES, "SrO"]  # read first, in this order, so the checked papers load exactly as before
+DESCRIPTION_COLUMNS = {"table", "page", "column", "sample_no", "diamond_no", "inclusion_label", "mineral", "paragenesis",
+                       "assemblage", "touching", "n_analyses", "cited_source", "note", "phase_hint", "suite"}
 SUITE_TO_T4 = {"Per (hz)": "Harzburgitic", "Per (lhz)": "Lherzolitic", "Ecl": "Eclogitic", "Web": "Websteritic"}
 
 
@@ -261,7 +264,19 @@ def load_simple(db, folder):
 
     same = {k: evidence(**v) for k, v in src.get("same_diamond", {}).items()}
     diamonds, tables_of = {}, {}
-    for r in rows(folder / src["analyses"]):
+    analyses = rows(folder / src["analyses"])
+    # value columns: every header that is a quantity (directly or through source.json "column_quantity"); a header
+    # that is neither a known description column nor a quantity stops the load, so no printed column is dropped
+    unit_of = dict(db.execute("SELECT code, default_unit FROM quantity"))
+    quantity_of = {"Total": "oxide_total", **src.get("column_quantity", {})}
+    header = list(analyses[0]) if analyses else []
+    unknown = [c for c in header if c not in DESCRIPTION_COLUMNS and quantity_of.get(c, c) not in unit_of]
+    if unknown:
+        sys.exit(f"{folder.name}: columns {unknown} are not in vocab/quantity.csv; add them there or map them in "
+                 'source.json "column_quantity"')
+    value_columns = ([c for c in OXIDE_COLUMNS if c in header] +
+                     [c for c in header if c not in OXIDE_COLUMNS and c not in DESCRIPTION_COLUMNS])
+    for r in analyses:
         cfg = src["tables"][r["table"]]
         where = f"{r['table']}, p. {r['page']}, {r['sample_no']} {r['mineral']} (column {r['column']})"
         tables_of.setdefault(r["sample_no"], set()).add(r["table"])
@@ -309,7 +324,7 @@ def load_simple(db, folder):
                       spot_label=f"mean of {r['n_analyses']} analyses" if r["n_analyses"] else "number of analyses not stated",
                       conditions=src["method"]["conditions"], evidence_id=ev, import_run_id=run,
                       notes=f"Analytical conditions: p. {src['method']['page']}")
-        for col in OXIDE_COLUMNS:
+        for col in value_columns:
             text = r.get(col, "")
             if not text:
                 continue                                  # oxide not printed for this table
@@ -328,9 +343,9 @@ def load_simple(db, folder):
                     unc = int(m["u"]) * 10 ** -decimals
             else:
                 sys.exit(f"Unrecognised notation {text!r} at {where}, {col}")
-            quantity = {"Total": "oxide_total", **src.get("column_quantity", {})}.get(col, col)
+            quantity = quantity_of.get(col, col)
             insert(db, "measured_value", measurement_id=meas, quantity_code=quantity, original_text=text,
-                   original_unit="wt%", value=value, detection_limit=dl, uncertainty=unc,
+                   original_unit=cfg.get("unit") or unit_of[quantity], value=value, detection_limit=dl, uncertainty=unc,
                    uncertainty_type=cfg.get("uncertainty") if unc is not None else None, value_status=status,
                    derivation="calculated_by_authors" if col == "Total" else "reported")
     for t, cfg in src["tables"].items():
@@ -577,7 +592,7 @@ def build(path=":memory:", with_compilations=True):
     db.executescript((ROOT / "schema" / "003_compilation_import.sql").read_text())
     load_vocab(db)
     papers = {}
-    for src in sorted(GOLD.glob("*/source.json")):
+    for src in sorted(GOLD.glob("*/source.json")) + sorted(EXTRACTED.glob("*/source.json")):
         folder = src.parent
         kind = json.loads(src.read_text())
         loader = (load_phillips if (folder / "table4.csv").exists() else load_diamonds if "diamonds" in kind
