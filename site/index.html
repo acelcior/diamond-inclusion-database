@@ -90,7 +90,7 @@
     table it came from. This is a work in progress, and more papers are being added.</p>
   <div class="stats" id="stats"></div>
 
-  <details class="sources" open>
+  <details class="sources">
     <summary id="sources-title">Sources</summary>
     <ol id="sources"></ol>
     <p class="cite-note">If you use these data, please cite the original papers above. Values are as printed in each source;
@@ -369,7 +369,7 @@ async function initTab(tab) {
   el.id = "table-" + tab;
   $("#table").appendChild(el);
   s.table = new Tabulator(el, {
-    data, columns: groups.flatMap(([, cols]) => cols), layout: "fitDataTable", height: "65vh",
+    data, columns: groups.flatMap(([, cols]) => cols), layout: "fitData", height: "65vh",  // fitData: the table scrolls inside its box, not the page
     movableColumns: true, placeholder: "No rows match these filters", index: tab === "inclusions" ? "id" : undefined,
   });
   s.table.on("dataFiltered", (f, rows) => {

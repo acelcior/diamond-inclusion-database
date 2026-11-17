@@ -7,6 +7,18 @@ tags: [log]
 Newest first. One short entry per working session: what was done, what was decided,
 what's next. Related: [roadmap](roadmap.md)
 
+## 2026-11-17 — Website quick fixes
+- The live site still showed Sobolev 2004 as "not yet reviewed": its data files had not been regenerated after
+  the approval. Re-ran `scripts/export_site.py`; Sobolev now shows as approved.
+- The table now scrolls inside its own box (Tabulator `fitData`), so the page no longer scrolls sideways and
+  the Diamond ID column stays pinned. The sources list starts collapsed, so the table is on the first screen.
+- Added `.claude/launch.json` so Claude can preview `site/` locally before a push.
+- `tests/test_gold.py` had been failing since the Sobolev approval (it assumed only Phillips was approved); it now
+  checks each paper against the review recorded in its own `source.json`. All three test files pass.
+- Ideas not built yet: headline count split into extracted vs compilation rows, shareable filter links,
+  a "last updated" date and data version, one simple plot of the filtered rows.
+- **Next:** review Kankan II and Kankan III; ask the professor about D-005.
+
 ## 2026-11-05 — Extraction queue
 - Asked to import all 265 newly relevant papers into the database. Declined as asked: importing means extracting
   each paper's tables from a legally held full text, one session per paper (D-014); registering empty publication

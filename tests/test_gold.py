@@ -46,12 +46,12 @@ class GoldTest(unittest.TestCase):
             self.assertEqual(res["untraceable"], 0)
 
     def test_review_applied(self):
-        # Phillips is approved; papers without a recorded review stay pending
-        self.assertEqual(self.one(f"SELECT COUNT(*) FROM inclusion_observation WHERE publication_id = {self.phillips} "
-                                  "AND workflow_status <> 'approved'"), 0)
-        self.assertEqual(self.one(f"SELECT COUNT(*) FROM inclusion_observation i JOIN publication p ON p.id = i.publication_id "
-                                  f"WHERE p.id <> {self.phillips} AND p.pub_type <> 'dataset' "
-                                  "AND i.workflow_status <> 'pending_review'"), 0)
+        # each paper carries the review recorded in its source.json; papers without one stay pending
+        import json
+        for name, p in self.papers.items():
+            want = json.loads((p["dir"] / "source.json").read_text()).get("review", {}).get("workflow_status", "pending_review")
+            self.assertEqual(self.one(f"SELECT COUNT(*) FROM inclusion_observation WHERE publication_id = {p['pub']} "
+                                      f"AND workflow_status <> '{want}'"), 0, name)
 
     def test_compilation_layer(self):
         """Stachel compilation (D-013): every row with a mineral is one report; nothing reviewed, nothing merged."""
